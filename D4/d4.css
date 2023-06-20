@@ -1,0 +1,209 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+*{font-family: 'Noto Sans KR', sans-serif;font-weight: 300;font-size: 14px;color: #fff;line-height: 1.2;box-sizing:border-box}
+html,body{height:100%;margin: 0;padding: 0;}
+h1,h2,h3,h4,h5,h6{font-weight:600}
+h1{font-size:26px}
+h2{font-size:20px}
+h3{font-size:16px}
+label{margin:0;display:inline-block;vertical-align:middle;}
+button{display:inline-block;vertical-align:middle;border:0;margin:0;padding:0;background-color: transparent;cursor:pointer;}
+button[disabled]{cursor:not-allowed}
+input.form-control{display:inline-block;vertical-align:middle;width:200px;border-radius:3px !important}
+input.form-control.simple{color: #0056b3;padding: 2px 0 !important;height: calc(1em + 0.95rem + 2px);border: 0;}
+pre{position:relative;display:inline-block;max-width:85%;vertical-align:middle;margin:0;padding:5px;font-size:16px}
+pre a{display:block;width:100%;overflow:hidden;text-overflow:ellipsis}
+body{background-color: #1A1B1F;}
+#wrap{position: relative;height: 100%;}
+#header{display: flex;justify-content: space-evenly;align-items: center;max-width: 700px;height: 50px;margin: 0 auto;padding: 8px 0;background-color: #1A1B1F;border-bottom: 1px solid #333;z-index: 300;}
+#header .button-job{font-size: 18px;font-weight: 500;padding: 8px;text-align: center;opacity: .4;}
+#header .button-job[disabled]{text-decoration: line-through;}
+#header .button-job[aria-selected=true]{color: gold;opacity: 1;}
+#header .button-job::before{content:'';display: inline-block;vertical-align: middle;width: 30px;height: 30px;margin: -2px 6px 0 0;}
+#header .button-job[data-tab-select=dru]::before{background: url(https://rerollcdn.com/DIABLO4/Classes/1/druid.png) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=bab]::before{background: url(https://rerollcdn.com/DIABLO4/Classes/1/barbarian.png) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=nec]::before{background: url(https://rerollcdn.com/DIABLO4/Classes/1/necromancer.png) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=soc]::before{background: url(https://rerollcdn.com/DIABLO4/Classes/1/sorcerer.png) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=rog]::before{background: url(https://rerollcdn.com/DIABLO4/Classes/1/rogue.png) 0 0 no-repeat;background-size:100% auto;}
+#container{display: flex;align-items: flex-start;flex-direction: column;margin: 0 auto;max-width: 700px;width: 100%;height: 100%;}
+.box-title{margin: 20px 0 0;}
+.box-title .setting-title{width: 100%;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;font-weight: bold;}
+.inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 100;}
+
+.inven::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-image: url();background-position: 50%;background-repeat: no-repeat;background-size: 50%;opacity: .4;z-index: -1;}
+#container[data-job-select=dru] .inven::before{background-image: url(https://assets-ng.maxroll.gg/d4-tools/static/media/druid.6f349308.webp);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
+#container[data-job-select=bab] .inven::before{background-image: url(https://assets-ng.maxroll.gg/d4-tools/static/media/barbarian.8ea39d74.webp);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
+#container[data-job-select=soc] .inven::before{background-image: url(https://assets-ng.maxroll.gg/d4-tools/static/media/sorcerer.88516c03.webp);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
+#container[data-job-select=nec] .inven::before{background-image: url(https://assets-ng.maxroll.gg/d4-tools/static/media/necromancer.f7f54bd1.webp);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
+#container[data-job-select=rog] .inven::before{background-image: url(https://assets-ng.maxroll.gg/d4-tools/static/media/rogue.b9096024.webp);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
+.inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
+.inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
+.inven .equ .option{position: relative;font-size: 0;line-height: 0;background-color: #26272d;border: 1px solid #444757;border-radius: 5px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
+.inven .equ .input-fav:checked + .option{border: 1px solid #fe6000;}
+.inven.active .equ .option{opacity: .3;}
+.inven .inven-weapon .equ.wep .option.active::after,
+.inven .inven-equ .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;right: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-right: 10px solid #F3F3F3;}
+.inven .inven-wep .equ + .equ .option.active::after,
+.inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;}
+.inven .equ .option.active{opacity: 1;border: 1px solid #fff;}
+.inven .equ .text{margin: 0 10px;}
+.inven .equ .text .detail{display: block;margin-top: 2px;color: #fff;font-size: 14px;}
+.inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
+.inven .equ .option.selected + .text .detail.type-uni{color: gold;}
+.inven .equ .text .more{display: block;max-width:260px;opacity: .8;} 
+.inven .equ .text .more *{font-size: 12px;line-height: 1.2;font-weight: 200;}
+.inven .inven-equ{float: left;}
+.inven .inven-equ .equ:first-child,
+.inven .inven-acc .equ:first-child{}
+.inven .inven-acc{float: right;}
+.inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
+.inven .inven-wep .equ + .equ,
+.inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
+
+.inven .equ.hel .text .detail::before{content:'투구';}
+.inven .equ.che .text .detail::before{content:'갑옷';}
+.inven .equ.glo .text .detail::before{content:'장갑';}
+.inven .equ.pan .text .detail::before{content:'바지';}
+.inven .equ.boo .text .detail::before{content:'신발';}
+.inven .equ.amu .text .detail::before{content:'목걸이 (1.5배)';}
+.inven .equ.rin .text .detail::before{content:'반지 1';}
+.inven .equ.rin + .rin .text .detail::before{content:'반지 2';}
+.inven .equ.wep .text .detail::before{content:'주무기 (양손 2배)';}
+.inven .equ.wep + .equ.wep .text .detail::before,
+.inven .equ.sub .text .detail::before{content:'보조무기';}
+
+.inven .inven-wep + .inven-wep{display: none;}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;/* margin-top: 15px;border-top: 1px solid #444757; */}
+#container[data-job-select=bab] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=bab] .inven .inven-wep .equ.wep .text .detail::before{content:'양손 둔기 (2배)';}
+#container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .detail::before{content:'양손 도검/도끼 (2배)';}
+#container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/slashing_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'쌍수';}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
+
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
+#container[data-job-select=rog] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/ranged_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;}
+#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검';}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검';}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 64px auto;}
+.inven .equ .selected + .text .detail::before,
+.inven .equ .active + .text .detail::before{content:none !important;}
+.inven .equ.emp{opacity: .3;}
+.inven .equ.emp .text{display: none;}
+
+.inven-skill-select{display: none;position: absolute;top: 15px;left: 50%;width:540px;height: 90vh;border-radius:6px;border: 1px solid #F3F3F3;background-color:#1A1B1F;overflow: hidden;-webkit-transform: translate(-50%, 0);transform: translate(-50%, 0);}
+.inven-skill-select .skill-head{display: flex;justify-content: space-around;align-items: center;width: calc(100% - 40px);height: 40px;background-color: #1A1B1F;}
+.inven-skill-select .skill-head button{position: relative;padding: 10px 0;text-align: center;width: 100%;opacity: .3;}
+.inven-skill-select .skill-head button::before{content:'';position: absolute;top: 50%;left: -1px;width: 1px;height: 20px;margin-top: -10px;background-color: #fff;opacity: .2;}
+.inven-skill-select .skill-head button[aria-selected=true]{opacity: 1;font-weight: bold;}
+.inven-skill-select .skill-head button.sort-by-dis{opacity: 1;color: #fe6000;font-weight: bold;}
+.inven-skill-select .skill-head button.sort-by-dis.disabled{opacity: .5;font-weight: normal;}
+.inven-skill-select.active{display: block;}
+.inven-skill-select .box-skill-select{position: relative;height: calc(100% - 42px);overflow-y: auto;background-color: #1A1B1F;}
+.inven-skill-select .box-skill-select::-webkit-scrollbar{width: 6px;}
+.inven-skill-select .box-skill-select::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
+.inven-skill-select .box-skill-select::-webkit-scrollbar-track{background-color: grey;border-radius: 6px;box-shadow: inset 0px 0px 5px white;}
+.inven-skill-select .box-skill-lists{}
+.inven-skill-select .box__skill-grid{position: relative;display: none;margin-bottom: 5px;}
+.inven-skill-select .button-skill{display: flex;justify-content: space-between;align-items: center;width: 100%;text-align: left;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
+.inven-skill-select .button-skill[data-parts=com]{display: flex;}
+.inven-skill-select .button-skill[aria-selected=true]{opacity: .5;}
+.inven-skill-select .skill-icon{display: block;min-width:70px;width: 45px;height: 45px;background: url(https://rerollcdn.com/DIABLO4/Uniques/offhand.png) 50% 50% no-repeat;background-size:45px auto;}
+.inven-skill-select .skill-detail{position: relative;display: flex;flex-direction: column;justify-content: center;width: 100%;min-height:72px;padding: 5px 10px 7px 0;}
+.inven-skill-select .skill-detail .skill-name{display: block;font-weight: bold;font-size: 14px;opacity: .8;}
+.inven-skill-select .skill-detail .skill-name::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
+.inven-skill-select .skill-detail .skill-name::after{color: #fe6000;}
+.inven-skill-select .skill-detail .skill-name::before,
+.inven-skill-select .skill-detail .skill-name::after{font-size: 14px;line-height: 1.3;}
+.inven-skill-select .skill-detail .skill-more{display: block;padding-top: 4px;font-size: 14px;color: #fff;word-wrap: break-word;opacity: .8}
+
+.inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 40px;height: 40px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;}
+
+#container .icon-def{background: url(https://rerollcdn.com/DIABLO4/Codex/1/defensive.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-off{background: url(https://rerollcdn.com/DIABLO4/Codex/1/offensive.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-uti{background: url(https://rerollcdn.com/DIABLO4/Codex/1/utility.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-res{background: url(https://rerollcdn.com/DIABLO4/Codex/1/resource.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-mob{background: url(https://rerollcdn.com/DIABLO4/Codex/1/mobility.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-emp{background: url(https://rerollcdn.com/DIABLO4/Uniques/offhand.png) 50% 50% no-repeat;background-size:45px auto;}
+
+#container .icon-hel{background: url(https://rerollcdn.com/DIABLO4/Uniques/helm.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-che{background: url(https://rerollcdn.com/DIABLO4/Uniques/chest_armor.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-glo{background: url(https://rerollcdn.com/DIABLO4/Uniques/gloves.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-pan{background: url(https://rerollcdn.com/DIABLO4/Uniques/pants.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-boo{background: url(https://rerollcdn.com/DIABLO4/Uniques/boots.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-amu{background: url(https://rerollcdn.com/DIABLO4/Uniques/amulet.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-rin{background: url(https://rerollcdn.com/DIABLO4/Uniques/ring_1.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-wep,
+#container .icon-sub{background: url(https://rerollcdn.com/DIABLO4/Uniques/weapon.png) 50% 50% no-repeat;background-size:45px auto;}
+#container .icon-ham{background: url(https://rerollcdn.com/DIABLO4/Uniques/bludgeoning_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
+#container .icon-sla{background: url(https://rerollcdn.com/DIABLO4/Uniques/slashing_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
+#container .icon-bow{background: url(https://rerollcdn.com/DIABLO4/Uniques/ranged_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
+#container .icon-dua{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size:64px auto;}
+
+.job-dru{}
+.job-com::after{content:' [공통] ';}
+.job-dru::after{content:' [드루이드] ';}
+.job-bab::after{content:' [바바리안] ';}
+.job-soc::after{content:' [소서리스] ';}
+.job-nec::after{content:' [네크로멘서] ';}
+.job-rog::after{content:' [도적] ';}
+.type-uni{color:gold;}
+.type-leg{color:#D87B1B;}
+/* .type-uni::after{content:' (유니크)';color:#dca779;}
+.type-leg::after{content:' (전설)';color:#D87B1B;} */
+
+#container .unique_option,
+#container .aspect_effect{display: inline;word-break: keep-all;}
+#container .c_random{font-weight: 400;color: #a4a0f0;}
+#container .c_number{font-weight: 400;color: #cbae76;}
+#container .c_gold,
+#container .c_important{font-weight: 400;color: #38aced;}
+#container .c_label{font-weight: 400;color: #cbae76;}
+#container .text-line{font-weight: 400;text-decoration: underline;}
+
+.download{width: 100%;margin-top: 30px;text-align: center;}
+.download .button-download{display: inline-block;padding: 15px 20px;font-size: 16px;font-weight: bold;color: gold;border: 1px solid #D87B1B;border-radius: 10px;opacity: .8;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
+.image-preview{display: block;width: 100%;position: relative;}
+/*
+.image-preview::before{content:'↓이미지 다운 영역↓';display: inline-block;position: absolute;left: 50%;width: 160px;margin-top: 60px;margin-left: -80px;font-size: 14px;color: #666;padding: 0 10px;background-color: #1A1B1F;text-align: center;z-index: 1;box-sizing: border-box;}
+.image-preview::after{content:'';position: absolute;left: 0;width: 100%;height: 1px;margin-top: 68px;background-color: #fff;opacity: .6;}
+*/
+.image-preview img,
+.image-preview canvas{width: 100%;margin:30px auto;}
+.copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #fff;text-align: center;opacity: .2;}
+
+#container #skillList .box__skill-grid,
+#container #skillList .box__skill-grid.hide{display: none;}
+#container #skillList .box__skill-grid.show{display: block;}
+#container[data-job-select] #skillList[data-filter=sort-by-com] .box__skill-grid[data-job].show:not([data-job=com]){display: none;}
+#container[data-job-select=dru] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show,
+#container[data-job-select=bab] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show,
+#container[data-job-select=soc] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show,
+#container[data-job-select=nec] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show,
+#container[data-job-select=rog] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show{display: none;}
+
+#container[data-job-select=dru] #boardSelect .box__skill-grid[data-job=dru]{display: block;}
+
+@media only screen and (max-width:700px){
+	#header{position: sticky;top: 0;width: 100%;}
+	#header .button-job{font-size: 14px;}
+	#header .button-job::before{content:none;}
+	#container{padding: 0 10px;}
+	.inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
+	.inven .inven-skill-select{position: fixed;top: 50px;left: 50%;right: 0;bottom: 0;width: 100%;height: calc(100% - 50px);}
+	.inven .inven-equ,
+	.inven .inven-acc{float: none;}
+	.inven .inven-wep .equ + .equ, .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
+	.inven .equ.emp{display: none;}
+	.inven .equ{width: 100%;}
+	.inven .equ .text{width: 100%;margin-right: 0;}
+	.inven .inven-wep{flex-direction: column;}
+	.inven .equ .option.active::after{display: none;}
+	#container[data-job-select=dru] .inven::before,
+	#container[data-job-select=bab] .inven::before,
+	#container[data-job-select=soc] .inven::before,
+	#container[data-job-select=nec] .inven::before,
+	#container[data-job-select=rog] .inven::before{background-position: 50% 50%;}
+}
