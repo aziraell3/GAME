@@ -1,5 +1,6 @@
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
+		$('body').scrollTop(0);
 		html2canvas(document.getElementById('imageCanvas'), {
 			allowTaint: true,
 			useCORS: true
@@ -333,6 +334,7 @@ var D4SkillDB = (function(){
 				: $('.sort-by-dis').removeClass('disabled')
 			method.layerSort($parts);
 			$layer.find('.box-skill-select').scrollTop(0);
+			method.fixedViewPort(true);
 		})
 		$('.js-disabled').on('click', function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
@@ -346,12 +348,14 @@ var D4SkillDB = (function(){
 			$(this).parents('.inven-skill-select').removeClass('active').removeAttr('data-sorting');
 			//obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 			obj.wrapper.find('.inven').removeClass('active');
+			method.fixedViewPort(false);
 		})
 	};
 	method.skillreset = function(){
 		obj.skillOpenButton.removeClass('active selected latest').removeAttr('data-target');
 		obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
+		method.fixedViewPort(false);
 	}
 	method.layerSort = function($target){
 		obj.job = obj.wrapper.attr('data-job-select');
@@ -392,13 +396,18 @@ var D4SkillDB = (function(){
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni')
 			method.invCheck(obj.skillID);
+			method.fixedViewPort(false);
 		})
+	};
+	method.fixedViewPort = function(fixedView){
+		(fixedView) ? obj.body.addClass('scroll-lock') : obj.body.removeClass('scroll-lock');
 	};
 	return{
 		init : method.init,
 		skillDB : method.skillDB,
 		layerSort : method.layerSort,
 		layerFunc : method.layerFunc,
+		fixedViewPort : method.fixedViewPort,
 	}
 })();
 D4SkillDB.init();

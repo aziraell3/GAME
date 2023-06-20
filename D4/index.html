@@ -119,123 +119,124 @@
 			</div>
 
 			<div id="skillSelect" class="inven-skill-select">
-				<div class="skill-head">
-					<button type="button" class="sort-by-all" aria-selected="true">전체</button>
-					<button type="button" class="sort-by-job" aria-selected="false">직업전용</button>
-					<button type="button" class="sort-by-com" aria-selected="false">공통</button>
-					<button type="button" class="sort-by-dis js-disabled">위상 해제</button>
-				</div>
-				<div class="box-skill-select">
-					<div id="skillList" class="box-skill-lists"></div>
+				<div class="box-layer">
+					<div class="skill-head">
+						<button type="button" class="sort-by-all" aria-selected="true">전체</button>
+						<button type="button" class="sort-by-job" aria-selected="false">직업전용</button>
+						<button type="button" class="sort-by-com" aria-selected="false">공통</button>
+						<button type="button" class="sort-by-dis js-disabled">위상 해제</button>
+					</div>
+					<div class="box-skill-select">
+						<div id="skillList" class="box-skill-lists"></div>
 
-					<div id="gem" class="box-skill-lists" style="display:none;">
-						<div class="box__skill-grid gem" data-job="gem">
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--rub"></span>
-								<span class="skill-detail">
-									<span class="skill-name">루비</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">제압 피해 증가</span>
-											<span class="def">최대 생명력 증가</span>
-											<span class="acc">화염 저항력 증가</span>
-										</p>
+						<div id="gem" class="box-skill-lists" style="display:none;">
+							<div class="box__skill-grid gem" data-job="gem">
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--rub"></span>
+									<span class="skill-detail">
+										<span class="skill-name">루비</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">제압 피해 증가</span>
+												<span class="def">최대 생명력 증가</span>
+												<span class="acc">화염 저항력 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--saf"></span>
-								<span class="skill-detail">
-									<span class="skill-name">사파이어</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span>
-											<span class="def">보강 상태에서 피해 감소</span>
-											<span class="acc">냉기 저항 증가</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--saf"></span>
+									<span class="skill-detail">
+										<span class="skill-name">사파이어</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span>
+												<span class="def">보강 상태에서 피해 감소</span>
+												<span class="acc">냉기 저항 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--top"></span>
-								<span class="skill-detail">
-									<span class="skill-name">토파즈</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">기본 기술 피해 증가</span>
-											<span class="def">제어 방해 효과를 받을 때 피해 감소</span>
-											<span class="acc">번개 저항 증가</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--top"></span>
+									<span class="skill-detail">
+										<span class="skill-name">토파즈</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">기본 기술 피해 증가</span>
+												<span class="def">제어 방해 효과를 받을 때 피해 감소</span>
+												<span class="acc">번개 저항 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--eme"></span>
-								<span class="skill-detail">
-									<span class="skill-name">에메랄드</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">취약한 적에게 주는 극대화 피해 증가</span>
-											<span class="def">가시 증가</span>
-											<span class="acc">독 저항 증가</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--eme"></span>
+									<span class="skill-detail">
+										<span class="skill-name">에메랄드</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">취약한 적에게 주는 극대화 피해 증가</span>
+												<span class="def">가시 증가</span>
+												<span class="acc">독 저항 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--ame"></span>
-								<span class="skill-detail">
-									<span class="skill-name">자수정</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">지속 피해 증가</span>
-											<span class="def">지속 피해 감소</span>
-											<span class="acc">암흑 저항 증가</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--ame"></span>
+									<span class="skill-detail">
+										<span class="skill-name">자수정</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">지속 피해 증가</span>
+												<span class="def">지속 피해 감소</span>
+												<span class="acc">암흑 저항 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--dia"></span>
-								<span class="skill-detail">
-									<span class="skill-name">다이아몬드</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">궁극기 공격력 상승</span>
-											<span class="def">보호막 생성량 증가</span>
-											<span class="acc">모든 원소 저항 증가</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--dia"></span>
+									<span class="skill-detail">
+										<span class="skill-name">다이아몬드</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">궁극기 공격력 상승</span>
+												<span class="def">보호막 생성량 증가</span>
+												<span class="acc">모든 원소 저항 증가</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
-							<button type="button" class="button-skill">
-								<span class="skill-icon icon-gem--sku"></span>
-								<span class="skill-detail">
-									<span class="skill-name">해골</span>
-									<span class="skill-more">
-										<p class="gem_effect">
-											<span class="wep">처치 시 생명력 회복</span>
-											<span class="def">받는 치유량 증가</span>
-											<span class="acc">방어도 상승</span>
-										</p>
+								</button>
+								<button type="button" class="button-skill">
+									<span class="skill-icon icon-gem--sku"></span>
+									<span class="skill-detail">
+										<span class="skill-name">해골</span>
+										<span class="skill-more">
+											<p class="gem_effect">
+												<span class="wep">처치 시 생명력 회복</span>
+												<span class="def">받는 치유량 증가</span>
+												<span class="acc">방어도 상승</span>
+											</p>
+										</span>
 									</span>
-								</span>
-							</button>
+								</button>
+							</div>
+						</div>
+
+						<div id="board" class="box-skill-lists" style="display:none;">
 						</div>
 					</div>
-
-					<div id="board" class="box-skill-lists" style="display:none;">
-					</div>
+					<button type="button" class="button-close js-disabled">닫기</button>
 				</div>
-					
-				<button type="button" class="button-close js-disabled">닫기</button>
 			</div>
 		</div>
 		<div class="download">
 			<button type="button" id="imageConvert" class="button-download">↓↓ 캡쳐 이미지 생성 ↓↓</button>
 		</div>
 		<div id="previewImg" class="image-preview"></div>
-		<p class="copyright">Copyright &copy; 전과에요's All Rights Reserved.</p>
+		<p class="copyright">Copyright &copy; aziraell3 All Rights Reserved.</p>
 	</div>
 </div>
 </body>
