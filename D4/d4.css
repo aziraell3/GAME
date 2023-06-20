@@ -81,7 +81,6 @@ body.scroll-lock{overflow: hidden;}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/slashing_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'쌍수';}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
-
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/ranged_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;}
