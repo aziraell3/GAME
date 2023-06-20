@@ -358,6 +358,7 @@ var D4SkillDB = (function(){
 		obj.skillOpenButton.removeClass('active selected latest').removeAttr('data-target');
 		obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
+		obj.skillButton.attr('aria-selected', false);
 		method.fixedViewPort(false);
 	}
 	method.layerSort = function($target){
