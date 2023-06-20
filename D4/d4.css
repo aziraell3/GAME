@@ -104,7 +104,7 @@ body.scroll-lock{overflow: hidden;}
 .inven-skill-select .skill-head button.sort-by-dis{opacity: 1;color: #fe6000;font-weight: bold;}
 .inven-skill-select .skill-head button.sort-by-dis.disabled{opacity: .5;font-weight: normal;}
 .inven-skill-select.active{display: block;}
-.inven-skill-select .box-skill-select{position: relative;height: calc(100% - 42px);overflow-y: auto;background-color: #1A1B1F;}
+.inven-skill-select .box-skill-select{position: relative;height: calc(100% - 52px);overflow-y: auto;background-color: #1A1B1F;}
 .inven-skill-select .box-skill-select::-webkit-scrollbar{width: 6px;}
 .inven-skill-select .box-skill-select::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
 .inven-skill-select .box-skill-select::-webkit-scrollbar-track{background-color: grey;border-radius: 6px;box-shadow: inset 0px 0px 5px white;}
@@ -208,6 +208,7 @@ body.scroll-lock{overflow: hidden;}
 	.inven-skill-select .skill-head{height: 40px;}
 	.inven-skill-select .skill-icon{min-width:80px;}
 	.inven-skill-select .box-layer{max-width: calc(100% - 40px);width: 100%;height: calc(100% - 40px);}
+	.inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=dru] .inven::before,
 	#container[data-job-select=bab] .inven::before,
