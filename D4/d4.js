@@ -283,23 +283,26 @@ var D4SkillDB = (function(){
 
 		//직업 선택
 		$('#header .button-job').on('click', function(){
+			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
-			/*
-			if (confirm("직업을 변경하면 선택했던 위상들이 초기화 됩니다. \n그래도 바꿀래영?")) {
-				$(this).attr('aria-selected', true).siblings().attr('aria-selected', false);
-				obj.wrapper.attr('data-job-select', $job);
-				($(this).hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
-				method.skillreset();
-			}
-			*/
 			if (!$(this).is('[aria-selected=true]')) {
+				if ($('.inven .equ .option.selected').length > 0) {
+					if (confirm("현재 선택된 위상이 있습니다.\n직업을 변경하면 선택했던 위상들이 초기화 됩니다. \n그래도 바꿀래영?")) {
+						jobChange($this);
+					}
+				} else {
+					jobChange($this);
+				}
+			}
+			function jobChange($jobBtn){
+				var $this = $jobBtn;
+				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
+				obj.wrapper.attr('data-job-select', $job);
+				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
 				method.skillreset();
 			}
-			$(this).attr('aria-selected', true).siblings().attr('aria-selected', false);
-			obj.wrapper.attr('data-job-select', $job);
-			($(this).hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
-			
 		})
+		//레이어 필터링 버튼
 		$('.skill-head button').on('click', function(){
 			var $this = $(this).attr('class');
 			if ($(this).is('[aria-selected]')) {
