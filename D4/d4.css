@@ -72,7 +72,8 @@ body{background-color: #1A1B1F;}
 .inven .equ.sub .text .detail::before{content:'보조무기';}
 
 .inven .inven-wep + .inven-wep{display: none;}
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;/* margin-top: 15px;border-top: 1px solid #444757; */}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;/* margin-top: 15px;border-top: 1px solid #444757; */}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .text .detail::before{content:'양손 둔기 (2배)';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .detail::before{content:'양손 도검/도끼 (2배)';}
@@ -186,17 +187,19 @@ body{background-color: #1A1B1F;}
 	#header .button-job{font-size: 14px;line-height: 1;}
 	#header .button-job::before{display: block;margin: 0 auto 5px;width: 24px;height: 24px;}
 	#container{padding: 0 10px;}
+	.inven::before{position: fixed;top: 0;left: 0;right: 0;}
 	.inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
-	.inven .inven-skill-select{position: fixed;top: 70px;left: 50%;right: 0;bottom: 0;width: 100%;height: calc(100% - 70px);}
+	.inven .inven-wep{flex-direction: column;}
 	.inven .inven-equ,
 	.inven .inven-acc{float: none;}
 	.inven .inven-wep .equ + .equ, .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
 	.inven .equ{width: 100%;margin-top: 10px;}
 	.inven .equ.emp{display: none;}
 	.inven .equ .text{width: 100%;margin-right: 0;}
-	.inven .inven-wep{flex-direction: column;}
+	.inven .equ .text .more{max-width: 90%;}
 	.inven .equ .option.active::after{display: none;}
-	.inven::before{position: fixed;top: 0;left: 0;right: 0;}
+	.inven .inven-skill-select{position: fixed;top: 70px;left: 50%;right: 0;bottom: 0;width: 100%;height: calc(100% - 70px);}
+	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=dru] .inven::before,
 	#container[data-job-select=bab] .inven::before,
 	#container[data-job-select=soc] .inven::before,
