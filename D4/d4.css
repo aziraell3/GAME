@@ -47,11 +47,11 @@ body.scroll-lock{overflow: hidden;}
 .inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;}
 .inven .equ .option.active{opacity: 1;border: 1px solid #fff;}
 .inven .equ .text{margin: 0 10px;}
-.inven .equ .text .detail{display: block;margin-top: 2px;color: #fff;font-size: 14px;}
+.inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
 .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
 .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
-.inven .equ .text .more{display: block;max-width:260px;opacity: .8;} 
-.inven .equ .text .more *{font-size: 12px;line-height: 1.2;font-weight: 200;}
+.inven .equ .text .more{display: block;max-width:260px;opacity: .8;background-color: rgba(0, 0, 0, 0.5);border-radius: 6px;} 
+.inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
 .inven .inven-equ{float: left;}
 .inven .inven-equ .equ:first-child,
 .inven .inven-acc .equ:first-child{}
