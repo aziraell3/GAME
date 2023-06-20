@@ -10,7 +10,7 @@ $(document).ready(function(){
 	});
 	$('#wep1').addClass('active');
 	$('#skill-num39').click();
-
+/*
 	expireDate = new Date  /// 현재의 날짜 객체를 생성합니다. 
 	expireDate.setMonth(expireDate.getMonth()+6)  /// 현재 월에 6개월을 더합니다. 즉, 쿠키의 유효기간을 현재부터 6개월로 설정합니다. 
 	hitCt = eval(cookieVal("count"))  /// 방문 카운트 변수이며 cookieVal 함수를 실행시킵니다. 
@@ -26,6 +26,7 @@ $(document).ready(function(){
 	 return 0   
 	} 
 	$('#count').text('방문자수 '+hitCt);
+*/
 })
 
 var D4SkillDB = (function(){
