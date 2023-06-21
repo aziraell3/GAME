@@ -68,11 +68,11 @@ body.scroll-lock{overflow: hidden;}
 .inven .equ.amu .text .detail::before{content:'목걸이 (1.5배)';}
 .inven .equ.rin .text .detail::before{content:'반지 1';}
 .inven .equ.rin + .rin .text .detail::before{content:'반지 2';}
-.inven .equ.wep .text .detail::before{content:'주무기 (양손 2배)';}
+.inven .equ.wep .text .detail::before{content:'주무기 (양손무기 2배)';}
 .inven .equ.wep + .equ.wep .text .detail::before,
 .inven .equ.sub .text .detail::before{content:'보조무기';}
 
-.inven .inven-wep + .inven-wep{display: none;}
+.inven .inven-wep + .inven-wep{display: none;margin-top: -10px;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;/* margin-top: 15px;border-top: 1px solid #444757; */}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
@@ -83,11 +83,13 @@ body.scroll-lock{overflow: hidden;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/ranged_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
-#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(https://rerollcdn.com/DIABLO4/Uniques/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 64px auto;}
+/* #container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .detail::before{content:'토템';}
+#container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .detail::before{content:'방패';} */
 .inven .equ .selected + .text .detail::before,
 .inven .equ .active + .text .detail::before{content:none !important;}
 .inven .equ.emp{opacity: .3;}
@@ -195,6 +197,7 @@ body.scroll-lock{overflow: hidden;}
 	.inven::before{}
 	.inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 	.inven .inven-wep{flex-direction: column;}
+	.inven .inven-wep + .inven-wep{margin-top: 0;}
 	.inven .inven-equ,
 	.inven .inven-acc{float: none;}
 	.inven .inven-wep .equ + .equ, .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
@@ -210,6 +213,7 @@ body.scroll-lock{overflow: hidden;}
 	.inven-skill-select .box-layer{max-width: calc(100% - 40px);width: 100%;height: calc(100% - 40px);}
 	.inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
+	#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{margin: 10px 0 0;}
 	#container[data-job-select=dru] .inven::before,
 	#container[data-job-select=bab] .inven::before,
 	#container[data-job-select=soc] .inven::before,
