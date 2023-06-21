@@ -16,7 +16,8 @@ pre a{display:block;width:100%;overflow:hidden;text-overflow:ellipsis}
 body{background-color: #1A1B1F;}
 body.scroll-lock{overflow: hidden;}
 #wrap{position: relative;height: 100%;}
-#header{position: fixed;top: 0;left: 0;right: 0;display: flex;justify-content: space-evenly;align-items: center;max-width: 700px;height: 50px;margin: 0 auto;padding: 8px 0;background-color: #1A1B1F;border-bottom: 1px solid #333;z-index: 110;}
+#header{position: fixed;top: 0;left: 0;right: 0;z-index: 110;}
+#header .box-header{display: flex;justify-content: space-evenly;align-items: center;max-width: 700px;min-height: 50px;margin: 0 auto;padding: 8px 0;background-color: #1A1B1F;border-bottom: 1px solid #333;}
 #header .button-job{font-size: 18px;line-height: 30px;font-weight: 500;padding: 10px 8px;text-align: center;opacity: .4;}
 #header .button-job[disabled]{text-decoration: line-through;}
 #header .button-job[aria-selected=true]{color: gold;opacity: 1;}
@@ -36,8 +37,9 @@ body.scroll-lock{overflow: hidden;}
 #container[data-job-select=soc] .inven::before{background-image: url(images/bg_sorcerer.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
 #container[data-job-select=nec] .inven::before{background-image: url(images/bg_necromancer.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
 #container[data-job-select=rog] .inven::before{background-image: url(images/bg_rogue.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
-.notice{text-align: center;color: orange;}
-.notice::before{content:'💡 '}
+.notice{display: block;width: 100%;margin: 0;padding: 10px 0 0;text-align: center;color: orange;}
+.notice::after,
+.notice::before{content:' 💡 '}
 .inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
 .inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
 .inven .equ .option{position: relative;font-size: 0;line-height: 0;background-color: #26272d;border: 1px solid #444757;border-radius: 5px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}

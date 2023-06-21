@@ -12,25 +12,6 @@ $(document).ready(function(){
 			alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
 		}
 	});
-
-
-/*
-	expireDate = new Date
-	expireDate.setMonth(expireDate.getMonth()+6)  /// 월에 6개월을 더함.
-	hitCt = eval(cookieVal("count"))
-	hitCt++
-	document.cookie = "count="+hitCt+";expires=" + expireDate.toGMTString()
-	function cookieVal(cookieName) {
-	   thisCookie = document.cookie.split("; ")
-	   for (i=0; i<thisCookie.length; i++) {
-			if (cookieName == thisCookie[i].split("=")[0]) {
-				 return thisCookie[i].split("=")[1]
-		   }   
-	 }   
-	 return 0;
-	} 
-	$('#count').text('방문 '+hitCt);
-*/
 })
 
 var D4SkillDB = (function(){
@@ -354,6 +335,8 @@ var D4SkillDB = (function(){
 			//obj.boardWrap.append('<div class="box__skill-grid" data-job="'+skill.job+'"><button type="button" class="button-skill" aria-selected="false" id="board-num'+index+'"></span><span class="skill-detail"><span class="skill-name">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span></button></div>');
 		});
 		method.skillDB();
+
+		$('#container').css('margin-top', $('#header').outerHeight())
 
 		//직업 선택
 		$('#header .button-job').on('click', function(){
