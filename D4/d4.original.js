@@ -6,12 +6,14 @@ $(document).ready(function(){
 				allowTaint: true,
 				useCORS: true
 			}).then(function (canvas) {
-				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
+				$('#previewImg').html('<img src="'+canvas.toDataURL("image/jpeg")+'">');
 			});
 		} else {
 			alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
 		}
 	});
+
+
 /*
 	expireDate = new Date
 	expireDate.setMonth(expireDate.getMonth()+6)  /// 월에 6개월을 더함.
