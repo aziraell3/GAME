@@ -1,12 +1,16 @@
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
-		$('body').scrollTop(0);
-		html2canvas(document.getElementById('imageCanvas'), {
-			allowTaint: true,
-			useCORS: true
-		}).then(function (canvas) {
-			$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
-		});
+		if ($('.inven .equ .option.selected').length > 0) {
+			$('body').scrollTop(0);
+			html2canvas(document.getElementById('previewImg'), {
+				allowTaint: true,
+				useCORS: true
+			}).then(function (canvas) {
+				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
+			});
+		} else {
+			alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
+		}
 	});
 /*
 	expireDate = new Date
