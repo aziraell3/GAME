@@ -16,8 +16,8 @@ pre a{display:block;width:100%;overflow:hidden;text-overflow:ellipsis}
 body{background-color: #1A1B1F;}
 body.scroll-lock{overflow: hidden;}
 #wrap{position: relative;height: 100%;}
-#header{position: fixed;top: 0;left: 0;right: 0;z-index: 110;}
-#header .box-header{display: flex;justify-content: space-evenly;align-items: center;max-width: 700px;min-height: 50px;margin: 0 auto;padding: 8px 0;background-color: #1A1B1F;border-bottom: 1px solid #333;}
+#header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;}
+#header .box-header{display: flex;justify-content: space-evenly;align-items: center;max-width: 700px;min-height: 50px;margin: 0 auto;padding: 8px 0;border-bottom: 1px solid #333;}
 #header .button-job{font-size: 18px;line-height: 30px;font-weight: 500;padding: 10px 8px;text-align: center;opacity: .4;}
 #header .button-job[disabled]{text-decoration: line-through;}
 #header .button-job[aria-selected=true]{color: gold;opacity: 1;}
@@ -51,6 +51,9 @@ body.scroll-lock{overflow: hidden;}
 .inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;}
 .inven .equ .option.active{opacity: 1;border: 1px solid #fff;}
 .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;min-height: 70px;margin: 0 5px;padding: 5px;}
+.inven .inven-acc .equ .text,
+.inven .inven-wep .equ + .equ .text,
+.inven .inven-acc .equ .text{align-items: flex-end;}
 .inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.5);border-radius: 6px;}
 .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
 .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
@@ -127,6 +130,7 @@ body.scroll-lock{overflow: hidden;}
 .inven-skill-select .skill-detail .skill-name::before,
 .inven-skill-select .skill-detail .skill-name::after{font-size: 14px;line-height: 1.3;}
 .inven-skill-select .skill-detail .skill-more{display: block;padding-top: 6px;font-size: 14px;color: #fff;word-wrap: break-word;opacity: .8}
+.inven-skill-select .skill-detail .skill-parts{display: block;padding-top: 4px;}
 .inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 40px;height: 40px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;}
 
 #container .icon-def{background: url(images/defensive.png) 50% 50% no-repeat;background-size:45px auto;}
@@ -149,6 +153,24 @@ body.scroll-lock{overflow: hidden;}
 #container .icon-sla{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-bow{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-dua{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size:64px auto;}
+
+#container [data-parts] .skill-parts::before,
+#container [data-parts] .skill-parts::after{content:'';font-size: 11px;color: #38aced;font-family:dotum;}
+#container [data-parts] .skill-parts::before{content:'착용부위 : ';color: aqua;font-weight: bold;letter-spacing: -0.5;}
+#container [data-parts=wep] .skill-parts::after{content:'무기';}
+#container [data-parts=hel] .skill-parts::after{content:'투구';}
+#container [data-parts=che] .skill-parts::after{content:'갑옷';}
+#container [data-parts=glo] .skill-parts::after{content:'장갑';}
+#container [data-parts=pan] .skill-parts::after{content:'바지';}
+#container [data-parts=boo] .skill-parts::after{content:'신발';}
+#container [data-parts=amu] .skill-parts::after{content:'목걸이';}
+#container [data-parts=rin] .skill-parts::after{content:'반지';}
+
+#container [data-parts=off] .skill-parts::after{content:'무기 | 목걸이 | 장갑 | 반지';}
+#container [data-parts=def] .skill-parts::after{content:'보조(무기) | 투구 | 갑옷 | 바지 | 목걸이';}
+#container [data-parts=uti] .skill-parts::after{content:'보조(무기) | 투구 | 갑옷 | 목걸이 | 장갑 | 신발';}
+#container [data-parts=res] .skill-parts::after{content:'반지';}
+#container [data-parts=mob] .skill-parts::after{content:'목걸이 | 신발';}
 
 .job-dru{}
 .job-com::after{content:' [공통] ';}
@@ -195,7 +217,7 @@ body.scroll-lock{overflow: hidden;}
 
 /* mobile */
 @media only screen and (max-width:700px){
-	#header{height: 70px;}
+	#header{}
 	#header .button-job{font-size: 14px;line-height: 1;}
 	#header .button-job::before{display: block;margin: 0 auto 5px;width: 24px;height: 24px;}
 	#container{margin-top: 70px;padding: 0 10px;}
@@ -217,6 +239,9 @@ body.scroll-lock{overflow: hidden;}
 	.inven-skill-select .skill-icon{min-width:80px;}
 	.inven-skill-select .box-layer{max-width: calc(100% - 40px);width: 100%;height: calc(100% - 40px);}
 	.inven-skill-select .box-skill-select{height: calc(100% - 42px);}
+
+	.inven .inven-acc .equ .text, .inven .inven-wep .equ + .equ .text, .inven .inven-acc .equ .text{align-items: flex-start;}
+
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{margin: 10px 0 0;}
 	#container[data-job-select=dru] .inven::before,

@@ -18,7 +18,7 @@ var D4SkillDB = (function(){
 	var method = {};
 	var obj = {};
 	var option = {};
-	var setting = [];
+	var parts = [];
 	var board = [
 		{job:'dru', name:'착취', detail:'블라블라'},
 		{job:'dru', name:'변신술사', detail:'블라블라'},
@@ -329,7 +329,7 @@ var D4SkillDB = (function(){
 		method.setElement();
 		method.layerFunc();
 		$.each(skills, function(index, skill){
-			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'"><button type="button" class="button-skill" aria-selected="false" id="skill-num'+index+'"><span class="skill-icon icon-'+skill.icon+'"></span><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span></span></button></div>');
+			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'"><button type="button" class="button-skill" aria-selected="false" id="skill-num'+index+'"><span class="skill-icon icon-'+skill.icon+'"></span><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
 		$.each(board, function(index, skill){
 			//obj.boardWrap.append('<div class="box__skill-grid" data-job="'+skill.job+'"><button type="button" class="button-skill" aria-selected="false" id="board-num'+index+'"></span><span class="skill-detail"><span class="skill-name">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span></button></div>');
@@ -400,6 +400,7 @@ var D4SkillDB = (function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
 			if (!$(this).is('.disabled')) {
 				obj.skillWrap.find('#'+$target).attr('aria-selected', false);
+				obj.skillOpenButton.parent().removeAttr('data-parts');
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 			} else {
 				return false;
@@ -416,6 +417,7 @@ var D4SkillDB = (function(){
 		obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
 		obj.skillButton.attr('aria-selected', false);
+		obj.skillOpenButton.parent().removeAttr('data-parts');
 		method.fixedViewPort(false);
 	}
 	method.layerSort = function($target){
@@ -426,12 +428,14 @@ var D4SkillDB = (function(){
 		
 	};
 	method.invCheck = function($id){
+		//동일 위상 선택시 다른영역 리셋
 		var $invSkill = [];
 		obj.skillOpenButton.each(function(index){
 			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
 			$invSkill.push($target)
 			if ($id == $(this).attr('data-target')) {
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
+				$(this).not('.latest').parent().removeAttr('data-parts');
 			}
 		});
 		$.each($invSkill, function(index){
@@ -444,16 +448,18 @@ var D4SkillDB = (function(){
 		obj.skillButton.on('click', function(){
 			var $detail = $(this).find('.skill-name');
 			var $tooltip = $(this).find('.skill-more').html();
+			var $parts = $(this).find('.skill-parts').html();
 			var $detailButton = $('.inven .equ .option.active').siblings('.text').find('.detail');
 			var $target = $('.inven .equ .option.active').attr('data-target');
 			obj.skillID = $(this).attr('id');
 			$('.sort-by-all').trigger('click');
 			$('#'+$target).attr('aria-selected', false);
-			$('.inven .equ .option.active').addClass('selected').attr('data-target', $(this).attr('id'));
+			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')})
+			$('.inven .equ .option.active').parent().attr({'data-parts':$(this).parent().attr('data-parts')})
 			obj.skillOpenButton.removeClass('active');
 			obj.skillLayer.removeClass('active');
 			obj.wrapper.find('.inven').removeClass('active');
-			$detailButton.text($detail.text()).next().html($tooltip);
+			$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			($(this).find('.skill-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni')
