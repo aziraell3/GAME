@@ -10,7 +10,7 @@ $(document).ready(function(){
 						scale: 2.0,
 					}).then(function (canvas) {
 						$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
-						$('html, body').animate({scrollTop: $('#download').offset().top}, 500);
+						$('html, body').animate({scrollTop: parseInt($('#download').offset().top - 120)}, 500);
 						$('.down-notice').removeClass('ing').addClass('complate').html('이미지가 생성되었습니다!');
 					});
 			
