@@ -392,17 +392,10 @@ var D4SkillDB = (function(){
 			var scrollTop = $(this).scrollTop();
 			var $title = $('#header .page-title');
 			var $header = $('#header').outerHeight();
-			var $container = $('#container');
-			var $top = $('.page-top');
-
 			if (scrollTop > $header) {
-				$title.addClass('flip');
-				$top.addClass('show');
-				//$container.css('margin-top', $header+'px');
+				obj.body.addClass('header-flip');
 			}else{
-				$title.removeClass('flip');
-				$top.removeClass('show');
-				//$container.css('margin-top', $header+'px');
+				obj.body.removeClass('header-flip');
 			}
 		});
 		$('.link-top').on('click', function(e){
