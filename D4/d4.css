@@ -61,6 +61,7 @@ body.scroll-lock{overflow: hidden;}
 .inven .equ .text .more{display: block;opacity: .8;} 
 .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
 .inven .inven-equ{float: left;}
+.inven .inven-wep .equ,
 .inven .inven-acc,
 .inven .inven-equ{width: 49.5%;}
 .inven .inven-equ .equ:first-child,
@@ -90,19 +91,19 @@ body.scroll-lock{overflow: hidden;}
 #container .inven .inven-wep + .inven-wep{display: none;margin-top: -10px;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;/* margin-top: 15px;border-top: 1px solid #444757; */}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
-#container[data-job-select=bab] .inven .inven-wep .equ.wep .option{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=bab] .inven .inven-wep .equ.wep .option::before{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .text .detail::before{content:'양손 둔기 (2배)';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .detail::before{content:'양손 도검/도끼 (2배)';}
-#container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'쌍수';}
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
-#container[data-job-select=rog] .inven .inven-wep .equ.wep .option{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=rog] .inven .inven-wep .equ.wep .option::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
-#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검';}
-#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 64px auto;}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 54px auto;}
 /* #container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .detail::before{content:'토템';}
 #container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .detail::before{content:'방패';} */
 
@@ -112,11 +113,13 @@ body.scroll-lock{overflow: hidden;}
 #container .inven-skill-select{display: none;position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;z-index: 999;}
 #container .inven-skill-select.active::after{content:'';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;z-index: 10;}
 #container .inven-skill-select .box-layer{position: absolute;top: 50%;left: 50%;max-width:80%;width: 640px;height: 90vh;border-radius:6px;border: 1px solid #F3F3F3;background-color:#1A1B1F;overflow: hidden;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);z-index: 200;}
-#container .inven-skill-select .skill-head{display: flex;justify-content: space-around;align-items: center;width: calc(100% - 40px);height: 50px;background-color: #1A1B1F;}
+#container .inven-skill-select .skill-head{display: flex;justify-content: space-evenly;align-items: center;width: calc(100% - 40px);height: 50px;background-color: #1A1B1F;}
 #container .inven-skill-select .skill-head button{position: relative;padding: 10px 0;text-align: center;width: 20%;font-size: 16px;opacity: .3;}
 #container .inven-skill-select .skill-head button::before{content:'';position: absolute;top: 50%;left: -1px;width: 1px;height: 20px;margin-top: -10px;background-color: #fff;opacity: .2;}
+#container .inven-skill-select .skill-head button:first-child::before{content:none;}
 #container .inven-skill-select .skill-head button[aria-selected=true]{opacity: 1;font-weight: bold;}
 #container .inven-skill-select .skill-head button.sort-by-dis{opacity: 1;color: #fe6000;font-weight: bold;}
+#container .inven-skill-select .skill-head button.sort-by-dis::before{content:none;}
 #container .inven-skill-select .skill-head button.sort-by-dis.disabled{opacity: .5;font-weight: normal;}
 #container .inven-skill-select.active{display: block;}
 #container .inven-skill-select .box-skill-select{position: relative;height: calc(100% - 52px);overflow-y: auto;background-color: #1A1B1F;}
@@ -156,7 +159,7 @@ body.scroll-lock{overflow: hidden;}
 #container .icon-boo::before{background: url(images/boots.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .icon-amu::before{background: url(images/amulet.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .icon-rin::before{background: url(images/ring_1.png) 50% 50% no-repeat;background-size:45px auto;}
-#container .icon-wep,
+#container .icon-wep::before{background: url(images/weapon.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .icon-sub::before{background: url(images/weapon.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .icon-ham::before{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-sla::before{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
@@ -246,6 +249,7 @@ body.scroll-lock{overflow: hidden;}
 	.inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 	.inven .inven-wep{flex-direction: column;}
 	.inven .inven-wep + .inven-wep{margin-top: 0;}
+	.inven .inven-wep .equ,
 	.inven .inven-equ,
 	.inven .inven-acc{float: none;width: 100%;}
 	.inven .inven-wep .equ + .equ, .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
@@ -262,12 +266,11 @@ body.scroll-lock{overflow: hidden;}
 	.inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	.inven-skill-select .button-close{width: 40px;height: 40px;}
 	.inven .inven-acc .equ .text, .inven .inven-wep .equ + .equ .text, .inven .inven-acc .equ .text{align-items: flex-start;}
+	#container .inven-skill-select .button-skill::before{min-width:80px;}
+	#container .inven-skill-select .skill-head button{width: 16%;}
+	#container .inven .inven-wep + .inven-wep{margin-top: 0;}
 
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{margin: 10px 0 0;}
-	#container[data-job-select=dru] .inven::before,
-	#container[data-job-select=bab] .inven::before,
-	#container[data-job-select=soc] .inven::before,
-	#container[data-job-select=nec] .inven::before,
-	#container[data-job-select=rog] .inven::before{background-position: 70% 70%;background-size: 90% auto}
+	#container[data-job-select] .inven::before{background-position: 70% 30%;background-size: 90% auto}
 }
