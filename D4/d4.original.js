@@ -5,7 +5,7 @@ $(document).ready(function(){
 			html2canvas(document.getElementById('imageCanvas'), {
 				allowTaint: true,
 				useCORS: true,
-				scale: 3.0,
+				scale: 2.0,
 			}).then(function (canvas) {
 				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
 			});
