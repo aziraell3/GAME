@@ -345,8 +345,6 @@ var D4SkillDB = (function(){
 			method.scrollFunc();
 		});
 
-		//$('#container').css('margin-top', $('#header').outerHeight())
-
 		//직업 선택
 		$('#header .button-job').on('click', function(){
 			var $this = $(this);
@@ -395,15 +393,22 @@ var D4SkillDB = (function(){
 			var $title = $('#header .page-title');
 			var $header = $('#header').outerHeight();
 			var $container = $('#container');
+			var $top = $('.page-top');
 
 			if (scrollTop > $header) {
 				$title.addClass('flip');
+				$top.addClass('show');
 				//$container.css('margin-top', $header+'px');
 			}else{
 				$title.removeClass('flip');
+				$top.removeClass('show');
 				//$container.css('margin-top', $header+'px');
 			}
 		});
+		$('.link-top').on('click', function(e){
+			e.preventDefault();
+			$('html, body').animate({scrollTop: '0'}, 300);
+		})
 	};
 	method.layerFunc = function(){
 		//레이어 오픈
