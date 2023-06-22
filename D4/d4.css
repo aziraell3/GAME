@@ -64,7 +64,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
 #container .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
 #container .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
-#container .inven .equ .text .more{display: block;opacity: .8;} 
+#container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .8;} 
 #container .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
 #container .inven .inven-equ{float: left;}
 #container .inven .inven-wep .equ,
@@ -185,8 +185,8 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .equ[data-parts] .option.selected{}
 
 #container [data-parts] .skill-parts::before,
-#container [data-parts] .skill-parts::after{content:'';font-size: 12px;color: cadetblue;font-family:dotum;letter-spacing: -0.5px;}
-#container [data-parts] .skill-parts::before{content:'착용가능 : ';color: burlywood;font-weight: bold;letter-spacing: -1px;}
+#container [data-parts] .skill-parts::after{content:'';font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
+#container [data-parts] .skill-parts::before{content:'착용가능 : ';color: burlywood;font-weight: bold;}
 #container [data-parts=wep] .skill-parts::after{content:'무기';}
 #container [data-parts=hel] .skill-parts::after{content:'투구';}
 #container [data-parts=che] .skill-parts::after{content:'갑옷';}
