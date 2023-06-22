@@ -71,7 +71,7 @@ body.scroll-lock{overflow: hidden;}
 .inven .inven-wep .equ + .equ,
 .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
-.inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: normal;letter-spacing: -1px;}
+.inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
 /* .inven .equ[data-parts] .text .detail::before{position: absolute;left: 0;} */
 .inven .equ.hel .text .detail::before{content:'투구';}
 .inven .equ.che .text .detail::before{content:'갑옷';}
@@ -221,8 +221,9 @@ body.scroll-lock{overflow: hidden;}
 .image-preview{display: block;width: 100%;position: relative;}
 .image-preview img,
 .image-preview canvas{width: 100%;margin:30px auto 20px;}
-.user-count{display: block;width: 100%;margin: 0 0 30px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
-.copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #fff;text-align: center;opacity: .2;}
+.user-count{display: block;width: 100%;margin: -20px 0 40px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
+.copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #646467;text-align: center;}
+.copyright a.link-mail{text-decoration: underline;color: #8a8a8a;}
 
 /* layer filtering */
 #container #skillList .box__skill-grid,
