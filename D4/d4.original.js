@@ -2,12 +2,14 @@ $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
 		if ($('.inven .equ .option.selected').length > 0) {
 			$('body').scrollTop(0);
+			$('.down-notice').addClass('ing').removeClass('complate').html('이미지를 생성중입니다. 잠시 기다려주세요.');
 			html2canvas(document.getElementById('imageCanvas'), {
 				allowTaint: true,
 				useCORS: true,
 				scale: 2.0,
 			}).then(function (canvas) {
 				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
+				$('.down-notice').removeClass('ing').addClass('complate').html('이미지가 생성되었습니다!');
 			});
 		} else {
 			alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');

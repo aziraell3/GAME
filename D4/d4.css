@@ -218,7 +218,10 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 /* image down */
 .download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
 .download .button-download{display: inline-block;padding: 15px 20px;font-size: 16px;font-weight: bold;color: gold;border: 1px solid #D87B1B;border-radius: 10px;opacity: .8;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
-.download .down-notice{margin: 0;padding: 10px 0 0;font-size: 12px;color: #999;text-align: center;}
+.download .down-notice{margin: 0;padding: 15px 0 0;font-size: 14px;color: #dadada;text-align: center;}
+.download .down-notice.ing::before,
+.download .down-notice.ing::after{content:' 🙏 ';}
+.download .down-notice.complate::after{content:' 👍 ';}
 .image-preview{display: block;width: 100%;position: relative;}
 .image-preview img,
 .image-preview canvas{width: 100%;margin:30px auto 20px;}
