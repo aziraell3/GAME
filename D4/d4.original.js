@@ -418,7 +418,17 @@ var D4SkillDB = (function(){
 				? $('.sort-by-dis').attr('disabled', true) 
 				: $('.sort-by-dis').attr('disabled', false)
 			method.layerSort($parts);
-			$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
+			
+			if ($(this).is('.selected')) { //선택 강조
+				console.log('있네?')
+				var $target = $('#'+$(this).attr('data-target'));
+				obj.skillLayer.find('.button-skill').removeClass('selected');
+				$target.addClass('selected').focus();
+			} else {
+				console.log('없네?')
+				obj.skillLayer.find('.button-skill').removeClass('selected');
+				$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
+			}
 			method.fixedViewPort(true);
 		})
 		//닫기
@@ -462,7 +472,8 @@ var D4SkillDB = (function(){
 			}
 		});
 		$.each($invSkill, function(index){
-			$('#'+$invSkill[index]).attr('aria-selected', true);
+			$('#'+$invSkill[index]).attr({'aria-selected':true});
+			//$('#'+$invSkill[index]).attr({'aria-selected':true, 'data-select': $('.option[data-target='+$invSkill[index]+']').attr('id')});
 		})
 	};
 	method.skillDB = function(){
@@ -501,7 +512,7 @@ var D4SkillDB = (function(){
 			$inven.addClass('selected').attr('data-target', $target);
 			$inven.siblings().find('.detail').text($skillName);
 			$inven.siblings().find('.more').html($skillMore);
-			$skill.attr('aria-selected', true);
+			$skill.attr({'aria-selected':true, 'data-select':$target});
 			($skill.find('.skill-name').hasClass('type-uni')) 
 				? $inven.siblings().find('.detail').addClass('type-uni')
 				: $inven.siblings().find('.detail').removeClass('type-uni')
