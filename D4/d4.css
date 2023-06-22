@@ -210,6 +210,8 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .job-rog::after{content:' [도적] ';}
 #container .type-uni{color:gold;}
 #container .type-leg{color:#D87B1B;}
+#container [data-ver=dlc] .skill-name,
+#container .inven .equ[data-ver=dlc] .option.selected + .text .detail{color: red;}
 
 #container .unique_option,
 #container .aspect_effect{display: inline;word-break: keep-all;}
