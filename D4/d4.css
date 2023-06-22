@@ -13,13 +13,13 @@ input.form-control{display:inline-block;vertical-align:middle;width:200px;border
 input.form-control.simple{color: #0056b3;padding: 2px 0 !important;height: calc(1em + 0.95rem + 2px);border: 0;}
 pre{position:relative;display:inline-block;max-width:85%;vertical-align:middle;margin:0;padding:5px;font-size:16px}
 pre a{display:block;width:100%;overflow:hidden;text-overflow:ellipsis}
-body{background-color: #1A1B1F;}
+body{-webkit-user-select:none;-webkit-text-size-adjust:none;background-color: #1A1B1F;}
 body.scroll-lock{overflow: hidden;}
 img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface-visibility: hidden;}
 #wrap{position: relative;height: 100%;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
-.header-flip #header{transform: translate(0, -50px)}
+body.header-flip #header{transform: translate(0, -50px)}
 #header .page-title .title{display: inline-block;padding:3px 5px;border-bottom: 1px solid cadetblue;font-size: 22px;color: cadetblue;font-weight: bold;}
 #header .page-title .sup{position: absolute;margin: 7px 0 0 1px;font-family: Tahoma;font-size: 12px;opacity: .5;}
 #header .box-header{display: flex;justify-content: space-evenly;align-items: center;max-width: 800px;min-height: 50px;margin: 0 auto;padding: 8px 0;border-bottom: 1px solid #333;}
@@ -49,7 +49,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .notice::before{content:' 💡 '}
 #container .inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
 #container .inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
-#container .inven .equ .option{position: relative;font-size: 0;line-height: 0;/* background-color: #26272d; */border: 1px solid #444757;border-radius: 5px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
+#container .inven .equ .option{position: relative;font-size: 0;line-height: 0;border: 1px solid #444757;border-radius: 12px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
 #container .inven .equ .input-fav:checked + .option{border: 1px solid #fe6000;}
 #container .inven.active .equ .option{opacity: .3;}
 #container .inven .inven-weapon .equ.wep .option.active::after,
@@ -79,7 +79,6 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
 #container .inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
-/* #container .inven .equ[data-parts] .text .detail::before{position: absolute;left: 0;} */
 #container .inven .equ.hel .text .detail::before{content:'투구';}
 #container .inven .equ.che .text .detail::before{content:'갑옷';}
 #container .inven .equ.glo .text .detail::before{content:'장갑';}
@@ -92,11 +91,10 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .equ.wep + .equ.wep .text .detail::before,
 #container .inven .equ.sub .text .detail::before{content:'보조무기';}
 #container .inven .equ .selected + .text .detail::before,
-#container .inven .equ .active + .text .detail::before{/* content:none !important; */}
-
+#container .inven .equ .active + .text .detail::before{}
 
 #container .inven .inven-wep + .inven-wep{display: none;margin-top: -10px;}
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;/* margin-top: 15px;border-top: 1px solid #444757; */}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .option::before{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .text .detail::before{content:'양손 둔기 (2배)';}
@@ -149,7 +147,6 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven-skill-select .skill-detail .skill-parts{display: block;padding-top: 4px;}
 #container .inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
-
 #container [class*=icon-]::before{content:'';display: inline-block;min-width: 70px;height: 70px;}
 #container .icon-off::before{background: url(images/offensive.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .icon-def::before{background: url(images/defensive.png) 50% 50% no-repeat;background-size:45px auto;}
@@ -172,12 +169,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .icon-bow::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-dua::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size:64px auto;}
 
-/* #container .inven .equ[data-parts=off] .option::before,
-#container .inven .equ[data-parts=def] .option::before,
-#container .inven .equ[data-parts=uti] .option::before,
-#container .inven .equ[data-parts=res] .option::before,
-#container .inven .equ[data-parts=mob] .option::before{min-width: 30px;height: 30px;position: absolute;top: 50%;left: -10px;margin-top: -44px;border: 1px solid #7F7F7F;background-color: #111;border-radius: 50%;background-size:80% auto;} */
-#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: 0;width: 70px;height: 70px;margin-top: -35px;z-index: 10;}
+#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: -1px;width: 70px;height: 70px;margin-top: -35px;z-index: 10;}
 #container .inven .equ[data-parts=off] .option::after{background: url(images/offensive.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .inven .equ[data-parts=def] .option::after{background: url(images/defensive.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .inven .equ[data-parts=uti] .option::after{background: url(images/utility.png) 50% 50% no-repeat;background-size:45px auto;}
@@ -250,17 +242,17 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container[data-job-select=rog] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show{display: none;}
 #container[data-job-select=dru] #boardSelect .box__skill-grid[data-job=dru]{display: block;}
 
-.scroll-lock #header,
-.scroll-lock #container .download{z-index: 1;}
+body.scroll-lock #header,
+body.scroll-lock #container .download{z-index: 1;}
 .page-top{position: fixed;margin: 0;padding: 0;left: 50%;bottom: 30px;max-width:800px;width: 100%;text-align: right;z-index: 110;opacity: 0;transition: opacity .5s;-webkit-transform: translate(-50%, 0);transform: translate(-50%, 0);}
 .page-top.show{opacity: 1;z-index: 100;transition: opacity .5s;}
-.scroll-lock .page-top{z-index: 90;}
+body.scroll-lock .page-top{z-index: 90;}
 .page-top .link-top{display: inline-block;width: 40px;height: 40px;font-size: 0;line-height: 0;margin-right: -40px;}
 .page-top .link-top::after{content:'';display: block;width: 100%;height: 100%;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255, 255, 255, 0.3)" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path></svg>') 50% 50% no-repeat;background-size:100% auto;}
 
 /* mobile */
 @media only screen and (max-width:700px){
-	.header-flip #header{transform: translate(0, -40px)}
+	body.header-flip #header{transform: translate(0, -40px)}
 	#header{}
 	#header .box-header{padding: 8px 0 10px;}
 	#header .page-title{padding-top: 0;height: 35px;}
