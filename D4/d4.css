@@ -64,7 +64,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
 #container .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
 #container .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
-#container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .8;} 
+#container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .9;} 
 #container .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
 #container .inven .inven-equ{float: left;}
 #container .inven .inven-wep .equ,
@@ -213,12 +213,12 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 
 #container .unique_option,
 #container .aspect_effect{display: inline;word-break: keep-all;}
-#container .c_random{font-weight: 400;color: #a4a0f0;font-weight: bold;}
-#container .c_number{font-weight: 400;color: #cbae76;font-weight: bold;}
+#container .c_random{font-weight: bold !important;color: #a4a0f0;}
+#container .c_number{font-weight: bold !important;color: #cbae76;}
 #container .c_gold,
-#container .c_important{font-weight: 400;color: #38aced;font-weight: bold;}
-#container .c_label{font-weight: 400;color: #cbae76;font-weight: bold;}
-#container .text-line{font-weight: 400;text-decoration: underline;}
+#container .c_important{font-weight: bold !important;color: #38aced;}
+#container .c_label{font-weight: bold !important;color: #cbae76;}
+#container .text-line{font-weight: bold !important;text-decoration: underline;}
 
 /* image down */
 #container .download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
