@@ -331,16 +331,17 @@ var D4SkillDB = (function(){
 	];
 	method.init = function(){
 		method.setElement();
+		method.scrollFunc();
 		method.layerFunc();
 		$.each(skills, function(index, skill){
 			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
-		$.each(board, function(index, skill){
-			//obj.boardWrap.append('<div class="box__skill-grid" data-job="'+skill.job+'"><button type="button" class="button-skill" aria-selected="false" id="board-num'+index+'"></span><span class="skill-detail"><span class="skill-name">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span></button></div>');
-		});
 		method.skillDB();
+		$(window).on('scroll resize',function(){
+			method.scrollFunc();
+		});
 
-		$('#container').css('margin-top', $('#header').outerHeight())
+		//$('#container').css('margin-top', $('#header').outerHeight())
 
 		//직업 선택
 		$('#header .button-job').on('click', function(){
@@ -381,6 +382,23 @@ var D4SkillDB = (function(){
 		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
 		obj.lastButton = obj.skillOpenButton.is('.latest');
 		obj.skillLayer = obj.wrapper.find('#skillSelect');
+	};
+
+	method.scrollFunc = function(){
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var $title = $('#header .page-title');
+			var $header = $('#header').outerHeight();
+			var $container = $('#container');
+
+			if (scrollTop > $header) {
+				$title.addClass('flip');
+				//$container.css('margin-top', $header+'px');
+			}else{
+				$title.removeClass('flip');
+				//$container.css('margin-top', $header+'px');
+			}
+		});
 	};
 	method.layerFunc = function(){
 		//레이어 오픈
