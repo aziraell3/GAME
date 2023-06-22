@@ -124,7 +124,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven-skill-select .skill-head button[aria-selected=true]{opacity: 1;font-weight: bold;}
 #container .inven-skill-select .skill-head button.sort-by-dis{opacity: 1;color: #fe6000;font-weight: bold;}
 #container .inven-skill-select .skill-head button.sort-by-dis::before{content:none;}
-#container .inven-skill-select .skill-head button.sort-by-dis.disabled{opacity: .5;font-weight: normal;}
+#container .inven-skill-select .skill-head button.sort-by-dis[disabled]{opacity: .5;font-weight: normal;}
 #container .inven-skill-select.active{display: block;}
 #container .inven-skill-select .box-skill-select{position: relative;height: calc(100% - 52px);overflow-y: auto;background-color: #1A1B1F;}
 #container .inven-skill-select .box-skill-select::-webkit-scrollbar{width: 6px;}
@@ -184,8 +184,8 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .inven .equ[data-parts] .option.selected{}
 
 #container [data-parts] .skill-parts::before,
-#container [data-parts] .skill-parts::after{content:'';font-size: 11px;color: cadetblue;font-family:dotum;letter-spacing: -0.5px;}
-#container [data-parts] .skill-parts::before{content:'착용 가능 : ';color: burlywood;font-weight: bold;letter-spacing: -1px;}
+#container [data-parts] .skill-parts::after{content:'';font-size: 12px;color: cadetblue;font-family:dotum;letter-spacing: -0.5px;}
+#container [data-parts] .skill-parts::before{content:'착용가능 : ';color: burlywood;font-weight: bold;letter-spacing: -1px;}
 #container [data-parts=wep] .skill-parts::after{content:'무기';}
 #container [data-parts=hel] .skill-parts::after{content:'투구';}
 #container [data-parts=che] .skill-parts::after{content:'갑옷';}
@@ -212,11 +212,11 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 
 #container .unique_option,
 #container .aspect_effect{display: inline;word-break: keep-all;}
-#container .c_random{font-weight: 400;color: #a4a0f0;}
-#container .c_number{font-weight: 400;color: #cbae76;}
+#container .c_random{font-weight: 400;color: #a4a0f0;font-weight: bold;}
+#container .c_number{font-weight: 400;color: #cbae76;font-weight: bold;}
 #container .c_gold,
-#container .c_important{font-weight: 400;color: #38aced;}
-#container .c_label{font-weight: 400;color: #cbae76;}
+#container .c_important{font-weight: 400;color: #38aced;font-weight: bold;}
+#container .c_label{font-weight: 400;color: #cbae76;font-weight: bold;}
 #container .text-line{font-weight: 400;text-decoration: underline;}
 
 /* image down */
@@ -277,7 +277,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 	#container .inven .equ .option.active::after{display: none;}
 	#container .inven-skill-select .skill-head{height: 40px;}
 	#container .inven-skill-select .skill-icon{min-width:80px;}
-	#container .inven-skill-select .box-layer{max-width: calc(100% - 30px);width: 100%;height: 90vh;}
+	#container .inven-skill-select .box-layer{max-width: calc(100% - 30px);width: 100%;height: calc(100% - 40px);}
 	#container .inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container .inven-skill-select .button-close{width: 40px;height: 40px;}
 	#container .inven .inven-acc .equ .text, 

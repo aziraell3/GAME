@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
 		if ($('.inven .equ .option.selected').length > 0) {
-			$('html, body').animate({scrollTop: '0'}, 300);
+			
 			$('.down-notice').addClass('ing').removeClass('complate').html('이미지를 생성중입니다. 잠시 기다려주세요.');
 			html2canvas(document.getElementById('imageCanvas'), {
 				allowTaint: true,
@@ -9,6 +9,7 @@ $(document).ready(function(){
 				scale: 2.0,
 			}).then(function (canvas) {
 				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
+				$('html, body').animate({scrollTop: $('#download').offset().top}, 300);
 				$('.down-notice').removeClass('ing').addClass('complate').html('이미지가 생성되었습니다!');
 			});
 		} else {
@@ -413,24 +414,22 @@ var D4SkillDB = (function(){
 			obj.wrapper.find('.inven').addClass('active');
 			$(this).addClass('active latest');
 			(!$(this).is('.selected'))
-				? $('.sort-by-dis').addClass('disabled').attr('disabled', true) 
-				: $('.sort-by-dis').removeClass('disabled').attr('disabled', false)
+				? $('.sort-by-dis').attr('disabled', true) 
+				: $('.sort-by-dis').attr('disabled', false)
 			method.layerSort($parts);
 			$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
 			method.fixedViewPort(true);
 		})
+		//닫기
 		$('.js-disabled').on('click', function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
-			if (!$(this).is('.disabled')) {
+			if ($(this).is('.sort-by-dis')) {
 				obj.skillWrap.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts');
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
-			} else {
-				return false;
 			}
 			obj.skillOpenButton.removeClass('active');
 			$(this).parents('.inven-skill-select').removeClass('active').removeAttr('data-sorting');
-			//obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 			obj.wrapper.find('.inven').removeClass('active');
 			method.fixedViewPort(false);
 		})
