@@ -4,7 +4,8 @@ $(document).ready(function(){
 			$('body').scrollTop(0);
 			html2canvas(document.getElementById('imageCanvas'), {
 				allowTaint: true,
-				useCORS: true
+				useCORS: true,
+				scale: 3.0,
 			}).then(function (canvas) {
 				$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
 			});
@@ -240,7 +241,7 @@ var D4SkillDB = (function(){
 		{job:'rog', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'흉내낸 주입의 공격 위상',  detail:'<p class="aspect_effect">복제된 그림자가 기술에 적용된 <span class="c_important">주입</span>도 흉내냅니다.<br><span class="c_important">주입</span> 기술을 시전하면 활성화된 <span class="c_important">복제된 그림자</span>의 피해가 <span class="c_number">5</span>초 동안 <span class="c_random">8 – 16%</span> 증가합니다.</p>'},
 		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'휩싸는 위상',  detail:'<p class="aspect_effect">가만히 서 있는 동안 <span class="c_number">3</span>초마다 자원 소모 없이 <span class="c_important">어둠의 장막</span> 그림자를 얻습니다. <span class="c_important">어둠의 장막</span> 그림자 하나당 피해 감소가 <span class="c_random">2.0%</span> 증가합니다.</p>'},
 		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'흡수되는 양식의 위상',  detail:'<p class="aspect_effect"><span class="c_label">행운의 적중:</span> <span class="c_important">핵심</span> 기술로 <span class="c_important"><span class="text-line">취약</span></span>한 적에게 피해를 주면 최대 <span class="c_random">10%</span> 확률로 치유 물약이 떨어집니다.</p>'},
-		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'으스스한 기만의 위상',  detail:'<p class="aspect_effect">군중 제어의 영향을 받는 적에게 받는 피해가 <span class="c_random">15.0%</span> 감소합니다. 군중 제어의 영향을 받는 적에게 직접 피해를 받을 때마다 <span class="c_number">2</span>초 동안 <span class="c_number">15%</span>의 이동 속도를 얻습니다.</p>'},
+		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'으스스한 기만의 위상',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">멍해진</span></span> 적에게 <span class="c_important">날쌘 몸놀림</span> 기술로 직접 피해를 주면 <span class="c_number">4</span>초 동안 <span class="c_important"><span class="text-line">은폐</span></span> 상태가 됩니다. 공격을 가해 <span class="c_important"><span class="text-line">은폐</span></span>가 풀리면 <span class="c_number">4</span>초 동안 <span class="c_random">15%</span>의 제어 방해 지속시간 감소를 얻습니다.</p>'},
 		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'사기꾼의 위상',  detail:'<p class="aspect_effect">군중 제어의 영향을 받는 적에게 받는 피해가 <span class="c_random">15.0%</span> 감소합니다. 군중 제어의 영향을 받는 적에게 직접 피해를 받을 때마다 <span class="c_number">2</span>초 동안 <span class="c_number">15%</span>의 이동 속도를 얻습니다.</p>'},
 		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'어스름한 방어 위상',  detail:'<p class="aspect_effect"><span class="c_label">행운의 적중:</span> <span class="c_important">명사수</span> 기술이 극대화로 적중하면 최대 <span class="c_random">34%</span> 확률로 어둠의 장막 그림자 하나를 자원 소모 없이 생성합니다.</p>'},
 		{job:'rog', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'탈출의 명수의 방어 위상',  detail:'<p class="aspect_effect">주변 적에게 피해를 받으면 <span class="c_important">연막 수류탄</span>을 떨어뜨려 <span class="c_number">10</span>초 내 다음 공격 <span class="c_number">100</span>번을 회피합니다. 이 효과는 <span class="c_random">2-7</span>초에 한 번씩만 발동됩니다.</p>'},
@@ -315,6 +316,7 @@ var D4SkillDB = (function(){
 		{job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'차폐하는 방벽',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">보호막</span></span>이 있을 때 주는 피해가 <span class="c_random">23-33%</span> 증가합니다.</p>'},
 		{job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'군중 속 현자',  detail:'<p class="aspect_effect">근거리에 있는 적 하나당 매초 생명력을 <span class="c_random">2.2-8.8%</span>만큼, 최대 <span class="c_number">44.0%</span>까지 회복합니다.</p>'},
 		{job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'보호자',  detail:'<p class="aspect_effect">정예 적에게 피해를 주면 <span class="c_number">10</span>초 동안 최대 <span class="c_random">315</span>의 <span class="c_important"><span class="text-line">보호막</span></span>을 얻습니다. 이 효과는 <span class="c_number">30</span>초에 한 번만 발동합니다.</p>'},
+		{job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'보호하는 방어 위상',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">건강</span></span> 상태가 아닐 때 적중당하면 <span class="c_random">3.0-5.0</span>초 동안 자신의 주위에 마법의 거품이 생겨납니다. 거품 안에 서 있는 동안 플레이어들은 <span class="c_important"><span class="text-line">면역</span></span>이 됩니다. 이 효과는 <span class="c_number">90</span>초에 한 번만 발동합니다.</p>'},
 		{job:'com', icon:'uti', type:'leg', parts:'sub hel che amu glo boo', 	name:'공통의 비참',  detail:'<p class="aspect_effect"><span class="c_label">행운의 적중:</span> 공격이 군중 제어의 영향을 받는 적에게 적중하면 최대 <span class="c_random">30%</span> 확률로 해당 군중 제어 효과가 영향을 받지 않는 다른 적에게 퍼집니다.</p>'},
 		{job:'com', icon:'uti', type:'leg', parts:'sub hel che amu glo boo', 	name:'신출귀몰한',  detail:'<p class="aspect_effect">군중 제어 상태에서 <span class="c_important"><span class="text-line">부상</span></span>당하면 <span class="c_number">4</span>초 동안 <span class="c_important"><span class="text-line">저지 불가</span></span> 상태가 됩니다. 이 효과에는 <span class="c_random">40</span>초의 재사용 대기시간이 있습니다.</p>'},
 		{job:'com', icon:'uti', type:'leg', parts:'sub hel che amu glo boo', 	name:'착취자',  detail:'<p class="aspect_effect">군중 제어 효과의 지속시간이 <span class="c_number">20%</span> 증가하고 저지 불가 상태인 적에게 주는 피해가 <span class="c_random">20-50%</span> 증가합니다.</p>'},
@@ -329,7 +331,7 @@ var D4SkillDB = (function(){
 		method.setElement();
 		method.layerFunc();
 		$.each(skills, function(index, skill){
-			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'"><button type="button" class="button-skill" aria-selected="false" id="skill-num'+index+'"><span class="skill-icon icon-'+skill.icon+'"></span><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
+			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
 		$.each(board, function(index, skill){
 			//obj.boardWrap.append('<div class="box__skill-grid" data-job="'+skill.job+'"><button type="button" class="button-skill" aria-selected="false" id="board-num'+index+'"></span><span class="skill-detail"><span class="skill-name">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span></button></div>');
@@ -400,8 +402,9 @@ var D4SkillDB = (function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
 			if (!$(this).is('.disabled')) {
 				obj.skillWrap.find('#'+$target).attr('aria-selected', false);
-				obj.skillOpenButton.parent().removeAttr('data-parts');
+				$('.inven .equ .option.latest').parent().removeAttr('data-parts');
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
+				
 			} else {
 				return false;
 			}
