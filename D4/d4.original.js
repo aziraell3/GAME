@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
 		if ($('.inven .equ .option.selected').length > 0) {
-			$('body').scrollTop(0);
+			$('html, body').animate({scrollTop: '0'}, 300);
 			$('.down-notice').addClass('ing').removeClass('complate').html('이미지를 생성중입니다. 잠시 기다려주세요.');
 			html2canvas(document.getElementById('imageCanvas'), {
 				allowTaint: true,
@@ -358,6 +358,7 @@ var D4SkillDB = (function(){
 			}
 			function jobChange($jobBtn){
 				var $this = $jobBtn;
+				$('html, body').animate({scrollTop: '0'}, 300);
 				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
 				obj.wrapper.attr('data-job-select', $job);
 				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
@@ -415,7 +416,7 @@ var D4SkillDB = (function(){
 				? $('.sort-by-dis').addClass('disabled').attr('disabled', true) 
 				: $('.sort-by-dis').removeClass('disabled').attr('disabled', false)
 			method.layerSort($parts);
-			$layer.find('.box-skill-select').scrollTop(0);
+			$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
 			method.fixedViewPort(true);
 		})
 		$('.js-disabled').on('click', function(){
@@ -424,7 +425,6 @@ var D4SkillDB = (function(){
 				obj.skillWrap.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts');
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
-				
 			} else {
 				return false;
 			}
