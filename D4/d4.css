@@ -18,6 +18,9 @@ body.scroll-lock{overflow: hidden;}
 img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface-visibility: hidden;}
 #wrap{position: relative;height: 100%;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;}
+#header .page-title{margin: 0;padding: 5px 0;text-align: center;}
+#header .page-title .title{display: inline-block;padding:3px 5px;border-bottom: 1px solid cadetblue;font-size: 22px;color: cadetblue;font-weight: bold;}
+#header .page-title .sup{position: absolute;margin: 7px 0 0 1px;font-family: Tahoma;font-size: 12px;opacity: .5;}
 #header .box-header{display: flex;justify-content: space-evenly;align-items: center;max-width: 800px;min-height: 50px;margin: 0 auto;padding: 8px 0;border-bottom: 1px solid #333;}
 #header .button-job{font-size: 18px;line-height: 30px;font-weight: 500;padding: 10px 8px;text-align: center;opacity: .4;}
 #header .button-job[disabled]{text-decoration: line-through;}
@@ -38,55 +41,55 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container[data-job-select=soc] .inven::before{background-image: url(images/bg_sorcerer.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
 #container[data-job-select=nec] .inven::before{background-image: url(images/bg_necromancer.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
 #container[data-job-select=rog] .inven::before{background-image: url(images/bg_rogue.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 60%;}
-.notice{display: block;width: 100%;margin: 0;padding: 10px 0 0;text-align: center;color: orange;font-size: 12px;}
-.notice::after,
-.notice::before{content:' 💡 '}
-.inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
-.inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
-.inven .equ .option{position: relative;font-size: 0;line-height: 0;/* background-color: #26272d; */border: 1px solid #444757;border-radius: 5px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
-.inven .equ .input-fav:checked + .option{border: 1px solid #fe6000;}
-.inven.active .equ .option{opacity: .3;}
-.inven .inven-weapon .equ.wep .option.active::after,
-.inven .inven-equ .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;right: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-right: 10px solid #F3F3F3;}
-.inven .inven-wep .equ + .equ .option.active::after,
-.inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;}
-.inven .equ .option.active{opacity: 1;border: 1px solid #fff;}
-.inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;min-height: 70px;margin: 0 5px;padding: 5px;}
-.inven .inven-acc .equ .text,
-.inven .inven-wep .equ + .equ .text,
-.inven .inven-acc .equ .text{align-items: flex-end;}
-.inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.5);border-radius: 6px;}
-.inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
-.inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
-.inven .equ .option.selected + .text .detail.type-uni{color: gold;}
-.inven .equ .text .more{display: block;opacity: .8;} 
-.inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
-.inven .inven-equ{float: left;}
-.inven .inven-wep .equ,
-.inven .inven-acc,
-.inven .inven-equ{width: 49.5%;}
-.inven .inven-equ .equ:first-child,
-.inven .inven-acc .equ:first-child{}
-.inven .inven-acc{float: right;}
-.inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
-.inven .inven-wep .equ + .equ,
-.inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
+#container .notice{display: block;width: 100%;margin: 0;padding: 10px 0 0;text-align: center;color: orange;font-size: 12px;}
+#container .notice::after,
+#container .notice::before{content:' 💡 '}
+#container .inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
+#container .inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
+#container .inven .equ .option{position: relative;font-size: 0;line-height: 0;/* background-color: #26272d; */border: 1px solid #444757;border-radius: 5px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
+#container .inven .equ .input-fav:checked + .option{border: 1px solid #fe6000;}
+#container .inven.active .equ .option{opacity: .3;}
+#container .inven .inven-weapon .equ.wep .option.active::after,
+#container .inven .inven-equ .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;right: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-right: 10px solid #F3F3F3;}
+#container .inven .inven-wep .equ + .equ .option.active::after,
+#container .inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;}
+#container .inven .equ .option.active{opacity: 1;border: 1px solid #fff;}
+#container .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;min-height: 70px;margin: 0 5px;padding: 5px;}
+#container .inven .inven-acc .equ .text,
+#container .inven .inven-wep .equ + .equ .text,
+#container .inven .inven-acc .equ .text{align-items: flex-end;}
+#container .inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.5);border-radius: 6px;}
+#container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
+#container .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
+#container .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
+#container .inven .equ .text .more{display: block;opacity: .8;} 
+#container .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
+#container .inven .inven-equ{float: left;}
+#container .inven .inven-wep .equ,
+#container .inven .inven-acc,
+#container .inven .inven-equ{width: 49.5%;}
+#container .inven .inven-equ .equ:first-child,
+#container .inven .inven-acc .equ:first-child{}
+#container .inven .inven-acc{float: right;}
+#container .inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
+#container .inven .inven-wep .equ + .equ,
+#container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
-.inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
-/* .inven .equ[data-parts] .text .detail::before{position: absolute;left: 0;} */
-.inven .equ.hel .text .detail::before{content:'투구';}
-.inven .equ.che .text .detail::before{content:'갑옷';}
-.inven .equ.glo .text .detail::before{content:'장갑';}
-.inven .equ.pan .text .detail::before{content:'바지';}
-.inven .equ.boo .text .detail::before{content:'신발';}
-.inven .equ.amu .text .detail::before{content:'목걸이 (1.5배)';}
-.inven .equ.rin .text .detail::before{content:'반지 1';}
-.inven .equ.rin + .rin .text .detail::before{content:'반지 2';}
-.inven .equ.wep .text .detail::before{content:'주무기 (양손 2배)';}
-.inven .equ.wep + .equ.wep .text .detail::before,
-.inven .equ.sub .text .detail::before{content:'보조무기';}
-.inven .equ .selected + .text .detail::before,
-.inven .equ .active + .text .detail::before{/* content:none !important; */}
+#container .inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
+/* #container .inven .equ[data-parts] .text .detail::before{position: absolute;left: 0;} */
+#container .inven .equ.hel .text .detail::before{content:'투구';}
+#container .inven .equ.che .text .detail::before{content:'갑옷';}
+#container .inven .equ.glo .text .detail::before{content:'장갑';}
+#container .inven .equ.pan .text .detail::before{content:'바지';}
+#container .inven .equ.boo .text .detail::before{content:'신발';}
+#container .inven .equ.amu .text .detail::before{content:'목걸이 (1.5배)';}
+#container .inven .equ.rin .text .detail::before{content:'반지 1';}
+#container .inven .equ.rin + .rin .text .detail::before{content:'반지 2';}
+#container .inven .equ.wep .text .detail::before{content:'주무기 (양손 2배)';}
+#container .inven .equ.wep + .equ.wep .text .detail::before,
+#container .inven .equ.sub .text .detail::before{content:'보조무기';}
+#container .inven .equ .selected + .text .detail::before,
+#container .inven .equ .active + .text .detail::before{/* content:none !important; */}
 
 
 #container .inven .inven-wep + .inven-wep{display: none;margin-top: -10px;}
@@ -196,15 +199,15 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container [data-parts=res] .skill-parts::after{content:'반지';}
 #container [data-parts=mob] .skill-parts::after{content:'목걸이 | 신발';}
 
-.job-dru{}
-.job-com::after{content:' [공통] ';}
-.job-dru::after{content:' [드루이드] ';}
-.job-bab::after{content:' [바바리안] ';}
-.job-soc::after{content:' [마법사] ';}
-.job-nec::after{content:' [강령술사] ';}
-.job-rog::after{content:' [도적] ';}
-.type-uni{color:gold;}
-.type-leg{color:#D87B1B;}
+#container .job-dru{}
+#container .job-com::after{content:' [공통] ';}
+#container .job-dru::after{content:' [드루이드] ';}
+#container .job-bab::after{content:' [바바리안] ';}
+#container .job-soc::after{content:' [마법사] ';}
+#container .job-nec::after{content:' [강령술사] ';}
+#container .job-rog::after{content:' [도적] ';}
+#container .type-uni{color:gold;}
+#container .type-leg{color:#D87B1B;}
 
 #container .unique_option,
 #container .aspect_effect{display: inline;word-break: keep-all;}
@@ -216,18 +219,19 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #container .text-line{font-weight: 400;text-decoration: underline;}
 
 /* image down */
-.download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
-.download .button-download{display: inline-block;padding: 15px 20px;font-size: 16px;font-weight: bold;color: gold;border: 1px solid #D87B1B;border-radius: 10px;opacity: .8;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
-.download .down-notice{margin: 0;padding: 15px 0 0;font-size: 14px;color: #dadada;text-align: center;}
-.download .down-notice.ing::before,
-.download .down-notice.ing::after{content:' 🙏 ';}
-.download .down-notice.complate::after{content:' 👍 ';}
-.image-preview{display: block;width: 100%;position: relative;}
-.image-preview img,
-.image-preview canvas{width: 100%;margin:30px auto 20px;}
-.user-count{display: block;width: 100%;margin: -20px 0 40px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
-.copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #646467;text-align: center;}
-.copyright a.link-mail{text-decoration: underline;color: #8a8a8a;}
+#container .download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
+#container .download .button-download{display: inline-block;padding: 15px 20px;font-size: 16px;font-weight: bold;color: gold;border: 1px solid #D87B1B;border-radius: 10px;opacity: .8;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
+#container .download .down-notice{margin: 0;padding: 15px 0 0;font-size: 14px;color: #dadada;text-align: center;}
+#container .download .down-notice.ing::before,
+#container .download .down-notice.ing::after{content:' 🙏 ';}
+#container .download .down-notice.complate{color: gold;}
+#container .download .down-notice.complate::after{content:' 👍 ';}
+#container .image-preview{display: block;width: 100%;position: relative;}
+#container .image-preview img,
+#container .image-preview canvas{width: 100%;margin:30px auto 20px;}
+#container .user-count{display: block;width: 100%;margin: -20px 0 40px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
+#container .copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #646467;text-align: center;}
+#container .copyright a.link-mail{text-decoration: underline;color: #8a8a8a;}
 
 /* layer filtering */
 #container #skillList .box__skill-grid,
@@ -247,7 +251,11 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 /* mobile */
 @media only screen and (max-width:700px){
 	#header{}
-	#header .button-job{font-size: 14px;line-height: 1;}
+	#header .box-header{padding: 8px 0 10px;}
+	#header .page-title{padding-top: 0;}
+	#header .page-title .sup{margin: 12px 0 0 0;font-size: 11px;}
+	#header .page-title .title{font-size: 16px;letter-spacing: -1px;}
+	#header .button-job{padding: 0 8px;font-size: 14px;line-height: 1;}
 	#header .button-job::before{display: block;margin: 0 auto 5px;width: 24px;height: 24px;}
 	#container{margin-top: 70px;padding: 0 10px;}
 	#container .inven::before{}
@@ -257,7 +265,8 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 	#container .inven .inven-wep .equ,
 	#container .inven .inven-equ,
 	#container .inven .inven-acc{float: none;width: 100%;}
-	#container .inven .inven-wep .equ + .equ, .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
+	#container .inven .inven-wep .equ + .equ, 
+	#container .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
 	#container .inven .equ{margin-top: 10px;}
 	#container .inven .equ.emp{display: none;}
 	#container .inven .equ .text{width: 100%;margin-right: 0;}
@@ -270,7 +279,9 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 	#container .inven-skill-select .box-layer{max-width: calc(100% - 40px);width: 100%;height: calc(100% - 40px);}
 	#container .inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container .inven-skill-select .button-close{width: 40px;height: 40px;}
-	#container .inven .inven-acc .equ .text, .inven .inven-wep .equ + .equ .text, .inven .inven-acc .equ .text{align-items: flex-start;}
+	#container .inven .inven-acc .equ .text, 
+	#container .inven .inven-wep .equ + .equ .text, 
+	#container .inven .inven-acc .equ .text{align-items: flex-start;}
 	#container .inven-skill-select .box-layer{height: 90vh;}
 	#container .inven-skill-select .button-skill::before{min-width:80px;}
 	#container .inven-skill-select .skill-head button{width: 16%;}
