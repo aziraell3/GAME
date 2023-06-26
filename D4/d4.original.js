@@ -335,6 +335,7 @@ var D4SkillDB = (function(){
 		{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] 똥멍청이들의 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : 이거 분명히 나옵니다.<br>유저의 분노를 유발할 수 있습니다.</p>'},
 	];
 	method.init = function(){
+		//$('#previewImg, #download, #header, .box-title, [class*=inven-]:not(.inven-spirit)').hide();
 		method.setElement();
 		method.scrollFunc();
 		method.layerFunc();
@@ -342,6 +343,7 @@ var D4SkillDB = (function(){
 			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
 		method.skillDB();
+		method.spiritBoons();
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
@@ -382,6 +384,7 @@ var D4SkillDB = (function(){
 		obj.wrapper = $('#container');
 		obj.skillWrap = obj.wrapper.find('#skillList');
 		obj.boardWrap = obj.wrapper.find('#board');
+		obj.spiritBoons = obj.wrapper.find('#spirit');
 		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp) .option');
 		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
 		obj.lastButton = obj.skillOpenButton.is('.latest');
@@ -537,6 +540,44 @@ var D4SkillDB = (function(){
 	};
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock') : obj.body.removeClass('scroll-lock');
+	};
+	method.spiritBoons = function(){
+		var $grid = obj.spiritBoons.find('.spirit-grid');
+		$grid.each(function(index){
+			var $button = $(this).find('.button-spirit');
+			$(this).find('.button-blessing').on('click', function(){
+				$grid.find('[aria-selected]').attr('disabled', false);
+				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
+				console.log($('.spirit-grid.active').find('[aria-selected=true]').attr('id'));
+					$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
+					//$grid.find('.spirit-description .spirit-selected:not([data-target='+$grid.find('[aria-selected=true]').attr('id')+'])').remove();
+				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
+			})
+			$(this).find('.button-spirit[aria-selected]').on('click', function(){
+				
+				var $name = $(this).text();
+				var $id = $(this).attr('id');
+				var $detail = $(this).attr('title');
+				var $description = $(this).parents('.spirit-grid').find('.spirit-description');
+				var $thisGrid = $(this).parents('.spirit-grid');
+				var $line = $(this).parents('.spirit-frame');
+				if ($thisGrid.is('.active')) {
+					if ($(this).is('[aria-selected=true]')) {
+						$(this).attr('aria-selected', false)
+						$('[data-target='+$id+']').remove();
+					} else {
+						$(this).attr('aria-selected', true)
+						$description.append('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
+					}
+					($line.find('[aria-selected=true]').length == 2 ) 
+						? obj.spiritBoons.find('.spirit-grid.active').find('[aria-selected=false]').prop('disabled', true)
+						: obj.spiritBoons.find('.spirit-grid.active').find('[aria-selected]').prop('disabled', false)
+				} else {
+					$(this).attr('aria-selected', true).siblings().attr('aria-selected', false);
+					$description.html('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
+				}
+			})
+		})
 	};
 	return{
 		init : method.init,

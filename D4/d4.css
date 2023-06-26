@@ -19,6 +19,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 #wrap{position: relative;height: 100%;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
+body.scroll-lock #header,
 body.header-flip #header{transform: translate(0, -50px)}
 #header .page-title .title{display: inline-block;padding:3px 5px;border-bottom: 1px solid cadetblue;font-size: 22px;color: cadetblue;font-weight: bold;}
 #header .page-title .sup{position: absolute;margin: 7px 0 0 1px;font-family: Tahoma;font-size: 12px;opacity: .5;}
@@ -61,7 +62,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
-#container .inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.5);border-radius: 6px;}
+#container .inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;}
 #container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
 #container .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
 #container .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
@@ -115,9 +116,9 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .equ.emp{opacity: .3;}
 #container .inven .equ.emp .text{display: none;}
 
-#container .inven-skill-select{display: none;position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;z-index: 999;}
+#container .inven-skill-select{display: none;position: fixed;top: 70px;left: 0;bottom: 0;right: 0;width: 100%;z-index: 999;}
 #container .inven-skill-select.active::after{content:'';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;z-index: 10;}
-#container .inven-skill-select .box-layer{position: absolute;top: 50%;left: 50%;max-width:95%;width: 640px;height: 95vh;border-radius:6px;border: 1px solid #F3F3F3;background-color:#1A1B1F;overflow: hidden;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);z-index: 200;}
+#container .inven-skill-select .box-layer{position: absolute;top: 50%;left: 50%;max-width:95%;width: 640px;height: calc(100% - 20px);border-radius:6px;border: 1px solid #F3F3F3;background-color:#1A1B1F;overflow: hidden;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);z-index: 200;}
 #container .inven-skill-select .skill-head{display: flex;justify-content: space-evenly;align-items: center;width: calc(100% - 50px);height: 50px;background-color: #1A1B1F;}
 #container .inven-skill-select .skill-head button{position: relative;padding: 10px 0;text-align: center;width: 20%;font-size: 16px;word-break: keep-all;opacity: .3;}
 #container .inven-skill-select .skill-head button:first-child::before{content:none;}
@@ -134,7 +135,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .box__skill-grid{position: relative;display: none;}
 #container .inven-skill-select .button-skill{position: relative;display: flex;justify-content: space-between;align-items: center;width: 100%;padding: 5px 0;text-align: left;border: 1px solid transparent;box-sizing: border-box;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
 #container .inven-skill-select .button-skill.selected{/* border: 1px solid gold; */box-shadow:inset 0 0 5px gold;opacity: 0.8 !important;}
-#container .inven-skill-select .button-skill[aria-selected=true]::after{content:'다른부위에서 선택된 위상';position: absolute;top: 8px;right: 8px;font-size: 11px;letter-spacing: -1px;font-family: dotum;color: burlywood;}
+#container .inven-skill-select .button-skill[aria-selected=true]::after{content:'다른 부위에서 선택됨';position: absolute;top: 8px;right: 8px;font-size: 11px;letter-spacing: -1px;font-family: dotum;color: burlywood;}
 #container .inven-skill-select .button-skill.selected::after{content:'현재 선택된 위상';position: absolute;top: 8px;right: 8px;font-size: 11px;letter-spacing: -1px;font-family: dotum;color: gold;}
 #container .inven-skill-select .button-skill::before{min-width: 90px;}
 #container .inven-skill-select .button-skill[data-parts=com]{display: flex;}
@@ -149,6 +150,54 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .skill-detail .skill-more{display: block;padding-top: 6px;font-size: 14px;color: #fff;word-wrap: break-word;opacity: .8}
 #container .inven-skill-select .skill-detail .skill-parts{display: block;padding-top: 4px;}
 #container .inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
+
+#container .inven-spirit{display: none;/* width: 390px; */margin: 30px auto 10px;}
+#container[data-job-select=dru] .inven-spirit{display: block;}
+#container .inven-spirit .spirit-grid + .spirit-grid{margin-top: 8px;padding-top: 8px;border-top: 1px solid #444757;}
+#container .inven-spirit .spirit-grid .list-type{display: flex;justify-content: flex-start;align-items: center;margin: 5px 0;}
+#container .inven-spirit .spirit-grid .list-type button{border: 2px solid transparent;font-size: 0;line-height: 0;}
+#container .inven-spirit .spirit-grid:not(.active) .list-type .spirit-title .button-blessing,
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .5;}
+#container .inven-spirit .spirit-grid .list-type .spirit-title{}
+#container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{width: 60px;height: 60px;line-height: 16px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing::after{display: block;content:' (1개)';font-size: 12px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{font-size: 14px;white-space: nowrap;text-indent: 60px;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-title .button-blessing{background: url(images/deer.png) 50% 50% no-repeat;background-size:120% auto;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-title .button-blessing{background: url(images/eagle.png) 50% 50% no-repeat;background-size:120% auto;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-title .button-blessing{background: url(images/wolf.png) 50% 50% no-repeat;background-size:120% auto;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-title .button-blessing{background: url(images/snake.png) 50% 50% no-repeat;background-size:120% auto;}
+#container .inven-spirit .spirit-grid.active .list-type .spirit-title .button-blessing{opacity: 1;font-weight: bold;}
+#container .inven-spirit .spirit-grid.active .list-type .spirit-title .button-blessing::after{content:' (2개)';font-weight: bold;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame{display: flex;margin-left: 60px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:'';position: absolute;width: 1px;height: 50px;background-color: #fff;margin: 0 0 0 -6px;opacity: 0.1;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{width: 54px;height: 54px;border-radius: 50%;margin: 0 7px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{border: 2px solid rgba(254, 214, 0, 0.6);opacity: 1;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(1){background: url(images/d1.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(2){background: url(images/d2.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(3){background: url(images/d3.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(4){background: url(images/d4.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(1){background: url(images/e1.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(2){background: url(images/e2.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(3){background: url(images/e3.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(4){background: url(images/e4.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(1){background: url(images/w1.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(2){background: url(images/w2.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(3){background: url(images/w3.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(4){background: url(images/w4.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(1){background: url(images/s1.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(2){background: url(images/s2.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(3){background: url(images/s3.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(4){background: url(images/s4.png) 50% 50% no-repeat;background-size:90% auto;}
+/* #container .inven-spirit .spirit-description{margin-top: -5px;padding-left: 90px;} */
+#container .inven-spirit .spirit-grid{display:flex;align-items: center;}
+#container .inven-spirit .spirit-description{padding-left: 10px;}
+#container .inven-spirit .spirit-description .spirit-selected{margin: 0;padding: 2px 10px 4px;color: #A6A09F;background-color: rgba(0, 0, 0, 0.5);border: 1px solid #444757;border-radius: 8px;opacity: .7;}
+#container .inven-spirit .spirit-description .spirit-selected + .spirit-selected{margin-top: 2px;}
+#container .inven-spirit .spirit-description .spirit-selected{}
+#container .inven-spirit .spirit-description .spirit-selected *{font-size: 12px;line-height: 12px;letter-spacing: -0.5px;}
+#container .inven-spirit .spirit-description .spirit-selected .text-name{font-weight: bold;color: #38aced;}
+#container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' : ';color: #38aced;}
+#container .inven-spirit .spirit-description .spirit-selected .text-detail{font-weight: normal;}
 
 #container [class*=icon-]::before{content:'';display: inline-block;min-width: 70px;height: 70px;}
 #container .icon-off::before{background: url(images/offensive.png) 50% 50% no-repeat;background-size:45px auto;}
@@ -245,7 +294,6 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container[data-job-select=rog] #skillList[data-filter=sort-by-job] .box__skill-grid[data-job=com].show{display: none;}
 #container[data-job-select=dru] #boardSelect .box__skill-grid[data-job=dru]{display: block;}
 
-body.scroll-lock #header,
 body.scroll-lock #container .download{z-index: 1;}
 .page-top{position: fixed;margin: 0;padding: 0;left: 50%;bottom: 30px;max-width:800px;width: 100%;text-align: right;z-index: 110;opacity: 0;transition: opacity .5s;-webkit-transform: translate(-50%, 0);transform: translate(-50%, 0);}
 .page-top.show{opacity: 1;z-index: 100;transition: opacity .5s;}
@@ -255,6 +303,7 @@ body.scroll-lock .page-top{z-index: 90;}
 
 /* mobile */
 @media only screen and (max-width:700px){
+	body.scroll-lock #header,
 	body.header-flip #header{transform: translate(0, -40px)}
 	#header{}
 	#header .box-header{padding: 8px 0 10px;}
@@ -279,9 +328,10 @@ body.scroll-lock .page-top{z-index: 90;}
 	#container .inven .equ .text .more{margin-top: 3px;}
 	#container .inven .equ .text .more *{font-size: 14px;line-height: 1.3;}
 	#container .inven .equ .option.active::after{display: none;}
+	#container .inven-skill-select{top: 60px;}
 	#container .inven-skill-select .skill-head{height: 40px;}
 	#container .inven-skill-select .skill-icon{min-width:80px;}
-	#container .inven-skill-select .box-layer{max-width: calc(100% - 30px);width: 100%;height: calc(100% - 40px);}
+	#container .inven-skill-select .box-layer{max-width: calc(100% - 30px);width: 100%;height: calc(100% - 50px);}
 	#container .inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container .inven-skill-select .button-close{width: 40px;height: 40px;}
 	#container .inven .inven-acc .equ .text, 
@@ -290,6 +340,13 @@ body.scroll-lock .page-top{z-index: 90;}
 	#container .inven-skill-select .button-skill::before{min-width:80px;}
 	#container .inven-skill-select .skill-head button{width: 16%;}
 	#container .inven .inven-wep + .inven-wep{margin-top: 0;}
+
+	#container .inven-spirit .spirit-grid{display: block;}
+	#container .inven-spirit .spirit-grid .list-type{justify-content: space-between;}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{margin: 0 2px;}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame{margin-left: 0;}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:none;}
+	#container .inven-spirit .spirit-description .spirit-selected *{font-size: 11px;line-height: 12px;font-family: dotum;letter-spacing: -0.5px;}
 
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{margin: 10px 0 0;}
