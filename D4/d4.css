@@ -153,11 +153,14 @@ body.header-flip #header{transform: translate(0, -50px)}
 
 #container .inven-spirit{display: none;/* width: 390px; */margin: 30px auto 10px;}
 #container[data-job-select=dru] .inven-spirit{display: block;}
+#container .inven-spirit .description{font-size: 14px;}
+#container .inven-spirit .description::before{content:' 🐻 ';}
+#container .inven-spirit .description::after{content:' 🐺 ';}
 #container .inven-spirit .spirit-grid + .spirit-grid{margin-top: 8px;padding-top: 8px;border-top: 1px solid #444757;}
 #container .inven-spirit .spirit-grid .list-type{display: flex;justify-content: flex-start;align-items: center;margin: 5px 0;}
 #container .inven-spirit .spirit-grid .list-type button{border: 2px solid transparent;font-size: 0;line-height: 0;}
 #container .inven-spirit .spirit-grid:not(.active) .list-type .spirit-title .button-blessing,
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .5;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .3;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title{}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{width: 60px;height: 60px;line-height: 16px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing::after{display: block;content:' (1개)';font-size: 12px;}
@@ -343,9 +346,9 @@ body.scroll-lock .page-top{z-index: 90;}
 
 	#container .inven-spirit .spirit-grid{display: block;}
 	#container .inven-spirit .spirit-grid .list-type{justify-content: space-between;}
-	#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{margin: 0 2px;}
-	#container .inven-spirit .spirit-grid .list-type .spirit-frame{margin-left: 0;}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame{justify-content: space-evenly;margin-left: 0;width: calc(100% - 120px);}
 	#container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:none;}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{margin: 0 2px;}
 	#container .inven-spirit .spirit-description .spirit-selected *{font-size: 11px;line-height: 12px;font-family: dotum;letter-spacing: -0.5px;}
 
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}

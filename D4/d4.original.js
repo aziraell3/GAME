@@ -367,6 +367,8 @@ var D4SkillDB = (function(){
 				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
 				obj.wrapper.attr('data-job-select', $job);
 				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
+				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false);
+				$('#container .spirit-description').empty();
 				method.skillreset();
 			}
 		})
@@ -548,13 +550,10 @@ var D4SkillDB = (function(){
 			$(this).find('.button-blessing').on('click', function(){
 				$grid.find('[aria-selected]').attr('disabled', false);
 				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
-				console.log($('.spirit-grid.active').find('[aria-selected=true]').attr('id'));
-					$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
-					//$grid.find('.spirit-description .spirit-selected:not([data-target='+$grid.find('[aria-selected=true]').attr('id')+'])').remove();
+				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
 			})
 			$(this).find('.button-spirit[aria-selected]').on('click', function(){
-				
 				var $name = $(this).text();
 				var $id = $(this).attr('id');
 				var $detail = $(this).attr('title');
