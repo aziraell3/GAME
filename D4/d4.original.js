@@ -369,6 +369,7 @@ var D4SkillDB = (function(){
 				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
 				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false);
 				$('#container .spirit-description').empty();
+				$('.description').show();
 				method.skillreset();
 			}
 		})
@@ -552,6 +553,7 @@ var D4SkillDB = (function(){
 				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
 				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
+				$('.description').hide();
 			})
 			$(this).find('.button-spirit[aria-selected]').on('click', function(){
 				var $name = $(this).text();
