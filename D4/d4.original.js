@@ -332,18 +332,33 @@ var D4SkillDB = (function(){
 	method.init = function(){
 		//$('#previewImg, #download, #header, .box-title, [class*=inven-]:not(.inven-spirit)').hide();
 		method.setElement();
-		method.scrollFunc();
 		method.layerFunc();
 		$.each(skills, function(index, skill){
 			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
 		method.skillDB();
 		method.spiritBoons();
+		method.jobSelect();
+		method.scrollFunc();
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
-		method.externalLink();
+		//method.externalLink();
 
+	};
+	method.setElement = function(){
+		obj.body = $('body');
+		obj.wrapper = $('#container');
+		obj.skillWrap = obj.wrapper.find('#skillList');
+		obj.boardWrap = obj.wrapper.find('#board');
+		obj.spiritBoons = obj.wrapper.find('#spirit');
+		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp) .option');
+		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
+		obj.lastButton = obj.skillOpenButton.is('.latest');
+		obj.skillLayer = obj.wrapper.find('#skillSelect');
+	};
+
+	method.jobSelect = function(){
 		//직업 선택
 		$('#header .button-job').on('click', function(){
 			console.log();
@@ -379,18 +394,6 @@ var D4SkillDB = (function(){
 			obj.skillWrap.attr('data-filter', $this);
 		})
 	};
-	method.setElement = function(){
-		obj.body = $('body');
-		obj.wrapper = $('#container');
-		obj.skillWrap = obj.wrapper.find('#skillList');
-		obj.boardWrap = obj.wrapper.find('#board');
-		obj.spiritBoons = obj.wrapper.find('#spirit');
-		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp) .option');
-		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
-		obj.lastButton = obj.skillOpenButton.is('.latest');
-		obj.skillLayer = obj.wrapper.find('#skillSelect');
-	};
-
 	method.scrollFunc = function(){
 		$(window).scroll(function () {
 			var scrollTop = $(this).scrollTop();
@@ -485,6 +488,7 @@ var D4SkillDB = (function(){
 			var $detailButton = $('.inven .equ .option.active').siblings('.text').find('.detail');
 			var $target = $('.inven .equ .option.active').attr('data-target');
 			obj.skillID = $(this).attr('id');
+			obj.partsID = $('.inven .equ .option.active').attr('id');
 			$('.sort-by-all').trigger('click');
 			$('#'+$target).attr('aria-selected', false);
 			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')})
@@ -494,9 +498,10 @@ var D4SkillDB = (function(){
 			obj.skillLayer.removeClass('active');
 			obj.wrapper.find('.inven').removeClass('active');
 			$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
+			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.skill-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
-				: $detailButton.removeClass('type-uni')
+				: $detailButton.removeClass('type-uni');
 			method.invCheck(obj.skillID);
 			method.fixedViewPort(false);
 		})
