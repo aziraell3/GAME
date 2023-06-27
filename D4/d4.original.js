@@ -452,7 +452,7 @@ var D4SkillDB = (function(){
 		obj.skillOpenButton.removeClass('active selected latest').removeAttr('data-target');
 		obj.skillLayer.removeClass('active').removeAttr('data-sorting');
 		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
-		obj.skillButton.attr('aria-selected', false);
+		obj.skillButton.attr('aria-selected', false).removeAttr('data-select-parts');
 		obj.skillOpenButton.parent().removeAttr('data-parts data-ver'); //[data-*]
 		method.fixedViewPort(false);
 	}
@@ -472,6 +472,8 @@ var D4SkillDB = (function(){
 			if ($id == $(this).attr('data-target')) {
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
+				//$('#'+$target).removeAttr('data-select-parts');
+				//data-select-parts
 			}
 		});
 		$.each($invSkill, function(index){
