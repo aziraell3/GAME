@@ -286,10 +286,10 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
 #container .download .button-download{display: inline-block;padding: 15px 20px;font-size: 16px;font-weight: bold;color: gold;border: 1px solid #D87B1B;border-radius: 10px;opacity: .8;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
 #container .download .down-notice{margin: 0;padding: 15px 0 0;font-size: 14px;color: #dadada;text-align: center;}
-#container .download .down-notice.ing::before,
-#container .download .down-notice.ing::after{content:' 🙏 ';}
-#container .download .down-notice.complate{color: gold;}
-#container .download .down-notice.complate::after{content:' 👍 ';}
+#container .download.loading .down-notice::before,
+#container .download.loading  .down-notice::after{content:' 🙏 ';}
+#container .download.complate .down-notice{color: gold;}
+#container .download.complate .down-notice::after{content:' 👍 ';}
 #container .image-preview{display: block;width: 100%;position: relative;}
 #container .image-preview img,
 #container .image-preview canvas{width: 100%;margin:30px auto 20px;}
