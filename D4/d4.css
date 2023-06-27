@@ -155,27 +155,27 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .box__skill-grid{position: relative;display: none;}
 #container .inven-skill-select .button-skill{position: relative;display: flex;justify-content: space-between;align-items: center;width: 100%;padding: 5px 0;text-align: left;border: 1px solid transparent;box-sizing: border-box;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
 #container .inven-skill-select .button-skill.selected{/* border: 1px solid gold; */box-shadow:inset 0 0 5px gold;opacity: 0.8 !important;}
-#container .inven-skill-select .button-skill[aria-selected=true]::after{content:'다른 부위에서 선택됨';position: absolute;top: 8px;right: 8px;font-size: 12px;font-weight: bold;color: burlywood;}
-#container .inven-skill-select .button-skill[data-select-parts=hel][aria-selected=true]::after{content:'[투구] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=che][aria-selected=true]::after{content:'[갑옷] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=glo][aria-selected=true]::after{content:'[장갑] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=pan][aria-selected=true]::after{content:'[바지] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=boo][aria-selected=true]::after{content:'[신발] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=amu][aria-selected=true]::after{content:'[목걸이] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=rin1][aria-selected=true]::after{content:'[반지 1] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=rin2][aria-selected=true]::after{content:'[반지 2] 사용중';}
+#container .inven-skill-select .button-skill[aria-selected=true]::after{content:'다른 부위에서 선택됨';position: absolute;top: 8px;right: 8px;font-size: 11px;letter-spacing: -1px;font-family: dotum;color: burlywood;}
+#container .inven-skill-select .button-skill[data-select-parts=hel][aria-selected=true]::after{content:'【투구】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=che][aria-selected=true]::after{content:'【갑옷】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=glo][aria-selected=true]::after{content:'【장갑】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=pan][aria-selected=true]::after{content:'【바지】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=boo][aria-selected=true]::after{content:'【신발】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=amu][aria-selected=true]::after{content:'【목걸이】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=rin1][aria-selected=true]::after{content:'【반지 1】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=rin2][aria-selected=true]::after{content:'【반지 2】 사용중';}
 #container .inven-skill-select .button-skill[data-select-parts=wep][aria-selected=true]::after,
-#container .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'[주무기] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'[보조무기] 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=sub][aria-selected=true]::after{content:'[방패] 사용중';}
-#container[data-job-select=dru] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'[토템] 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'[양손 둔기] 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'[양손 도검/도끼] 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep3][aria-selected=true]::after{content:'[쌍수 1] 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'[쌍수 2] 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'[활] 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'[단검 1] 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'[단검 2] 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【주무기】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【보조무기】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=sub][aria-selected=true]::after{content:'【방패】 사용중';}
+#container[data-job-select=dru] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【토템】 사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【양손 둔기】 사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【양손 도검/도끼】 사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep3][aria-selected=true]::after{content:'【쌍수 1】 사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【쌍수 2】 사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【활】 사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【단검 1】 사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【단검 2】 사용중';}
 #container .inven-skill-select .button-skill.selected::after{content:'현재 선택된 위상' !important;position: absolute;top: 8px;right: 8px;font-size: 11px;letter-spacing: -1px;font-family: dotum;color: gold;}
 #container .inven-skill-select .button-skill::before{min-width: 90px;}
 #container .inven-skill-select .button-skill[data-parts=com]{display: flex;}
