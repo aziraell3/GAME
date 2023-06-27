@@ -43,7 +43,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #header .button-job[data-tab-select=rog]::before{background: url(images/rog.webp) 0 0 no-repeat;background-size:100% auto;}
 
 .sidebar{position: fixed;top: 70px;left: 50%;margin-left: 420px;z-index: 300;}
-.sidebar .box-sidebar{padding: 15px;border: 1px solid #313236;background-color: rgba(255, 255, 255, 0.03);border-radius: 5px;}
+.sidebar .box-sidebar{min-width:140px;padding: 15px;border: 1px solid #313236;background-color: rgba(255, 255, 255, 0.03);border-radius: 5px;}
 .sidebar .box-sidebar .side-title{margin: 0;padding: 0;font-size: 16px;color: #38aced;font-weight: bold;}
 .sidebar .box-sidebar .sub-title{margin: 0;padding: 0;font-size: 14px;color: #a4a0f0;}
 .sidebar .box-sidebar .sub-title.kr{color: #a4a0f0;}
