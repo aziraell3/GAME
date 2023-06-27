@@ -27,15 +27,23 @@ body.header-flip #header{transform: translate(0, -50px)}
 #header .button-job{font-size: 18px;line-height: 30px;font-weight: 500;padding: 10px 8px;text-align: center;opacity: .4;}
 #header .button-job[disabled]{text-decoration: line-through;}
 #header .button-job[aria-selected=true]{color: gold;opacity: 1;}
-#header .button-job::before{content:'';display: inline-block;vertical-align: middle;width: 30px;height: 30px;margin: -2px 6px 0 0;}
+#header .button-job[aria-selected=false]{filter: grayscale(97%);}
+#header .button-job::before{content:'';display: inline-block;vertical-align: middle;width: 34px;height: 34px;margin: -2px 4px 0 0;}
+/*
 #header .button-job[data-tab-select=dru]::before{background: url(images/druid.png) 0 0 no-repeat;background-size:100% auto;}
 #header .button-job[data-tab-select=bab]::before{background: url(images/barbarian.png) 0 0 no-repeat;background-size:100% auto;}
 #header .button-job[data-tab-select=nec]::before{background: url(images/necromancer.png) 0 0 no-repeat;background-size:100% auto;}
 #header .button-job[data-tab-select=soc]::before{background: url(images/sorcerer.png) 0 0 no-repeat;background-size:100% auto;}
 #header .button-job[data-tab-select=rog]::before{background: url(images/rogue.png) 0 0 no-repeat;background-size:100% auto;}
+*/
+#header .button-job[data-tab-select=dru]::before{background: url(images/dru.webp) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=bab]::before{background: url(images/bab.webp) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=nec]::before{background: url(images/nec.webp) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=soc]::before{background: url(images/soc.webp) 0 0 no-repeat;background-size:100% auto;}
+#header .button-job[data-tab-select=rog]::before{background: url(images/rog.webp) 0 0 no-repeat;background-size:100% auto;}
 #container{display: flex;align-items: flex-start;flex-direction: column;margin: 0 auto 0;max-width: 800px;width: 100%;height: 100%;}
-#container{padding-top: 110px;}
-#container .box-title{margin: 20px 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
+#container{padding-top: 130px;}
+#container .box-title{margin: 0 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 #container .box-title .setting-title{width: 100%;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;color: #bbb;font-weight: bold;}
 #container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 100;padding: 0 10px 50px;}
 #container .inven::after{content:'https://aziraell3.github.io/GAME/D4/';position: absolute;bottom: 25px;left: 0;width: 100%;text-align: center;font-size: 14px;color:#777}
@@ -151,16 +159,21 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .skill-detail .skill-parts{display: block;padding-top: 4px;}
 #container .inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
-#container .inven-spirit{display: none;/* width: 390px; */margin: 30px auto 10px;}
-#container[data-job-select=dru] .inven-spirit{display: block;}
-#container .inven-spirit .description{font-size: 14px;}
+#container .box-spirit{margin: 20px auto 10px;text-align: center;}
+#container .box-spirit .spirit-open{display: inline-block;padding: 10px 20px;border: 1px solid #444757;font-size: 14px;color: #a4a0f0;background-color: rgba(255, 255, 255, 0.05);border-radius: 10px;}
+#container .box-spirit .spirit-open::after{content:' 보기';}
+#container .box-spirit .spirit-open.expend::after{content:' 닫기';}
+#container .inven-spirit{display: none;margin: 0 auto 10px;overflow: hidden;}
+#container[data-job-select=dru] .box-spirit{}
+#container .inven-spirit .description{font-size: 14px;text-align: center;opacity: 0.7;}
 #container .inven-spirit .description::before{content:' 🐻 ';}
 #container .inven-spirit .description::after{content:' 🐺 ';}
+#container .inven-spirit .spirit-grid{margin-top: 10px;}
 #container .inven-spirit .spirit-grid + .spirit-grid{margin-top: 8px;padding-top: 8px;border-top: 1px solid #444757;}
 #container .inven-spirit .spirit-grid .list-type{display: flex;justify-content: flex-start;align-items: center;margin: 5px 0;}
 #container .inven-spirit .spirit-grid .list-type button{border: 2px solid transparent;font-size: 0;line-height: 0;}
 #container .inven-spirit .spirit-grid:not(.active) .list-type .spirit-title .button-blessing,
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .3;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .5;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title{}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{width: 60px;height: 60px;line-height: 16px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing::after{display: block;content:' (1개)';font-size: 12px;}
@@ -313,8 +326,9 @@ body.scroll-lock .page-top{z-index: 90;}
 	#header .page-title{padding-top: 0;height: 35px;}
 	#header .page-title .sup{margin: 12px 0 0 0;font-size: 11px;}
 	#header .page-title .title{font-size: 16px;letter-spacing: -1px;}
-	#header .button-job{padding: 0 8px;font-size: 14px;line-height: 1;}
-	#header .button-job::before{display: block;margin: 0 auto 5px;width: 24px;height: 24px;}
+	#header .button-job{padding: 0 8px;font-size: 12px;line-height: 1;}
+	#header .button-job::before{display: block;margin: 0 auto 0;width: 44px;height: 44px;}
+	#container .box-title{margin-top: 20px;}
 	#container .inven::before{}
 	#container .inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 	#container .inven .inven-wep{flex-direction: column;}
@@ -346,9 +360,10 @@ body.scroll-lock .page-top{z-index: 90;}
 
 	#container .inven-spirit .spirit-grid{display: block;}
 	#container .inven-spirit .spirit-grid .list-type{justify-content: space-between;}
-	#container .inven-spirit .spirit-grid .list-type .spirit-frame{justify-content: space-evenly;margin-left: 0;width: calc(100% - 120px);}
+	#container .inven-spirit .spirit-grid .list-type .spirit-frame{justify-content: space-evenly;margin-left: 0;width: calc(100% - 110px);}
 	#container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:none;}
 	#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{margin: 0 2px;}
+	#container .inven-spirit .spirit-description{padding-left: 110px;}
 	#container .inven-spirit .spirit-description .spirit-selected *{font-size: 11px;line-height: 12px;font-family: dotum;letter-spacing: -0.5px;}
 
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
