@@ -1,17 +1,17 @@
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
 		if ($('.inven .equ .option.selected').length > 0) {
-			$('#previewImg').empty();
-			$('.down-notice').addClass('ing').removeClass('complate').html('이미지를 생성중입니다. 잠시 기다려주세요.');
+			$('#previewImg').addClass('loading').removeClass('complate').empty();
+			$('.down-notice').html('이미지를 생성중입니다. 잠시 기다려주세요.');
 			setTimeout(function(){
 					html2canvas(document.getElementById('imageCanvas'), {
 						allowTaint: true,
 						useCORS: true,
 						scale: 2.0,
 					}).then(function (canvas) {
-						$('#previewImg').html('<img src="'+canvas.toDataURL()+'">');
+						$('#previewImg').removeClass('loading').addClass('complate').html('<img src="'+canvas.toDataURL()+'">');
 						$('html, body').animate({scrollTop: parseInt($('#download').offset().top - 120)}, 500);
-						$('.down-notice').removeClass('ing').addClass('complate').html('이미지가 생성되었습니다!');
+						$('.down-notice').html('이미지가 생성되었습니다!');
 					});
 			
 			}, 500)
