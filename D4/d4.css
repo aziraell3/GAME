@@ -127,8 +127,8 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .option::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
-#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검';}
-#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검';}
+#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검 1';}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검 2';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .detail::before{content:'토템';}
 #container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .detail::before{content:'방패';}
