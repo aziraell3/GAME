@@ -20,16 +20,11 @@ $(document).ready(function(){
 		}
 	});
 })
-
 var D4SkillDB = (function(){
 	var method = {};
 	var obj = {};
 	var option = {};
 	var parts = [];
-	var board = [
-		{job:'dru', name:'착취', detail:'블라블라'},
-		{job:'dru', name:'변신술사', detail:'블라블라'},
-	];
 	var skills = [
 		// job = com|dru|bab|soc|rog|nec
 		// parts = wep|sub|hel|che|glo|pan|boo|amu|rin
@@ -347,9 +342,11 @@ var D4SkillDB = (function(){
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
+		method.externalLink();
 
 		//직업 선택
 		$('#header .button-job').on('click', function(){
+			console.log();
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
@@ -424,14 +421,11 @@ var D4SkillDB = (function(){
 				? $('.sort-by-dis').attr('disabled', true) 
 				: $('.sort-by-dis').attr('disabled', false)
 			method.layerSort($parts);
-			
 			if ($(this).is('.selected')) { //선택 강조
-				console.log('있네?')
 				var $target = $('#'+$(this).attr('data-target'));
 				obj.skillLayer.find('.button-skill').removeClass('selected');
 				$target.addClass('selected').focus();
 			} else {
-				console.log('없네?')
 				obj.skillLayer.find('.button-skill').removeClass('selected');
 				$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
 			}
@@ -479,7 +473,6 @@ var D4SkillDB = (function(){
 		});
 		$.each($invSkill, function(index){
 			$('#'+$invSkill[index]).attr({'aria-selected':true});
-			//$('#'+$invSkill[index]).attr({'aria-selected':true, 'data-select': $('.option[data-target='+$invSkill[index]+']').attr('id')});
 		})
 	};
 	method.skillDB = function(){
@@ -523,26 +516,24 @@ var D4SkillDB = (function(){
 				? $inven.siblings().find('.detail').addClass('type-uni')
 				: $inven.siblings().find('.detail').removeClass('type-uni')
 		}
-		
-	};
-	method.getSkill = function(){
-		var setEqu = [];
-		var setSkillNum = [];
-		var $job = $('#container').attr('data-job-select');
-		$('.inven .equ .option[aria-controls=skillSelect]').each(function(){
-			var $part = ($(this).is('[id]')) ? $(this).attr('id') : '';
-			var $skill = ($(this).is('[data-target]')) ? $(this).attr('data-target') : '';
-			setEqu.push({'eqPart':$part, 'skillNum':$skill})
-		})
-		var record = setEqu.find(function(item, index){
-			console.log(item.skillNum)
-			return setEqu;
-		});
-		console.log(setEqu)
-		return setEqu;
 	};
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock') : obj.body.removeClass('scroll-lock');
+	};
+	method.externalLink = function(){
+		/*
+		if(obj.locationHref.indexOf('?job=dru') > 0){
+			//setTimeout(function(){ $('[data-tab-select=dru]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=bab') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=bab]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=soc') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=soc]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=rog') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=rog]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=nec') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=nec]').click(); }, 10)
+		}
+		*/
 	};
 	method.spiritBoons = function(){
 		var $grid = obj.spiritBoons.find('.spirit-grid');
@@ -596,7 +587,7 @@ var D4SkillDB = (function(){
 		layerSort : method.layerSort,
 		layerFunc : method.layerFunc,
 		setSkill : method.setSkill,
-		getSkill : method.getSkill,
+		externalLink : method.externalLink,
 	}
 })();
 D4SkillDB.init();
