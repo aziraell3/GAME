@@ -60,10 +60,10 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .box-title{display: flex;justify-content: space-between;align-items: center;margin: 0 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 #container .box-title .setting-title{width: 100%;margin: 0 10px;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;color: #bbb;font-weight: bold;}
 #container .box-title button{min-width: 52px;height: 52px;}
-#container .box-title .button-zoom{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M15 4V7C15 8.10457 15.8954 9 17 9H20M9 4V7C9 8.10457 8.10457 9 7 9H4M15 20V17C15 15.8954 15.8954 15 17 15H20M9 20V17C9 15.8954 8.10457 15 7 15H4" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
-#container .box-title .button-zoom.active{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
+#container .box-title .button-zoom::before{content:'';display:block;width:30px;height:30px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M15 4V7C15 8.10457 15.8954 9 17 9H20M9 4V7C9 8.10457 8.10457 9 7 9H4M15 20V17C15 15.8954 15.8954 15 17 15H20M9 20V17C9 15.8954 8.10457 15 7 15H4" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
+#container .box-title .button-zoom.active::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
 
-#container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 100;padding: 0 10px 50px;}
+#container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 120;padding: 0 10px 50px;}
 #container .inven::after{content:'https://aziraell3.github.io/GAME/D4/';position: absolute;bottom: 25px;left: 0;width: 100%;text-align: center;font-size: 14px;color:#999}
 #container .inven::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-image: url();background-position: 50% 100px;background-repeat: no-repeat;background-size: 55%;opacity: .4;z-index: -1;}
 #container[data-job-select=dru] .inven::before{background-image: url(images/bg_druid.png);background-position: 50% 100px;background-repeat: no-repeat;background-size: 55%;}
@@ -291,7 +291,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .equ[data-parts] .option.selected{}
 
 #container [data-parts] .skill-parts::before,
-#container [data-parts] .skill-parts::after{content:'';font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
+#container [data-parts] .skill-parts::after{content:'';margin-top: 2px;font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
 #container [data-parts] .skill-parts::before{content:'착용가능 : ';color: burlywood;font-weight: bold;}
 #container [data-parts=wep] .skill-parts::after{content:'무기';}
 #container [data-parts=hel] .skill-parts::after{content:'투구';}
@@ -320,18 +320,59 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .equ[data-ver=dlc] .option.selected + .text .detail{color: red;}
 
 /* 보석 */
-.inven-gems{display: flex;justify-content: center;align-items: flex-start;}
-.gem-grid [class*=gem-]{display: inline-block;width: 60px;height: 60px;overflow: hidden;}
-.gem-grid [class*=gem-]::after{content:'';display: block;width: 100%;height: 100%;background: url(images/sprite-gems.png) 0 0 no-repeat;background-size: auto 500px;}
-.gem-grid .gem-rub::after{background-position: 0 0;}
-.gem-grid .gem-sap::after{background-position: 0 -65px;}
-.gem-grid .gem-toz::after{background-position: 0 -130px;}
-.gem-grid .gem-eme::after{background-position: 0 -195px;}
-.gem-grid .gem-ame::after{background-position: 0 -260px;}
-.gem-grid .gem-dia::after{background-position: 0 -325px;}
-.gem-grid .gem-skl::after{background-position: 0 -390px;}
+#container .inven [data-gem-icon]{display: inline-block;width: 100%;height: 60px;overflow: hidden;}
+#container .inven [data-gem-icon]::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;margin: 0 auto 0;background: url(images/sprite-gems.png) 0 0 no-repeat;background-size: 100% auto;}
+#container .inven .layer-gems [data-gem-icon]::before{margin: 0;transform: scale(0.8);margin: -4px 0 0 -4px}
+#container .inven .gems [data-gem-icon]{display: inline-block;width: 30px;height: 30px;overflow: visible;}
+#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.45);margin: -16px 0 0 -15px}
+#container .inven [data-gem-icon=rub]::before{background-position: 0 0;}
+#container .inven [data-gem-icon=sap]::before{background-position: 0 -60px;}
+#container .inven [data-gem-icon=toz]::before{background-position: 0 -120px;}
+#container .inven [data-gem-icon=eme]::before{background-position: 0 -180px;}
+#container .inven [data-gem-icon=ame]::before{background-position: 0 -240px;}
+#container .inven [data-gem-icon=dia]::before{background-position: 0 -300px;}
+#container .inven [data-gem-icon=skl]::before{background-position: 0 -360px;}
+#container .inven [data-gem-icon=emp]::before{background-position: 0 -420px;}
+#container .inven-gems{position: relative;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
+#container .inven-gems::before{content:'보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
+#container .inven-gems .gems{margin: 0 5px;}
+#container .inven-gems .equ.gems .option[data-gem-type]{}
+#container .inven-gems .equ.gems .option[data-gem-type]::after{position: absolute;top: inherit;bottom: -20px;left: 0;margin: 0;width: 100%;text-align: center;font-size: 13px;line-height: 1.2;letter-spacing: -0.5px;}
+#container .inven-gems .equ.gems .option[data-gem-type=wep]::after{content:'무기 보석';color: #D87B1B;}
+#container .inven-gems .equ.gems .option[data-gem-type=def]::after{content:'방어구 보석';color: #38aced;}
+#container .inven-gems .equ.gems .option[data-gem-type=acc]::after{content:'장신구 보석';color: #a4a0f0;}
+body.gem-view #container .inven .equ:not(.gems) .option{margin: 0 35px 0 0;}
+body.gem-view #container .inven .inven-wep .equ + .equ:not(.gems) .option,
+body.gem-view #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
+#container .inven .equ .gems{display: none;position: absolute;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
+body.gem-view #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
+#container .inven .inven-wep .equ + .equ:not(.gems) .gems,
+#container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
+#container .inven .equ .gems .sprite-gems{display: block;width: 30px;height: 30px;border: 1px solid #333;border-radius: 6px;}
+#container .inven .equ .gems .sprite-gems + .sprite-gems{margin-top: 5px;}
+#container .inven .layer-gems{display: none;position: absolute;top: 110px;min-width:460px;margin: 0;border: 1px solid #333;padding: 10px 15px 10px 10px;background-color: #111;border-radius: 10px;z-index: 200;box-shadow: -1px -1px 29px 0px rgba(255, 255, 255,0.3);}
+#container .inven .layer-gems.active{display: block;}
+#container .inven .layer-gems .gems-grid + .gems-grid{margin-top: 5px;padding-top: 5px;border-top: 1px solid #2a2a2a;}
+#container .inven .layer-gems .gems-grid .button-gem{display: flex;flex-direction: row;align-items: center;}
+#container .inven .layer-gems .gems-grid .button-gem .detail{display: block;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect{display: flex;flex-direction: column;align-items: flex-start;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span{font-size: 12px;text-align: left;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect > span{opacity: .4;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span::before{font-weight: bold;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .wep::before{content:'무기 : ';color: #D87B1B;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .def::before{content:'방어구 : ';color: #38aced;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .acc::before{content:'장신구 : ';color: #a4a0f0;}
+#container .inven .layer-gems .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
+#container .inven .layer-gems[data-gem-type=wep] .gems-grid .button-gem .detail .gem_effect .wep,
+#container .inven .layer-gems[data-gem-type=def] .gems-grid .button-gem .detail .gem_effect .def,
+#container .inven .layer-gems[data-gem-type=acc] .gems-grid .button-gem .detail .gem_effect .acc{opacity: 1;font-size: 13px;}
+#container .inven .layer-gems.pos-bottom{top: inherit;bottom: 155px;}
+#container .inven .layer-gems.pos-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -20px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
 
-#container .inven .equ .layer-gems{position: absolute;left: 0;margin: 35px 0 0 0;border: 1px solid #333;padding: 10px;background-color: #111;}
+#container .inven .layer-gems.dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;z-index: 10;}
+#container .inven .layer-gems.dimmed .gems-list{position: relative;z-index: 200;}
+#container .inven .layer-gems.pos-bottom .gems-list{margin-bottom: 10px;}
+#container .inven .layer-gems.pos-bottom .button-close{z-index: 200;}
 
 
 #container .unique_option,
@@ -390,8 +431,16 @@ body.scroll-lock .page-top{z-index: 90;}
 .page-top .link-top{display: inline-block;width: 40px;height: 40px;font-size: 0;line-height: 0;margin-right: -40px;}
 .page-top .link-top::after{content:'';display: block;width: 100%;height: 100%;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgba(255, 255, 255, 0.3)" class="bi bi-arrow-up-circle" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"></path></svg>') 50% 50% no-repeat;background-size:100% auto;}
 
+
+body.zoom{}
+body.zoom #container{max-width:550px;}
+body.zoom #container [data-parts] .skill-parts::after,
+body.zoom #container .inven .equ .text .detail::before{display: block;margin: 0;}
+body.zoom #container [data-parts] .skill-parts::before,
+body.zoom #container .inven .equ .text .more{display: none;}
+
 /* mobile */
-@media only screen and (max-width:700px){
+@media only screen and (max-width:640px){
 	body.scroll-lock #header,
 	body.header-flip #header{transform: translate(0, -40px)}
 	#header{}
@@ -445,6 +494,8 @@ body.scroll-lock .page-top{z-index: 90;}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep{flex-direction: column;}
 	#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{margin: 10px 0 0;}
 	#container[data-job-select] .inven::before{background-position: 70% 30%;background-size: 90% auto}
-	.page-top{}
-	.page-top .link-top{margin-right: 10px;}
+
+	#container .inven-gems{padding: 20px 0;}
+	#container .inven .layer-gems{max-width: 90%;min-width: auto;}
+	#container .inven .layer-gems.pos-bottom{}
 }
