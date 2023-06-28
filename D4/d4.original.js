@@ -3,6 +3,7 @@ $(document).ready(function(){
 		if ($('.inven .equ .option.selected').length > 0) {
 			$('#previewImg').addClass('loading').removeClass('complate').empty();
 			$('.down-notice').html('이미지를 생성중입니다. 잠시 기다려주세요.');
+			$('html, body').animate({scrollTop: parseInt($('#download').offset().top - 120)}, 500);
 			setTimeout(function(){
 					html2canvas(document.getElementById('imageCanvas'), {
 						allowTaint: true,
@@ -25,6 +26,15 @@ var D4SkillDB = (function(){
 	var obj = {};
 	var option = {};
 	var parts = [];
+	var gems = [
+		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 증가</span><span class="def">최대 생명력 증가</span><span class="acc">화염 저항력 증가</span></p>'},
+		{ver:'ori', icon:'saf', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span><span class="def">보강 상태에서 피해 감소</span><span class="acc">냉기 저항 증가</span></p>'},
+		{ver:'ori', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 증가</span><span class="def">제어 방해 효과를 받을 때 피해 감소</span><span class="acc">번개 저항 증가</span></p>'},
+		{ver:'ori', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 증가</span><span class="def">가시 증가</span><span class="acc">독 저항 증가</span></p>'},
+		{ver:'ori', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 증가</span><span class="def">지속 피해 감소</span><span class="acc">암흑 저항 증가</span></p>'},
+		{ver:'ori', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 상승</span><span class="def">보호막 생성량 증가</span><span class="acc">모든 원소 저항 증가</span></p>'},
+		{ver:'ori', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 회복</span><span class="def">받는 치유량 증가</span><span class="acc">방어도 상승</span></p>'},
+	];
 	var skills = [
 		// job = com|dru|bab|soc|rog|nec
 		// parts = wep|sub|hel|che|glo|pan|boo|amu|rin
@@ -343,6 +353,7 @@ var D4SkillDB = (function(){
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
+		method.gems();
 		//method.externalLink();
 
 	};
@@ -392,6 +403,15 @@ var D4SkillDB = (function(){
 				$(this).attr('aria-selected', true).siblings('[aria-selected]').attr('aria-selected', false);
 			}
 			obj.skillWrap.attr('data-filter', $this);
+		})
+	};
+	method.gems = function(){
+		$('.box-gem button').on('click', function(){
+			var $wrap = $(this).parent();
+			if ($wrap.find('.layer-gems').length == 0) {
+				$wrap.append('<div class="layer-gems"><div class="gems-list"></div></div>')
+			}
+			
 		})
 	};
 	method.scrollFunc = function(){
@@ -543,14 +563,15 @@ var D4SkillDB = (function(){
 		*/
 	};
 	method.spiritBoons = function(){
+		//영혼 은총
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$('.spirit-open').on('click', function(){
 			if ($('#'+$(this).attr('aria-controls')).css('display') == 'none') {
-				$(this).addClass('expend');
-				$('#'+$(this).attr('aria-controls')).slideDown(300);
+				$(this).addClass('expend').attr({'aria-expanded':true});
+				$('#'+$(this).attr('aria-controls')).attr({'aria-hidden':false}).slideDown(300);
 			} else {
-				$(this).removeClass('expend');
-				$('#'+$(this).attr('aria-controls')).slideUp(300);
+				$(this).removeClass('expend').attr({'aria-expanded':false});
+				$('#'+$(this).attr('aria-controls')).attr({'aria-hidden':false}).slideUp(300);
 			}
 			
 		})

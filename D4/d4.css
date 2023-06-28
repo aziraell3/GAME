@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/earlyaccess/notosanskr.css);
 
-*{font-family: 'Noto Sans KR', sans-serif;font-weight: 300;font-size: 14px;color: #fff;line-height: 1.2;box-sizing:border-box}
-html,body{height:100%;margin: 0;padding: 0;}
+*{margin: 0;padding: 0;font-family: 'Noto Sans KR', sans-serif;font-weight: 300;font-size: 14px;color: #fff;line-height: 1.2;box-sizing:border-box}
+html,body{height:100%;}
 h1,h2,h3,h4,h5,h6{font-weight:600}
 h1{font-size:26px}
 h2{font-size:20px}
@@ -16,6 +16,8 @@ pre a{display:block;width:100%;overflow:hidden;text-overflow:ellipsis}
 body{-webkit-user-select:none;-webkit-text-size-adjust:none;background-color: #1A1B1F;}
 body.scroll-lock{overflow: hidden;}
 img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface-visibility: hidden;}
+.for-a11y{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0)}
+
 #wrap{position: relative;height: 100%;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
@@ -42,7 +44,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #header .button-job[data-tab-select=soc]::before{background: url(images/soc.webp) 0 0 no-repeat;background-size:100% auto;}
 #header .button-job[data-tab-select=rog]::before{background: url(images/rog.webp) 0 0 no-repeat;background-size:100% auto;}
 
-.sidebar{position: fixed;top: 70px;left: 50%;margin-left: 420px;z-index: 300;}
+.sidebar{display: none;position: fixed;top: 70px;left: 50%;margin-left: 420px;z-index: 300;}
 .sidebar .box-sidebar{min-width:140px;padding: 15px;border: 1px solid #313236;background-color: rgba(255, 255, 255, 0.03);border-radius: 5px;}
 .sidebar .box-sidebar .side-title{margin: 0;padding: 0;font-size: 16px;color: #38aced;font-weight: bold;}
 .sidebar .box-sidebar .sub-title{margin: 0;padding: 0;font-size: 14px;color: #a4a0f0;}
@@ -55,8 +57,12 @@ body.header-flip #header{transform: translate(0, -50px)}
 .sidebar .box-sidebar .list-link li a.link{display: block;padding: 2px 0;font-size: 14px;color: #888;}
 #container{display: flex;align-items: flex-start;flex-direction: column;margin: 0 auto 0;max-width: 800px;width: 100%;height: 100%;}
 #container{padding-top: 130px;}
-#container .box-title{margin: 0 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
-#container .box-title .setting-title{width: 100%;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;color: #bbb;font-weight: bold;}
+#container .box-title{display: flex;justify-content: space-between;align-items: center;margin: 0 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
+#container .box-title .setting-title{width: 100%;margin: 0 10px;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;color: #bbb;font-weight: bold;}
+#container .box-title button{min-width: 52px;height: 52px;}
+#container .box-title .button-zoom{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M15 4V7C15 8.10457 15.8954 9 17 9H20M9 4V7C9 8.10457 8.10457 9 7 9H4M15 20V17C15 15.8954 15.8954 15 17 15H20M9 20V17C9 15.8954 8.10457 15 7 15H4" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
+#container .box-title .button-zoom.active{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
+
 #container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 100;padding: 0 10px 50px;}
 #container .inven::after{content:'https://aziraell3.github.io/GAME/D4/';position: absolute;bottom: 25px;left: 0;width: 100%;text-align: center;font-size: 14px;color:#999}
 #container .inven::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background-image: url();background-position: 50% 100px;background-repeat: no-repeat;background-size: 55%;opacity: .4;z-index: -1;}
@@ -68,7 +74,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .notice{display: block;width: 100%;margin: 0;padding: 10px 0 0;text-align: center;color: orange;font-size: 12px;}
 #container .notice::after,
 #container .notice::before{content:' 💡 '}
-#container .inven .equ{position: relative;display: flex;align-items: center;margin-top: 15px;min-width:70px;min-height:70px;}
+#container .inven .equ{position: relative;display: flex;align-items: flex-start;margin-top: 10px;min-width:70px;min-height:70px;}
 #container .inven .equ .input-fav{display: none;position: absolute;width: 20px;height: 20px;z-index: 10;margin: -49px 1px 0 1px;}
 #container .inven .equ .option{position: relative;font-size: 0;line-height: 0;border: 1px solid #444757;border-radius: 12px;cursor: pointer;display: flex;height: 70px;justify-content: center;min-height: 70px;min-width: 70px;width: 70px;}
 #container .inven .equ .input-fav:checked + .option{border: 1px solid #fe6000;}
@@ -98,6 +104,11 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
 #container .inven .inven-wep .equ + .equ,
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
+#container .inven .equ{padding-bottom: 35px;}
+#container .inven .equ .box-gem{position: absolute;top: 75px;left: 0;width: 70px;height: 30px;display:flex;justify-content: space-evenly;z-index: 10;}
+#container .inven .equ .box-gem button{width: 30px;height: 30px;border: 1px solid #333;border-radius: 6px;}
+
+#container .inven .equ .box-gem .layer-gems{position: absolute;left: 0;margin: 35px 0 0 0;border: 1px solid #333;padding: 10px;background-color: #111;}
 
 #container .inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
 #container .inven .equ.hel .text .detail::before{content:'투구';}
@@ -156,26 +167,26 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .button-skill{position: relative;display: flex;justify-content: space-between;align-items: center;width: 100%;padding: 5px 0;text-align: left;border: 1px solid transparent;box-sizing: border-box;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
 #container .inven-skill-select .button-skill.selected{/* border: 1px solid gold; */box-shadow:inset 0 0 5px gold;opacity: 0.8 !important;}
 #container .inven-skill-select .button-skill[aria-selected=true]::after{content:'다른 부위에서 선택됨';position: absolute;top: 8px;right: 8px;font-size: 12px;font-weight: bold;color: burlywood;}
-#container .inven-skill-select .button-skill[data-select-parts=hel][aria-selected=true]::after{content:'【투구】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=che][aria-selected=true]::after{content:'【갑옷】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=glo][aria-selected=true]::after{content:'【장갑】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=pan][aria-selected=true]::after{content:'【바지】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=boo][aria-selected=true]::after{content:'【신발】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=amu][aria-selected=true]::after{content:'【목걸이】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=rin1][aria-selected=true]::after{content:'【반지 1】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=rin2][aria-selected=true]::after{content:'【반지 2】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=hel][aria-selected=true]::after{content:'【투구】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=che][aria-selected=true]::after{content:'【갑옷】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=glo][aria-selected=true]::after{content:'【장갑】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=pan][aria-selected=true]::after{content:'【바지】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=boo][aria-selected=true]::after{content:'【신발】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=amu][aria-selected=true]::after{content:'【목걸이】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=rin1][aria-selected=true]::after{content:'【반지 1】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=rin2][aria-selected=true]::after{content:'【반지 2】사용중';}
 #container .inven-skill-select .button-skill[data-select-parts=wep][aria-selected=true]::after,
-#container .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【주무기】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【보조무기】 사용중';}
-#container .inven-skill-select .button-skill[data-select-parts=sub][aria-selected=true]::after{content:'【방패】 사용중';}
-#container[data-job-select=dru] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【토템】 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【양손 둔기】 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【양손 도검/도끼】 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep3][aria-selected=true]::after{content:'【쌍수 1】 사용중';}
-#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【쌍수 2】 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【활】 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【단검 1】 사용중';}
-#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【단검 2】 사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【주무기】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【보조무기】사용중';}
+#container .inven-skill-select .button-skill[data-select-parts=sub][aria-selected=true]::after{content:'【방패】사용중';}
+#container[data-job-select=dru] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【토템】사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【양손 둔기】사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【양손 도검/도끼】사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep3][aria-selected=true]::after{content:'【쌍수 1】사용중';}
+#container[data-job-select=bab] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【쌍수 2】사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep1][aria-selected=true]::after{content:'【활】사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep2][aria-selected=true]::after{content:'【단검 1】사용중';}
+#container[data-job-select=rog] .inven-skill-select .button-skill[data-select-parts=wep4][aria-selected=true]::after{content:'【단검 2】사용중';}
 #container .inven-skill-select .button-skill.selected::after{content:'현재 선택된 위상' !important;position: absolute;top: 8px;right: 8px;font-size: 12px;font-weight: bold;color: gold;}
 #container .inven-skill-select .button-skill::before{min-width: 90px;}
 #container .inven-skill-select .button-skill[data-parts=com]{display: flex;}
@@ -191,13 +202,15 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-skill-select .skill-detail .skill-parts{display: block;padding-top: 4px;}
 #container .inven-skill-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
+/* 영혼 은총 */
+#container .sprite-spirit{background: url(images/sprite-spirit.png) 0 0 no-repeat;background-size:400px auto;}
 #container .box-spirit{display: none;margin: 20px auto 10px;text-align: center;}
 #container .box-spirit .spirit-open{display: inline-block;padding: 10px 20px;border: 1px solid #444757;font-size: 14px;color: #a4a0f0;background-color: rgba(255, 255, 255, 0.05);border-radius: 10px;}
 #container .box-spirit .spirit-open::after{content:' 보기';}
 #container .box-spirit .spirit-open.expend::after{content:' 닫기';}
 #container .inven-spirit{display: none;margin: 0 auto 10px;overflow: hidden;}
 #container[data-job-select=dru] .box-spirit{display: block;}
-#container .inven-spirit .description{font-size: 14px;text-align: center;opacity: 0.7;}
+#container .inven-spirit .description{margin: 15px 0;font-size: 14px;text-align: center;opacity: 0.7;}
 #container .inven-spirit .description::before{content:' 🐻 ';}
 #container .inven-spirit .description::after{content:' 🐺 ';}
 #container .inven-spirit .spirit-grid{margin-top: 10px;}
@@ -207,35 +220,41 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-spirit .spirit-grid:not(.active) .list-type .spirit-title .button-blessing,
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=false]{filter: grayscale(97%);opacity: .5;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title{}
-#container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{width: 60px;height: 60px;line-height: 16px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{width: 62px;height: 62px;line-height: 16px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing::after{display: block;content:' (1개)';font-size: 12px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-title .button-blessing{font-size: 14px;white-space: nowrap;text-indent: 60px;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-title .button-blessing{background: url(images/deer.png) 50% 50% no-repeat;background-size:120% auto;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-title .button-blessing{background: url(images/eagle.png) 50% 50% no-repeat;background-size:120% auto;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-title .button-blessing{background: url(images/wolf.png) 50% 50% no-repeat;background-size:120% auto;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-title .button-blessing{background: url(images/snake.png) 50% 50% no-repeat;background-size:120% auto;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-title .button-blessing{background-position: 0 -67px;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-title .button-blessing{background-position: -67px -67px;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-title .button-blessing{background-position: -135px -67px;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-title .button-blessing{background-position: -202px -67px;}
 #container .inven-spirit .spirit-grid.active .list-type .spirit-title .button-blessing{opacity: 1;font-weight: bold;}
 #container .inven-spirit .spirit-grid.active .list-type .spirit-title .button-blessing::after{content:' (2개)';font-weight: bold;}
+#container .inven-spirit .spirit-grid.active .list-type.deer .spirit-title .button-blessing{background-position: 0 0;}
+#container .inven-spirit .spirit-grid.active .list-type.eagle .spirit-title .button-blessing{background-position: -67px 0;}
+#container .inven-spirit .spirit-grid.active .list-type.wolf .spirit-title .button-blessing{background-position: -135px 0;}
+#container .inven-spirit .spirit-grid.active .list-type.snake .spirit-title .button-blessing{background-position: -202px 0;}
+
 #container .inven-spirit .spirit-grid .list-type .spirit-frame{display: flex;margin-left: 60px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:'';position: absolute;width: 1px;height: 50px;background-color: #fff;margin: 0 0 0 -6px;opacity: 0.1;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{width: 54px;height: 54px;border-radius: 50%;margin: 0 7px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{border: 2px solid rgba(254, 214, 0, 0.6);opacity: 1;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(1){background: url(images/d1.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(2){background: url(images/d2.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(3){background: url(images/d3.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(4){background: url(images/d4.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(1){background: url(images/e1.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(2){background: url(images/e2.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(3){background: url(images/e3.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(4){background: url(images/e4.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(1){background: url(images/w1.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(2){background: url(images/w2.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(3){background: url(images/w3.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(4){background: url(images/w4.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(1){background: url(images/s1.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(2){background: url(images/s2.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(3){background: url(images/s3.png) 50% 50% no-repeat;background-size:90% auto;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(4){background: url(images/s4.png) 50% 50% no-repeat;background-size:90% auto;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(1){background-position: -6px -135px;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(2){background-position: -6px -191px;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(3){background-position: -6px -247px;}
+#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(4){background-position: -6px -303px;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(1){background-position: -74px -135px;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
+#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(1){background-position: -141px -135px;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
+#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(1){background-position: -209px -135px;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
+#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;}
+
 /* #container .inven-spirit .spirit-description{margin-top: -5px;padding-left: 90px;} */
 #container .inven-spirit .spirit-grid{display:flex;align-items: center;}
 #container .inven-spirit .spirit-description{padding-left: 10px;}
@@ -304,6 +323,17 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .type-leg{color:#D87B1B;}
 #container [data-ver=dlc] .skill-name,
 #container .inven .equ[data-ver=dlc] .option.selected + .text .detail{color: red;}
+
+.gem-grid [class*=gem-]{display: inline-block;width: 20px;height: 20px;overflow: hidden;}
+.gem-grid [class*=gem-]::after{content:'';background: url(images/sprite-gem.wbp) 0 0 no-repeat;background-size:224px auto;}
+.gem-grid .gem-rub::after{background-position: 0 0;}
+.gem-grid .gem-saf::after{}
+.gem-grid .gem-toz::after{}
+.gem-grid .gem-eme::after{}
+.gem-grid .gem-ame::after{}
+.gem-grid .gem-dia::after{}
+.gem-grid .gem-skl::after{}
+
 
 #container .unique_option,
 #container .aspect_effect{display: inline;word-break: keep-all;}
