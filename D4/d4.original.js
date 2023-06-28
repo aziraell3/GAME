@@ -28,7 +28,7 @@ var D4SkillDB = (function(){
 	var parts = [];
 	var gems = [
 		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 증가</span><span class="def">최대 생명력 증가</span><span class="acc">화염 저항력 증가</span></p>'},
-		{ver:'ori', icon:'saf', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span><span class="def">보강 상태에서 피해 감소</span><span class="acc">냉기 저항 증가</span></p>'},
+		{ver:'ori', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span><span class="def">보강 상태에서 피해 감소</span><span class="acc">냉기 저항 증가</span></p>'},
 		{ver:'ori', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 증가</span><span class="def">제어 방해 효과를 받을 때 피해 감소</span><span class="acc">번개 저항 증가</span></p>'},
 		{ver:'ori', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 증가</span><span class="def">가시 증가</span><span class="acc">독 저항 증가</span></p>'},
 		{ver:'ori', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 증가</span><span class="def">지속 피해 감소</span><span class="acc">암흑 저항 증가</span></p>'},
@@ -363,7 +363,7 @@ var D4SkillDB = (function(){
 		obj.skillWrap = obj.wrapper.find('#skillList');
 		obj.boardWrap = obj.wrapper.find('#board');
 		obj.spiritBoons = obj.wrapper.find('#spirit');
-		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp) .option');
+		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp, .gems) .option');
 		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
 		obj.lastButton = obj.skillOpenButton.is('.latest');
 		obj.skillLayer = obj.wrapper.find('#skillSelect');
@@ -406,8 +406,8 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.gems = function(){
-		$('.box-gem button').on('click', function(){
-			var $wrap = $(this).parent();
+		$('.inven-gems .option').on('click', function(){
+			var $wrap = $(this).parents('.inven-gems');
 			if ($wrap.find('.layer-gems').length == 0) {
 				$wrap.append('<div class="layer-gems"><div class="gems-list"></div></div>')
 			}

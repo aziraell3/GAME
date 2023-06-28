@@ -104,11 +104,6 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
 #container .inven .inven-wep .equ + .equ,
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
-#container .inven .equ{padding-bottom: 35px;}
-#container .inven .equ .box-gem{position: absolute;top: 75px;left: 0;width: 70px;height: 30px;display:flex;justify-content: space-evenly;z-index: 10;}
-#container .inven .equ .box-gem button{width: 30px;height: 30px;border: 1px solid #333;border-radius: 6px;}
-
-#container .inven .equ .box-gem .layer-gems{position: absolute;left: 0;margin: 35px 0 0 0;border: 1px solid #333;padding: 10px;background-color: #111;}
 
 #container .inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
 #container .inven .equ.hel .text .detail::before{content:'투구';}
@@ -324,15 +319,19 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container [data-ver=dlc] .skill-name,
 #container .inven .equ[data-ver=dlc] .option.selected + .text .detail{color: red;}
 
-.gem-grid [class*=gem-]{display: inline-block;width: 20px;height: 20px;overflow: hidden;}
-.gem-grid [class*=gem-]::after{content:'';background: url(images/sprite-gem.wbp) 0 0 no-repeat;background-size:224px auto;}
+/* 보석 */
+.inven-gems{display: flex;justify-content: center;align-items: flex-start;}
+.gem-grid [class*=gem-]{display: inline-block;width: 60px;height: 60px;overflow: hidden;}
+.gem-grid [class*=gem-]::after{content:'';display: block;width: 100%;height: 100%;background: url(images/sprite-gems.png) 0 0 no-repeat;background-size: auto 500px;}
 .gem-grid .gem-rub::after{background-position: 0 0;}
-.gem-grid .gem-saf::after{}
-.gem-grid .gem-toz::after{}
-.gem-grid .gem-eme::after{}
-.gem-grid .gem-ame::after{}
-.gem-grid .gem-dia::after{}
-.gem-grid .gem-skl::after{}
+.gem-grid .gem-sap::after{background-position: 0 -65px;}
+.gem-grid .gem-toz::after{background-position: 0 -130px;}
+.gem-grid .gem-eme::after{background-position: 0 -195px;}
+.gem-grid .gem-ame::after{background-position: 0 -260px;}
+.gem-grid .gem-dia::after{background-position: 0 -325px;}
+.gem-grid .gem-skl::after{background-position: 0 -390px;}
+
+#container .inven .equ .layer-gems{position: absolute;left: 0;margin: 35px 0 0 0;border: 1px solid #333;padding: 10px;background-color: #111;}
 
 
 #container .unique_option,

@@ -23,6 +23,7 @@
 
 	<div id="sidebar" class="sidebar">
 		<div class="box-sidebar">
+			<!-- <h2 class="side-title">바로가기 링크</h2> -->
 			<h3 class="sub-title kr">국내사이트</h3>
 			<ul class="list-link">
 				<li><a class="link" href="https://diablo4.inven.co.kr/db/skilltree" target="_blank">인벤 스킬 시뮬</a></li>
@@ -33,20 +34,21 @@
 			<ul class="list-link">
 				<li><a class="link" href="https://maxroll.gg/d4" target="_blank">maxroll</a></li>
 				<li><a class="link" href="https://d4planner.io/" target="_blank">d4planner</a></li>
+				<li><a class="link" href="https://d4builds.gg/" target="_blank">d4builds</a></li>
 			</ul>
 		</div>
 	</div>
+
 	<div id="container" data-job-select="dru">
 		<div id="imageCanvas" class="inven">
 			<div class="box-title">
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
-				<button type="button" class="button-zoom"><span class="for-a11y">확대/축소</span></button>
+				<!-- <button type="button" class="button-zoom"><span class="for-a11y">확대/축소</span></button> -->
 			</div>
 			<div class="inven-equ">
 				<div class="equ hel">
 					<button id="hel" type="button" class="option icon-hel" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
 					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
-					
 				</div>
 				<div class="equ che">
 					<button id="che" type="button" class="option icon-che" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
@@ -161,24 +163,6 @@
 					</div>
 				</div>
 			</div>
-			<div class="inven-board" style="display:none;">
-				<div class="equ board">
-					<button type="button" class="option icon-emp" title="정복자 스킬을 선택해주세요." aria-controls=""></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
-				</div>
-				<div class="equ board">
-					<button type="button" class="option icon-emp" title="정복자 스킬을 선택해주세요." aria-controls=""></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
-				</div>
-				<div class="equ board">
-					<button type="button" class="option icon-emp" title="정복자 스킬을 선택해주세요." aria-controls=""></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
-				</div>
-				<div class="equ board">
-					<button type="button" class="option icon-emp" title="정복자 스킬을 선택해주세요."></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
-				</div>
-			</div>
 
 
 			<div id="skillSelect" class="inven-skill-select">
@@ -192,7 +176,7 @@
 					<div class="box-skill-select">
 						<div id="skillList" class="box-skill-lists"></div>
 
-						<div id="gem" class="box-skill-lists" style="display:none;">
+						<div id="gems" class="box-skill-lists" style="display:none;">
 							<div class="box__skill-grid gem" data-job="gem">
 								<button type="button" class="button-skill">
 									<span class="skill-icon icon-gem--rub"></span>
