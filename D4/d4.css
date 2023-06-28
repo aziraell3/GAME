@@ -437,6 +437,7 @@ body.zoom #container{max-width:450px;}
 body.zoom #container .inven .equ .text .detail::before{display: block;margin: 0;}
 body.zoom #container [data-parts] .skill-parts::after,
 body.zoom #container [data-parts] .skill-parts::before,
+body.zoom #container .inven .equ .text .more{display: none;}
 body.zoom #container .inven-spirit .spirit-grid{display: block;}
 body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 
