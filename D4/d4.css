@@ -233,22 +233,6 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:'';position: absolute;width: 1px;height: 50px;background-color: #fff;margin: 0 0 0 -6px;opacity: 0.1;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{border: 2px solid rgba(254, 214, 0, 0.6);opacity: 1;}
-/* #container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(1){background-position: -6px -135px;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(2){background-position: -6px -191px;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(3){background-position: -6px -247px;}
-#container .inven-spirit .spirit-grid .list-type.deer .spirit-frame .button-spirit:nth-child(4){background-position: -6px -303px;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(1){background-position: -74px -135px;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
-#container .inven-spirit .spirit-grid .list-type.eagle .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(1){background-position: -141px -135px;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
-#container .inven-spirit .spirit-grid .list-type.wolf .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(1){background-position: -209px -135px;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(2){background-position: -74px -191px;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(3){background-position: -74px -247px;}
-#container .inven-spirit .spirit-grid .list-type.snake .spirit-frame .button-spirit:nth-child(4){background-position: -74px -303px;} */
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d1.button-spirit{background-position: -6px -135px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d2.button-spirit{background-position: -6px -191px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d3.button-spirit{background-position: -6px -247px;}
@@ -349,7 +333,7 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven [data-gem-icon=dia]::before{background-position: 0 -300px;}
 #container .inven [data-gem-icon=skl]::before{background-position: 0 -360px;}
 #container .inven [data-gem-icon=emp]::before{background-position: 0 -420px;}
-#container .inven-gems{position: relative;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
+#container .inven-gems{position: relative;margin-top: 10px;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
 #container .inven-gems::before{content:'보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
 #container .inven-gems .gems{margin: 0 5px;}
 #container .inven-gems .equ.gems .option[data-gem-type]{}
@@ -449,9 +433,9 @@ body.scroll-lock .page-top{z-index: 90;}
 
 
 body.zoom{}
-body.zoom #container{max-width:550px;}
-body.zoom #container [data-parts] .skill-parts::after,
+body.zoom #container{max-width:450px;}
 body.zoom #container .inven .equ .text .detail::before{display: block;margin: 0;}
+body.zoom #container [data-parts] .skill-parts::after,
 body.zoom #container [data-parts] .skill-parts::before,
 body.zoom #container .inven .equ .text .more{display: none;}
 
@@ -472,16 +456,17 @@ body.zoom #container .inven .equ .text .more{display: none;}
 	#container .box-title{margin-top: 20px;}
 	#container .inven::before{}
 	#container .inven .box-title{margin-top: 0;background-color: #1A1B1F;z-index: 10;border-bottom: 1px solid rgba(255, 255, 255, .1);}
-	#container .inven .inven-wep{flex-direction: column;}
-	#container .inven .inven-wep + .inven-wep{margin-top: 0;}
-	#container .inven .inven-wep .equ,
-	#container .inven .inven-equ,
-	#container .inven .inven-acc{float: none;width: 100%;}
-	#container .inven .inven-wep .equ + .equ, 
-	#container .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
+	body:not(.zoom) #container .inven .inven-wep{flex-direction: column;}
+	body:not(.zoom) #container .inven .inven-wep + .inven-wep{margin-top: 0;}
+	body:not(.zoom) #container .inven .inven-wep .equ,
+	body:not(.zoom) #container .inven .inven-equ,
+	body:not(.zoom) #container .inven .inven-acc{float: none;width: 100%;}
+	body:not(.zoom) #container .inven .inven-wep .equ + .equ, 
+	body:not(.zoom) #container .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
+	body.zoom #container .inven .equ.emp{display: flex;}
 	#container .inven .equ{margin-top: 10px;}
 	#container .inven .equ.emp{display: none;}
-	#container .inven .equ .text{width: 100%;margin-right: 0;}
+	#container .inven .equ .text{width: 100%;}
 	#container .inven .equ .text .detail{font-size: 16px;}
 	#container .inven .equ .text .more{margin-top: 3px;}
 	#container .inven .equ .text .more *{font-size: 14px;line-height: 1.3;}
@@ -492,12 +477,19 @@ body.zoom #container .inven .equ .text .more{display: none;}
 	#container .inven-skill-select .box-layer{max-width: calc(100% - 30px);width: 100%;height: calc(100% - 50px);}
 	#container .inven-skill-select .box-skill-select{height: calc(100% - 42px);}
 	#container .inven-skill-select .button-close{width: 40px;height: 40px;}
-	#container .inven .inven-acc .equ .text, 
-	#container .inven .inven-wep .equ + .equ .text, 
-	#container .inven .inven-acc .equ .text{align-items: flex-start;}
+	body:not(.zoom) #container .inven .inven-acc .equ .text, 
+	body:not(.zoom) #container .inven .inven-wep .equ + .equ .text, 
+	body:not(.zoom) #container .inven .inven-acc .equ .text{align-items: flex-start;}
 	#container .inven-skill-select .button-skill::before{min-width:80px;}
 	#container .inven-skill-select .skill-head button{width: 16%;}
 	#container .inven .inven-wep + .inven-wep{margin-top: 0;}
+
+/* 
+	body.zoom #container .inven .equ.emp{display: block;}
+	body.zoom #container .inven .inven-wep .equ, 
+	body.zoom #container .inven .inven-equ, 
+	body.zoom #container .inven .inven-acc{float: left;width: 49.5%;} */
+	
 
 	#container .inven-spirit .spirit-grid{display: block;}
 	#container .inven-spirit .spirit-grid .list-type{justify-content: space-between;}
