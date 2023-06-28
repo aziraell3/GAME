@@ -19,7 +19,7 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 .for-a11y{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0)}
 
 #wrap{position: relative;height: 100%;}
-#header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 110;transition: all 0.5s;transform: translate(0, 0)}
+#header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 130;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
 body.scroll-lock #header,
 body.header-flip #header{transform: translate(0, -50px)}
