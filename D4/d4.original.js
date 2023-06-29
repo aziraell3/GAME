@@ -346,7 +346,7 @@ var D4SkillDB = (function(){
 		method.expandFunc();
 		method.skillLayer();
 		$.each(skills, function(index, skill){
-			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
+			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="SKN'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
 		method.skillDB();
 		method.spiritBoons();
@@ -361,7 +361,7 @@ var D4SkillDB = (function(){
 			$(this).toggleClass('active');
 		})
 		method.layerFuncInit();
-		//method.externalLink();
+		method.externalLink();
 
 	};
 	method.setElement = function(){
@@ -581,8 +581,9 @@ var D4SkillDB = (function(){
 		(fixedView) ? obj.body.addClass('scroll-lock') : obj.body.removeClass('scroll-lock');
 	};
 	method.externalLink = function(){
+		//console.log(window.location.href)
 		/*
-		if(obj.locationHref.indexOf('?job=dru') > 0){
+		if(window.location.href.indexOf('?job=dru') > 0){
 			//setTimeout(function(){ $('[data-tab-select=dru]').click(); }, 10)
 		} else if (obj.locationHref.indexOf('?job=bab') > 0) {
 			//setTimeout(function(){ $('[data-tab-select=bab]').click(); }, 10)
@@ -592,6 +593,8 @@ var D4SkillDB = (function(){
 			//setTimeout(function(){ $('[data-tab-select=rog]').click(); }, 10)
 		} else if (obj.locationHref.indexOf('?job=nec') > 0) {
 			//setTimeout(function(){ $('[data-tab-select=nec]').click(); }, 10)
+		} else {
+			return false;
 		}
 		*/
 	};
@@ -733,12 +736,16 @@ var D4SkillDB = (function(){
 			}
 		}
 	};
+
+	method.getSkill  = function(){
+	};
 	return{
 		init : method.init,
 		skillDB : method.skillDB,
 		layerSort : method.layerSort,
 		setSkill : method.setSkill,
 		layerFunc : method.layerFunc,
+		getSkill : method.getSkill,
 		//externalLink : method.externalLink,
 	}
 })();
