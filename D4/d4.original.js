@@ -645,4 +645,4 @@ var D4SkillDB = (function(){
 		externalLink : method.externalLink,
 	}
 })();
-D4SkillDB.init();
+D4SkillDB.init(); 
