@@ -361,6 +361,7 @@ var D4SkillDB = (function(){
 			$(this).toggleClass('active');
 		})
 		method.layerFuncInit();
+		method.externalLink();
 
 	};
 	method.setElement = function(){
@@ -415,7 +416,6 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.gems = function(){
-		//보석
 		var $layerGems = $('.layer-gems');
 		$('.inven-gems .option').on('click', function(){
 			var $type = $(this).attr('data-gem-type')
@@ -423,32 +423,38 @@ var D4SkillDB = (function(){
 			$('.inven-gems .option').removeClass('active');
 			$(this).addClass('active');
 			$layerGems.addClass('active').attr('data-gem-type', $type);
-			setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - 120 +'px'}, 300); }, 100)
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
 						$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
 				});
 			}
 		})
-		$layerGems.on('click', '.button-gem, .button-close', function(){
-			if ($(this).is('.button-gem')) {
-				var $gem = $(this).attr('data-gem-icon');
-				$('.inven-gems .option.active').attr('data-gem-icon', $gem);
-				$('.inven-gems .option').removeClass('active');
-			}
+		$layerGems.on('click', '.button-gem', function(){
+			console.log('보석 클릭')
+			var $gem = $(this).attr('data-gem-icon');
+			$('.inven-gems .option.active').attr('data-gem-icon', $gem);
+			$('.inven-gems .option').removeClass('active');
+			clsoed();
+			
+		}).on('click', '.button-close', function(){
+			clsoed();
+		})
+		function clsoed(){
 			$('.inven-gems .option').removeClass('active');
 			$layerGems.removeClass('active');
 			$layerGems.removeAttr('data-gem-type').find('.gems-list').empty();
-		})
+		}
 	};
 	method.scrollFunc = function(){
 		$(window).scroll(function () {
 			var scrollTop = $(this).scrollTop();
 			var $title = $('#header .page-title');
 			var $header = $('#header').outerHeight();
-			(scrollTop > $header) 
-				? obj.body.addClass('header-flip')
-				: obj.body.removeClass('header-flip');
+			if (scrollTop > $header) {
+				obj.body.addClass('header-flip');
+			}else{
+				obj.body.removeClass('header-flip');
+			}
 		});
 		$('.link-top').on('click', function(e){
 			e.preventDefault();
@@ -573,6 +579,24 @@ var D4SkillDB = (function(){
 	};
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock') : obj.body.removeClass('scroll-lock');
+	};
+	method.externalLink = function(){
+		//console.log(window.location.href)
+		/*
+		if(window.location.href.indexOf('?job=dru') > 0){
+			//setTimeout(function(){ $('[data-tab-select=dru]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=bab') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=bab]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=soc') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=soc]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=rog') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=rog]').click(); }, 10)
+		} else if (obj.locationHref.indexOf('?job=nec') > 0) {
+			//setTimeout(function(){ $('[data-tab-select=nec]').click(); }, 10)
+		} else {
+			return false;
+		}
+		*/
 	};
 	method.expandFunc = function(){
 		$('[aria-expanded][aria-controls]').on('click', function(){
@@ -712,12 +736,31 @@ var D4SkillDB = (function(){
 			}
 		}
 	};
+
+	method.getSkill  = function(){
+		var $link = [];
+		/*
+		$.each($link, function(index){
+			$('#test').append('<p></p>')
+		})
+		*/
+		$.each($link, function(index){
+			
+		})
+		var $job = $('#container').attr('data-job-select');
+		var $equ = $('');
+		var $gem = $('');
+
+		console.log($job);
+	};
 	return{
 		init : method.init,
 		skillDB : method.skillDB,
 		layerSort : method.layerSort,
 		setSkill : method.setSkill,
 		layerFunc : method.layerFunc,
+		getSkill : method.getSkill,
+		//externalLink : method.externalLink,
 	}
 })();
 D4SkillDB.init();
