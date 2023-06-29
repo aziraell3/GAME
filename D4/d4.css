@@ -62,6 +62,8 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .box-title button{min-width: 52px;height: 52px;}
 #container .box-title .button-zoom::before{content:'';display:block;width:30px;height:30px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M15 4V7C15 8.10457 15.8954 9 17 9H20M9 4V7C9 8.10457 8.10457 9 7 9H4M15 20V17C15 15.8954 15.8954 15 17 15H20M9 20V17C9 15.8954 8.10457 15 7 15H4" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
 #container .box-title .button-zoom.active::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
+#container .box-notice{display: none;position: absolute;top: 0;left: 90px;right: 90px;z-index: 100;border: 1px solid #A38C0C;background-color: #1a1a1a;border-radius: 5px;}
+
 
 #container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 120;padding: 0 10px 50px;}
 #container .inven::after{content:'https://aziraell3.github.io/GAME/D4/';position: absolute;bottom: 25px;left: 0;width: 100%;text-align: center;font-size: 14px;color:#999}
@@ -242,13 +244,13 @@ body.header-flip #header{transform: translate(0, -50px)}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #e3.button-spirit{background-position: -74px -247px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #e4.button-spirit{background-position: -74px -303px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #w1.button-spirit{background-position: -141px -135px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #w2.button-spirit{background-position: -141px -191px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #w3.button-spirit{background-position: -141px -247px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #w4.button-spirit{background-position: -141px -303px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #w2.button-spirit{background-position: -74px -191px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #w3.button-spirit{background-position: -74px -247px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #w4.button-spirit{background-position: -74px -303px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #s1.button-spirit{background-position: -209px -135px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #s2.button-spirit{background-position: -209px -191px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #s3.button-spirit{background-position: -209px -247px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame #s4.button-spirit{background-position: -209px -303px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #s2.button-spirit{background-position: -74px -191px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #s3.button-spirit{background-position: -74px -247px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame #s4.button-spirit{background-position: -74px -303px;}
 
 /* #container .inven-spirit .spirit-description{margin-top: -5px;padding-left: 90px;} */
 #container .inven-spirit .spirit-grid{display:flex;align-items: center;}
