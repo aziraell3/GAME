@@ -343,6 +343,7 @@ var D4SkillDB = (function(){
 	method.init = function(){
 		//$('#previewImg, #download, #header, .box-title, [class*=inven-]:not(.inven-spirit)').hide();
 		method.setElement();
+		method.expandFunc();
 		method.skillLayer();
 		$.each(skills, function(index, skill){
 			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
@@ -594,19 +595,25 @@ var D4SkillDB = (function(){
 		}
 		*/
 	};
+	method.expandFunc = function(){
+		$('[aria-expanded][aria-controls]').on('click', function(){
+			var $target = $('#'+$(this).attr('aria-controls'));
+			if ($(this).is('[aria-expanded=true]')) {
+				$(this).addClass('expend').attr('aria-expanded', false);
+				$target.attr('aria-hidden', false).slideUp(100);
+			} else {
+				$(this).removeClass('expend').attr('aria-expanded', true);
+				$target.attr('aria-hidden', true).slideDown(100);
+			}
+			$('.button-expand-close').on('click', function(){
+				$(this).parents('[aria-hidden]').slideUp(100);
+				$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
+			})
+		})
+	}
 	method.spiritBoons = function(){
 		//영혼 은총
 		var $grid = obj.spiritBoons.find('.spirit-grid');
-		$('.spirit-open').on('click', function(){
-			if ($('#'+$(this).attr('aria-controls')).css('display') == 'none') {
-				$(this).addClass('expend').attr({'aria-expanded':true});
-				$('#'+$(this).attr('aria-controls')).attr({'aria-hidden':false}).slideDown(300);
-			} else {
-				$(this).removeClass('expend').attr({'aria-expanded':false});
-				$('#'+$(this).attr('aria-controls')).attr({'aria-hidden':false}).slideUp(300);
-			}
-			
-		})
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
 			$(this).find('.button-blessing').on('click', function(){

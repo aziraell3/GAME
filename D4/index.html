@@ -42,7 +42,30 @@
 	<div id="container" data-job-select="dru">
 		<div id="imageCanvas" class="inven">
 			<div class="box-title">
-				<button type="button" class="button-notice"><span class="for-a11y">공지사항</span></button>
+				<button type="button" class="button-notice" aria-expanded="false" aria-controls="notice"><span class="for-a11y">공지사항</span></button>
+				<div id="notice" class="box-notice" aria-hidden="true">
+					<div class="notice-cont">
+						<div class="notibox">
+							<p class="noti-text">공지사항 <span>* PS5유저입니다. <strong>이다에요#3507</strong></span></p>
+							
+							제가 드루이드만 플레이해서 타 직업군에 대한 이해도가 낮습니다.<br>
+							누락된 위상이 있거나 이용하기 불편한 버그 or 빠진부분이 있다면<br>
+							아래 링크에 댓글로 남겨주시면 확인해보겠습니다.<br>
+							<a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글 링크</a>
+							<br>
+							<br>
+							* 인벤 이외에는 홍보성 글은 게시하지 않았습니다.<br>
+							좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
+						</div>
+						업데이트 내역 (23.06.28)<br>
+						<ul>
+							<li>보석세팅 추가</li>
+							<li>UI 간단하기 보기 추가(세팅 이름 우측 아이콘)</li>
+						</ul>
+					</div>
+					<button class="button-expand-close" data-dismiss="modal">닫기</button>
+				</div>
+
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
 				<button type="button" class="button-zoom"><span class="for-a11y">확대/축소</span></button>
 			</div>
