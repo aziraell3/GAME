@@ -479,6 +479,7 @@ body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 	#header .page-title{padding-top: 0;height: 35px;}
 	#header .page-title .sup{margin: 12px 0 0 0;font-size: 11px;}
 	#header .page-title .title{font-size: 16px;letter-spacing: -1px;}
+	#container .box-notice{top: 65px;left: 10px;right: 10px;}
 	#header .button-job{padding: 0 8px;font-size: 12px;line-height: 1;}
 	#header .button-job::before{display: block;margin: 0 auto 0;width: 44px;height: 44px;}
 
