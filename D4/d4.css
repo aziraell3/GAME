@@ -488,13 +488,6 @@ body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 	#container .inven-skill-select .skill-head button{width: 16%;}
 	#container .inven .inven-wep + .inven-wep{margin-top: 0;}
 
-/* 
-	body.zoom #container .inven .equ.emp{display: block;}
-	body.zoom #container .inven .inven-wep .equ, 
-	body.zoom #container .inven .inven-equ, 
-	body.zoom #container .inven .inven-acc{float: left;width: 49.5%;} */
-	
-
 	#container .inven-spirit .spirit-grid{display: block;}
 	#container .inven-spirit .spirit-grid .list-type{justify-content: space-between;}
 	#container .inven-spirit .spirit-grid .list-type .spirit-frame{justify-content: space-evenly;margin-left: 0;width: calc(100% - 110px);}
