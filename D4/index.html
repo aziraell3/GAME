@@ -21,37 +21,44 @@
 		</div>
 	</div>
 
-	<div id="sidebar" class="sidebar">
-		<div class="box-sidebar">
-			<!-- <h2 class="side-title">바로가기 링크</h2> -->
-			<h3 class="sub-title kr">국내사이트</h3>
-			<ul class="list-link">
-				<li><a class="link" href="https://diablo4.inven.co.kr/db/skilltree" target="_blank">인벤 스킬 시뮬</a></li>
-				<li><a class="link" href="https://diablo4.inven.co.kr/db/paragon" target="_blank">인벤 정복자 시뮬</a></li>
-				<li><a class="link" href="https://d4.tradurs.com/" target="_blank">아이템 거래</a></li>
-			</ul>
-			<h3 class="sub-title us">해외사이트</h3>
-			<ul class="list-link">
-				<li><a class="link" href="https://maxroll.gg/d4" target="_blank">maxroll</a></li>
-				<li><a class="link" href="https://d4planner.io/" target="_blank">d4planner</a></li>
-				<li><a class="link" href="https://d4builds.gg/" target="_blank">d4builds</a></li>
-			</ul>
-		</div>
-	</div>
-
 	<div id="container" data-job-select="dru">
 		<div id="imageCanvas" class="inven">
 			<div class="box-title">
+				<button type="button" class="button-notice" aria-expanded="false" aria-controls="notice"><span class="for-a11y">공지사항</span></button>
+				<div id="notice" class="box-notice" aria-hidden="true">
+					<div class="notice-cont">
+						<div class="notibox">
+							<p class="noti-text">공지사항 <span>* PS5유저입니다. <strong>이다에요#3507</strong></span></p>
+							안녕하세요 위상세팅 시뮬레이션 제작자입니다.<br>
+							<br>
+							제가 드루이드만 플레이해서 타 직업군에 대한 이해도가 낮습니다.<br>
+							누락된 위상이 있거나 이용하기 불편한 버그 or 빠진부분이 있다면<br>
+							아래 링크에 댓글로 남겨주시면 확인해보겠습니다.<br>
+							<a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글 링크</a>
+							<br>
+							<br>
+							* 인벤 이외에는 홍보성 글은 게시하지 않았습니다.<br>
+							좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
+						</div>
+						업데이트 내역 v1.2 (23.06.28)<br>
+						<ul>
+							<li>보석세팅 추가</li>
+							<li>UI 간단하기 보기 추가(세팅 이름 우측 아이콘)</li>
+						</ul>
+					</div>
+					<button class="button-expand-close" data-dismiss="modal">닫기</button>
+				</div>
+
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
 				<button type="button" class="button-zoom"><span class="for-a11y">확대/축소</span></button>
 			</div>
 			<div class="inven-equ">
 				<div class="equ hel">
 					<button id="hel" type="button" class="option icon-hel" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
 					<div class="gems">
 						<span class="sprite-gems gem-rub"></span>
 					</div>
+					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
 				</div>
 				<div class="equ che">
 					<button id="che" type="button" class="option icon-che" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
@@ -205,7 +212,7 @@
 
 
 			<div id="skillSelect" class="inven-skill-select">
-				<div class="box-layer">
+				<div class="skill-layer">
 					<div class="skill-head">
 						<button type="button" class="sort-by-all" aria-selected="true">전체</button>
 						<button type="button" class="sort-by-job" aria-selected="false">직업전용</button>
@@ -214,105 +221,6 @@
 					</div>
 					<div class="box-skill-select">
 						<div id="skillList" class="box-skill-lists"></div>
-
-						<div id="gems" class="box-skill-lists" style="display:none;">
-							<div class="box__skill-grid gem" data-job="gem">
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--rub"></span>
-									<span class="skill-detail">
-										<span class="skill-name">루비</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">제압 피해 증가</span>
-												<span class="def">최대 생명력 증가</span>
-												<span class="acc">화염 저항력 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--saf"></span>
-									<span class="skill-detail">
-										<span class="skill-name">사파이어</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 증가</span>
-												<span class="def">보강 상태에서 피해 감소</span>
-												<span class="acc">냉기 저항 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--top"></span>
-									<span class="skill-detail">
-										<span class="skill-name">토파즈</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">기본 기술 피해 증가</span>
-												<span class="def">제어 방해 효과를 받을 때 피해 감소</span>
-												<span class="acc">번개 저항 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--eme"></span>
-									<span class="skill-detail">
-										<span class="skill-name">에메랄드</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">취약한 적에게 주는 극대화 피해 증가</span>
-												<span class="def">가시 증가</span>
-												<span class="acc">독 저항 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--ame"></span>
-									<span class="skill-detail">
-										<span class="skill-name">자수정</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">지속 피해 증가</span>
-												<span class="def">지속 피해 감소</span>
-												<span class="acc">암흑 저항 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--dia"></span>
-									<span class="skill-detail">
-										<span class="skill-name">다이아몬드</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">궁극기 공격력 상승</span>
-												<span class="def">보호막 생성량 증가</span>
-												<span class="acc">모든 원소 저항 증가</span>
-											</p>
-										</span>
-									</span>
-								</button>
-								<button type="button" class="button-skill">
-									<span class="skill-icon icon-gem--sku"></span>
-									<span class="skill-detail">
-										<span class="skill-name">해골</span>
-										<span class="skill-more">
-											<p class="gem_effect">
-												<span class="wep">처치 시 생명력 회복</span>
-												<span class="def">받는 치유량 증가</span>
-												<span class="acc">방어도 상승</span>
-											</p>
-										</span>
-									</span>
-								</button>
-							</div>
-						</div>
-
-						<div id="board" class="box-skill-lists" style="display:none;">
-						</div>
 					</div>
 					<button type="button" class="button-close js-disabled">닫기</button>
 				</div>
@@ -333,12 +241,24 @@
 				<!-- End of CuterCounter Code -->
 			</p>
 		</div>
-		<!-- <p class="page-top hide"><a href="#" class="link-top">TOP</a></p> -->
+	</div>
+
+	<div id="popup">
+		<div id="layerCommon" class="box-layer dimmed-layer" role="alertdialog">
+			<div class="layer-container">
+				<div class="layer-body">
+					<div id="layerContent" class="layer-content"></div>
+					<div class="box-button">
+						<button class="button-submit" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
 <script src="../plugin/jquery-1.12.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<!-- <script src="../plugin/html2canvas-1.4.1.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
+<script src="../plugin/html2canvas-1.4.1.min.js"></script>
 <script src="d4.original.js"></script>
 </html>

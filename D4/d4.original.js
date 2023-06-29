@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 	$('#imageConvert').on('click', function () {
 		if ($('.inven .equ .option.selected').length > 0) {
