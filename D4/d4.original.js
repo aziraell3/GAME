@@ -17,7 +17,8 @@ $(document).ready(function(){
 			
 			}, 500)
 		} else {
-			alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
+			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
+			//alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
 		}
 	});
 })
@@ -342,7 +343,7 @@ var D4SkillDB = (function(){
 	method.init = function(){
 		//$('#previewImg, #download, #header, .box-title, [class*=inven-]:not(.inven-spirit)').hide();
 		method.setElement();
-		method.layerFunc();
+		method.skillLayer();
 		$.each(skills, function(index, skill){
 			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="skill-num'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
 		});
@@ -358,6 +359,7 @@ var D4SkillDB = (function(){
 			obj.body.toggleClass('zoom');
 			$(this).toggleClass('active');
 		})
+		method.layerFuncInit();
 		//method.externalLink();
 
 	};
@@ -381,9 +383,12 @@ var D4SkillDB = (function(){
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('.inven .equ .option.selected').length > 0) {
-					if (confirm("현재 선택된 위상이 있습니다.\n직업을 변경하면 선택했던 위상들이 초기화 됩니다. \n그래도 바꿀래영?")) {
-						jobChange($this);
-					}
+					//if (confirm("현재 선택된 위상이 있습니다.\n직업을 변경하면 선택했던 위상들이 초기화 됩니다. \n그래도 바꿀래영?")) {
+						D4SkillDB.layerFunc('layerCommon', true, '현재 선택된 위상이 있습니다.<br>직업을 변경하면 선택했던 위상들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+						$('.box-layer').on('click', '.button-submit', function(){
+							jobChange($this);
+						})
+					//}
 				} else {
 					jobChange($this);
 				}
@@ -455,7 +460,7 @@ var D4SkillDB = (function(){
 			$('html, body').animate({scrollTop: '0'}, 300);
 		})
 	};
-	method.layerFunc = function(){
+	method.skillLayer = function(){
 		//레이어 오픈
 		obj.skillOpenButton.on('click', function(){
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
@@ -636,13 +641,98 @@ var D4SkillDB = (function(){
 			})
 		})
 	};
+
+	method.layerFuncInit = function(){
+		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
+			e.preventDefault();
+			var $target = $(this).attr('aria-controls');
+			if ($('#'+$target).find('.dimmed').get(0) == undefined) {
+				$('#'+$target).append('<div class="dimmed" role="none"></div>');
+				method.layerFuncClose();
+			}
+			if ($('#'+$target).get(0) !== undefined) {
+				method.layerFunc($target, true);
+			}
+		})
+	};
+	method.layerFuncClose = function(){
+		$('.box-layer').on('click', '[data-dismiss=modal], .dimmed', function(e){
+			e.preventDefault();
+			var $target = $(this).parents('[role=dialog], [role=alertdialog]').attr('id');
+			method.layerFunc($target, false, ' ');
+		})
+	};
+	method.layerFunc = function($target, $boolean, $content, $confirm){
+		if ($('#'+$target).get(0) !== undefined) {
+			var $targetPopup = $('#'+$target);
+			var $cont = $('#layerContent');
+			var firstTabStop = 0;
+			var lastTabStop = 0;
+			if ($confirm) {
+				$targetPopup.attr('role', 'dialog');
+				$targetPopup.find('.box-button').prepend('<button class="button-cancel" data-dismiss="modal">취소</button>');
+			} else {
+				$targetPopup.attr('role', 'alertdialog');
+				$targetPopup.find('.box-button .button-cancel').remove();
+			}
+			if ($boolean) {
+				if (!$targetPopup.is('.active')) {
+					$targetPopup.addClass('active').attr({'aria-hidden':'false'});
+				}
+				var focusableElementsString = $targetPopup.find('a[href], area[href], input:not([disabled], [aria-hidden=true]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]');
+				var firstTabStop = focusableElementsString[0];
+				var lastTabStop = focusableElementsString[focusableElementsString.length - 1];
+				firstTabStop.focus();
+				if ($('#'+$target).find('.dimmed').get(0) == undefined) {
+					$('#'+$target).append('<div class="dimmed" role="none"></div>');
+					method.layerFuncClose();
+				}
+				$cont.html($content);
+				$targetPopup.bind('keydown', trapTabKey);
+			} else {
+				$cont.empty();
+				$targetPopup.unbind('keydown', trapTabKey, false);
+				$targetPopup.removeClass('active').attr({'aria-hidden':'true'});
+				if ($('[aria-haspopup=dialog][aria-controls='+$target+']').length > 0) {
+					$('[aria-haspopup=dialog][aria-controls='+$target+']').focus();
+				} else if($('.active').get(0) !== undefined) {
+					$('.active').find('[data-dismiss=modal]').focus();
+				} else {
+					$('#container').attr('tabindex', '0').focus();
+				}
+			}
+			method.fixedViewPort($boolean);
+			function trapTabKey(e) {
+				// Check for TAB key press
+				if (e.keyCode === 9) {
+					// SHIFT + TAB
+					if (e.shiftKey) {
+						if (document.activeElement === firstTabStop) {
+							e.preventDefault();
+							lastTabStop.focus();
+						}
+					// TAB
+					} else {
+						if (document.activeElement === lastTabStop) {
+							e.preventDefault();
+							firstTabStop.focus();
+						}
+					}
+				}
+				// ESCAPE
+				if (e.keyCode === 27) {
+					$targetPopup.find('[data-dismiss=modal], .dimmed').click();
+				}
+			}
+		}
+	};
 	return{
 		init : method.init,
 		skillDB : method.skillDB,
 		layerSort : method.layerSort,
-		layerFunc : method.layerFunc,
 		setSkill : method.setSkill,
-		externalLink : method.externalLink,
+		layerFunc : method.layerFunc,
+		//externalLink : method.externalLink,
 	}
 })();
 D4SkillDB.init();

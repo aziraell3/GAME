@@ -42,16 +42,17 @@
 	<div id="container" data-job-select="dru">
 		<div id="imageCanvas" class="inven">
 			<div class="box-title">
+				<button type="button" class="button-notice"><span class="for-a11y">공지사항</span></button>
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
 				<button type="button" class="button-zoom"><span class="for-a11y">확대/축소</span></button>
 			</div>
 			<div class="inven-equ">
 				<div class="equ hel">
 					<button id="hel" type="button" class="option icon-hel" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
-					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
 					<div class="gems">
 						<span class="sprite-gems gem-rub"></span>
 					</div>
+					<span class="text"><span class="detail"></span><span class="more"></span><span class="skill-parts"></span></span>
 				</div>
 				<div class="equ che">
 					<button id="che" type="button" class="option icon-che" title="위상을 선택해주세요." aria-controls="skillSelect"></button>
@@ -205,7 +206,7 @@
 
 
 			<div id="skillSelect" class="inven-skill-select">
-				<div class="box-layer">
+				<div class="skill-layer">
 					<div class="skill-head">
 						<button type="button" class="sort-by-all" aria-selected="true">전체</button>
 						<button type="button" class="sort-by-job" aria-selected="false">직업전용</button>
@@ -334,6 +335,19 @@
 			</p>
 		</div>
 		<!-- <p class="page-top hide"><a href="#" class="link-top">TOP</a></p> -->
+	</div>
+
+	<div id="popup">
+		<div id="layerCommon" class="box-layer dimmed-layer" role="alertdialog">
+			<div class="layer-container">
+				<div class="layer-body">
+					<div id="layerContent" class="layer-content"></div>
+					<div class="box-button">
+						<button class="button-submit" data-dismiss="modal">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
