@@ -377,7 +377,7 @@ body.gems #container .inven .equ[data-has=gem] .option{margin: 0 35px 0 0;}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
-body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem{display: none;}
+body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
 /* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
 body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{margin-left: 0;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ[data-has=gem] .option,
@@ -615,6 +615,8 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]::before{margin: -18px 0 0 -17px;}
 	body.gems #container .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
-	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
+	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0 !important;}
+	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
+	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
 
 }
