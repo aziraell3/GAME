@@ -18,7 +18,6 @@ $(document).ready(function(){
 			}, 500)
 		} else {
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
-			//alert('선택된 위상이 없습니다\n1개 이상의 위상 선택후 이미지를 생성해주세요.');
 		}
 	});
 })
@@ -36,19 +35,18 @@ var D4SkillDB = (function(){
 		{ver:'ori', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
 		{ver:'ori', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
 	];
-	var skills = [
+	var aspects = [
 		// job = com|dru|bab|soc|rog|nec
 		// parts = wep|sub|hel|che|glo|pan|boo|amu|rin
 		// type = leg|uni
 		// icon = off|def|uti|res|mob|emp
-		// name = skill name
-		// detail = skill detail
+		// name = aspect name
+		// detail = aspect detail
 			// off = amu wep glo rin
 			// def = sub hel che pan amu
 			// uti = sub hel che amu glo boo
 			// res = rin
 			// mob = amu boo
-			// uti = sub hel che amu glo boo
 		/* uniqe item */
 		{ver:'ori', job:'dru', icon:'wep', type:'uni', parts:'wep', name:'차오르는 철월',  detail:'<p class="unique_option"><span class="c_important">칼날 발톱</span>으로 적을 처치하면 <span class="c_random">1 – 2.5</span>초 동안 <span class="c_important"><span class="text-line">은폐</span></span>를 얻습니다. 공격으로 <span class="c_important"><span class="text-line">은폐</span></span> 상태를 깨면 <span class="c_number"><span class="text-line">2</span></span>초 동안 공격이 확정적으로 극대화 적중하는 매복을 부여합니다.</p>'},
 		{ver:'ori', job:'dru', icon:'wep', type:'uni', parts:'wep', name:'마녀의 큰지팡이',  detail:'<p class="unique_option"><span class="c_important">발톱</span>이 <span class="c_important">폭풍</span> 기술로 변하고 <span class="c_important">폭풍 강타</span>도 시전해 원래 피해의 <span class="c_number">120 – 150%</span>만큼 피해를 줍니다.</p>'},
@@ -341,14 +339,13 @@ var D4SkillDB = (function(){
 		//{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] 똥멍청이들의 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : 이거 분명히 나옵니다.<br>유저의 분노를 유발할 수 있습니다.</p>'},
 	];
 	method.init = function(){
-		//$('#previewImg, #download, #header, .box-title, [class*=inven-]:not(.inven-spirit)').hide();
 		method.setElement();
 		method.expandFunc();
-		method.skillLayer();
-		$.each(skills, function(index, skill){
-			obj.skillWrap.append('<div class="box__skill-grid '+skill.parts+'" data-job="'+skill.job+'" data-parts="'+skill.icon+'" data-ver="'+skill.ver+'"><button type="button" class="button-skill icon-'+skill.icon+'" aria-selected="false" id="SKN'+index+'"><span class="skill-detail"><span class="skill-name job-'+skill.job+' type-'+skill.type+'">'+skill.name+'</span><span class="skill-more">'+skill.detail+'</span><span class="skill-parts"></span></span></button></div>');
+		method.aspectLayer();
+		$.each(aspects, function(index, aspect){
+			obj.aspectWrap.append('<div class="box__aspect-grid '+aspect.parts+'" data-job="'+aspect.job+'" data-parts="'+aspect.icon+'" data-ver="'+aspect.ver+'"><button type="button" class="button-aspect icon-'+aspect.icon+'" aria-selected="false" id="SKN'+index+'"><span class="aspect-detail"><span class="aspect-name job-'+aspect.job+' type-'+aspect.type+'">'+aspect.name+'</span><span class="aspect-more">'+aspect.detail+'</span><span class="aspect-parts"></span></span></button></div>');
 		});
-		method.skillDB();
+		method.aspectDB();
 		method.spiritBoons();
 		method.jobSelect();
 		method.scrollFunc();
@@ -366,13 +363,15 @@ var D4SkillDB = (function(){
 	method.setElement = function(){
 		obj.body = $('body');
 		obj.wrapper = $('#container');
-		obj.skillWrap = obj.wrapper.find('#skillList');
+		obj.aspectWrap = obj.wrapper.find('#aspectList');
 		obj.boardWrap = obj.wrapper.find('#board');
 		obj.spiritBoons = obj.wrapper.find('#spirit');
-		obj.skillOpenButton = obj.wrapper.find('.inven .equ:not(.emp, .gems) .option');
-		obj.skillTarget = $('#'+obj.skillOpenButton.attr('data-target'));
-		obj.lastButton = obj.skillOpenButton.is('.latest');
-		obj.skillLayer = obj.wrapper.find('#skillSelect');
+		obj.aspectOpen = obj.wrapper.find('[aria-controls=aspectSelect]');
+		obj.aspectTarget = $('#'+obj.aspectOpen.attr('data-target'));
+		obj.aspectLayer = $('#'+obj.aspectOpen.attr('aria-controls'));
+		obj.gemOpen = obj.wrapper.find('[aria-controls=gemSelect]');
+		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
+		obj.lastButton = obj.aspectOpen.is('.latest');
 	};
 
 	method.jobSelect = function(){
@@ -402,28 +401,28 @@ var D4SkillDB = (function(){
 				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
 				$('#container .spirit-description').empty();
 				$('.description').slideDown(300);
-				method.skillreset();
+				method.aspectreset();
 			}
 		})
 		//레이어 필터링 버튼
-		$('.skill-head button').on('click', function(){
+		$('.aspect-head button').on('click', function(){
 			var $this = $(this).attr('class');
 			if ($(this).is('[aria-selected]')) {
 				$(this).attr('aria-selected', true).siblings('[aria-selected]').attr('aria-selected', false);
 			}
-			obj.skillWrap.attr('data-filter', $this);
+			obj.aspectWrap.attr('data-filter', $this);
 		})
 	};
 	method.gems = function(){
 		//보석
 		var $layerGems = $('.layer-gems');
-		$('.inven-gems .option').on('click', function(){
+		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
 			$('.inven-gems .option').removeClass('active');
 			$(this).addClass('active');
 			$layerGems.addClass('active').attr('data-gem-type', $type);
-			setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - 120 +'px'}, 300); }, 100)
+			setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - 110 +'px'}, 300); }, 100)
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
 						$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
@@ -455,13 +454,13 @@ var D4SkillDB = (function(){
 			$('html, body').animate({scrollTop: '0'}, 300);
 		})
 	};
-	method.skillLayer = function(){
+	method.aspectLayer = function(){
 		//레이어 오픈
-		obj.skillOpenButton.on('click', function(){
+		obj.aspectOpen.on('click', function(){
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
-			obj.skillOpenButton.removeClass('active latest');
-			$('.inven-skill-select').removeClass('active').removeAttr('data-sorting');
+			obj.aspectOpen.removeClass('active latest');
+			$('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
 			$layer.addClass('active').attr('data-sorting', $parts);
 			obj.wrapper.find('.inven').addClass('active');
 			$(this).addClass('active latest');
@@ -471,11 +470,11 @@ var D4SkillDB = (function(){
 			method.layerSort($parts);
 			if ($(this).is('.selected')) { //선택 강조
 				var $target = $('#'+$(this).attr('data-target'));
-				obj.skillLayer.find('.button-skill').removeClass('selected');
+				obj.aspectLayer.find('.button-aspect').removeClass('selected');
 				$target.addClass('selected').focus();
 			} else {
-				obj.skillLayer.find('.button-skill').removeClass('selected');
-				$layer.find('.box-skill-select').animate({scrollTop: '0'}, 300);
+				obj.aspectLayer.find('.button-aspect').removeClass('selected');
+				$layer.find('.box-aspect-select').animate({scrollTop: '0'}, 300);
 			}
 			method.fixedViewPort(true);
 		})
@@ -483,37 +482,37 @@ var D4SkillDB = (function(){
 		$('.js-disabled').on('click', function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
 			if ($(this).is('.sort-by-dis')) {
-				obj.skillWrap.find('#'+$target).attr('aria-selected', false);
+				obj.aspectWrap.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 			}
-			obj.skillOpenButton.removeClass('active');
-			$(this).parents('.inven-skill-select').removeClass('active').removeAttr('data-sorting');
+			obj.aspectOpen.removeClass('active');
+			$(this).parents('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
 			obj.wrapper.find('.inven').removeClass('active');
 			method.fixedViewPort(false);
 		})
 	};
-	method.skillreset = function(){
-		obj.skillOpenButton.removeClass('active selected latest').removeAttr('data-target');
-		obj.skillLayer.removeClass('active').removeAttr('data-sorting');
+	method.aspectreset = function(){
+		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
+		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
 		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
-		obj.skillButton.attr('aria-selected', false).removeAttr('data-select-parts');
-		obj.skillOpenButton.parent().removeAttr('data-parts data-ver'); //[data-*]
+		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
+		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
 
 		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
 		method.fixedViewPort(false);
 	}
 	method.layerSort = function($target){
 		obj.job = obj.wrapper.attr('data-job-select');
-		var $target = obj.skillLayer.attr('data-sorting');
-		obj.skillLayer.find('.box__skill-grid').addClass('hide').removeClass('show');
-		obj.skillLayer.find('.box__skill-grid.'+$target+'[data-job='+obj.job+'], .box__skill-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
+		var $target = obj.aspectLayer.attr('data-sorting');
+		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
+		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+obj.job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
 		
 	};
 	method.invCheck = function($id){
 		//동일 위상 선택시 다른영역 리셋
 		var $invSkill = [];
-		obj.skillOpenButton.each(function(index){
+		obj.aspectOpen.each(function(index){
 			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
 			$invSkill.push($target)
 			if ($id == $(this).attr('data-target')) {
@@ -527,46 +526,46 @@ var D4SkillDB = (function(){
 			$('#'+$invSkill[index]).attr({'aria-selected':true});
 		})
 	};
-	method.skillDB = function(){
+	method.aspectDB = function(){
 		//스킬 선택
-		obj.skillButton = obj.wrapper.find('.button-skill');
-		obj.skillButton.on('click', function(){
-			var $detail = $(this).find('.skill-name');
-			var $tooltip = $(this).find('.skill-more').html();
-			var $parts = $(this).find('.skill-parts').html();
+		obj.aspectButton = obj.wrapper.find('.button-aspect');
+		obj.aspectButton.on('click', function(){
+			var $detail = $(this).find('.aspect-name');
+			var $tooltip = $(this).find('.aspect-more').html();
+			var $parts = $(this).find('.aspect-parts').html();
 			var $detailButton = $('.inven .equ .option.active').siblings('.text').find('.detail');
 			var $target = $('.inven .equ .option.active').attr('data-target');
-			obj.skillID = $(this).attr('id');
+			obj.aspectID = $(this).attr('id');
 			obj.partsID = $('.inven .equ .option.active').attr('id');
 			$('.sort-by-all').trigger('click');
 			$('#'+$target).attr('aria-selected', false);
 			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')})
 			$('.inven .equ .option.active').parent().attr({'data-parts':$(this).parent().attr('data-parts'), 'data-ver':$(this).parent().attr('data-ver')})//[data-*]
 				 
-			obj.skillOpenButton.removeClass('active');
-			obj.skillLayer.removeClass('active');
+			obj.aspectOpen.removeClass('active');
+			obj.aspectLayer.removeClass('active');
 			obj.wrapper.find('.inven').removeClass('active');
 			$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			$(this).attr({'data-select-parts':obj.partsID});
-			($(this).find('.skill-name').hasClass('type-uni')) 
+			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
-			method.invCheck(obj.skillID);
+			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
 		})
 	};
 	method.setSkill = function($part, $target){
 		var $job = $('#container').attr('data-job-select');
 		var $inven = $('#'+$part);
-		var $skill = $('#'+$target);
-		var $skillName = $skill.find('.skill-name').html();
-		var $skillMore = $skill.find('.skill-more').html();
+		var $aspect = $('#'+$target);
+		var $aspectName = $aspect.find('.aspect-name').html();
+		var $aspectMore = $aspect.find('.aspect-more').html();
 		if (!$target == undefined || !$target == '') {
 			$inven.addClass('selected').attr('data-target', $target);
-			$inven.siblings().find('.detail').text($skillName);
-			$inven.siblings().find('.more').html($skillMore);
-			$skill.attr({'aria-selected':true, 'data-select':$target});
-			($skill.find('.skill-name').hasClass('type-uni')) 
+			$inven.siblings().find('.detail').text($aspectName);
+			$inven.siblings().find('.more').html($aspectMore);
+			$aspect.attr({'aria-selected':true, 'data-select':$target});
+			($aspect.find('.aspect-name').hasClass('type-uni')) 
 				? $inven.siblings().find('.detail').addClass('type-uni')
 				: $inven.siblings().find('.detail').removeClass('type-uni')
 		}
@@ -714,7 +713,7 @@ var D4SkillDB = (function(){
 	};
 	return{
 		init : method.init,
-		skillDB : method.skillDB,
+		aspectDB : method.aspectDB,
 		layerSort : method.layerSort,
 		setSkill : method.setSkill,
 		layerFunc : method.layerFunc,
