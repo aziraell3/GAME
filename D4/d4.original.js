@@ -424,7 +424,7 @@ var D4SkillDB = (function(){
 		//보석
 		$('.inven .equ').each( function(){
 			if ($(this).find('.gems').length > 0) {
-				$(this).parent().addClass('has-gem')
+				$(this).attr('data-has', 'gem')
 			}
 		})
 		var $layerGems = $('#gemSelect');

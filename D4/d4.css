@@ -366,22 +366,22 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .equ .gems{display: none;position: absolute;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
 #container .inven .inven-wep .equ + .equ:not(.gems) .gems,
 #container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
-#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 50%;}
+#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 6px;}
 #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid #666;background-color: rgba(0, 0, 0, 1);}
 #container .inven .equ .gems .each-gem.active{border: 1px solid gold;}
 #container .inven .equ .gems .each-gem + .each-gem{margin-top: 3px;}
 body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;padding: ;}
-body.gems #container .inven .has-gem .equ .option{margin: 0 35px 0 0;}
+body.gems #container .inven .equ[data-has=gem] .option{margin: 0 35px 0 0;}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem{display: none;}
 /* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
-body.gems #container .inven .inven-wep.has-gem .equ + .equ .option{margin-left: 0;}
-body.gems #container[data-job-select=rog] .inven .inven-wep.has-gem .equ + .equ .option,
-body.gems #container[data-job-select=bab] .inven .inven-wep.has-gem .equ + .equ .option{margin: 0 0 0 35px;}
+body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{margin-left: 0;}
+body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ[data-has=gem] .option,
+body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{margin: 0 0 0 35px;}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -593,10 +593,16 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 	#container .inven .layer-gems.layer-dimmed .layer-body{top: calc(50% + 40px);width: calc(100% - 20px);padding: 15px 10px 10px;}
 	#container .inven .layer-gems.layer-dimmed .layer-body::before{}
 
+	body.gems #container .inven .equ[data-has=gem] .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
 	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
-	body.gems #container .inven .equ .gems{top: 75px;left: 0;width: 70px;height: 30px;flex-direction: row;}
-	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 5px;}
-	body.gems #container .inven .has-gem .equ .option,
+	body.gems #container .inven .equ .gems{top: 60px;left: 0;width: 70px;height: 38px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
+	body.gems #container .inven .equ .gems .each-gem {width: 30px;height: 30px;border-radius: 50%;}
+	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 3px;}
+	body.gems #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid transparent;background-color: transparent;}
+	body.gems #container .inven *:not(.inven-gems) .gems .each-gem[data-gem-icon]::before{transform: scale(0.5);margin: -18px 0 0 -15px;}
+	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]{margin: 0;}
+	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]::before{margin: -18px 0 0 -17px;}
+	body.gems #container .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
 	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
 
