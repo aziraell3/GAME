@@ -381,6 +381,9 @@ var D4SkillDB = (function(){
 			$(this).attr('aria-checked', function (i, attr) {
 				return attr == 'true' ? 'false' : 'true'
 			});
+			if ($(this).is('.button-gem[aria-checked=false]')) {
+				$('html, body').animate({scrollTop: $('.inven-gems').offset().top}, 300);
+			}
 			obj.body.toggleClass($tag);
 		})
 	};
