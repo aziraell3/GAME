@@ -21,6 +21,9 @@ $(document).ready(function(){
 		}
 	});
 	$('.button-gem').trigger('click');
+	$('#container .inven .equ').each(function(){
+		//$(this).append('<em class="item-opt"><span class="opt">재사용 대기시간 감소</span><span class="opt">대지 극피</span><span class="opt">이동속도 증가</span><span class="opt">블라블라 블라블라 블라블라 블라블라</span></em>')
+	})
 })
 var D4SkillDB = (function(){
 	var method = {};

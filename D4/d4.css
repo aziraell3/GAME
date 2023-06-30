@@ -366,7 +366,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .equ .gems{display: none;position: absolute;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
 #container .inven .inven-wep .equ + .equ:not(.gems) .gems,
 #container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
-#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 6px;}
+#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 50%;}
 #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid #666;background-color: rgba(0, 0, 0, 1);}
 #container .inven .equ .gems .each-gem.active{border: 1px solid gold;}
 #container .inven .equ .gems .each-gem + .each-gem{margin-top: 3px;}
@@ -522,6 +522,17 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 .dimmed-layer.active .dimmed{display:block;z-index: 370;}
 .dimmed-layer.active .layer-container{display:block;z-index: 371;}
 
+#container .inven .equ .text .item-opt{display: none;margin: 10px 0;padding: 0 10px;width: 100%;font-style: normal;opacity: .7;}
+#container .inven .equ .text .item-opt .opt{display: block;font-size: 11px;font-family: dotum;line-height: 1.1;color: #ffc107;}
+#container .inven .equ .text .item-opt .opt::after,
+#container .inven .equ .text .item-opt .opt::before{content:'';display: inline-block;width: 4px;height: 4px;vertical-align: middle;margin: 0 5px;background-color: gold;transform: rotate(45deg);}
+#container .inven .inven-wep .equ .text .item-opt .opt::after,
+#container .inven .inven-equ .equ .text .item-opt .opt::after{content:none;}
+#container .inven .inven-acc .equ .text .item-opt .opt::before{content:none;}
+#container .inven .equ .text .item-opt .opt + .opt{margin-top: 3px;}
+#container .inven .equ .selected ~ .text .item-opt{display: inline-block;}
+
+
 /* mobile */
 @media only screen and (max-width:640px){
 	body.scroll-lock #header,
@@ -595,7 +606,7 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 
 	body.gems #container .inven .equ[data-has=gem] .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
 	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
-	body.gems #container .inven .equ .gems{top: 60px;left: 0;width: 70px;height: 38px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
+	body.gems #container .inven .equ .gems{top: 60px;left: 0;width: 70px;height: 40px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
 	body.gems #container .inven .equ .gems .each-gem {width: 30px;height: 30px;border-radius: 50%;}
 	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 3px;}
 	body.gems #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid transparent;background-color: transparent;}
