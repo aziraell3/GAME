@@ -60,10 +60,14 @@ body.scroll-lock #container .download{z-index: 1;}
 #container{padding-top: 130px;}
 #container .box-title{display: flex;justify-content: space-between;align-items: center;margin: 0 0 0;border-bottom: 1px solid rgba(255, 255, 255, .1);}
 #container .box-title .setting-title{width: 100%;margin: 0 10px;padding: 10px 0;border: 1px solid #1A1B1F;background-color: #1A1B1F;line-height: 1.5 !important;text-align: center;font-size: 20px;color: #bbb;font-weight: bold;}
-#container .box-title button{min-width: 52px;height: 52px;}
+#container .box-title button{min-width: 42px;height: 52px;}
 #container .box-title .button-zoom::before{content:'';display:block;width:30px;height:30px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M15 4V7C15 8.10457 15.8954 9 17 9H20M9 4V7C9 8.10457 8.10457 9 7 9H4M15 20V17C15 15.8954 15.8954 15 17 15H20M9 20V17C9 15.8954 8.10457 15 7 15H4" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
-#container .box-title .button-zoom.active::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;}
-#container .box-title .button-notice::before{content:'';display:block;width:30px;height:30px;margin:0 auto;background: url(images/notice.png) 50% 50% no-repeat;background-size:100% auto;opacity:.5}
+#container .box-title .button-zoom[aria-checked=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(100, 200, 40, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1;}
+#container .box-title .button-notice::before{content:'';display:block;width:30px;height:30px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd"><path d="m0 0h32v32h-32z"/><path d="m24.5017258 3.59832657c4.5723093 2.4016738 7.4982742 7.14261893 7.4982742 12.40167343 0 5.2644771-2.9320223 10.0095121-7.5116973 12.4087148-.489217.2562913-1.0935708.0674677-1.3498621-.4217493-.2562912-.4892169-.0674676-1.0935707.4217493-1.349862 3.9269919-2.0572748 6.4398101-6.1238911 6.4398101-10.6371035 0-4.5085687-2.5076208-8.57167026-6.4283097-10.63107074-.4889385-.25682221-.6771058-.86138067-.4202836-1.35031911.2568222-.48893843.8613807-.6771058 1.3503191-.42028358zm-4.8849106 1.1546799c.2490268.3420102.3831848.75417963.3831848 1.17724615v20.14360518c0 1.1045695-.8954305 2-2 2-.4224882 0-.8341246-.1337919-1.1758776-.3821892l-7.30495508-5.3094794c-.34175302-.2483972-.7533894-.3821892-1.17587763-.3821892h-5.34328969c-1.65685425 0-3-1.3431458-3-3v-6c0-1.6568542 1.34314575-3 3-3h5.3619145c.42306653 0 .83523595-.13415805 1.17724616-.38318477l7.28359314-5.30337784c.8929424-.65017509 2.1438863-.45337331 2.7940614.43956908zm-1.6168152 1.17724615-7.2835932 5.30337788c-.6156184.4482481-1.34489466.7104089-2.10142473.7583586l-.25306757.0080109h-5.3619145c-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211v6c0 .5128358.38604019.9355072.88337887.9932723l.11662113.0067277h5.34328969c.76047882 0 1.50337763.216743 2.14262851.6222547l.2091267.1421237 7.3049551 5.3094794zm5.9765905 3.34056312c1.9091867 1.69675786 3.0234095 4.12417636 3.0234095 6.72918426 0 2.6367351-1.1416674 5.090778-3.0912778 6.7888969-.4164603.3627386-1.0481258.3191886-1.4108644-.0972716-.3627386-.4164603-.3191886-1.0481258.0972716-1.4108644 1.5180176-1.3221997 2.4048706-3.2285126 2.4048706-5.2807609 0-2.027591-.865495-3.9131371-2.3520073-5.2342502-.4128146-.3668821-.4500502-.99895128-.0831681-1.41176593.3668822-.41281464.9989513-.45005028 1.4117659-.08316813z" fill="rgba(255, 255, 255, 1)" fill-rule="nonzero"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
+#container .box-title .button-notice[aria-expanded=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd"><path d="m0 0h32v32h-32z"/><path d="m24.5017258 3.59832657c4.5723093 2.4016738 7.4982742 7.14261893 7.4982742 12.40167343 0 5.2644771-2.9320223 10.0095121-7.5116973 12.4087148-.489217.2562913-1.0935708.0674677-1.3498621-.4217493-.2562912-.4892169-.0674676-1.0935707.4217493-1.349862 3.9269919-2.0572748 6.4398101-6.1238911 6.4398101-10.6371035 0-4.5085687-2.5076208-8.57167026-6.4283097-10.63107074-.4889385-.25682221-.6771058-.86138067-.4202836-1.35031911.2568222-.48893843.8613807-.6771058 1.3503191-.42028358zm-4.8849106 1.1546799c.2490268.3420102.3831848.75417963.3831848 1.17724615v20.14360518c0 1.1045695-.8954305 2-2 2-.4224882 0-.8341246-.1337919-1.1758776-.3821892l-7.30495508-5.3094794c-.34175302-.2483972-.7533894-.3821892-1.17587763-.3821892h-5.34328969c-1.65685425 0-3-1.3431458-3-3v-6c0-1.6568542 1.34314575-3 3-3h5.3619145c.42306653 0 .83523595-.13415805 1.17724616-.38318477l7.28359314-5.30337784c.8929424-.65017509 2.1438863-.45337331 2.7940614.43956908zm-1.6168152 1.17724615-7.2835932 5.30337788c-.6156184.4482481-1.34489466.7104089-2.10142473.7583586l-.25306757.0080109h-5.3619145c-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211v6c0 .5128358.38604019.9355072.88337887.9932723l.11662113.0067277h5.34328969c.76047882 0 1.50337763.216743 2.14262851.6222547l.2091267.1421237 7.3049551 5.3094794zm5.9765905 3.34056312c1.9091867 1.69675786 3.0234095 4.12417636 3.0234095 6.72918426 0 2.6367351-1.1416674 5.090778-3.0912778 6.7888969-.4164603.3627386-1.0481258.3191886-1.4108644-.0972716-.3627386-.4164603-.3191886-1.0481258.0972716-1.4108644 1.5180176-1.3221997 2.4048706-3.2285126 2.4048706-5.2807609 0-2.027591-.865495-3.9131371-2.3520073-5.2342502-.4128146-.3668821-.4500502-.99895128-.0831681-1.41176593.3668822-.41281464.9989513-.45005028 1.4117659-.08316813z" fill="rgba(255, 215, 0, 1)" fill-rule="nonzero"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1}
+#container .box-title .button-gem::before{content:'';display:block;width:26px;height:26px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(255, 255, 255, 1)" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M509.202,179.961l-89.051-133.57c-3.146-4.718-8.433-7.434-13.891-7.434H105.738c-5.561,0-10.802,2.801-13.891,7.434    L2.795,179.961c-4.204,6.3-3.624,14.732,1.456,20.403l239.312,267.139c6.605,7.374,18.242,7.401,24.872,0l239.312-267.139    C512.74,194.789,513.481,186.373,509.202,179.961z M382.168,72.348l-30.925,82.469l-61.852-82.469H382.168z M322.784,172.525    h-133.57l66.785-89.046L322.784,172.525z M222.605,72.348l-61.851,82.469l-30.926-82.469H222.605z M101.548,92.034l30.183,80.492    H47.884L101.548,92.034z M54.059,205.918h90.194l64.937,173.17L54.059,205.918z M255.998,408.809l-76.081-202.891H332.08    L255.998,408.809z M302.806,379.087l64.937-173.17h90.194L302.806,379.087z M380.264,172.526l30.185-80.492l53.664,80.492H380.264    z"/></g></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
+#container .box-title .button-gem[aria-checked=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(235, 80, 10, 1)" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M509.202,179.961l-89.051-133.57c-3.146-4.718-8.433-7.434-13.891-7.434H105.738c-5.561,0-10.802,2.801-13.891,7.434    L2.795,179.961c-4.204,6.3-3.624,14.732,1.456,20.403l239.312,267.139c6.605,7.374,18.242,7.401,24.872,0l239.312-267.139    C512.74,194.789,513.481,186.373,509.202,179.961z M382.168,72.348l-30.925,82.469l-61.852-82.469H382.168z M322.784,172.525    h-133.57l66.785-89.046L322.784,172.525z M222.605,72.348l-61.851,82.469l-30.926-82.469H222.605z M101.548,92.034l30.183,80.492    H47.884L101.548,92.034z M54.059,205.918h90.194l64.937,173.17L54.059,205.918z M255.998,408.809l-76.081-202.891H332.08    L255.998,408.809z M302.806,379.087l64.937-173.17h90.194L302.806,379.087z M380.264,172.526l30.185-80.492l53.664,80.492H380.264    z"/></g></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1}
+
 #container .box-notice{display: none;position: absolute;top: 0;left: 90px;right: 90px;z-index: 100;border: 1px solid #A38C0C;background-color: #1a1a1a;border-radius: 5px;}
 #container .box-notice .noti-text{position: relative;display: block;font-size: 18px;font-weight: bold;color: gold;padding-bottom: 20px;margin-bottom: 20px;border-bottom: 1px solid #444757;}
 #container .box-notice .noti-text > span{display: inline-block;vertical-align: bottom;opacity: .4;font-size: 12px;}
@@ -74,7 +78,6 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .box-notice ul{list-style:none;padding: 0;margin: 15px 0 0 0;opacity: .7;}
 #container .box-notice ul li{position: relative;margin: 3px 0;padding-left: 10px;}
 #container .box-notice ul li::before{content:'';position: absolute;top: 8px;left: 0;width: 2px;height: 2px;background-color: #fff;border-radius: 50%;}
-
 
 #container .inven{position: relative;width: 100%;background-color: #1A1B1F;z-index: 120;padding: 0 10px 50px;}
 #container .inven::after{content:'https://aziraell3.github.io/GAME/D4/';position: absolute;bottom: 25px;left: 0;width: 100%;text-align: center;font-size: 14px;color:#999}
@@ -98,10 +101,10 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
-#container .inven .equ .selected + .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;}
+#container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;}
 #container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
-#container .inven .equ .option.selected + .text .detail{font-weight: bold;color: #D87B1B;}
-#container .inven .equ .option.selected + .text .detail.type-uni{color: gold;}
+#container .inven .equ .option.selected ~ .text .detail{font-weight: bold;color: #D87B1B;}
+#container .inven .equ .option.selected ~ .text .detail.type-uni{color: gold;}
 #container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .9;} 
 #container .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
 #container .inven .inven-equ{float: left;}
@@ -115,7 +118,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-wep .equ + .equ,
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
-#container .inven .equ .text .detail::before{content:'';display: inline-block;margin-right: 10px;color: #fff;font-weight: 100;letter-spacing: -1px;}
+#container .inven .equ .text .detail::before{content:'';display: inline-block;color: #fff;font-weight: 100;letter-spacing: -1px;}
 #container .inven .equ.hel .text .detail::before{content:'투구';}
 #container .inven .equ.che .text .detail::before{content:'갑옷';}
 #container .inven .equ.glo .text .detail::before{content:'장갑';}
@@ -127,22 +130,24 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .equ.wep .text .detail::before{content:'주무기 (양손 2배)';}
 #container .inven .equ.wep + .equ.wep .text .detail::before,
 #container .inven .equ.sub .text .detail::before{content:'보조무기';}
-#container .inven .equ .selected + .text .detail::before,
-#container .inven .equ .active + .text .detail::before{}
+#container .inven .equ .selected ~ .text .detail::before,
+#container .inven .equ .active ~ .text .detail::before{margin-right: 10px;}
 
-#container .inven .inven-wep + .inven-wep{display: none;margin-top: -10px;}
+#container .inven .inven-wep + .inven-wep{display: none;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .option::before{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .text .detail::before{content:'양손 둔기 (2배)';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .detail::before{content:'양손 도검/도끼 (2배)';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'쌍수';}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'쌍수 2';}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ + .equ.wep .text .detail::before{content:'쌍수 1';}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .option::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
+#container[data-job-select=rog] .inven .inven-wep .equ.wep .text .detail::before{content:'활 (2배)';}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .detail::before{content:'단검 1';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검 2';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 54px auto;}
@@ -241,8 +246,9 @@ body.scroll-lock #container .download{z-index: 1;}
 
 #container .inven-spirit .spirit-grid .list-type .spirit-frame{display: flex;margin-left: 60px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:'';position: absolute;width: 1px;height: 50px;background-color: #fff;margin: 0 0 0 -6px;opacity: 0.1;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{border: 2px solid rgba(254, 214, 0, 0.6);opacity: 1;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{position: relative;width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{opacity: 1;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]::after{content:'';position: absolute;top: -4px;left: -4px;width: 54px;height: 54px;border: 2px solid rgba(254, 214, 0, 0.6);border-radius: 50%;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d1.button-spirit{background-position: -6px -135px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d2.button-spirit{background-position: -6px -191px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #d3.button-spirit{background-position: -6px -247px;}
@@ -327,41 +333,58 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .type-uni{color:gold;}
 #container .type-leg{color:#D87B1B;}
 #container [data-ver=dlc] .aspect-name,
-#container .inven .equ[data-ver=dlc] .option.selected + .text .detail{color: red;}
+#container .inven .equ[data-ver=dlc] .option.selected ~ .text .detail{color: red;}
 
 /* 보석 */
 #container .inven [data-gem-icon]{display: inline-block;width: 100%;height: 60px;overflow: hidden;}
 #container .inven [data-gem-icon]::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;margin: 0 auto 0;background: url(images/sprite-gems.png) 0 0 no-repeat;background-size: 100% auto;}
 #container .inven .layer-gems [data-gem-icon]::before{margin: 0;transform: scale(0.8);margin: -4px 0 0 -4px}
 #container .inven .gems [data-gem-icon]{display: inline-block;width: 30px;height: 30px;overflow: visible;}
-#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.45);margin: -16px 0 0 -15px}
+#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.45);margin: -16px 0 0 -16px}
+#container .inven *:not(.inven-gems) .gems [data-gem-icon=skl]::before{}
 #container .inven [data-gem-icon=rub]::before{background-position: 0 0;}
 #container .inven [data-gem-icon=sap]::before{background-position: 0 -60px;}
 #container .inven [data-gem-icon=toz]::before{background-position: 0 -120px;}
 #container .inven [data-gem-icon=eme]::before{background-position: 0 -180px;}
 #container .inven [data-gem-icon=ame]::before{background-position: 0 -240px;}
 #container .inven [data-gem-icon=dia]::before{background-position: 0 -300px;}
-#container .inven [data-gem-icon=skl]::before{background-position: 0 -360px;}
+#container .inven [data-gem-icon=skl]::before{background-position: 0 -358px;}
 #container .inven [data-gem-icon=emp]::before{background-position: 0 -420px;}
-#container .inven-gems{position: relative;margin-top: 10px;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
-#container .inven-gems::before{content:'보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
+#container .inven-gems{position: relative;margin-top: 30px;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
+#container .inven-gems::before{content:'통합 보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
 #container .inven-gems .gems{margin: 0 5px;}
 #container .inven-gems .equ.gems .option[data-gem-type]{}
 #container .inven-gems .equ.gems .option[data-gem-type]::after{content:'';position: absolute;top: inherit;bottom: -25px;left: 0;margin: 0;width: 100%;text-align: center;font-size: 13px;line-height: 1.2;letter-spacing: -0.5px;}
 #container .inven-gems .equ.gems .option[data-gem-type=wep]::after{content:'무기 보석';color: #D87B1B;}
 #container .inven-gems .equ.gems .option[data-gem-type=def]::after{content:'방어구 보석';color: #38aced;}
 #container .inven-gems .equ.gems .option[data-gem-type=acc]::after{content:'장신구 보석';color: #a4a0f0;}
-body.gem-view #container .inven .equ:not(.gems) .option{margin: 0 35px 0 0;}
-body.gem-view #container .inven .inven-wep .equ + .equ:not(.gems) .option,
-body.gem-view #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
 #container .inven .equ .gems{display: none;position: absolute;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
-body.gem-view #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
 #container .inven .inven-wep .equ + .equ:not(.gems) .gems,
 #container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
-#container .inven .equ .gems .sprite-gems{display: block;width: 30px;height: 30px;border: 1px solid #333;border-radius: 6px;}
-#container .inven .equ .gems .sprite-gems + .sprite-gems{margin-top: 5px;}
+#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 50%;}
+#container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid #666;background-color: rgba(0, 0, 0, 1);}
+#container .inven .equ .gems .each-gem.active{border: 1px solid gold;}
+#container .inven .equ .gems .each-gem + .each-gem{margin-top: 3px;}
+body.gems #container .inven-gems{margin: 0;padding: 0;}
+body.gems #container .inven-gems .equ.gems,
+body.gems #container .inven-gems::before{display: none;margin: 0;padding: ;}
+body.gems #container .inven .equ.has-gem .option{margin: 0 35px 0 0;}
+body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
+body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
+body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
+body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem{display: none;}
+/* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
+body.gems #container .inven .inven-wep .equ + .equ.has-gem .option{margin-left: 0;}
+body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ.has-gem .option,
+body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ.has-gem .option{margin: 0 0 0 35px;}
+body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
+body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
+body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
+
+
 #container .inven .layer-gems{display: none;position: absolute;top: 110px;min-width:460px;margin: 0;border: 1px solid #333;padding: 10px 15px 10px 10px;background-color: #111;border-radius: 10px;z-index: 200;box-shadow: -1px -1px 29px 0px rgba(255, 255, 255,0.3);}
 #container .inven .layer-gems.active{display: block;}
+#container .inven .layer-gems .gems-list{margin-top: 10px;}
 #container .inven .layer-gems .gems-grid + .gems-grid{margin-top: 5px;padding-top: 5px;border-top: 1px solid #2a2a2a;}
 #container .inven .layer-gems .gems-grid .button-gem{display: flex;flex-direction: row;align-items: center;}
 #container .inven .layer-gems .gems-grid .button-gem .detail{display: block;}
@@ -376,13 +399,37 @@ body.gem-view #container .inven .equ .gems{display: flex;flex-direction: column;
 #container .inven .layer-gems[data-gem-type=wep] .gems-grid .button-gem .detail .gem_effect .wep,
 #container .inven .layer-gems[data-gem-type=def] .gems-grid .button-gem .detail .gem_effect .def,
 #container .inven .layer-gems[data-gem-type=acc] .gems-grid .button-gem .detail .gem_effect .acc{opacity: 1;font-size: 13px;}
-#container .inven .layer-gems.pos-bottom{top: inherit;bottom: 155px;}
-#container .inven .layer-gems.pos-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -22px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
+#container .inven .layer-gems.layer-bottom{top: inherit;bottom: 155px;}
+#container .inven .layer-gems.layer-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -22px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
 
-#container .inven .layer-gems.dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;z-index: 10;}
-#container .inven .layer-gems.dimmed .gems-list{position: relative;z-index: 200;}
-#container .inven .layer-gems.pos-bottom .gems-list{margin-bottom: 10px;}
-#container .inven .layer-gems.pos-bottom .button-close{z-index: 200;}
+#container .inven .layer-gems.layer-dimmed{position: fixed;top: 0;bottom: 0;left: 0;right: 0;max-width: 100%;background-color: transparent;}
+#container .inven .layer-gems.layer-dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: #000;opacity: .5;z-index: 10;}
+#container .inven .layer-gems.layer-dimmed .layer-body{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    right: initial;
+    bottom: initial;
+    min-width: 300px;
+	width: 90%;
+	max-width: 640px;
+    min-height: min-content;
+    height: auto;
+    max-height: calc(100% - 100px);
+	padding: 15px;
+    border: 1px solid #F3F3F3;
+	overflow-y: auto;
+	background-color: #111;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+	z-index: 200;
+}
+#container .inven .layer-gems.layer-dimmed .layer-body::before{content:'💎 장착할 보석을 선택해주세요.';display: block;padding-bottom: 15px;border-bottom: 1px solid #444757;font-size: 16px;color: #fff;font-weight: bold;text-align: center;}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=wep] .layer-body::before{content:'💎 무기 슬롯에 장착할 보석을 선택해주세요.';color: #D87B1B;}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=def] .layer-body::before{content:'💎 방어구 슬롯에 장착할 보석을 선택해주세요.';color: #38aced;}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=acc] .layer-body::before{content:'💎 장신구 슬롯에 장착할 보석을 선택해주세요.';color: #a4a0f0;}
+#container .inven .layer-gems.layer-bottom .gems-list{margin-bottom: 10px;}
+#container .inven .layer-gems.layer-bottom .button-close{z-index: 200;}
 
 
 #container .unique_option,
@@ -442,6 +489,7 @@ body.zoom #container .equ[data-parts] .aspect-parts::before,
 body.zoom #container .inven .equ .text .more{display: none;}
 body.zoom #container .inven-spirit .spirit-grid{display: block;}
 body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
+body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 
 /* box-layer */
 .box-layer{display:none}
@@ -454,18 +502,29 @@ body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 .layer-container .layer-body .button__basic,
 .layer-container .layer-body .button__submit{height: 44px;padding: 12px 16px 10px;}
 .layer-container .layer-content{padding: 40px 10px;text-align: center;font-size: 16px;line-height: 1.6;color: #aaa;}
-.layer-container .box-button{display:flex;justify-content: space-around;margin-top: 15px;padding-top: 15px;border-top: 1px solid #333;}
-.layer-container .box-button button{font-size: 18px;color: #eee;}
+.layer-container .layer-content strong{color: #fff;font-size: 16px;}
+.layer-container .box-button{display:flex;justify-content: space-around;margin-top: 15px;border-top: 1px solid #333;margin-bottom: -15px}
+.layer-container .box-button button{position: relative;font-size: 18px;color: #eee;width: 100%;padding: 15px 0;}
+.layer-container .box-button button + button::before{content:'';position: absolute;left: -2px;width: 1px;height: 23px;background-color: #fff;opacity: 0.2;}
 .layer-container .box-button .button-cancel{}
 .layer-container .box-button .button-submit{color: #38aced;font-weight: bold;}
 .box-layer[role=dialog] .box-button{}
 
 .dimmed-layer .dimmed{content:'';display:none;position:fixed;top:0;left:0;z-index:350;width:100%;height:100%;background:rgba(0, 0, 0, 0.5)}
 .dimmed-layer{overflow:hidden;display:none;position:fixed;left:0;top:0;right:0;bottom:0;z-index:371;width:100%;box-sizing:border-box;background-color:transparent;}
-.dimmed-layer .layer-container{display: none;position: absolute;top: 50%;left: 50%;right: initial;bottom: initial;width:300px;min-height: min-content;margin-top: 0;padding:0;height:auto;border:1px solid #666;transform: translate(-50%, -50%);border-radius:10px;}
+.dimmed-layer .layer-container{display: none;position: absolute;top: 50%;left: 50%;right: initial;bottom: initial;max-width: 600px;min-height: min-content;margin-top: 0;padding:0;height:auto;border:1px solid #666;transform: translate(-50%, -50%);border-radius:10px;}
 .dimmed-layer .layer-container .layer-body{margin-top: 0;height: auto;}
 .dimmed-layer.active .dimmed{display:block;z-index: 370;}
 .dimmed-layer.active .layer-container{display:block;z-index: 371;}
+
+
+
+	body.gems.gem-bottom #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
+	body.gems.gem-bottom #container .inven .equ .gems{top: 75px;left: 0;width: 70px;height: 30px;flex-direction: row;}
+	body.gems.gem-bottom #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 5px;}
+	body.gems.gem-bottom #container .inven .equ.has-gem .option,
+	body.gems.gem-bottom #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
+	body.gems.gem-bottom #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
 
 /* mobile */
 @media only screen and (max-width:640px){
@@ -496,7 +555,7 @@ body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 	#container .inven .equ{margin-top: 10px;}
 	#container .inven .equ.emp{display: none;}
 	#container .inven .equ .text{width: 100%;}
-	#container .inven .equ .text .detail{font-size: 16px;color: gold;font-weight: bold;}
+	#container .inven .equ .text .detail{font-size: 16px;}
 	#container .inven .equ .text .more{margin-top: 3px;}
 	#container .inven .equ .text .more *{font-size: 14px;line-height: 1.3;}
 	#container .inven .equ:not(.gems) .option.active::after{display: none;}
@@ -529,6 +588,20 @@ body.zoom #container .inven-spirit .spirit-description{padding-left: 110px;}
 
 	#container .inven-gems{padding: 20px 0;}
 	#container .inven .layer-gems{max-width: 90%;min-width: auto;}
-	#container .inven .layer-gems.pos-bottom{}
+	#container .inven .layer-gems.layer-bottom{}
+
+	#container .box-title button{min-width:40px;}
+	/* #container .inven .equ .gems .each-gem{width: 24px;height: 24px;}
+	#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.4);margin: -20px 0 0 -19px;} */
+
+	#container .inven .layer-gems.layer-dimmed .layer-body{top: calc(50% + 40px);width: calc(100% - 20px);padding: 15px 10px 10px;}
+	#container .inven .layer-gems.layer-dimmed .layer-body::before{}
+
+	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
+	body.gems #container .inven .equ .gems{top: 75px;left: 0;width: 70px;height: 30px;flex-direction: row;}
+	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 5px;}
+	body.gems #container .inven .equ.has-gem .option,
+	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
+	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
 
 }
