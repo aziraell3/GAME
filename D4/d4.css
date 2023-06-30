@@ -152,7 +152,12 @@ body.scroll-lock #container .download{z-index: 1;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'단검 2';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .detail::before{content:'토템';}
-#container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .detail::before{content:'방패';}
+
+#container[data-job-select=nec] .inven .inven-wep + .inven-wep{display: flex;}
+#container[data-job-select=nec] .inven .inven-wep .equ.wep .option::before{}
+#container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
+#container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .detail::before{content:'방패 세팅';}
+#container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .detail::before{content:'보조무기 세팅';}
 
 #container .inven .equ.emp{opacity: .3;}
 #container .inven .equ.emp .text{display: none;}
@@ -368,15 +373,15 @@ body.scroll-lock #container .download{z-index: 1;}
 body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;padding: ;}
-body.gems #container .inven .equ.has-gem .option{margin: 0 35px 0 0;}
+body.gems #container .inven .has-gem .equ .option{margin: 0 35px 0 0;}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem{display: none;}
 /* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
-body.gems #container .inven .inven-wep .equ + .equ.has-gem .option{margin-left: 0;}
-body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ.has-gem .option,
-body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ.has-gem .option{margin: 0 0 0 35px;}
+body.gems #container .inven .inven-wep.has-gem .equ + .equ .option{margin-left: 0;}
+body.gems #container[data-job-select=rog] .inven .inven-wep.has-gem .equ + .equ .option,
+body.gems #container[data-job-select=bab] .inven .inven-wep.has-gem .equ + .equ .option{margin: 0 0 0 35px;}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -517,15 +522,6 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 .dimmed-layer.active .dimmed{display:block;z-index: 370;}
 .dimmed-layer.active .layer-container{display:block;z-index: 371;}
 
-
-
-	body.gems.gem-bottom #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
-	body.gems.gem-bottom #container .inven .equ .gems{top: 75px;left: 0;width: 70px;height: 30px;flex-direction: row;}
-	body.gems.gem-bottom #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 5px;}
-	body.gems.gem-bottom #container .inven .equ.has-gem .option,
-	body.gems.gem-bottom #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
-	body.gems.gem-bottom #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
-
 /* mobile */
 @media only screen and (max-width:640px){
 	body.scroll-lock #header,
@@ -600,7 +596,7 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
 	body.gems #container .inven .equ .gems{top: 75px;left: 0;width: 70px;height: 30px;flex-direction: row;}
 	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 5px;}
-	body.gems #container .inven .equ.has-gem .option,
+	body.gems #container .inven .has-gem .equ .option,
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
 	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0;}
 

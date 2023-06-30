@@ -424,7 +424,7 @@ var D4SkillDB = (function(){
 		//보석
 		$('.inven .equ').each( function(){
 			if ($(this).find('.gems').length > 0) {
-				$(this).addClass('has-gem')
+				$(this).parent().addClass('has-gem')
 			}
 		})
 		var $layerGems = $('#gemSelect');
@@ -471,7 +471,7 @@ var D4SkillDB = (function(){
 		});
 	};
 	method.aspectLayer = function(){
-		//레이어 오픈
+		//위상 레이어 오픈
 		obj.aspectOpen.on('click', function(){
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
@@ -670,7 +670,7 @@ var D4SkillDB = (function(){
 			var lastTabStop = 0;
 			if ($confirm) {
 				$targetPopup.attr('role', 'dialog');
-				$targetPopup.find('.box-button').prepend('<button class="button-cancel" data-dismiss="modal">취소</button>');
+				$targetPopup.find('.box-button').append('<button class="button-cancel" data-dismiss="modal">취소</button>');
 			} else {
 				$targetPopup.attr('role', 'alertdialog');
 				$targetPopup.find('.box-button .button-cancel').remove();
