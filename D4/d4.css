@@ -274,8 +274,8 @@ body.scroll-lock #container .download{z-index: 1;}
 /* #container .inven-spirit .spirit-description{margin-top: -5px;padding-left: 90px;} */
 #container .inven-spirit .spirit-grid{display:flex;align-items: center;}
 #container .inven-spirit .spirit-description{padding-left: 10px;}
-#container .inven-spirit .spirit-description .spirit-selected{margin: 0;padding: 2px 10px 4px;color: #A6A09F;text-align: left;background-color: rgba(0, 0, 0, 0.5);border: 1px solid #444757;border-radius: 8px;opacity: .7;}
-#container .inven-spirit .spirit-description .spirit-selected + .spirit-selected{margin-top: 2px;}
+#container .inven-spirit .spirit-description .spirit-selected{margin: 0;padding: 2px 10px 4px;color: #A6A09F;text-align: left;opacity: .8;/*background-color: rgba(0, 0, 0, 0.5);border: 1px solid #444757;border-radius: 8px;*/}
+#container .inven-spirit .spirit-description .spirit-selected + .spirit-selected{margin-top: 5px;padding-top: 5px;border-top: 1px solid #444;}
 #container .inven-spirit .spirit-description .spirit-selected *{font-size: 12px;line-height: 12px;letter-spacing: -0.5px;}
 #container .inven-spirit .spirit-description .spirit-selected .text-name{font-weight: bold;color: #38aced;}
 #container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' : ';color: #38aced;}
