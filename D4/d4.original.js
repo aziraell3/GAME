@@ -580,7 +580,7 @@ var D4SkillDB = (function(){
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
-			if ($('#container:not([data-job-select=bab], [data-job-select=rog]) #wep2. #container:not([data-job-select=bab], [data-job-select=rog]) #wep4').is('.selected')) {
+			if ($('#container:not([data-job-select=bab], [data-job-select=rog]) #wep2, #container:not([data-job-select=bab], [data-job-select=rog]) #wep4').is('.selected')) {
 				$('#wep1').next('.gems').addClass('single-gem');
 				$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
 			}
