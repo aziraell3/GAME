@@ -357,7 +357,7 @@ var D4SkillDB = (function(){
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
-		method.gems();
+		method.setGems();
 		method.layerFuncInit();
 
 	};
@@ -426,7 +426,7 @@ var D4SkillDB = (function(){
 			obj.aspectWrap.attr('data-filter', $this);
 		})
 	};
-	method.gems = function(){
+	method.setGems = function(){
 		//보석
 		$('.inven .equ').each( function(){
 			if ($(this).find('.gems').length > 0) {
@@ -588,7 +588,7 @@ var D4SkillDB = (function(){
 			method.fixedViewPort(false);
 		})
 	};
-	method.setSkill = function($part, $target){
+	method.setAspect = function($part, $target){
 		var $job = $('#container').attr('data-job-select');
 		var $inven = $('#'+$part);
 		var $aspect = $('#'+$target);
@@ -749,7 +749,7 @@ var D4SkillDB = (function(){
 		init : method.init,
 		aspectDB : method.aspectDB,
 		layerSort : method.layerSort,
-		setSkill : method.setSkill,
+		setAspect : method.setAspect,
 		layerFunc : method.layerFunc,
 	}
 })();
