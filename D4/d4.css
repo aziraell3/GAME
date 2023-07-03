@@ -380,7 +380,7 @@ body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 35px 0 0; */
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{/* margin: 0 0 0 35px; */}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;padding: 0 3px;box-sizing: content-box;}
-body.gems #container:not([data-job-select=bab]) .inven .equ .gems.hide{display: none;}
+body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{display: none;}
 body.gems #container .inven .equ .gems + .text{margin: 0 5px;}
 body.gems #container .inven .inven-wep .equ .gems.single-gem .each-gem + .each-gem,
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -609,19 +609,23 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 
 	#container .inven .layer-gems.layer-dimmed .layer-body{top: calc(50% + 40px);width: calc(100% - 20px);padding: 15px 10px 10px;}
 	#container .inven .layer-gems.layer-dimmed .layer-body::before{}
-
-	body.gems #container .inven .equ[data-has=gem] .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
+	
+	body.gems #container[data-job-select=rog] .inven .equ[data-has=gem] .option,
+	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
+	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
 	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
-	body.gems #container .inven .equ .gems{position: absolute;top: 60px;left: 0;width: 70px;height: 38px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
+	body.gems #container .inven .equ .gems{position: absolute;top: 60px;left: 0;width: 70px;height: 38px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px;box-sizing: border-box;}
 	body.gems #container .inven .equ .gems .each-gem {width: 30px;height: 30px;border-radius: 50%;}
 	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 0;}
 	body.gems #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid transparent;background-color: transparent;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem[data-gem-icon]::before{transform: scale(0.5);margin: -18px 0 0 -15px;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]{margin: 0;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]::before{margin: -18px 0 0 -17px;}
-	body.gems #container .inven .equ[data-has=gem] .option,
-	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, 
-	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0 !important;}
+	body.gems #container[data-job-select=rog] .inven .equ[data-has=gem] .option,
+	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
+	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option,
+	body.gems #container .inven .inven-wep .equ + .equ:not(.gems, [data-wep-type=sub]) .option, 
+	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 35px 0 !important;}
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
 	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
 	#container .inven *:not(.inven-gems) .each-gem::before{background-position: 2px 50%;}

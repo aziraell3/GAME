@@ -508,9 +508,10 @@ var D4SkillDB = (function(){
 				obj.aspectWrap.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
-				if ($('.inven .equ .option.latest').is('#wep2')) {
-					console.log('보조무기 해제했네?')
+				if ($('.inven .equ .option.latest').is('#wep2, #wep4')) {
 					$('#wep1').next('.gems').removeClass('single-gem');
+					$('#container:not([data-job-select=bab]) #wep2, #container:not([data-job-select=bab]) #wep4').parents('.equ').attr('data-wep-type', 'sub');
+					//$('#container:not([data-job-select=bab]) #wep2, #container:not([data-job-select=bab]) #wep4').next('.gems').addClass('hide');
 				}
 			}
 			obj.aspectOpen.removeClass('active');
@@ -529,7 +530,8 @@ var D4SkillDB = (function(){
 		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
 		$('.gems').removeClass('single-gem'); //주무기 보석 칸 리셋
-		$('#wep2, #wep4').next('.gems').removeClass('hide');
+		//$('#wep2, #wep4').next('.gems').removeClass('hide');
+		$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -578,9 +580,9 @@ var D4SkillDB = (function(){
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
-			if ($('body:not([data-job-select=bab]) #wep2').is('.selected')) {
+			if ($('#container:not([data-job-select=bab], [data-job-select=rog]) #wep2. #container:not([data-job-select=bab], [data-job-select=rog]) #wep4').is('.selected')) {
 				$('#wep1').next('.gems').addClass('single-gem');
-				$('#wep2, #wep4').next('.gems').removeClass('hide');
+				$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
 			}
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
