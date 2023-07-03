@@ -324,7 +324,7 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'기대하는 자',  detail:'<p class="aspect_effect">적을 <span class="c_important">기본</span> 기술로 공격하면 다음으로 시전하는 <span class="c_important">핵심</span> 기술이 주는 피해가 <span class="c_random">5%</span>만큼, 최대 <span class="c_number">30%</span>까지 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'바늘불꽃',  detail:'<p class="aspect_effect">가시 피해를 줄 때 <span class="c_random">20%</span> 확률로 주위 모든 적에게 피해를 줍니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'천벌',  detail:'<p class="aspect_effect">부상당한 적을 상대로 극대화 확률이 <span class="c_random">13-25%</span> 증가합니다. 자신이 <span class="c_important"><span class="text-line">건강</span></span> 상태일 때 군중 제어 효과의 지속시간이 <span class="c_random">25-50%</span> 증가합니다.</p>'},
-		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'가속하는',  detail:'<p class="aspect_effect"><span class="c_important">핵심</span> 기술이 극대화로 적중하면 공격 속도가 <span class="c_number">3</span>초 동안 <span class="c_random">20-40%</span> 증가합니다.</p>'},
+		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'가속하는',  detail:'<p class="aspect_effect"><span class="c_important">핵심</span> 기술이 극대화로 적중하면 공격 속도가 <span class="c_number">3</span>초 동안 <span class="c_random">15-25%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'불복',  detail:'<p class="aspect_effect">어떤 형태로든 피해를 주면 방어도가 <span class="c_number">4</span>초 동안 <span class="c_random">0.25%</span> 증가합니다. 이 효과는 최대 <span class="c_random">25.00%</span>까지 중첩됩니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'위세',  detail:'<p class="aspect_effect"><span class="c_important">기본</span> 기술이 <span class="c_random">2.0</span>초 동안 <span class="c_number">20%</span>의 피해 감소를 부여합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'차폐하는 방벽',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">보호막</span></span>이 있을 때 <span class="_c_random">7%</span> 확률로 원거리에 있는 적이 주는 직접 피해를 무시합니다.</p>'},
@@ -442,15 +442,16 @@ var D4SkillDB = (function(){
 			$layerGems.addClass('active').attr('data-gem-type', $type);
 			if (!$(this).is('.each-gem')) {
 				$layerGems.removeClass('layer-dimmed').addClass('layer-bottom');
-				method.fixedViewPort(true);
+				method.fixedViewPort(false);
 			} else {
 				$layerGems.addClass('layer-dimmed').removeClass('layer-bottom');
 				setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - obj.headerH +'px'}, 300); }, 100)
+				method.fixedViewPort(true);
 			}
 			
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
-						$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
+					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
 				});
 			}
 		})
@@ -507,6 +508,10 @@ var D4SkillDB = (function(){
 				obj.aspectWrap.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
+				if ($('.inven .equ .option.latest').is('#wep2')) {
+					console.log('보조무기 해제했네?')
+					$('#wep1').next('.gems').removeClass('single-gem');
+				}
 			}
 			obj.aspectOpen.removeClass('active');
 			$(this).parents('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
@@ -523,6 +528,8 @@ var D4SkillDB = (function(){
 		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
 		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
+		$('.gems').removeClass('single-gem'); //주무기 보석 칸 리셋
+		$('#wep2, #wep4').next('.gems').removeClass('hide');
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -571,6 +578,10 @@ var D4SkillDB = (function(){
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
+			if ($('body:not([data-job-select=bab]) #wep2').is('.selected')) {
+				$('#wep1').next('.gems').addClass('single-gem');
+				$('#wep2, #wep4').next('.gems').removeClass('hide');
+			}
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
 		})

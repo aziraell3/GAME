@@ -102,8 +102,8 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-wep .equ + .equ .text,
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
 #container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;}
-#container .inven .equ .text .detail{display: block;color: #fff;font-size: 15px;}
-#container .inven .equ .option.selected ~ .text .detail{font-weight: bold;color: #D87B1B;}
+#container .inven .equ .text .detail{position: relative;top: 4px;display: block;color: #fff;font-size: 15px;}
+#container .inven .equ .option.selected ~ .text .detail{top: 0;font-weight: bold;color: #D87B1B;}
 #container .inven .equ .option.selected ~ .text .detail.type-uni{color: gold;}
 #container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .9;} 
 #container .inven .equ .text .more *{font-size: 13px;line-height: 1.2;font-weight: 200;}
@@ -341,20 +341,23 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .equ[data-ver=dlc] .option.selected ~ .text .detail{color: red;}
 
 /* 보석 */
-#container .inven [data-gem-icon]{display: inline-block;width: 100%;height: 60px;overflow: hidden;}
-#container .inven [data-gem-icon]::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;margin: 0 auto 0;background: url(images/sprite-gems.png) 0 0 no-repeat;background-size: 100% auto;}
-#container .inven .layer-gems [data-gem-icon]::before{margin: 0;transform: scale(0.8);margin: -4px 0 0 -4px}
+#container .inven .layer-gems [data-gem-icon]::before{margin: 0;transform: scale(0.8);margin: -4px 0 0 -4px;}
 #container .inven .gems [data-gem-icon]{display: inline-block;width: 30px;height: 30px;overflow: visible;}
-#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.45);margin: -16px 0 0 -16px}
-#container .inven *:not(.inven-gems) .gems [data-gem-icon=skl]::before{}
-#container .inven [data-gem-icon=rub]::before{background-position: 0 0;}
-#container .inven [data-gem-icon=sap]::before{background-position: 0 -60px;}
-#container .inven [data-gem-icon=toz]::before{background-position: 0 -120px;}
-#container .inven [data-gem-icon=eme]::before{background-position: 0 -180px;}
-#container .inven [data-gem-icon=ame]::before{background-position: 0 -240px;}
-#container .inven [data-gem-icon=dia]::before{background-position: 0 -300px;}
-#container .inven [data-gem-icon=skl]::before{background-position: 0 -358px;}
-#container .inven [data-gem-icon=emp]::before{background-position: 0 -420px;}
+/* #container .inven *:not(.inven-gems) .each-gem::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M4 15V18C4 19.1046 4.89543 20 6 20H9M15.2173 20H18C19.1046 20 20 19.1046 20 18V15M20 9V6C20 4.89543 19.1046 4 18 4H15M4 9V6C4 4.89543 4.89543 4 6 4H9" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');background-position: 50% 2px;background-repeat: no-repeat;background-size:100% auto;opacity:.3;transform: scale(0.5) translate(-30px, -30px);} */
+#container .inven *:not(.inven-gems) .each-gem::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;background-image: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5.994 2c-1.258.015-2.179-.03-2.932.385a1.88 1.88 0 0 0-.837.998C2.06 3.82 2 4.343 2 5v2h1V5c0-.592.063-1.006.16-1.266.098-.26.201-.371.385-.472C3.91 3.06 4.74 3.015 6 3h1V2H5.998zM9 2v1h1c1.258.015 2.087.06 2.453.262.183.1.29.212.387.472.097.26.16.674.16 1.266v2h1V5c0-.658-.06-1.179-.225-1.617a1.88 1.88 0 0 0-.838-.998c-.752-.416-1.673-.37-2.931-.385h-.004zM2 9v2c0 .658.06 1.179.225 1.617.164.439.461.79.837.998.753.416 1.674.37 2.932.385H7v-1H6c-1.259-.015-2.09-.06-2.455-.262-.184-.1-.287-.212-.385-.472C3.063 12.006 3 11.592 3 11V9zm11 0v2c0 .592-.063 1.006-.16 1.266-.098.26-.202.371-.385.472-.366.202-1.197.247-2.455.262H9v1h1.006c1.258-.015 2.179.03 2.932-.385a1.88 1.88 0 0 0 .837-.998c.165-.438.225-.96.225-1.617V9z" fill="rgba(255, 255, 255, 0.7)"/></svg>');background-position: 50% 2px;background-repeat: no-repeat;background-size:100% auto;opacity:.3;transform: scale(0.5) translate(-30px, -30px);}
+#container .inven *:not(.inven-gems) .each-gem + .each-gem::before{background-position: 50% 0px;}
+#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{opacity: 1;}
+/* #container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.45);margin: -16px 0 0 -16px;opacity: 1;} */
+#container .inven [data-gem-icon]{display: inline-block;width: 100%;height: 60px;overflow: hidden;}
+#container .inven [data-gem-icon]::before{content:'';display: block;min-width: 60px;width: 60px;height: 60px;margin: 0 auto 0;background-image: url(images/sprite-gems.png) !important;background-position: 0 0;background-repeat: no-repeat !important;background-size: 100% auto !important;}
+#container .inven [data-gem-icon=rub]::before{background-position: 0 0 !important;}
+#container .inven [data-gem-icon=sap]::before{background-position: 0 -60px !important;}
+#container .inven [data-gem-icon=toz]::before{background-position: 0 -120px !important;}
+#container .inven [data-gem-icon=eme]::before{background-position: 0 -180px !important;}
+#container .inven [data-gem-icon=ame]::before{background-position: 0 -240px !important;}
+#container .inven [data-gem-icon=dia]::before{background-position: 0 -300px !important;}
+#container .inven [data-gem-icon=skl]::before{background-position: 0 -358px !important;}
+#container .inven [data-gem-icon=emp]::before{background-position: 0 -420px !important;}
 #container .inven-gems{position: relative;margin-top: 30px;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
 #container .inven-gems::before{content:'통합 보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
 #container .inven-gems .gems{margin: 0 5px;}
@@ -363,25 +366,28 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven-gems .equ.gems .option[data-gem-type=wep]::after{content:'무기 보석';color: #D87B1B;}
 #container .inven-gems .equ.gems .option[data-gem-type=def]::after{content:'방어구 보석';color: #38aced;}
 #container .inven-gems .equ.gems .option[data-gem-type=acc]::after{content:'장신구 보석';color: #a4a0f0;}
-#container .inven .equ .gems{display: none;position: absolute;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
+#container .inven .equ .gems{display: none;/* position: absolute; */top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
 #container .inven .inven-wep .equ + .equ:not(.gems) .gems,
 #container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
-#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;border: 1px solid #444;border-radius: 50%;}
-#container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid #666;background-color: rgba(0, 0, 0, 1);}
+#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;/* border: 1px solid #444;border-radius: 50%; */}
+#container .inven .equ .gems .each-gem[data-gem-icon]{/* border: 1px solid #666; background-color: rgba(0, 0, 0, 1);border-radius: 50%*/}
 #container .inven .equ .gems .each-gem.active{border: 1px solid gold;}
-#container .inven .equ .gems .each-gem + .each-gem{margin-top: 3px;}
+#container .inven .equ .gems .each-gem + .each-gem{/* margin-top: 3px; */}
 body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;padding: ;}
-body.gems #container .inven .equ[data-has=gem] .option{margin: 0 35px 0 0;}
+body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 35px 0 0; */}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
-body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 0 35px;}
-body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;}
+body.gems #container .inven .inven-acc .equ:not(.gems) .option{/* margin: 0 0 0 35px; */}
+body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;padding: 0 3px;box-sizing: content-box;}
+body.gems #container:not([data-job-select=bab]) .inven .equ .gems.hide{display: none;}
+body.gems #container .inven .equ .gems + .text{margin: 0 5px;}
+body.gems #container .inven .inven-wep .equ .gems.single-gem .each-gem + .each-gem,
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
 /* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
-body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{margin-left: 0;}
+body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin-left: 0; */}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ[data-has=gem] .option,
-body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{margin: 0 0 0 35px;}
+body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin: 0 0 0 35px; */}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -429,7 +435,7 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
     border-radius: 10px;
 	z-index: 200;
 }
-#container .inven .layer-gems.layer-dimmed .layer-body::before{content:'💎 장착할 보석을 선택해주세요.';display: block;padding-bottom: 15px;border-bottom: 1px solid #444757;font-size: 16px;color: #fff;font-weight: bold;text-align: center;}
+#container .inven .layer-gems.layer-dimmed .layer-body::before{content:'💎 장착할 보석을 선택해주세요.';display: block;padding: 0 40px 15px 0;border-bottom: 1px solid #444757;font-size: 16px;color: #fff;font-weight: bold;text-align: center;}
 #container .inven .layer-gems.layer-dimmed[data-gem-type=wep] .layer-body::before{content:'💎 무기 슬롯에 장착할 보석을 선택해주세요.';color: #D87B1B;}
 #container .inven .layer-gems.layer-dimmed[data-gem-type=def] .layer-body::before{content:'💎 방어구 슬롯에 장착할 보석을 선택해주세요.';color: #38aced;}
 #container .inven .layer-gems.layer-dimmed[data-gem-type=acc] .layer-body::before{content:'💎 장신구 슬롯에 장착할 보석을 선택해주세요.';color: #a4a0f0;}
@@ -606,9 +612,9 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 
 	body.gems #container .inven .equ[data-has=gem] .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
 	body.gems #container .inven .equ .option:not(.selected) ~ .text .detail::before{line-height: 58px;}
-	body.gems #container .inven .equ .gems{top: 60px;left: 0;width: 70px;height: 40px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
+	body.gems #container .inven .equ .gems{position: absolute;top: 60px;left: 0;width: 70px;height: 38px;padding: 4px 0 4px;flex-direction: row;border: 1px solid #444;border-top: 0;border-radius:0 0 10px 10px}
 	body.gems #container .inven .equ .gems .each-gem {width: 30px;height: 30px;border-radius: 50%;}
-	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 3px;}
+	body.gems #container .inven .equ .gems .each-gem + .each-gem{margin: 0 0 0 0;}
 	body.gems #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid transparent;background-color: transparent;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem[data-gem-icon]::before{transform: scale(0.5);margin: -18px 0 0 -15px;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]{margin: 0;}
@@ -618,5 +624,7 @@ body.zoom #container .box-notice{top: 60px;left: 10px;right: 10px;}
 	body.gems #container .inven .inven-acc .equ:not(.gems) .option{margin: 0 0 35px 0 !important;}
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
 	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
+	#container .inven *:not(.inven-gems) .each-gem::before{background-position: 2px 50%;}
+	#container .inven *:not(.inven-gems) .each-gem + .each-gem::before{background-position: 0px 50%;}
 
 }
