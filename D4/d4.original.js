@@ -594,9 +594,10 @@ var D4SkillDB = (function(){
 		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
 		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
-		$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
-		//$('#wep2, #wep4').next('.gems').removeClass('hide');
-		$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+		method.wepChange(true); //주무기 보석 칸 리셋
+		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
+		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+		$('.option-list').empty(); //선호 옵션 리셋
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
