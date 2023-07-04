@@ -528,13 +528,15 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .inven-wep .equ + .equ .button-option-select,
 #container .inven .inven-acc .equ .button-option-select{left: inherit;right: 0;}
 #container .inven .equ .option-list{display: none;}
-body.option-view #container .inven .equ .option-list{display: flex;flex-wrap: wrap;justify-content: flex-start;margin-top: 10px;padding-top: 6px;border-top: 1px solid #444;}
+body.option-view #container .inven .equ .option-list{display: flex;flex-wrap: wrap;justify-content: flex-start;width: 100%;margin-top: 10px;}
 body.option-view #container .inven .equ .option-list .option-item{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 20px;font-size: 13px;color: gold;line-height: 1.2;text-align: left;}
 body.option-view #container .inven .equ .option-list .option-item::before{content:'';position: absolute;top: 6px;left: 10px;width: 4px;height: 4px;background-color: gold;transform:rotate(-45deg)}
 /* body.option-view #container .inven .equ .option-list .option-item:first-child{margin-top: 10px;padding-top: 6px;border-top: 1px solid #444;} */
 /* body.option-view #container .inven .equ .option-list .option-item:first-child::before{top: 12px;} */
 body.option-view #container .inven .equ[data-ver]{min-height:90px;}
 body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
+body.option-view #container .inven .equ[data-ver] .type-uni ~ .option-list,
+body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-select{display: none;}
 
 .option-layer{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 300;}
 .option-layer::after,
