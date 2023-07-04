@@ -111,7 +111,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
 #container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;min-height: 90px;}
 #container .inven .equ .text .detail{position: relative;top: 4px;display: block;color: #fff;font-size: 15px;}
-body.option-view #container .inven .equ .text .detail{top: 12px;}
+body.option-view #container .inven .equ .text .detail{top: 9px;}
 #container .inven .equ .option.selected ~ .text .detail{top: 0;font-weight: bold;color: #D87B1B;}
 #container .inven .equ .option.selected ~ .text .detail.type-uni{color: gold;}
 #container .inven .equ .text .more{display: block;margin: 3px 0;opacity: .9;} 
