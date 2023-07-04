@@ -51,6 +51,8 @@ var D4SkillDB = (function(){
 			// uti = sub hel che amu glo boo
 			// res = rin
 			// mob = amu boo
+		//{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
+
 		/* uniqe item */
 		{ver:'ori', job:'dru', icon:'wep', type:'uni', parts:'wep', name:'차오르는 철월',  detail:'<p class="unique_option"><span class="c_important">칼날 발톱</span>으로 적을 처치하면 <span class="c_random">1 – 2.5</span>초 동안 <span class="c_important"><span class="text-line">은폐</span></span>를 얻습니다. 공격으로 <span class="c_important"><span class="text-line">은폐</span></span> 상태를 깨면 <span class="c_number"><span class="text-line">2</span></span>초 동안 공격이 확정적으로 극대화 적중하는 매복을 부여합니다.</p>'},
 		{ver:'ori', job:'dru', icon:'wep', type:'uni', parts:'wep', name:'마녀의 큰지팡이',  detail:'<p class="unique_option"><span class="c_important">발톱</span>이 <span class="c_important">폭풍</span> 기술로 변하고 <span class="c_important">폭풍 강타</span>도 시전해 원래 피해의 <span class="c_number">120 – 150%</span>만큼 피해를 줍니다.</p>'},
@@ -115,8 +117,8 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'공포스러운 곰',  detail:'<p class="aspect_effect"><span class="c_important">쳐부수기</span>가 <span class="c_important">대지</span> 기술로도 취급됩니다. <span class="c_important">쳐부수기</span> 시전 후 대지 파편이 <span class="c_number">2</span>초에 걸쳐 <span class="c_random">147</span>의 피해를 줍니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'반격',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">보강</span></span>의 양에 따라 <span class="c_important">핵심</span> 기술이 주는 피해가 최대 <span class="c_random">20%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'충격파',  detail:'<p class="aspect_effect"><span class="c_important">쳐부수기</span>가 전방으로 이동하는 충격파를 만들어, 경로에 있는 대상에게 <span class="c_important">쳐부수기</span> 피해의 <span class="c_random">60-100%</span>만큼 피해를 줍니다.</p>'},
-		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'광란의 야수인간',  detail:'<p class="aspect_effect"><span class="c_important">회색곰의 격노</span>의 지속시간이 <span class="c_random">1</span>초 증가합니다. 추가로, <span class="c_important">회색곰의 격노</span>가 활성화되어 있는 동안 공격이 극대화로 적중하면 지속시간 동안 극대화 피해가 <span class="c_number">10%</span> 증가합니다.</p>'},
-		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'폭풍추격자',  detail:'<p class="aspect_effect"><span class="c_important">회오리바람</span>이 최대 <span class="c_random">1-5</span>마리의 대상을 찾아갑니다.</p>'},
+		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'광란의 야수인간',  detail:'<p class="aspect_effect"><span class="c_important">회색곰의 격노</span>의 지속시간이 <span class="c_random">1 - 5</span>초 증가합니다. 추가로, <span class="c_important">회색곰의 격노</span>가 활성화되어 있는 동안 공격이 극대화로 적중하면 지속시간 동안 극대화 피해가 <span class="c_number">10%</span> 증가합니다.</p>'},
+		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'폭풍추격자',  detail:'<p class="aspect_effect"><span class="c_important">회오리바람</span>이 최대 <span class="c_random">1 - 3</span>마리의 대상을 찾아갑니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'깨진돌',  detail:'<p class="aspect_effect">군중 제어의 영향을 받는 적에게 <span class="c_important">대지</span> 기술이 주는 극대화 피해가 <span class="c_random">30%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'여파',  detail:'<p class="aspect_effect"><span class="c_important">산사태</span>의 흙 기둥이 각각 한 번 더 타격하며, 적중할 때마다 <span class="c_random">6-12%</span>의 추가 피해를 줍니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'폭풍우',  detail:'<p class="aspect_effect"><span class="c_important">싹쓸바람</span>의 피해가 지속되는 시간 1초당 <span class="c_random">7.0%</span>증가합니다.</p>'},
@@ -137,7 +139,7 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'쑥대밭',  detail:'<p class="aspect_effect">동료를 <span class="c_number">1</span>마리 추가로 얻습니다. 추가로, 동료 기술이 <span class="c_random">100-150%</span>의 추가 피해를 줍니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'변형 돌',  detail:'<p class="aspect_effect"><span class="c_important">바위</span>가 <span class="c_important">핵심</span> 기술로 변경되어 <span class="c_number">60</span>의 영력을 소모하며 원래 피해의 <span class="c_random">80-100%</span>만큼 피해를 줍니다.</p>'},
 		{ver:'ori', job:'dru', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'흐릿한 야수',  detail:'<p class="aspect_effect">질주하는 동안 <span class="c_important">칼날 발톱</span>이 주위의 중독된 적을 찾아 즉시 <span class="c_random">60 – 90%</span>의 중독 피해를 줍니다.</p>'},
-		{ver:'ori', job:'dru', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'원기',  detail:'<p class="aspect_effect">늑대인간 변신 상태에서 <span class="c_random">10.0%</span>의 피해 감소를 얻습니다.</p>'},
+		{ver:'ori', job:'dru', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'원기',  detail:'<p class="aspect_effect">늑대인간 변신 상태에서 <span class="c_random">10 - 15%</span>의 피해 감소를 얻습니다.</p>'},
 		{ver:'ori', job:'dru', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'용오름의 힘',  detail:'<p class="aspect_effect"><span class="c_important">회오리 갑옷</span>이 물리 피해 감소도 부여합니다. 추가로 <span class="c_important">회오리 갑옷</span>이 주위 모든 아군에게도 적용됩니다.</p>'},
 		{ver:'ori', job:'dru', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'치유하는 돌',  detail:'<p class="aspect_effect"><span class="c_important">대지 방벽</span>의 지속시간이 <span class="c_number">6</span>초 증가합니다. 추가로, <span class="c_important">대지</span> 기술로 적을 처치하면 활성화된 <span class="c_important">대지 방벽</span>의 <span class="c_important"><span class="text-line">보호막</span></span>이 <span class="c_random">21</span> 회복됩니다.</p>'},
 		{ver:'ori', job:'dru', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'가죽방랑자',  detail:'<p class="aspect_effect">형상을 바꾸는 <span class="c_important">변신</span> 기술을 사용하면 생명력을 <span class="c_random">21</span> 얻습니다. 생명력이 가득 찼을 때는 같은 양의 <span class="c_important"><span class="text-line">보강</span></span> 효과를 얻습니다.</p>'},
@@ -316,7 +318,7 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'nec', icon:'res', type:'leg', parts:'rin', 						name:'빠른피 위상',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">피의 구슬</span></span>이 <span class="c_important">궁극기</span> 재사용 대기 시간을 <span class="c_random">0.5</span>초 감소시킵니다.</p>'},
 		{ver:'ori', job:'nec', icon:'res', type:'leg', parts:'rin', 						name:'드러난 살의 자원 위상',  detail:'<p class="aspect_effect">행운의 적중: 자신의 <span class="c_important">뼈</span> 기술이 <span class="c_important"><span class="text-line">취약</span></span>한 적에게 적중하면 <span class="c_number">10%</span> 확률로 정수가 <span class="c_random">34</span> 생성됩니다.</p>'},
 		
-		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'재빠른',  detail:'<p class="aspect_effect"><span class="c_important">기본</span> 기술의 공격 속도가 <span class="c_random">15%</span> 증가합니다.</p>'},
+		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'재빠른',  detail:'<p class="aspect_effect"><span class="c_important">기본</span> 기술의 공격 속도가 <span class="c_random">15 - 30%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'내면의 고요',  detail:'<p class="aspect_effect">가만히 서 있는 시간 1초당 주는 피해가 <span class="c_random">5.0%</span>만큼, 최대 <span class="c_number">30%</span>까지 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'자만하는',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">보호막</span></span>이 있을 때 주는 피해가 <span class="c_random">23-33%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'응보',  detail:'<p class="aspect_effect">원거리에 있는 적이 자신을 적중시킬 때 <span class="c_number">8%</span>의 확률로 <span class="c_number">2</span>초 동안 기절합니다. 기절한 적에게 주는 피해가 <span class="c_random">20%</span> 증가합니다.</p>'},
@@ -326,7 +328,7 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'천벌',  detail:'<p class="aspect_effect">부상당한 적을 상대로 극대화 확률이 <span class="c_random">13-25%</span> 증가합니다. 자신이 <span class="c_important"><span class="text-line">건강</span></span> 상태일 때 군중 제어 효과의 지속시간이 <span class="c_random">25-50%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'off', type:'leg', parts:'amu wep glo rin', 			name:'가속하는',  detail:'<p class="aspect_effect"><span class="c_important">핵심</span> 기술이 극대화로 적중하면 공격 속도가 <span class="c_number">3</span>초 동안 <span class="c_random">15-25%</span> 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'불복',  detail:'<p class="aspect_effect">어떤 형태로든 피해를 주면 방어도가 <span class="c_number">4</span>초 동안 <span class="c_random">0.25%</span> 증가합니다. 이 효과는 최대 <span class="c_random">25.00%</span>까지 중첩됩니다.</p>'},
-		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'위세',  detail:'<p class="aspect_effect"><span class="c_important">기본</span> 기술이 <span class="c_random">2.0</span>초 동안 <span class="c_number">20%</span>의 피해 감소를 부여합니다.</p>'},
+		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'위세',  detail:'<p class="aspect_effect"><span class="c_important">기본</span> 기술이 <span class="c_random">2.0 - 6.0</span>초 동안 <span class="c_number">20%</span>의 피해 감소를 부여합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'차폐하는 방벽',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">보호막</span></span>이 있을 때 <span class="_c_random">7%</span> 확률로 원거리에 있는 적이 주는 직접 피해를 무시합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'군중 속 현자',  detail:'<p class="aspect_effect">근거리에 있는 적 하나당 매초 생명력을 <span class="c_random">2.2-8.8%</span>만큼, 최대 <span class="c_number">44.0%</span>까지 회복합니다.</p>'},
 		{ver:'ori', job:'com', icon:'def', type:'leg', parts:'sub hel che pan amu', 		name:'보호자',  detail:'<p class="aspect_effect">정예 적에게 피해를 주면 <span class="c_number">10</span>초 동안 최대 <span class="c_random">315</span>의 <span class="c_important"><span class="text-line">보호막</span></span>을 얻습니다. 이 효과는 <span class="c_number">30</span>초에 한 번만 발동합니다.</p>'},
@@ -340,7 +342,7 @@ var D4SkillDB = (function(){
 		{ver:'ori', job:'com', icon:'mob', type:'leg', parts:'amu boo', 					name:'바람 격퇴자',  detail:'<p class="aspect_effect">극대화 적중 시 이동 속도가 <span class="c_number">1</span>초 동안 <span class="c_random">8.0%</span>만큼, 최대 <span class="c_number">6</span>초까지 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'mob', type:'leg', parts:'amu boo', 					name:'유령방랑자',  detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">저지 불가</span></span> 상태인 동안과 그 후 <span class="c_number">4</span>초 동안, 이동 속도가 <span class="c_random">10%</span> 증가하고 적 사이를 제약 없이 이동할 수 있습니다.</p>'},
 		
-		//{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] 똥멍청이들의 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : 이거 분명히 나옵니다.<br>유저의 분노를 유발할 수 있습니다.</p>'},
+		//{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -348,7 +350,7 @@ var D4SkillDB = (function(){
 		method.expandFunc();
 		method.aspectLayer();
 		$.each(aspects, function(index, aspect){
-			obj.aspectWrap.append('<div class="box__aspect-grid '+aspect.parts+'" data-job="'+aspect.job+'" data-parts="'+aspect.icon+'" data-ver="'+aspect.ver+'"><button type="button" class="button-aspect icon-'+aspect.icon+'" aria-selected="false" id="SKN'+index+'"><span class="aspect-detail"><span class="aspect-name job-'+aspect.job+' type-'+aspect.type+'">'+aspect.name+'</span><span class="aspect-more">'+aspect.detail+'</span><span class="aspect-parts"></span></span></button></div>');
+			obj.aspectList.append('<div class="box__aspect-grid '+aspect.parts+'" data-job="'+aspect.job+'" data-parts="'+aspect.icon+'" data-ver="'+aspect.ver+'"><button type="button" class="button-aspect icon-'+aspect.icon+'" aria-selected="false" id="SKN'+index+'"><span class="aspect-detail"><span class="aspect-name job-'+aspect.job+' type-'+aspect.type+'">'+aspect.name+'</span><span class="aspect-more">'+aspect.detail+'</span><span class="aspect-parts"></span></span></button></div>');
 		});
 		method.aspectDB();
 		method.spiritBoons();
@@ -359,19 +361,23 @@ var D4SkillDB = (function(){
 		});
 		method.setGems();
 		method.layerFuncInit();
+		//method.afterEvent();
+		method.itemOption();
 
 	};
 	method.setElement = function(){
 		obj.body = $('body');
-		obj.wrapper = $('#container');
+		//obj.container = $('#container');
+		obj.container = $('#container');
+		obj.job = obj.container.attr('data-job-select');
 		obj.headerH = $('#header').outerHeight();
-		obj.aspectWrap = obj.wrapper.find('#aspectList');
-		obj.boardWrap = obj.wrapper.find('#board');
-		obj.spiritBoons = obj.wrapper.find('#spirit');
-		obj.aspectOpen = obj.wrapper.find('[aria-controls=aspectSelect]');
+		obj.aspectList = obj.container.find('#aspectList');
+		obj.boardWrap = obj.container.find('#board');
+		obj.spiritBoons = obj.container.find('#spirit');
+		obj.aspectOpen = obj.container.find('[aria-controls=aspectSelect]');
 		obj.aspectTarget = $('#'+obj.aspectOpen.attr('data-target'));
 		obj.aspectLayer = $('#'+obj.aspectOpen.attr('aria-controls'));
-		obj.gemOpen = obj.wrapper.find('[aria-controls=gemSelect]');
+		obj.gemOpen = obj.container.find('[aria-controls=gemSelect]');
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
 	};
@@ -386,6 +392,53 @@ var D4SkillDB = (function(){
 			}
 			obj.body.toggleClass($tag);
 		})
+	};
+	method.itemOption = function(){
+		/*
+		$('.box-option').each(function(){
+			var $this = $(this);
+			$(this).find('.option-input').on('blur', function(){
+				var $val = $(this).val();
+				var $arr = $val.split(',');
+				$.each($arr, function(index, option){
+					$this.find('.option-list').empty().append('<li>'+option+'</li>');
+				});
+			})
+		})*/
+		var $optionButton = $('.button-option-select');
+		var $optionLayer = $optionButton.attr('aria-controls');
+		var $optionInput = $('#'+$optionLayer).find('.option-input');
+
+		$optionButton.on('click', function(){
+			console.log($(this).val());
+			if (!$(this).val() == '') {
+				$optionInput.val($(this).val());
+			} else {
+				$optionInput.val('');
+			}
+		})
+		$('#'+$optionLayer).on('click', '.button-submit', function(e){
+			var $val = $optionInput.val();
+			var $arr = $val.split(',');
+			$arr.length = 4;
+			var $newArr = $arr.filter( function(el) {
+				return el !== undefined && el !== null && el !== '';
+			});
+			$('.trigger-active').siblings('.option-list').empty();
+			$.each($newArr, function(index, option){
+				$('.trigger-active').siblings('.option-list').append('<span class="option-item">'+option+'<button type="buttno-option-del"><span class="a11y">옵션삭제</span></button></span>');
+			});
+			if (!$optionInput.val() == '') {
+				$('.trigger-active').val($optionInput.val());
+				method.layerFunc('optionSelect', false);
+			}
+		})
+		$optionInput.on('keyup', function(e){
+			if(e.keyCode == 13){
+				$('#'+$optionLayer).find('.button-submit').trigger('click');
+			}
+		})
+
 	};
 
 	method.jobSelect = function(){
@@ -409,7 +462,7 @@ var D4SkillDB = (function(){
 				var $this = $jobBtn;
 				$('html, body').animate({scrollTop: '0'}, 300);
 				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
-				obj.wrapper.attr('data-job-select', $job);
+				obj.container.attr('data-job-select', $job);
 				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
 				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
 				$('#container .spirit-description').empty();
@@ -423,7 +476,7 @@ var D4SkillDB = (function(){
 			if ($(this).is('[aria-selected]')) {
 				$(this).attr('aria-selected', true).siblings('[aria-selected]').attr('aria-selected', false);
 			}
-			obj.aspectWrap.attr('data-filter', $this);
+			obj.aspectList.attr('data-filter', $this);
 		})
 	};
 	method.setGems = function(){
@@ -448,7 +501,6 @@ var D4SkillDB = (function(){
 				setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - obj.headerH +'px'}, 300); }, 100)
 				method.fixedViewPort(true);
 			}
-			
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
 					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
@@ -485,7 +537,7 @@ var D4SkillDB = (function(){
 			obj.aspectOpen.removeClass('active latest');
 			$('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
 			$layer.addClass('active').attr('data-sorting', $parts);
-			obj.wrapper.find('.inven').addClass('active');
+			obj.container.find('.inven').addClass('active');
 			$(this).addClass('active latest');
 			(!$(this).is('.selected'))
 				? $('.sort-by-dis').attr('disabled', true) 
@@ -499,37 +551,50 @@ var D4SkillDB = (function(){
 				obj.aspectLayer.find('.button-aspect').removeClass('selected');
 				$layer.find('.box-aspect-select').animate({scrollTop: '0'}, 300);
 			}
+
+			var $multi = ($(this).parents('.equ').attr('data-multiply') == undefined) ? 10 : $(this).parents('.equ').attr('data-multiply');
+			//console.log($multi)
+			method.aspectMultiply($multi);
 			method.fixedViewPort(true);
 		})
 		//닫기
 		$('.js-disabled').on('click', function(){
 			var $target = $('.inven .equ .option.latest').attr('data-target');
 			if ($(this).is('.sort-by-dis')) {
-				obj.aspectWrap.find('#'+$target).attr('aria-selected', false);
+				obj.aspectList.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 				if ($('.inven .equ .option.latest').is('#wep2, #wep4')) {
-					$('#wep1').next('.gems').removeClass('single-gem');
-					$('#container:not([data-job-select=bab]) #wep2, #container:not([data-job-select=bab]) #wep4').parents('.equ').attr('data-wep-type', 'sub');
-					//$('#container:not([data-job-select=bab]) #wep2, #container:not([data-job-select=bab]) #wep4').next('.gems').addClass('hide');
+					method.wepChange(true);
+					//$('#wep1').next('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
+					if (obj.job == 'bab'){
+						method.wepChange(false);
+						//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+					}
 				}
 			}
 			obj.aspectOpen.removeClass('active');
 			$(this).parents('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
-			obj.wrapper.find('.inven').removeClass('active');
+			obj.container.find('.inven').removeClass('active');
 			method.fixedViewPort(false);
 		})
 	};
+	method.aspectMultiply = function($number){
+		obj.aspectList.find('.txt_calc').each(function(){
+			var $basicNum = $(this).attr('data-origin');
+			$(this).text(parseInt($basicNum * $number / 10));
+		});
+	}
 	method.aspectReset = function(){
 		//세팅된 위상 리셋
 		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
 		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
-		obj.wrapper.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
+		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
 		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
 		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
 		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
-		$('.gems').removeClass('single-gem'); //주무기 보석 칸 리셋
+		$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
 		//$('#wep2, #wep4').next('.gems').removeClass('hide');
 		$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		method.fixedViewPort(false);
@@ -537,9 +602,9 @@ var D4SkillDB = (function(){
 	method.layerSort = function($target){
 		//타입별 위상 정렬
 		var $target = obj.aspectLayer.attr('data-sorting');
-		obj.job = obj.wrapper.attr('data-job-select');
+		$job = obj.container.attr('data-job-select');
 		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
-		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+obj.job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
+		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+$job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
 		
 	};
 	method.invCheck = function($id){
@@ -551,15 +616,33 @@ var D4SkillDB = (function(){
 			if ($id == $(this).attr('data-target')) {
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
+
+				//동일 위상 양손무기 / 한손+보조  세팅값
+				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
+					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
+						method.wepChange(true);
+					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
+						method.wepChange(false);
+					}
+				}
 			}
 		});
 		$.each($invSkill, function(index){
 			$('#'+$invSkill[index]).attr({'aria-selected':true});
 		})
 	};
+	method.wepChange = function(weapon){
+		if (weapon) {
+			$('#wep1').siblings().removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
+			$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+		} else {
+			$('#wep1').siblings('.gems').addClass('single-gem').parents('.equ').attr('data-multiply', '10');
+			$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
+		}
+	};
 	method.aspectDB = function(){
 		//스킬 선택
-		obj.aspectButton = obj.wrapper.find('.button-aspect');
+		obj.aspectButton = obj.container.find('.button-aspect');
 		obj.aspectButton.on('click', function(){
 			var $detail = $(this).find('.aspect-name');
 			var $tooltip = $(this).find('.aspect-more').html();
@@ -574,15 +657,18 @@ var D4SkillDB = (function(){
 				 
 			obj.aspectOpen.removeClass('active');
 			obj.aspectLayer.removeClass('active');
-			obj.wrapper.find('.inven').removeClass('active');
+			obj.container.find('.inven').removeClass('active');
 			$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
-			if ($('#container:not([data-job-select=bab], [data-job-select=rog]) #wep2, #container:not([data-job-select=bab], [data-job-select=rog]) #wep4').is('.selected')) {
-				$('#wep1').next('.gems').addClass('single-gem');
-				$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
+			if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
+				if ($('#wep1').is('.selected')) {
+					//method.wepChange(true);
+				} else if ($('#wep2, #wep4').is('.selected')) {
+					//method.wepChange(false);
+				}
 			}
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
@@ -670,6 +756,7 @@ var D4SkillDB = (function(){
 				method.layerFuncClose();
 			}
 			if ($('#'+$target).get(0) !== undefined) {
+				$(this).addClass('trigger-active');
 				method.layerFunc($target, true);
 			}
 		})
@@ -678,7 +765,7 @@ var D4SkillDB = (function(){
 		$('.box-layer').on('click', '[data-dismiss=modal], .dimmed', function(e){
 			e.preventDefault();
 			var $target = $(this).parents('[role=dialog], [role=alertdialog]').attr('id');
-			method.layerFunc($target, false, ' ');
+			method.layerFunc($target, false);
 		})
 	};
 	method.layerFunc = function($target, $boolean, $content, $confirm){
@@ -713,7 +800,7 @@ var D4SkillDB = (function(){
 				$targetPopup.unbind('keydown', trapTabKey, false);
 				$targetPopup.removeClass('active').attr({'aria-hidden':'true'});
 				if ($('[aria-haspopup=dialog][aria-controls='+$target+']').length > 0) {
-					$('[aria-haspopup=dialog][aria-controls='+$target+']').focus();
+					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active').focus();
 				} else if($('.active').get(0) !== undefined) {
 					$('.active').find('[data-dismiss=modal]').focus();
 				} else {
