@@ -214,7 +214,7 @@ var D4SkillDB = (function(){
 	method.aspectLayer = function(){
 		//위상 레이어 오픈
 		obj.aspectOpen.on('click', function(){
-			D4Aspect.init();
+			//D4Aspect.init();
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
 			obj.aspectOpen.removeClass('active latest');
