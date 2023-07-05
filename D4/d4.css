@@ -69,7 +69,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .box-title .button-gem::before{content:'';display:block;width:26px;height:26px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(255, 255, 255, 1)" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M509.202,179.961l-89.051-133.57c-3.146-4.718-8.433-7.434-13.891-7.434H105.738c-5.561,0-10.802,2.801-13.891,7.434    L2.795,179.961c-4.204,6.3-3.624,14.732,1.456,20.403l239.312,267.139c6.605,7.374,18.242,7.401,24.872,0l239.312-267.139    C512.74,194.789,513.481,186.373,509.202,179.961z M382.168,72.348l-30.925,82.469l-61.852-82.469H382.168z M322.784,172.525    h-133.57l66.785-89.046L322.784,172.525z M222.605,72.348l-61.851,82.469l-30.926-82.469H222.605z M101.548,92.034l30.183,80.492    H47.884L101.548,92.034z M54.059,205.918h90.194l64.937,173.17L54.059,205.918z M255.998,408.809l-76.081-202.891H332.08    L255.998,408.809z M302.806,379.087l64.937-173.17h90.194L302.806,379.087z M380.264,172.526l30.185-80.492l53.664,80.492H380.264    z"/></g></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
 #container .box-title .button-gem[aria-checked=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(235, 80, 10, 1)" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M509.202,179.961l-89.051-133.57c-3.146-4.718-8.433-7.434-13.891-7.434H105.738c-5.561,0-10.802,2.801-13.891,7.434    L2.795,179.961c-4.204,6.3-3.624,14.732,1.456,20.403l239.312,267.139c6.605,7.374,18.242,7.401,24.872,0l239.312-267.139    C512.74,194.789,513.481,186.373,509.202,179.961z M382.168,72.348l-30.925,82.469l-61.852-82.469H382.168z M322.784,172.525    h-133.57l66.785-89.046L322.784,172.525z M222.605,72.348l-61.851,82.469l-30.926-82.469H222.605z M101.548,92.034l30.183,80.492    H47.884L101.548,92.034z M54.059,205.918h90.194l64.937,173.17L54.059,205.918z M255.998,408.809l-76.081-202.891H332.08    L255.998,408.809z M302.806,379.087l64.937-173.17h90.194L302.806,379.087z M380.264,172.526l30.185-80.492l53.664,80.492H380.264    z"/></g></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1}
 #container .box-title .button-option-view{position: relative;}
-#container .box-title .button-option-view::before{content:'';display:block;width:34px;height:34px;margin:0 auto;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path id="Vector" d="M3 17H10M15 16H21M3 12H14M3 7H14" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
+#container .box-title .button-option-view::before{content:'';display:block;width:34px;height:34px;margin:2px auto 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path id="Vector" d="M3 17H10M15 16H21M3 12H14M3 7H14" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
 #container .box-title .button-option-view[aria-checked=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="none"><g><path id="Vector" d="M3 17H10M15 16H18M18 16H21M18 16V19M18 16V13M3 12H14M3 7H14" stroke="rgba(255, 215, 0, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1}
 #container .box-title .button-option-view::after{content:'Beta';position: absolute;top: 0;left: 6px;font-size: 11px;color: orange;}
 #container .box-title .button-option-view .bubble{display: block;max-width: 0px;overflow: hidden;position: absolute;top: 0;left: 32px;font-size: 11px;font-family: dotum;color: gold;white-space: nowrap;padding: 0;text-align: center;border: 1px solid #222;opacity: .7;transition: all .3s;}
@@ -499,6 +499,7 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .equ .selected ~ .text .item-opt{display: inline-block;}
 
 #container .inven .equ .button-option-select{display: none;position: absolute;top: 70px;left: 0;width: 70px;padding: 3px 0;text-align: center;overflow: hidden;font-size: 14px;color: orange;line-height: 1;opacity: .9;}
+#container .inven .equ .button-option-select.modify{color: #38aced;}
 #container .inven .inven-wep .equ + .equ .button-option-select,
 #container .inven .inven-acc .equ .button-option-select{left: inherit;right: 0;}
 #container .inven .equ .option-list{display: none;}
@@ -548,14 +549,90 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .option-layer .option-container{position: absolute;top: 150px;left: 50%;padding:20px;max-width:800px;width:100%;max-height:calc(100% - 148px);overflow-y: auto;background-color: #111;transform: translate(-50%, 0);border-radius:10px;z-index: 900;}
 .option-layer .option-container .option-select-guide{font-size: 16px;line-height: 1.5;margin: 15px 0;padding-right: 40px;}
 .option-layer .option-container .box-option-input{position: relative;display: flex;height: 50px;padding-left: 50px;background-color: #D9E1F3;border: 1px solid #ACB9D2;width: 100%;border-radius: 12px;overflow: hidden;box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);}
-.option-layer .option-container .box-option-input::before{content:'';position: absolute;top: 50%;left: 7px;width: 34px;height: 34px;margin:-17px 0 0 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.186 2.09c.521.25 1.136.612 1.625 1.101.49.49.852 1.104 1.1 1.625.313.654.11 1.408-.401 1.92l-7.214 7.213c-.31.31-.688.541-1.105.675l-4.222 1.353a.75.75 0 0 1-.943-.944l1.353-4.221a2.75 2.75 0 0 1 .674-1.105l7.214-7.214c.512-.512 1.266-.714 1.92-.402zm.211 2.516a3.608 3.608 0 0 0-.828-.586l-6.994 6.994a1.002 1.002 0 0 0-.178.241L9.9 14.102l2.846-1.496c.09-.047.171-.107.242-.178l6.994-6.994a3.61 3.61 0 0 0-.586-.828zM4.999 5.5A.5.5 0 0 1 5.47 5l5.53.005a1 1 0 0 0 0-2L5.5 3A2.5 2.5 0 0 0 3 5.5v12.577c0 .76.082 1.185.319 1.627.224.419.558.754.977.978.442.236.866.318 1.627.318h12.154c.76 0 1.185-.082 1.627-.318.42-.224.754-.559.978-.978.236-.442.318-.866.318-1.627V13a1 1 0 1 0-2 0v5.077c0 .459-.021.571-.082.684a.364.364 0 0 1-.157.157c-.113.06-.225.082-.684.082H5.923c-.459 0-.57-.022-.684-.082a.363.363 0 0 1-.157-.157c-.06-.113-.082-.225-.082-.684V5.5z" fill="rgba(0, 0, 0, 1)"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.7;}
+.option-layer .option-container .box-option-input::before{content:'';position: absolute;top: 50%;left: 7px;width: 30px;height: 30px;margin:-15px 0 0 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.186 2.09c.521.25 1.136.612 1.625 1.101.49.49.852 1.104 1.1 1.625.313.654.11 1.408-.401 1.92l-7.214 7.213c-.31.31-.688.541-1.105.675l-4.222 1.353a.75.75 0 0 1-.943-.944l1.353-4.221a2.75 2.75 0 0 1 .674-1.105l7.214-7.214c.512-.512 1.266-.714 1.92-.402zm.211 2.516a3.608 3.608 0 0 0-.828-.586l-6.994 6.994a1.002 1.002 0 0 0-.178.241L9.9 14.102l2.846-1.496c.09-.047.171-.107.242-.178l6.994-6.994a3.61 3.61 0 0 0-.586-.828zM4.999 5.5A.5.5 0 0 1 5.47 5l5.53.005a1 1 0 0 0 0-2L5.5 3A2.5 2.5 0 0 0 3 5.5v12.577c0 .76.082 1.185.319 1.627.224.419.558.754.977.978.442.236.866.318 1.627.318h12.154c.76 0 1.185-.082 1.627-.318.42-.224.754-.559.978-.978.236-.442.318-.866.318-1.627V13a1 1 0 1 0-2 0v5.077c0 .459-.021.571-.082.684a.364.364 0 0 1-.157.157c-.113.06-.225.082-.684.082H5.923c-.459 0-.57-.022-.684-.082a.363.363 0 0 1-.157-.157c-.06-.113-.082-.225-.082-.684V5.5z" fill="rgba(0, 0, 0, 1)"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.6;}
 .option-layer .option-container .box-option-input .option-input{width: 100%;height: 100%;border: 0;font-size: 20px;background-color: transparent;outline: none;color: #000;}
 .option-layer .option-container .box-option-input .option-input::focus{}
-.option-layer .option-container .box-option-input .button-copy{display: block;min-width:65px;font-size: 14px;color: cornflowerblue;font-weight: bold;}
-.option-layer .option-container .box-option-input .button-submit{display: none;min-width:65px;font-size: 16px;color: #000;font-weight: bold;}
+.option-layer .option-container .box-option-input .button-copy,
+.option-layer .option-container .box-option-input .button-submit{display: block;min-width:50px;font-size: 16px;color: #000;}
+.option-layer .option-container .box-option-input .button-copy{color: cornflowerblue;}
+.option-layer .option-container .box-option-input .button-submit{min-width:65px;font-weight: bold;}
 .option-layer .option-container .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
+/* 옵션 선택 창 */
+.box-option-list{width: 600px;margin: 40px auto;}
+.box-option-list .selected-option{}
+.box-option-list .select-option{}
+.box-option-list .option-group{position: relative;margin-top: 50px;padding-left: 10px;display:flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;}
+.box-option-list .option-group[data-group]::before{content:'기타 옵션';position: absolute;top: -30px;left: 0;font-size: 16px;font-weight: bold;padding: 5px 10px 5px 0;background-color: #1A1B1F;z-index: 20;}
+.box-option-list .option-group[data-group]::after{content:'';position: absolute;top: -15px;left: 0;width: 100%;height: 1px;background-color: #fff;opacity: 0.1;z-index: 10;}
+.box-option-list .option-group[data-group=com]::before{content:'공통 옵션';color: #fff;}
+.box-option-list .option-group[data-group=off]::before{content:'기술 피해';color: #fe6000;}
+.box-option-list .option-group[data-group=job]::before{content:'직업 전용';color: gold;}
+.box-option-list .option-group[data-group=def]::before{content:'피해 감소';color: #38aced;}
+.box-option-list .option-group[data-group=skl]::before{content:'스킬 등급';color: #a4a0f0;}
+.box-option-list .option-group[data-group=etc]::before{content:'기타';color: #fff;}
+.box-option-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin: 5px;padding: 0 0 0 10px;height: 36px;border-radius: 8px;}
+.box-option-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: #fff;-webkit-appearance: none;border-radius: 4px;}
+.box-option-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
+.box-option-list .grid-option .option-name{height: 100%;font-size: 14px;}
+.box-option-list .option-group[data-group=skl] .grid-option .option-name::after{content:' 스킬 + ';}
+.box-option-list .grid-option .option-del{font-size:0;line-height:0;min-width:30px;width: 30px;height: 30px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
+[data-job-select=dru] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=dru]),
+[data-job-select=dru] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=dru]),
+																											       
+[data-job-select=bab] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=bab]),
+[data-job-select=bab] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=bab]),
+																											       
+[data-job-select=soc] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=soc]),
+[data-job-select=soc] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=soc]),
+																											       
+[data-job-select=rog] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=rog]),
+[data-job-select=rog] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=rog]),
+																											       
+[data-job-select=nec] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=nec]),
+[data-job-select=nec] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=nec])
+{display: none;}
 
 
 /* mobile */
@@ -654,6 +731,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 	#container .inven *:not(.inven-gems) .each-gem + .each-gem::before{background-position: 0px 50%;}
 
 	.option-layer .option-container .box-option-input button{display: block;min-width:50px;font-size: 14px;}
+	.option-layer .option-container .box-option-input .button-copy{}
 	body.option-view #container .inven .equ[data-has=gem] .button-option-select{top: 100px;}
 	body.option-view #container .inven .equ .selected ~ .text{margin-bottom: 10px;min-height:105px;justify-content: flex-start;}
 	body.option-view #container .inven .equ[data-has=gem] .selected ~ .text{min-height:125px;}

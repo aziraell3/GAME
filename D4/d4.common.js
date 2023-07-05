@@ -21,6 +21,7 @@ $(document).ready(function(){
 		}
 	});
 	$('.button-gem').trigger('click');
+	//$('#header, #container').hide();
 })
 var D4SkillDB = (function(){
 	var method = {};
@@ -85,6 +86,7 @@ var D4SkillDB = (function(){
 		var $optionInput = $('#'+$optionLayer).find('.option-input');
 		var $optionCopy = $('#'+$optionLayer).find('.button-copy');
 		$optionButton.on('click', function(){
+//D4Option.init();
 			if (!$(this).val() == '') {
 				$optionInput.val($(this).val());
 				$(this).removeClass('modify').text('선호옵션');
@@ -212,6 +214,7 @@ var D4SkillDB = (function(){
 	method.aspectLayer = function(){
 		//위상 레이어 오픈
 		obj.aspectOpen.on('click', function(){
+			D4Aspect.init();
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
 			obj.aspectOpen.removeClass('active latest');
@@ -324,7 +327,8 @@ var D4SkillDB = (function(){
 	method.aspectDB = function(){
 		//스킬 선택
 		obj.aspectButton = obj.container.find('.button-aspect');
-		obj.aspectButton.on('click', function(){
+		//obj.aspectButton.on('click', function(){
+		obj.container.on('click', '.button-aspect', function(){
 			var $detail = $(this).find('.aspect-name');
 			var $tooltip = $(this).find('.aspect-more').html();
 			var $parts = $(this).find('.aspect-parts').html();

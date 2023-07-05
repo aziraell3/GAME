@@ -1,6 +1,7 @@
 var D4Aspect = (function(){
 	var method = {};
 	var aspects = [
+		// ver = ori|dlc
 		// job = com|dru|bab|soc|rog|nec
 		// parts = wep|sub|hel|che|glo|pan|boo|amu|rin
 		// type = leg|uni
@@ -12,7 +13,6 @@ var D4Aspect = (function(){
 			// uti = sub hel che amu glo boo
 			// res = rin
 			// mob = amu boo
-		//{ver:'dlc', job:'com', icon:'off', type:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 
 		/* uniqe item */
 		{ver:'ori', job:'dru', icon:'wep', type:'uni', parts:'wep', name:'차오르는 철월',  detail:'<p class="unique_option"><span class="c_important">칼날 발톱</span>으로 적을 처치하면 <span class="c_random">1 – 2.5</span>초 동안 <span class="c_important"><span class="text-line">은폐</span></span>를 얻습니다. 공격으로 <span class="c_important"><span class="text-line">은폐</span></span> 상태를 깨면 <span class="c_number"><span class="text-line">2</span></span>초 동안 공격이 확정적으로 극대화 적중하는 매복을 부여합니다.</p>'},
