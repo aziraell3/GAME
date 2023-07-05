@@ -293,17 +293,19 @@
 				<div class="option-container">
 					<p class="option-select-guide">
 						원하는 옵션명을 작성 후 엔터 또는 확인을 눌러주세요.<br>
-						옵션의 구분은 쉼표( , )로 구분되며 4번째 이후 옵션은 적용되지 않습니다.<br>
+						옵션의 구분은 쉼표( , )로 구분되며 최대 6번째 옵션항목까지 적용됩니다.<br>
 						<br>
 						현재는 원하는 옵션을 수기로 작성하고 쉼표로 구분하여 작성하게 해 놓았으나,<br>
 						추후 각 부위별, 직업별 옵션별로 리스팅할 예정입니다.(옵션 선택형)<br>
 						<br>
-						ex) 극피, 극확, 스킬레벨, 취약, 생명력 작성시 4번째인 취약까지만 표시됩니다.
 					</p>
 					<div class="box-option-input">
 						<input type="text" class="option-input" placeholder="ex) 극확, 극피, 취약, 생명력">
+						<button type="button" class="button-copy">복사</button>
 						<button type="button" class="button-submit">확인</button>
 					</div>
+					<!-- <p class="option-select-guide">
+					</p> -->
 					<button type="button" class="button-close" data-dismiss="modal">닫기</button>
 				</div>
 			</div>
@@ -340,5 +342,6 @@
 <script src="../plugin/jquery-1.12.4.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> -->
 <script src="../plugin/html2canvas-1.4.1.min.js"></script>
-<script src="d4.original.js"></script>
+<script src="d4.aspect.js"></script>
+<script src="d4.common.js"></script>
 </html>
