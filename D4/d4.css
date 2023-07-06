@@ -18,6 +18,10 @@ body.scroll-lock{overflow: hidden;}
 img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface-visibility: hidden;}
 .a11y{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0)}
 
+*::-webkit-scrollbar{width: 6px;}
+*::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
+*::-webkit-scrollbar-track{background-color: grey;border-radius: 6px;box-shadow: inset 0px 0px 5px white;}
+
 #wrap{position: relative;height: 100%;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: #1A1B1F;z-index: 130;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
@@ -185,9 +189,6 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven-aspect-select .aspect-head button.sort-by-dis[disabled]{opacity: .5;font-weight: normal;}
 #container .inven-aspect-select.active{display: block;}
 #container .inven-aspect-select .box-aspect-select{position: relative;height: calc(100% - 52px);overflow-y: auto;background-color: #1A1B1F;}
-#container .inven-aspect-select .box-aspect-select::-webkit-scrollbar{width: 6px;}
-#container .inven-aspect-select .box-aspect-select::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
-#container .inven-aspect-select .box-aspect-select::-webkit-scrollbar-track{background-color: grey;border-radius: 6px;box-shadow: inset 0px 0px 5px white;}
 #container .inven-aspect-select .box-aspect-lists{}
 #container .inven-aspect-select .box__aspect-grid{position: relative;display: none;}
 #container .inven-aspect-select .button-aspect{position: relative;display: flex;justify-content: space-between;align-items: center;width: 100%;padding: 5px 0;text-align: left;border: 1px solid transparent;box-sizing: border-box;background: rgb(92,35,15);background: linear-gradient(180deg, rgba(92,35,15,0.4) 0%, rgba(25,20,16,1) 100%);}
@@ -503,11 +504,12 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .inven-wep .equ + .equ .button-option-select,
 #container .inven .inven-acc .equ .button-option-select{left: inherit;right: 0;}
 #container .inven .equ .option-list{display: none;}
-body.option-view #container .inven .equ[data-ver] .option-list{display: flex;flex-wrap: wrap;justify-content: flex-start;width: 100%;margin-top: 10px;}
-body.option-view #container .inven .equ .option-list .option-item{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 20px;font-size: 13px;color: gold;line-height: 1.2;text-align: left;}
-body.option-view #container .inven .equ .option-list .option-item::before{content:'';position: absolute;top: 6px;left: 10px;width: 4px;height: 4px;background-color: gold;transform:rotate(-45deg)}
-/* body.option-view #container .inven .equ .option-list .option-item:first-child{margin-top: 10px;padding-top: 6px;border-top: 1px solid #444;} */
-/* body.option-view #container .inven .equ .option-list .option-item:first-child::before{top: 12px;} */
+body.option-view #container .inven .equ[data-ver] .option-list{display: flex;flex-wrap: wrap;justify-content: flex-start;flex-direction: column;width: 100%;margin-top: 10px;}
+body.option-view #container .inven .equ .option-list .grid-option .option-fav{display: none;}
+body.option-view #container .inven .equ .option-list .grid-option .option-del{display: none;}
+body.option-view #container .inven .equ .option-list .grid-option .option-name{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 20px;font-size: 13px;color: gold;line-height: 1.2;text-align: left;cursor: default;}
+body.option-view #container .inven .equ .option-list .grid-option .option-name::before{content:'';position: absolute;top: 6px;left: 10px;width: 4px;height: 4px;background-color: gold;transform:rotate(-45deg)}
+
 body.option-view #container .inven .equ[data-ver]{min-height:90px;}
 body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
 body.option-view #container .inven .equ[data-ver] .type-uni ~ .option-list,
@@ -540,13 +542,13 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .dimmed-layer.active .dimmed{display:block;z-index: 370;}
 .dimmed-layer.active .layer-container{display:block;z-index: 371;}
 
-.option-layer{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;z-index: 300;}
-.option-layer::after,
+.option-layer{display: none;position: fixed;top: 70px;left: 0;right: 0;bottom: 0;z-index: 300;}
+/* .option-layer::after, */
 .option-layer .dimmed{content:'';display:none;position:fixed;top:0;left:0;z-index:350;width:100%;height:100%;background:rgba(0, 0, 0, 0.5)}
 .option-layer.active,
 .option-layer.active::after{display: block;}
-.option-layer.active .dimmed{display: none !important;}
-.option-layer .option-container{position: absolute;top: 150px;left: 50%;padding:20px;max-width:800px;width:100%;max-height:calc(100% - 148px);overflow-y: auto;background-color: #111;transform: translate(-50%, 0);border-radius:10px;z-index: 900;}
+.option-layer.active .dimmed{display: block;}
+.option-layer .option-container{position: absolute;top: 50%;left: 50%;max-width: 95%;width: 640px;height: calc(100% - 40px);border-radius: 6px;border: 1px solid #F3F3F3;background-color: #1A1B1F;overflow: hidden;transform: translate(-50%, -50%);z-index: 400;}
 .option-layer .option-container .option-select-guide{font-size: 16px;line-height: 1.5;margin: 15px 0;padding-right: 40px;}
 .option-layer .option-container .box-option-input{position: relative;display: flex;height: 50px;padding-left: 50px;background-color: #D9E1F3;border: 1px solid #ACB9D2;width: 100%;border-radius: 12px;overflow: hidden;box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.5);}
 .option-layer .option-container .box-option-input::before{content:'';position: absolute;top: 50%;left: 7px;width: 30px;height: 30px;margin:-15px 0 0 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.186 2.09c.521.25 1.136.612 1.625 1.101.49.49.852 1.104 1.1 1.625.313.654.11 1.408-.401 1.92l-7.214 7.213c-.31.31-.688.541-1.105.675l-4.222 1.353a.75.75 0 0 1-.943-.944l1.353-4.221a2.75 2.75 0 0 1 .674-1.105l7.214-7.214c.512-.512 1.266-.714 1.92-.402zm.211 2.516a3.608 3.608 0 0 0-.828-.586l-6.994 6.994a1.002 1.002 0 0 0-.178.241L9.9 14.102l2.846-1.496c.09-.047.171-.107.242-.178l6.994-6.994a3.61 3.61 0 0 0-.586-.828zM4.999 5.5A.5.5 0 0 1 5.47 5l5.53.005a1 1 0 0 0 0-2L5.5 3A2.5 2.5 0 0 0 3 5.5v12.577c0 .76.082 1.185.319 1.627.224.419.558.754.977.978.442.236.866.318 1.627.318h12.154c.76 0 1.185-.082 1.627-.318.42-.224.754-.559.978-.978.236-.442.318-.866.318-1.627V13a1 1 0 1 0-2 0v5.077c0 .459-.021.571-.082.684a.364.364 0 0 1-.157.157c-.113.06-.225.082-.684.082H5.923c-.459 0-.57-.022-.684-.082a.363.363 0 0 1-.157-.157c-.06-.113-.082-.225-.082-.684V5.5z" fill="rgba(0, 0, 0, 1)"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.6;}
@@ -557,26 +559,37 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .option-layer .option-container .box-option-input .button-copy{color: cornflowerblue;}
 .option-layer .option-container .box-option-input .button-submit{min-width:65px;font-weight: bold;}
 .option-layer .option-container .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
+.option-layer .option-container .box-option-button{display: flex;align-items: center;justify-content: center;height: 100px;text-align: center;}
+.option-layer .option-container .box-option-button .option-submit{min-width: 120px;border: 1px solid #fff;font-size: 18px;padding: 12px 0;text-align: center;font-weight: bold;border-radius: 10px;}
 
 /* 옵션 선택 창 */
-.box-option-list{width: 600px;margin: 40px auto;}
-.box-option-list .selected-option{}
-.box-option-list .select-option{}
-.box-option-list .option-group{position: relative;margin-top: 50px;padding-left: 10px;display:flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;}
-.box-option-list .option-group[data-group]::before{content:'기타 옵션';position: absolute;top: -30px;left: 0;font-size: 16px;font-weight: bold;padding: 5px 10px 5px 0;background-color: #1A1B1F;z-index: 20;}
-.box-option-list .option-group[data-group]::after{content:'';position: absolute;top: -15px;left: 0;width: 100%;height: 1px;background-color: #fff;opacity: 0.1;z-index: 10;}
-.box-option-list .option-group[data-group=com]::before{content:'공통 옵션';color: #fff;}
-.box-option-list .option-group[data-group=off]::before{content:'기술 피해';color: #fe6000;}
-.box-option-list .option-group[data-group=job]::before{content:'직업 전용';color: gold;}
-.box-option-list .option-group[data-group=def]::before{content:'피해 감소';color: #38aced;}
-.box-option-list .option-group[data-group=skl]::before{content:'스킬 등급';color: #a4a0f0;}
-.box-option-list .option-group[data-group=etc]::before{content:'기타';color: #fff;}
-.box-option-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin: 5px;padding: 0 0 0 10px;height: 36px;border-radius: 8px;}
-.box-option-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: #fff;-webkit-appearance: none;border-radius: 4px;}
-.box-option-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
-.box-option-list .grid-option .option-name{height: 100%;font-size: 14px;}
-.box-option-list .option-group[data-group=skl] .grid-option .option-name::after{content:' 스킬 + ';}
-.box-option-list .grid-option .option-del{font-size:0;line-height:0;min-width:30px;width: 30px;height: 30px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
+.option-head{height: 50px;font-size: 16px;line-height: 50px;color: #fe6000;font-weight: bold;text-align: center;text-indent: 50px;padding-right: 50px;border-bottom: 1px solid #333;}
+.option-body{position: relative;height: calc(100% - 150px);overflow-y: auto;background-color: #1A1B1F;}
+.option-body .select-option{margin: 15px;}
+.by-write{display: none;}
+.by-list .option-group{position: relative;margin-top: 50px;padding: 0 10px;display:flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;}
+.by-list .option-group[data-group]::before{content:'기타 옵션';position: absolute;top: -30px;left: 0;font-size: 16px;font-weight: bold;padding: 5px 10px 5px 0;background-color: #1A1B1F;z-index: 20;}
+.by-list .option-group[data-group]::after{content:'';position: absolute;top: -15px;left: 0;width: 100%;height: 1px;background-color: #fff;opacity: 0.1;z-index: 10;}
+.by-list .option-group[data-group=com]::before{content:'공통 옵션';color: #fff;}
+.by-list .option-group[data-group=off]::before{content:'기술 피해';color: #fe6000;}
+.by-list .option-group[data-group=job]::before{content:'직업 전용';color: gold;}
+.by-list .option-group[data-group=def]::before{content:'피해 감소';color: #38aced;}
+.by-list .option-group[data-group=skl]::before{content:'스킬 등급';color: #a4a0f0;}
+.by-list .option-group[data-group=etc]::before{content:'기타';color: #fff;}
+.by-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin: 5px;padding: 0 10px;height: 36px;border-radius: 8px;}
+.by-list .grid-option[aria-selected=true]{opacity: .3;}
+.by-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: #fff;-webkit-appearance: none;border-radius: 4px;}
+.by-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
+.by-list .grid-option .option-name{height: 100%;font-size: 14px;}
+.grid-option[data-option-type=skl] .option-name::after{content:' 스킬 + ';}
+.by-list .grid-option .option-del{display: none;font-size:0;line-height:0;min-width:30px;width: 30px;height: 30px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
+
+.by-list .selected-option{position: sticky;top: -2px;margin-top: -2px;width: 100%;min-height:76px;padding: 15px;background-color: #111;display: flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;z-index: 100;box-shadow: 0px 1px 15px 0px rgba(255,255,255,0.1);}
+.by-list .selected-option .grid-option{padding-right: 0;border-color: gold;}
+.by-list .selected-option .grid-option .option-del{display: block;}
+
+.by-list .box-alert{position: relative;height: 20px;padding: 0 15px;}
+.by-list .box-alert .option-alert{max-height: 0;overflow: hidden;font-size: 12px;color: gold;}
 
 [data-job-select=dru] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=dru]),
 [data-job-select=dru] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=dru]),

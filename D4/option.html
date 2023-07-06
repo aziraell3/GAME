@@ -11,7 +11,7 @@
 <div id="wrap">
 	<div id="header">
 		<!-- <p class="notice"></p> -->
-		<h1 class="page-title"><button type="button" class="button-notice title" aria-expanded="false" aria-controls="notice">D4 위상 세팅 시뮬레이터</span> <span class="sup">ver1.5</button></h1>
+		<h1 class="page-title"><button type="button" class="button-notice title" aria-expanded="false" aria-controls="notice">D4 위상 세팅 시뮬레이터</span> <span class="sup">ver1.4</button></h1>
 		<div id="notice" class="box-notice" aria-hidden="true">
 			<div class="notice-cont">
 				<div class="notibox">
@@ -21,9 +21,9 @@
 					* <a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글</a> 이외에는 홍보성 글은 게시하지 않았습니다.<br>
 					좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
 				</div>
-				업데이트 내역(23.07.06) v1.5<br>
+				업데이트 내역(23.07.04) v1.4<br>
 				<ul>
-					<li>Beta <del>장비 옵션 작성 가능</del> -> 장비 옵션 선택형으로 변경</li>
+					<li>Beta 장비 옵션 작성 가능</li>
 					<li>개별 보석세팅 보조무기 선택시 주무기 보석 1칸 / 보조무기 해제시 주무기 보석 2칸으로 변경됩니다.</li>
 					<li>장비별 개별 보석세팅 추가(세팅 이름 우측 보석 아이콘 ON/OFF)</li>
 					<li>통합 보석세팅 추가</li>
@@ -155,7 +155,7 @@
 					</div>
 					<span class="text">
 						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
-						<button class="button-option-select">선호옵션</button>
+						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">선호옵션</button>
 						<div class="option-list"></div>
 					</span>
 				</div>
@@ -167,7 +167,7 @@
 					</div>
 					<span class="text">
 						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
-						<button class="button-option-select">선호옵션</button>
+						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">선호옵션</button>
 						<div class="option-list"></div>
 					</span>
 				</div>
@@ -180,7 +180,7 @@
 					</div>
 					<span class="text">
 						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
-						<button class="button-option-select">선호옵션</button>
+						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">선호옵션</button>
 						<div class="option-list"></div>
 					</span>
 				</div>
@@ -191,7 +191,7 @@
 					</div>
 					<span class="text">
 						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
-						<button class="button-option-select">선호옵션</button>
+						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">선호옵션</button>
 						<div class="option-list"></div>
 					</span>
 				</div>
@@ -295,6 +295,22 @@
 						부위별 선호하는 옵션 4개를 골라주세요.
 					</div>
 					<div class="option-body">
+						<div class="box-option-type by-write">
+							<p class="option-select-guide">
+								원하는 옵션명을 작성 후 엔터 또는 확인을 눌러주세요.<br>
+								옵션의 구분은 쉼표( , )로 구분되며 최대 6번째 옵션항목까지 적용됩니다.<br>
+								<br>
+								현재는 원하는 옵션을 수기로 작성하고 쉼표로 구분하여 작성하게 해 놓았으나,<br>
+								추후 각 부위별, 직업별 옵션별로 리스팅할 예정입니다.(옵션 선택형)<br>
+								<br>
+							</p>
+							<div class="box-option-input">
+								<input type="text" class="option-input" placeholder="ex) 극확, 극피, 취약, 생명력">
+								<button type="button" class="button-copy">복사</button>
+								<button type="button" class="button-submit">확인</button>
+							</div>
+						</div>
+						
 						<!-- 옵션 선택 창 -->
 						<div class="box-option-type by-list">
 							<div class="selected-option none-select"></div>
@@ -303,9 +319,7 @@
 						</div>
 					</div>
 
-					<div class="box-option-button">
-						<button class="option-submit">확인</button>
-					</div>
+					<button class="option-submit">확인</button>
 
 					<button type="button" class="button-close" data-dismiss="modal">닫기</button>
 				</div>
@@ -348,4 +362,9 @@
 <script src="d4.aspect.js"></script>
 <script src="d4.option.js"></script>
 <script src="d4.common.js"></script>
+<style>
+.box-option-write{display: none;}
+#container .inven .equ .button-option-select{display: block !important;height: 50px;z-index: 900;}
+</style>
+<script></script>
 </html>
