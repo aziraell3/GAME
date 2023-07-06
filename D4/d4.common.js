@@ -161,6 +161,16 @@ var D4SkillDB = (function(){
 				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
 				$('#container .spirit-description').empty();
 				$('.description').slideDown(300);
+				if ($job == 'dru') {
+					$('#wep2-opt').attr('data-option-parts', 'sub');
+				} else if ($job == 'nec') {
+					console.log('nec')
+					$('#wep2-opt').attr('data-option-parts', 'shl');
+					$('#wep4-opt').attr('data-option-parts', 'sub');
+				} else {
+					$('#wep2-opt').attr('data-option-parts', 'wep');
+					$('#wep4-opt').attr('data-option-parts', 'wep');
+				}
 				method.aspectReset();
 			}
 		})
