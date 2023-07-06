@@ -576,7 +576,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .by-list .option-group[data-group=def]::before{content:'피해 감소';color: #38aced;}
 .by-list .option-group[data-group=skl]::before{content:'스킬 등급';color: #a4a0f0;}
 .by-list .option-group[data-group=etc]::before{content:'기타';color: #fff;}
-.by-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin: 5px;padding: 0 10px;height: 36px;border-radius: 8px;}
+.by-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin:3px 5px;padding: 0 10px;height: 32px;border-radius: 8px;}
 .by-list .grid-option[aria-selected=true]{opacity: .3;}
 .by-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: #fff;-webkit-appearance: none;border-radius: 4px;}
 .by-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
