@@ -108,7 +108,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-wep .equ + .equ .option.active::after,
 #container .inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;} */
 #container .inven .equ .option.active{opacity: 1;border: 1px solid gold;}
-#container .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;width: 100%;min-height: 70px;margin: 0 5px 0 35px;padding: 5px;}
+#container .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;width: 100%;min-height: 70px;margin: 0 5px 0;padding: 5px;}
 #container .inven .equ[data-ver] .text{justify-content:flex-start;}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
@@ -389,6 +389,7 @@ body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;}
 body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 32px 0 0; */}
+body.gems #container .inven .equ .text{margin-left: 35px;}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{/* margin: 0 0 0 35px; */}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
@@ -657,7 +658,8 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 	body.option-view #container .inven .inven-wep .equ, 
 	body.option-view #container .inven .inven-acc, 
 	body.option-view #container .inven .inven-equ{width: 100%;float: none;}
-	body.option-view #container .inven .equ .text{width: 45%;margin-left: 35px;}
+	body.option-view #container .inven .equ .text{width: 45%;}
+	body.option-view.gems #container .inven .equ .text{margin-left: 35px;}
 	body.option-view #container .inven .equ .gems + .text{margin-left: 0;}
 	body.option-view #container .inven .equ[data-ver] .option-list{position: absolute;top: 50%;margin-top: 0;right: 0;width: 40%;transform: translate(0, -50%);}
 	body.option-view #container .inven .equ.emp{display: none;}
