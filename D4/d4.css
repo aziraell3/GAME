@@ -113,7 +113,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
-#container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;min-height: 90px;}
+#container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;min-height: 110px;}
 #container .inven .equ .text .detail{position: relative;top: 4px;display: block;color: #fff;font-size: 15px;}
 body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .option.selected ~ .text .detail{top: 0;font-weight: bold;color: #D87B1B;}
@@ -388,7 +388,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;}
-body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 35px 0 0; */}
+body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 32px 0 0; */}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
 body.gems #container .inven .inven-acc .equ:not(.gems) .option{/* margin: 0 0 0 35px; */}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;padding: 0 3px;box-sizing: content-box;}
@@ -399,7 +399,7 @@ body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{d
 /* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
 body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin-left: 0; */}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ[data-has=gem] .option,
-body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin: 0 0 0 35px; */}
+body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin: 0 0 0 32px; */}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -499,7 +499,8 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .equ .text .item-opt .opt + .opt{margin-top: 3px;}
 #container .inven .equ .selected ~ .text .item-opt{display: inline-block;}
 
-#container .inven .equ .button-option-select{display: none;position: absolute;top: 70px;left: 0;width: 70px;padding: 3px 0;text-align: center;overflow: hidden;font-size: 14px;color: orange;line-height: 1;opacity: .9;}
+#container .inven .equ .button-option-select{display: none;position: absolute;top: 75px;left: 0;width: 70px;padding: 7px 0;text-align: center;overflow: hidden;font-size: 14px;color: orange;line-height: 1;opacity: .9;border: 1px solid #444757;border-radius: 8px;background-color: #111;}
+#container .inven .equ .button-option-select::before{content:'';display: inline-block;vertical-align: middle;width: 13px;height: 13px;margin: -2px 3px 0 0;background: url('data:image/svg+xml;utf8,<svg fill="rgba(255, 255, 255, 1)" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.123 60.123" xml:space="preserve"><g><path d="M57.124,51.893H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,51.893,57.124,51.893z"/><path d="M57.124,33.062H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3 C60.124,31.719,58.781,33.062,57.124,33.062z"/><path d="M57.124,14.231H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,14.231,57.124,14.231z"/><circle cx="4.029" cy="11.463" r="4.029"/><circle cx="4.029" cy="30.062" r="4.029"/><circle cx="4.029" cy="48.661" r="4.029"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity: .7;}
 #container .inven .equ .button-option-select.modify{color: #38aced;}
 #container .inven .inven-wep .equ + .equ .button-option-select,
 #container .inven .inven-acc .equ .button-option-select{left: inherit;right: 0;}
@@ -559,24 +560,26 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .option-layer .option-container .box-option-input .button-copy{color: cornflowerblue;}
 .option-layer .option-container .box-option-input .button-submit{min-width:65px;font-weight: bold;}
 .option-layer .option-container .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
-.option-layer .option-container .box-option-button{display: flex;align-items: center;justify-content: center;height: 100px;text-align: center;}
-.option-layer .option-container .box-option-button .option-submit{min-width: 120px;border: 1px solid #fff;font-size: 18px;padding: 12px 0;text-align: center;font-weight: bold;border-radius: 10px;}
+.option-layer .option-container .box-option-button{display: flex;justify-content: center;height: 70px;text-align: center;}
+.option-layer .option-container .box-option-button .option-submit{display: block;width: 100%;border-top: 1px solid #666;margin: 0 20px;font-size: 20px;padding: 12px 0;color: #38aced;text-align: center;font-weight: bold;}
 
 /* 옵션 선택 창 */
 .option-head{height: 50px;font-size: 16px;line-height: 50px;color: #fe6000;font-weight: bold;text-align: center;text-indent: 50px;padding-right: 50px;border-bottom: 1px solid #333;}
-.option-body{position: relative;height: calc(100% - 150px);overflow-y: auto;background-color: #1A1B1F;}
+.option-body{position: relative;height: calc(100% - (50px + 70px));overflow-y: auto;background-color: #1A1B1F;}
 .option-body .select-option{margin: 15px;}
 .by-write{display: none;}
 .by-list .option-group{position: relative;margin-top: 50px;padding: 0 10px;display:flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;}
 .by-list .option-group[data-group]::before{content:'기타 옵션';position: absolute;top: -30px;left: 0;font-size: 16px;font-weight: bold;padding: 5px 10px 5px 0;background-color: #1A1B1F;z-index: 20;}
 .by-list .option-group[data-group]::after{content:'';position: absolute;top: -15px;left: 0;width: 100%;height: 1px;background-color: #fff;opacity: 0.1;z-index: 10;}
+.by-list .option-group[data-group=fav]::before{content:'추천 옵션';color: #fe6000;}
 .by-list .option-group[data-group=com]::before{content:'공통 옵션';color: #fff;}
 .by-list .option-group[data-group=off]::before{content:'기술 피해';color: #fe6000;}
 .by-list .option-group[data-group=job]::before{content:'직업 전용';color: gold;}
 .by-list .option-group[data-group=def]::before{content:'피해 감소';color: #38aced;}
 .by-list .option-group[data-group=skl]::before{content:'스킬 등급';color: #a4a0f0;}
 .by-list .option-group[data-group=etc]::before{content:'기타';color: #fff;}
-.by-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin:3px 5px;padding: 0 10px;height: 32px;border-radius: 8px;}
+.by-list .grid-option{position: relative;display:flex;align-items: center;border: 1px solid #666;margin:3px;padding: 0 10px;height: 32px;border-radius: 8px;background-color: #111;}
+.by-list .grid-option.fav::before{content:'★ ';display: inline-block;margin-right: 2px;color: #fe6000;font-size: 11px;opacity: .8;}
 .by-list .grid-option[aria-selected=true]{opacity: .3;}
 .by-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: #fff;-webkit-appearance: none;border-radius: 4px;}
 .by-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
@@ -737,7 +740,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option,
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems, [data-wep-type=sub]) .option, 
-	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 35px 0 !important;}
+	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 32px 0 !important;}
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
 	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
 	#container .inven *:not(.inven-gems) .each-gem::before{background-position: 2px 50%;}
@@ -745,9 +748,11 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 
 	.option-layer .option-container .box-option-input button{display: block;min-width:50px;font-size: 14px;}
 	.option-layer .option-container .box-option-input .button-copy{}
-	body.option-view #container .inven .equ[data-has=gem] .button-option-select{top: 100px;}
+	body.option-view #container .inven .equ[data-has=gem] .button-option-select{top: 103px;}
 	body.option-view #container .inven .equ .selected ~ .text{margin-bottom: 10px;min-height:105px;justify-content: flex-start;}
-	body.option-view #container .inven .equ[data-has=gem] .selected ~ .text{min-height:125px;}
+	body.option-view #container .inven .equ[data-has=gem] .selected ~ .text{min-height:135px;}
 	body.option-view #container .inven .equ .text .detail{top: 4px;}
+	body.option-view #container .inven .inven-wep .equ + .equ .button-option-select, 
+	body.option-view #container .inven .inven-acc .equ .button-option-select{left: 0;right: inherit;}
 
 }

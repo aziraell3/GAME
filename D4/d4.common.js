@@ -99,10 +99,10 @@ var D4SkillDB = (function(){
 			//D4Option.init();
 			if (!$(this).val() == '') {
 				$optionInput.val($(this).val());
-				$(this).removeClass('modify').text('선호옵션');
+				$(this).removeClass('modify');
 			} else {
 				$optionInput.val('');
-				$(this).addClass('modify').text('옵션변경');
+				$(this).addClass('modify');
 			}
 			obj.optionList.attr('data-select-option-parts', $parts);
 
@@ -168,8 +168,7 @@ var D4SkillDB = (function(){
 					$('#wep2-opt').attr('data-option-parts', 'shl');
 					$('#wep4-opt').attr('data-option-parts', 'sub');
 				} else {
-					$('#wep2-opt').attr('data-option-parts', 'wep');
-					$('#wep4-opt').attr('data-option-parts', 'wep');
+					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
 				}
 				method.aspectReset();
 			}
@@ -303,7 +302,7 @@ var D4SkillDB = (function(){
 		method.wepChange(true); //주무기 보석 칸 리셋
 		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
 		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
-		$('#container .inven .equ .button-option-select').removeClass('modify').text('선호옵션');
+		$('#container .inven .equ .button-option-select').removeClass('modify');
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 		method.fixedViewPort(false);
