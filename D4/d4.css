@@ -108,7 +108,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-wep .equ + .equ .option.active::after,
 #container .inven .inven-acc .equ .option.active::after{content:'';position: absolute;top: 50%;margin-top: -10px;left: -12px;width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent;border-left: 10px solid #F3F3F3;} */
 #container .inven .equ .option.active{opacity: 1;border: 1px solid gold;}
-#container .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;width: 100%;min-height: 70px;margin: 0 5px;padding: 5px;}
+#container .inven .equ .text{display: flex;align-items: flex-start;flex-direction: column;justify-content: center;width: 100%;min-height: 70px;margin: 0 5px 0 35px;padding: 5px;}
 #container .inven .equ[data-ver] .text{justify-content:flex-start;}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
