@@ -85,7 +85,8 @@ var D4SkillDB = (function(){
 			obj.body.toggleClass($tag);
 		})
 	};
-	method.itemOption = function(){ //아이템 옵션 선택
+	method.itemOption = function(){
+		//아이템 옵션 선택
 		var $optionButton = $('.button-option-select');
 		var $optionLayer = $('#'+$optionButton.attr('aria-controls'));
 		var $optionInput = $optionLayer.find('.option-input');
@@ -111,6 +112,12 @@ var D4SkillDB = (function(){
 			$selected.find('.grid-option').each(function(){
 				var $id = $('#'+$(this).attr('aria-controls'));
 				$id.attr('aria-selected', true);
+			})
+			$('.option-group').each(function(){
+				$(this).show();
+				if ($(this).find('.grid-option:visible').length < 1) {
+					$(this).hide();
+				}
 			})
 			method.fixedViewPort(true);
 		})
@@ -349,9 +356,8 @@ var D4SkillDB = (function(){
 		}
 	};
 	method.aspectDB = function(){
-		//스킬 선택
+		//위상 선택
 		obj.aspectButton = obj.container.find('.button-aspect');
-		//obj.aspectButton.on('click', function(){
 		obj.container.on('click', '.button-aspect', function(){
 			var $detail = $(this).find('.aspect-name');
 			var $tooltip = $(this).find('.aspect-more').html();
