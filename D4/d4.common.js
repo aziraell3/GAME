@@ -21,10 +21,11 @@ $(document).ready(function(){
 		}
 	});
 	$('.button-gem').trigger('click');
-	$('.button-option-view').trigger('click');
+	//$('.button-option-view').trigger('click');
 	$('.button-option-select:not([aria-haspopup][aria-controls=optionSelect])').on('click', function(){
 		D4SkillDB.layerFunc('layerCommon', true, '무기/보조무기는 준비중입니다.', false);
 	})
+	D4SkillDB.scrollFunc();
 	//$('#header, #container').hide();
 })
 var D4SkillDB = (function(){
@@ -49,7 +50,7 @@ var D4SkillDB = (function(){
 		method.aspectDB();
 		method.spiritBoons();
 		method.jobSelect();
-		method.scrollFunc();
+		//method.scrollFunc();
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
@@ -232,8 +233,6 @@ var D4SkillDB = (function(){
 	method.scrollFunc = function(){
 		$(window).scroll(function () {
 			var scrollTop = $(this).scrollTop();
-			var $title = $('#header .page-title');
-			//var $header = $('#header').outerHeight();
 			var $header = 40;
 			(scrollTop > $header) 
 				? obj.body.addClass('header-flip')
@@ -553,6 +552,7 @@ var D4SkillDB = (function(){
 		layerSort : method.layerSort,
 		setAspect : method.setAspect,
 		layerFunc : method.layerFunc,
+		scrollFunc : method.scrollFunc,
 	}
 })();
 D4SkillDB.init();
