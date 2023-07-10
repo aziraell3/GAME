@@ -387,7 +387,7 @@ body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;}
 body.gems #container .inven .equ .text{margin-left: 41px;}
-body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
+/* body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, */
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{visibility: hidden;}
 body.gems #container .inven .equ .gems + .text{margin: 0 5px;}
