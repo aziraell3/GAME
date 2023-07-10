@@ -315,7 +315,7 @@ var D4Option = (function(){
 		{ver:'ori', grade:'nor', job:'dru', type:'off', parts:'amu',						name:'대지 기술 피해 증가'},
 		{ver:'ori', grade:'nor', job:'dru', type:'off', parts:'amu',						name:'동료 기술 피해 증가'},
 		{ver:'ori', grade:'nor', job:'dru', type:'off', parts:'amu',						name:'폭풍 기술 피해 증가'},
-		{ver:'ori', grade:'nor', job:'dru', type:'def', parts:'amu',						name:'보상 상태에서 피해 감소'},
+		{ver:'ori', grade:'nor', job:'dru', type:'def', parts:'amu',						name:'보강 상태에서 피해 감소'},
 		{ver:'ori', grade:'nor', job:'dru', type:'skl', parts:'amu',						name:'모든 동료'},
 		{ver:'ori', grade:'nor', job:'dru', type:'skl', parts:'amu',						name:'모든 방어'},
 		{ver:'ori', grade:'nor', job:'dru', type:'skl', parts:'amu',						name:'모든 진노'},

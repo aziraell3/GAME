@@ -378,29 +378,21 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven-gems .equ.gems .option[data-gem-type=wep]::after{content:'무기 보석';color: #D87B1B;}
 #container .inven-gems .equ.gems .option[data-gem-type=def]::after{content:'방어구 보석';color: #38aced;}
 #container .inven-gems .equ.gems .option[data-gem-type=acc]::after{content:'장신구 보석';color: #a4a0f0;}
-#container .inven .equ .gems{display: none;/* position: absolute; */top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
+#container .inven .equ .gems{display: none;top: 0;left: 75px;height: auto;width: 30px;height: 70px;}
 #container .inven .inven-wep .equ + .equ:not(.gems) .gems,
 #container .inven .inven-acc .equ .gems{left: inherit;right: 75px;}
-#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;/* border: 1px solid #444;border-radius: 50%; */}
-#container .inven .equ .gems .each-gem[data-gem-icon]{/* border: 1px solid #666; background-color: rgba(0, 0, 0, 1);border-radius: 50%*/}
+#container .inven .equ .gems .each-gem{display: block;width: 30px;height: 30px;}
 #container .inven .equ .gems .each-gem.active::before{opacity: 1;}
-#container .inven .equ .gems .each-gem + .each-gem{/* margin-top: 3px; */}
 body.gems #container .inven-gems{margin: 0;padding: 0;}
 body.gems #container .inven-gems .equ.gems,
 body.gems #container .inven-gems::before{display: none;margin: 0;}
-body.gems #container .inven .equ[data-has=gem] .option{/* margin: 0 32px 0 0; */}
-body.gems #container .inven .equ .text{margin-left: 35px;}
+body.gems #container .inven .equ .text{margin-left: 41px;}
 body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option,
-body.gems #container .inven .inven-acc .equ:not(.gems) .option{/* margin: 0 0 0 35px; */}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{visibility: hidden;}
 body.gems #container .inven .equ .gems + .text{margin: 0 5px;}
 body.gems #container .inven .inven-wep .equ .gems.single-gem .each-gem + .each-gem,
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
-/* body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;} */
-body.gems #container .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin-left: 0; */}
-body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ[data-has=gem] .option,
-body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ[data-has=gem] .option{/* margin: 0 0 0 32px; */}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
 body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
@@ -565,7 +557,18 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .option-layer .option-container .box-option-button .option-submit{display: block;width: 100%;margin: 0 20px;font-size: 20px;padding: 12px 0;color: #38aced;text-align: center;font-weight: bold;}
 
 /* 옵션 선택 창 */
-.option-head{height: 50px;font-size: 16px;line-height: 50px;color: #fe6000;font-weight: bold;text-align: center;text-indent: 50px;padding-right: 50px;border-bottom: 1px solid #333;}
+.option-head{height: 50px;font-size: 16px;line-height: 50px;color: #fe6000;text-align: center;text-indent: 50px;padding-right: 50px;border-bottom: 1px solid #333;}
+[data-select-option-parts] .option-head::before{content:'장비';font-weight: bold;}
+[data-select-option-parts=hel] .option-head::before{content:'투구'}
+[data-select-option-parts=che] .option-head::before{content:'갑옷'}
+[data-select-option-parts=glo] .option-head::before{content:'장갑'}
+[data-select-option-parts=pan] .option-head::before{content:'바지'}
+[data-select-option-parts=boo] .option-head::before{content:'신발'}
+[data-select-option-parts=amu] .option-head::before{content:'목걸이'}
+[data-select-option-parts=rin] .option-head::before{content:'반지'}
+[data-select-option-parts=wep] .option-head::before{content:'무기'}
+[data-select-option-parts=sub] .option-head::before{content:'보조무기'}
+[data-select-option-parts=shl] .option-head::before{content:'방패'}
 .option-body{position: relative;height: calc(100% - (50px + 70px));overflow-y: auto;background-color: #1A1B1F;}
 .option-body .select-option{margin: 15px;}
 .by-write{display: none;}
@@ -596,60 +599,60 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 .by-list .box-alert{position: relative;height: 20px;padding: 0 15px;}
 .by-list .box-alert .option-alert{max-height: 0;overflow: hidden;font-size: 12px;color: gold;}
 
-[data-job-select=dru] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=dru]),
-[data-job-select=dru] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=dru]),
-																											       
-[data-job-select=bab] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=bab]),
-[data-job-select=bab] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=bab]),
-																											       
-[data-job-select=soc] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=soc]),
-[data-job-select=soc] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=soc]),
-																											       
-[data-job-select=rog] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=rog]),
-[data-job-select=rog] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=rog]),
-																											       
-[data-job-select=nec] .select-option[data-select-option-parts=hel] .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=che] .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=glo] .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=pan] .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=boo] .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=amu] .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=rin] .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=wep] .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=sub] .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=nec]),
-[data-job-select=nec] .select-option[data-select-option-parts=shl] .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=nec])
+[data-job-select=dru] [data-select-option-parts=hel] .select-option .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=che] .select-option .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=glo] .select-option .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=pan] .select-option .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=boo] .select-option .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=amu] .select-option .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=rin] .select-option .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=wep] .select-option .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=sub] .select-option .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=dru]),
+[data-job-select=dru] [data-select-option-parts=shl] .select-option .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=dru]),
+					 												 										       
+[data-job-select=bab] [data-select-option-parts=hel] .select-option .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=che] .select-option .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=glo] .select-option .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=pan] .select-option .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=boo] .select-option .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=amu] .select-option .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=rin] .select-option .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=wep] .select-option .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=sub] .select-option .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=bab]),
+[data-job-select=bab] [data-select-option-parts=shl] .select-option .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=bab]),
+					 												 										       
+[data-job-select=soc] [data-select-option-parts=hel] .select-option .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=che] .select-option .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=glo] .select-option .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=pan] .select-option .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=boo] .select-option .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=amu] .select-option .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=rin] .select-option .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=wep] .select-option .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=sub] .select-option .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=soc]),
+[data-job-select=soc] [data-select-option-parts=shl] .select-option .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=soc]),
+					 																						       
+[data-job-select=rog] [data-select-option-parts=hel] .select-option .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=che] .select-option .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=glo] .select-option .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=pan] .select-option .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=boo] .select-option .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=amu] .select-option .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=rin] .select-option .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=wep] .select-option .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=sub] .select-option .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=rog]),
+[data-job-select=rog] [data-select-option-parts=shl] .select-option .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=rog]),
+					 																						       
+[data-job-select=nec] [data-select-option-parts=hel] .select-option .grid-option:not(.com[data-option-job=com], .hel[data-option-job=com], .hel[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=che] .select-option .grid-option:not(.com[data-option-job=com], .che[data-option-job=com], .che[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=glo] .select-option .grid-option:not(.com[data-option-job=com], .glo[data-option-job=com], .glo[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=pan] .select-option .grid-option:not(.com[data-option-job=com], .pan[data-option-job=com], .pan[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=boo] .select-option .grid-option:not(.com[data-option-job=com], .boo[data-option-job=com], .boo[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=amu] .select-option .grid-option:not(.com[data-option-job=com], .amu[data-option-job=com], .amu[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=rin] .select-option .grid-option:not(.com[data-option-job=com], .rin[data-option-job=com], .rin[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=wep] .select-option .grid-option:not(.com[data-option-job=com], .wep[data-option-job=com], .wep[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=sub] .select-option .grid-option:not(.com[data-option-job=com], .sub[data-option-job=com], .sub[data-option-job=nec]),
+[data-job-select=nec] [data-select-option-parts=shl] .select-option .grid-option:not(.com[data-option-job=com], .shl[data-option-job=com], .shl[data-option-job=nec])
 {display: none;}
 
 
@@ -659,7 +662,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 	body.option-view #container .inven .inven-acc, 
 	body.option-view #container .inven .inven-equ{width: 100%;float: none;}
 	body.option-view #container .inven .equ .text{width: 45%;}
-	body.option-view.gems #container .inven .equ .text{margin-left: 35px;}
+	body.option-view.gems #container .inven .equ .text{margin-left: 38px;}
 	body.option-view #container .inven .equ .gems + .text{margin-left: 0;}
 	body.option-view #container .inven .equ[data-ver] .option-list{position: absolute;top: 50%;margin-top: 0;right: 0;width: 40%;transform: translate(0, -50%);}
 	body.option-view #container .inven .equ.emp{display: none;}
@@ -765,6 +768,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-sel
 	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 32px 0 !important;}
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
 	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
+	body.gems #container .inven .equ .text{margin: 0 5px;}
 	#container .inven *:not(.inven-gems) .each-gem::before{background-position: 2px 50%;}
 	#container .inven *:not(.inven-gems) .each-gem + .each-gem::before{background-position: 0px 50%;}
 

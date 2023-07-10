@@ -22,11 +22,7 @@ $(document).ready(function(){
 	});
 	$('.button-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
-	$('.button-option-select:not([aria-haspopup][aria-controls=optionSelect])').on('click', function(){
-		D4SkillDB.layerFunc('layerCommon', true, '무기/보조무기는 준비중입니다.', false);
-	})
 	D4SkillDB.scrollFunc();
-	//$('#header, #container').hide();
 })
 var D4SkillDB = (function(){
 	var method = {};
@@ -106,7 +102,7 @@ var D4SkillDB = (function(){
 				$optionInput.val('');
 				$(this).addClass('modify');
 			}
-			obj.optionList.attr('data-select-option-parts', $parts);
+			$optionLayer.attr('data-select-option-parts', $parts);
 
 			$('.select-option .grid-option').attr('aria-selected', false);
 			$selected.empty().append($invenOption.find('.grid-option').clone());
