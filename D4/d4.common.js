@@ -20,10 +20,6 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
-	$('.button-notice').trigger('click');
-	setTimeout(function(){
-		$('.button-notice').trigger('click');
-	}, 5000);
 	$('.button-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();

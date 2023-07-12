@@ -751,11 +751,12 @@ body.option-view #container .inven .equ[data-ver] .type-uni .button-option-selec
 	body:not(.zoom) #container .inven .inven-wep .equ,
 	body:not(.zoom) #container .inven .inven-equ,
 	body:not(.zoom) #container .inven .inven-acc{float: none;width: 100%;}
+	body:not(.zoom) #container .inven .inven-acc{margin-top: 4px;}
 	body:not(.zoom) #container .inven .inven-wep .equ + .equ, 
 	body:not(.zoom) #container .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
 	body.zoom #container .inven .equ.emp{display: flex;}
 	#container .inven .inven-equ{margin-top: 15px;}
-	#container .inven .equ{margin-top: 0px;}
+	#container .inven .equ{margin-top: 4px;}
 	#container .inven .equ.emp{display: none;}
 	#container .inven .equ .text{width: 100%;}
 	#container .inven .equ .text .detail{font-size: 16px;}
@@ -815,7 +816,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni .button-option-selec
 	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option,
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems, [data-wep-type=sub]) .option, 
-	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 32px 0 !important;}
+	body.gems #container .inven .inven-acc .equ:not(.gems, [data-wep-type=sub]) .option{margin: 0 0 28px 0 !important;}
 	body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .gems, 
 	body.gems #container .inven .inven-acc .equ .gems{top: 60px;left: 0;right: inherit;}
 	body.gems #container .inven .equ .text{margin: 0 5px;}
