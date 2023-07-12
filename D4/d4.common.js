@@ -71,6 +71,7 @@ var D4SkillDB = (function(){
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
 		obj.optionList = $('#optionList');
+		obj.settingTitle = $('#settingTitle');
 	
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
@@ -90,28 +91,12 @@ var D4SkillDB = (function(){
 		})
 		$('.setting-copy, .setting-url').on('click', function(){
 			var el = $('#settingUrl');
-			//$('#settingUrl').select();
-			//document.execCommand("copy");
-			/*
-			var oldContentEditable = el.contentEditable,
-				oldReadOnly = el.readOnly,
-				range = document.createRange();
-
-			el.contentEditable = true;
-			el.readOnly = false;
-			range.selectNodeContents(el);
-
-			var s = window.getSelection();
-			s.removeAllRanges();
-			s.addRange(range);
-
-			el.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
-
-			el.contentEditable = oldContentEditable;
-			el.readOnly = oldReadOnly;
-			*/
 			el.select();
 			document.execCommand('copy');
+		})
+		obj.settingTitle.on('focusout', function(){
+			obj.urlParams.set('title', $(this).val());
+			method.getSetting();
 		})
 	};
 	method.itemOption = function(){
@@ -224,7 +209,7 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.delParam = function(){
-		console.log('delParam');
+		obj.urlParams.delete('title');
 		obj.urlParams.delete('hel');
 		obj.urlParams.delete('che');
 		obj.urlParams.delete('glo');
@@ -562,6 +547,7 @@ var D4SkillDB = (function(){
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
 			}
 		})
+		obj.settingTitle.val(obj.urlParams.get('title'));
 		obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
 	};
