@@ -21,6 +21,9 @@ $(document).ready(function(){
 		}
 	});
 	$('.button-notice').trigger('click');
+	setTimeout(function(){
+		$('.button-notice').trigger('click');
+	}, 5000);
 	$('.button-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
