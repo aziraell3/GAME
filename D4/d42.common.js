@@ -88,7 +88,7 @@ var D4SkillDB = (function(){
 			}
 			obj.body.toggleClass($tag);
 		})
-		$('.setting-copy').on('click', function(){
+		$('.setting-copy, .setting-url').on('click', function(){
 			var el = $('#settingUrl');
 			//$('#settingUrl').select();
 			//document.execCommand("copy");
