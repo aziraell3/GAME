@@ -74,14 +74,8 @@ var D4SkillDB = (function(){
 	
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
-		//obj.url = window.location.href;
 		obj.urlParams = obj.url.searchParams;
-
-
-	
-		obj.urlParams.set('job','dru');
-		//console.log(obj.urlParams.get('job'));
-		//console.log('url : '+obj.urlParams);
+		obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
 		$('[role=switch][aria-checked]').on('click', function(){
@@ -95,8 +89,27 @@ var D4SkillDB = (function(){
 			obj.body.toggleClass($tag);
 		})
 		$('.setting-copy').on('click', function(){
-			$('#settingUrl').select();
-			document.execCommand("copy");
+			var el = $('#settingUrl');
+			//$('#settingUrl').select();
+			//document.execCommand("copy");
+			var oldContentEditable = el.contentEditable,
+				oldReadOnly = el.readOnly,
+				range = document.createRange();
+
+			el.contentEditable = true;
+			el.readOnly = false;
+			range.selectNodeContents(el);
+
+			var s = window.getSelection();
+			s.removeAllRanges();
+			s.addRange(range);
+
+			el.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
+
+			el.contentEditable = oldContentEditable;
+			el.readOnly = oldReadOnly;
+
+			document.execCommand('copy');
 		})
 	};
 	method.itemOption = function(){
@@ -190,10 +203,12 @@ var D4SkillDB = (function(){
 				} else {
 					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
 				}
-				method.aspectReset();
-
 				obj.urlParams.set('job', $job);
+				method.delParam();
 				method.getSetting();
+				method.aspectReset();
+				//history.replaceState({}, null, location.pathname)
+				
 				//console.log(obj.url);
 			}
 		})
@@ -206,6 +221,21 @@ var D4SkillDB = (function(){
 			obj.aspectList.attr('data-filter', $this);
 		})
 	};
+	method.delParam = function(){
+		console.log('delParam');
+		obj.urlParams.delete('hel');
+		obj.urlParams.delete('che');
+		obj.urlParams.delete('glo');
+		obj.urlParams.delete('pan');
+		obj.urlParams.delete('boo');
+		obj.urlParams.delete('amu');
+		obj.urlParams.delete('rin1');
+		obj.urlParams.delete('rin2');
+		obj.urlParams.delete('wep1');
+		obj.urlParams.delete('wep2');
+		obj.urlParams.delete('wep3');
+		obj.urlParams.delete('wep4');
+	},
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
 		$('.inven .equ').each( function(){
@@ -326,10 +356,11 @@ var D4SkillDB = (function(){
 		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
 		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		$('#container .inven .equ .button-option-select').removeClass('modify');
+		
 		$('.box-aspect').empty();
 		$('.option-list').empty(); //선호 옵션 리셋
-		//delete()
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
+		method.delParam();
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -490,14 +521,26 @@ var D4SkillDB = (function(){
 		})
 	};
 
-	method.getSetting = function($url){
+	method.getSetting = function(){
 		var option = obj.urlParams.get('opt');
 		var gem = obj.urlParams.get('gem');
 		var job = obj.urlParams.get('job');
 		var $aspect = $('#container .inven .equ .option');
 		var $gem = $('#container .inven .equ .gems .each-gem');
 		var $option = $('#container .inven .equ .option-list .grid-option');
-
+	
+		if (job == null) {
+			console.log('null')
+			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
+			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
+		} else {
+			console.log(job);
+			obj.urlParams.set('job', job)
+			$('#container').attr('data-job-select', job);
+			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
+			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
+		}
+		
 		if (option == 1) {
 			$('.button-option-view').attr('aria-checked', true);
 			obj.body.addClass('option-view')
@@ -506,13 +549,6 @@ var D4SkillDB = (function(){
 			$('.button-gem').attr('aria-checked', false);
 			obj.body.removeClass('gems')
 		}
-
-		if ($('#container').is('[data-job-select]')) {
-			$('#header .button-job[data-tab-select='+job+']').click();
-		} else {
-			//$('#container').attr('data-job-select', job);
-		}
-
 		$aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
 			var $box =  $(this).siblings('.text').find('.box-aspect');
@@ -522,10 +558,7 @@ var D4SkillDB = (function(){
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
 			}
 		})
-		var $url = $('#settingUrl');
-		$url.val(obj.url);
-
-
+		obj.copyUrl.val(obj.url);
 	};
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
