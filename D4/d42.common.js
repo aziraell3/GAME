@@ -92,6 +92,7 @@ var D4SkillDB = (function(){
 			var el = $('#settingUrl');
 			//$('#settingUrl').select();
 			//document.execCommand("copy");
+			/*
 			var oldContentEditable = el.contentEditable,
 				oldReadOnly = el.readOnly,
 				range = document.createRange();
@@ -108,7 +109,8 @@ var D4SkillDB = (function(){
 
 			el.contentEditable = oldContentEditable;
 			el.readOnly = oldReadOnly;
-
+			*/
+			el.select();
 			document.execCommand('copy');
 		})
 	};
