@@ -539,8 +539,8 @@ body.option-view #container .inven .equ .option-list .grid-option .option-name::
 
 body.option-view #container .inven .equ[data-ver]{min-height:90px;}
 body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
-body.option-view #container .inven .equ[data-ver] .type-uni ~ .option-list,
-body.option-view #container .inven .equ[data-ver] .type-uni ~ .button-option-select{display: none;}
+body.option-view #container .inven .equ[data-ver] .type-uni .option-list,
+body.option-view #container .inven .equ[data-ver] .type-uni .button-option-select{display: none;}
 
 
 /* box-layer */
