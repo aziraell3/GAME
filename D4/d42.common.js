@@ -561,6 +561,7 @@ var D4SkillDB = (function(){
 			}
 		})
 		obj.copyUrl.val(obj.url);
+		history.replaceState({}, null, obj.url);
 	};
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){

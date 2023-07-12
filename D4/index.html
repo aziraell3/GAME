@@ -11,24 +11,35 @@
 <div id="wrap">
 	<div id="header">
 		<!-- <p class="notice"></p> -->
-		<h1 class="page-title"><button type="button" class="button-notice title" aria-expanded="false" aria-controls="notice">D4 위상 세팅 시뮬레이터</span> <span class="sup">ver1.5</button></h1>
+		<h1 class="page-title">
+			<button type="button" class="button-notice" aria-expanded="false" aria-controls="notice" title="공지사항 보기"><span class="a11y">공지사항 보기</span></button><a class="page-link title" href="/GAME/D4/">D4 위상 세팅 시뮬레이터</span> <span class="sup">ver1.6</a>
+		</h1>
 		<div id="notice" class="box-notice" aria-hidden="true">
 			<div class="notice-cont">
 				<div class="notibox">
 					<p class="noti-text">공지사항</p>
 					안녕하세요 위상세팅 시뮬레이션 제작자입니다.<br>
-					<br>
-					* <a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글</a> 이외에는 홍보성 글은 게시하지 않았습니다.<br>
-					좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
+					
+					<strong>
+						1. 각 직업별 URL이 생성되었습니다. <br>
+						<em>상단 직업 버튼을 누르면 해당하는 직업 URL로 변경됩니다.</em>
+						2. 장비 셋팅 URL 기능이 추가 되었습니다.<br>
+						<em>(최종 셋팅 후 주소창의 URL을 copy하고 paste하면 세팅된 장비목록을 로드합니다.(현재 장비셋만 가능)</em>
+					</strong>
 				</div>
-				업데이트 내역(23.07.06) v1.5<br>
+				업데이트 내역(23.07.12) v1.6<br>
 				<ul>
-					<li>Beta <del>장비 옵션 작성 가능</del> -> 장비 옵션 선택형으로 변경</li>
+					<li>장비 셋팅 URL 기능 추가</li>
+					<li><del>장비 옵션 작성 가능</del> -> 장비 옵션 선택형으로 변경</li>
 					<li>개별 보석세팅 보조무기 선택시 주무기 보석 1칸 / 보조무기 해제시 주무기 보석 2칸으로 변경됩니다.</li>
 					<li>장비별 개별 보석세팅 추가(세팅 이름 우측 보석 아이콘 ON/OFF)</li>
 					<li>통합 보석세팅 추가</li>
 					<li>UI 간단하기 보기 삭제</li>
 				</ul>
+				<p class="cmt">
+					<a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글</a> 이외에는 홍보성 글은 게시하지 않았습니다.<br>
+					좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
+				</p>
 			</div>
 			<button class="button-expand-close" data-dismiss="modal">닫기</button>
 		</div>
@@ -44,9 +55,14 @@
 	<div id="container" data-job-select="dru">
 		<div id="imageCanvas" class="inven">
 			<div class="box-title">
-				<button type="button" class="button-option-view" role="switch" data-tag="option-view" aria-checked="false" title="상세옵션 선택하기"><span class="a11y">상세옵션 선택하기</span><span class="bubble">위상을 선택해주세요.</span></button>
+				<button type="button" class="button-option-view" role="switch" data-tag="option-view" aria-checked="false" title="상세옵션 선택하기"><span class="a11y">상세옵션 선택하기</span></button>
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
 				<button type="button" class="button-gem" role="switch" data-tag="gems" aria-checked="false" title="개별 보석 셋팅"><span class="a11y">장비별 보석 셋팅</span></button>
+			</div>
+			<div class="box-title">
+				<label class="setting-copy" for="settingUrl"></label>
+				<!-- <button type="button" class="setting-copy" title="셋팅 URL 저장"><span class="a11y">셋팅 URL 저장</span></button> -->
+				<input type="text" id="settingUrl" class="setting-url">
 			</div>
 
 			<!-- inventory -->
@@ -57,7 +73,7 @@
 						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="hel">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -69,7 +85,7 @@
 						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="che">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -78,7 +94,7 @@
 					<button id="glo" type="button" class="option icon-glo" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<!-- <div class="gems"></div> -->
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="glo">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -90,7 +106,7 @@
 						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="pan">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -99,7 +115,7 @@
 					<button id="boo" type="button" class="option icon-boo" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<!-- <div class="gems"></div> -->
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="boo">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -116,7 +132,7 @@
 						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="amu">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -127,7 +143,7 @@
 						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="rin">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -138,7 +154,7 @@
 						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="rin">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -156,7 +172,7 @@
 						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -168,7 +184,7 @@
 						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button id="wep2-opt"class="button-option-select weapon-sub" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="sub">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -181,7 +197,7 @@
 						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
 						<div class="option-list"></div>
 					</span>
@@ -192,7 +208,7 @@
 						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
-						<span class="detail"></span><span class="more"></span><span class="aspect-parts"></span>
+						<span class="box-aspect"></span>
 						<button id="wep4-opt" class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
 						<div class="option-list"></div>
 					</span>
