@@ -20,6 +20,7 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
+	$('.button-notice').trigger('click');
 	$('.button-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
@@ -401,12 +402,16 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.wepChange = function(weapon){
+		var $job = $('#container').attr('data-job-select')
 		if (weapon) {
 			$('#wep1').siblings().removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
 			$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		} else {
-			$('#wep1').siblings('.gems').addClass('single-gem').parents('.equ').attr('data-multiply', '10');
+			$('#wep1').siblings('.gems').addClass('single-gem').parents('.equ').attr('data-multiply', '10');	
 			$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
+			if ($job == 'rog' || $job == 'bab') {
+				$('#wep1').siblings('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
+			}
 		}
 	};
 	method.aspectDB = function(){
@@ -532,11 +537,9 @@ var D4SkillDB = (function(){
 		var $option = $('#container .inven .equ .option-list .grid-option');
 	
 		if (job == null) {
-			console.log('null')
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
 		} else {
-			console.log(job);
 			obj.urlParams.set('job', job)
 			$('#container').attr('data-job-select', job);
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
