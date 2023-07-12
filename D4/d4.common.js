@@ -94,6 +94,11 @@ var D4SkillDB = (function(){
 			el.select();
 			document.execCommand('copy');
 		})
+		$('#container .inven .equ .box-aspect').each(function(){
+			$(this).on('click', function(){
+				$(this).toggleClass('active');
+			})
+		})
 		obj.settingTitle.on('focusout', function(){
 			obj.urlParams.set('title', $(this).val());
 			method.getSetting();

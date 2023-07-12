@@ -602,14 +602,6 @@ var D4Option = (function(){
 		obj.wrap.find('[data-option-type=def]').not('.fav').wrapAll('<span class="option-group" data-group="def"></span>');
 		obj.wrap.find('[data-option-type=skl]').not('.fav').wrapAll('<span class="option-group" data-group="skl"></span>');
 		obj.wrap.find('[data-option-type=etc]').not('.fav').wrapAll('<span class="option-group" data-group="etc"></span>');
-		
-/*
-		obj.wrap.find('[data-option-type=com]').wrapAll('<span class="option-group" data-group="com"></span>');
-		obj.wrap.find('[data-option-type=job], [data-option-type=off]').wrapAll('<span class="option-group" data-group="job"></span>');
-		obj.wrap.find('[data-option-type=def]').wrapAll('<span class="option-group" data-group="def"></span>');
-		obj.wrap.find('[data-option-type=skl]').wrapAll('<span class="option-group" data-group="skl"></span>');
-		obj.wrap.find('[data-option-type=etc]').wrapAll('<span class="option-group" data-group="etc"></span>');
-*/
 	};
 	return{
 		init : method.init

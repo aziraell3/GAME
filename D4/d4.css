@@ -123,7 +123,7 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .inven .inven-acc .equ .text,
 #container .inven .inven-wep .equ + .equ .text,
 #container .inven .inven-acc .equ .text{align-items: flex-end;}
-#container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;min-height: 110px;}
+#container .inven .equ .selected ~ .text{background-color: rgba(0, 0, 0, 0.3);border-radius: 6px;/* min-height: 110px; */}
 #container .inven .equ .text .detail{position: relative;top: 4px;display: block;color: #fff;font-size: 15px;}
 body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .option.selected ~ .text .detail{top: 0;font-weight: bold;color: #D87B1B;}
@@ -175,6 +175,29 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .active ~ .text .box-aspect::before,
 #container .inven .equ .selected ~ .text .aspect-detail .aspect-name::before,
 #container .inven .equ .active ~ .text .aspect-detail .aspect-name::before{margin-right: 10px;}
+
+
+
+#container .inven .equ .selected ~ .text .box-aspect{cursor:pointer;}
+#container .inven .equ .selected ~ .text .box-aspect *{font-size: 13px;}
+#container .inven .equ .selected ~ .text .box-aspect .aspect-name{font-size: 15px;text-indent: -0.5px;}
+#container .inven .equ .box-aspect .aspect-detail .aspect-name::after{content:'' !important;display:inline-block !important;vertical-align: middle;margin:-2px 3px 0;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;transition: all .3s;opacity:.7;transform:rotate(180deg);}
+#container .inven .equ .box-aspect.active .aspect-detail .aspect-name::after{transform:rotate(0deg);}
+#container .inven .equ .selected ~ .text .box-aspect .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect .acquest{max-height: 0;overflow: hidden;transition: all 0.3s;}
+#container .inven .equ .selected ~ .text .box-aspect.active .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect.active .acquest{max-height: 40px;}
+/*
+#container .inven .equ .selected ~ .text .box-aspect::after{content:'';position: absolute;bottom: 10px;right: 12px;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;transition: all .3s;opacity:.7;transform:rotate(180deg);}
+#container .inven .inven-wep + .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
+#container .inven .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
+#container .inven .inven-acc .equ .selected ~ .text .box-aspect::after{right: inherit;left: 12px;}
+#container .inven .equ .selected ~ .text .box-aspect.active::after{transform:rotate(0deg);}
+#container .inven .equ .selected ~ .text .box-aspect .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect .acquest{max-height: 0;overflow: hidden;transition: all 0.3s;}
+#container .inven .equ .selected ~ .text .box-aspect.active .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect.active .acquest{max-height: 40px;}
+*/
 
 #container .inven .inven-wep + .inven-wep{display: none;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep{display: flex;flex-direction: row-reverse;justify-content: center;}
@@ -547,7 +570,7 @@ body.option-view #container .inven .equ .option-list .grid-option .option-del{di
 body.option-view #container .inven .equ .option-list .grid-option .option-name{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 20px;font-size: 13px;color: gold;line-height: 1.2;text-align: left;cursor: default;}
 body.option-view #container .inven .equ .option-list .grid-option .option-name::before{content:'';position: absolute;top: 6px;left: 10px;width: 4px;height: 4px;background-color: gold;transform:rotate(-45deg)}
 
-body.option-view #container .inven .equ[data-ver]{min-height:90px;}
+body.option-view #container .inven .equ[data-ver]{min-height:105px;}
 body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
 body.option-view #container .inven .equ[data-ver] .type-uni .option-list,
 body.option-view #container .inven .equ[data-ver] .type-uni .button-option-select{display: none;}
@@ -832,4 +855,8 @@ body.option-view #container .inven .equ[data-ver] .type-uni .button-option-selec
 	body.option-view #container .inven .inven-wep .equ + .equ .button-option-select, 
 	body.option-view #container .inven .inven-acc .equ .button-option-select{left: 0;right: inherit;}
 
+
+	#container .inven .inven-wep + .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
+	#container .inven .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
+	#container .inven .inven-acc .equ .selected ~ .text .box-aspect::after{right: 12px;left: inherit;}
 }
