@@ -20,7 +20,7 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
-	$('.button-gem').trigger('click');
+	//$('.button-set-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
 })
@@ -46,7 +46,6 @@ var D4SkillDB = (function(){
 		method.aspectDB();
 		method.spiritBoons();
 		method.jobSelect();
-		//method.scrollFunc();
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
@@ -54,7 +53,6 @@ var D4SkillDB = (function(){
 		method.layerFuncInit();
 		method.itemOption();
 		method.getSetting();
-		//method.getUrl();
 	};
 	method.setElement = function(){
 		obj.body = $('body');
@@ -196,7 +194,8 @@ var D4SkillDB = (function(){
 					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
 				}
 				obj.urlParams.set('job', $job);
-				method.delParam();
+				method.delEqu();
+				method.delGems();
 				method.getSetting();
 				method.aspectReset();
 				//history.replaceState({}, null, location.pathname)
@@ -213,7 +212,7 @@ var D4SkillDB = (function(){
 			obj.aspectList.attr('data-filter', $this);
 		})
 	};
-	method.delParam = function(){
+	method.delEqu = function(){
 		obj.urlParams.delete('title');
 		obj.urlParams.delete('hel');
 		obj.urlParams.delete('che');
@@ -228,6 +227,22 @@ var D4SkillDB = (function(){
 		obj.urlParams.delete('wep3');
 		obj.urlParams.delete('wep4');
 	},
+	method.delGems = function(){
+		obj.urlParams.delete('Ghel');
+		obj.urlParams.delete('Gche1');
+		obj.urlParams.delete('Gche2');
+		obj.urlParams.delete('Gpan1');
+		obj.urlParams.delete('Gpan2');
+		obj.urlParams.delete('Gamu');
+		obj.urlParams.delete('Grin1');
+		obj.urlParams.delete('Grin2');
+		obj.urlParams.delete('Gwep11');
+		obj.urlParams.delete('Gwep12');
+		obj.urlParams.delete('Gwep21');
+		obj.urlParams.delete('Gwep22');
+		obj.urlParams.delete('Gwep3');
+		obj.urlParams.delete('Gwep4');
+	},
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
 		$('.inven .equ').each( function(){
@@ -236,6 +251,9 @@ var D4SkillDB = (function(){
 			}
 		})
 		var $layerGems = $('#gemSelect');
+		$.each(gems, function(index, gem){
+			$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
+		});
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -252,14 +270,19 @@ var D4SkillDB = (function(){
 			}
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
-					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
+					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
 				});
 			}
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
 			if ($(this).is('.button-gem')) {
 				var $gem = $(this).attr('data-gem-icon');
-				$('[aria-controls=gemSelect].active').attr('data-gem-icon', $gem);
+				var $id = $(this).attr('id');
+				var $target = $('[aria-controls=gemSelect].active').attr('id');
+				$('[aria-controls=gemSelect].active').attr({'data-gem-icon':$gem, 'data-target':$id});
+				obj.urlParams.set($target, $id);
+				console.log($target, $id)
+				method.getSetting();
 			}
 			$('[aria-controls=gemSelect]').removeClass('active');
 			$('.inven-gems .option').removeClass('active');
@@ -352,7 +375,8 @@ var D4SkillDB = (function(){
 		$('.box-aspect').empty();
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
-		method.delParam();
+		method.delEqu();
+		method.delGems();
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -438,8 +462,6 @@ var D4SkillDB = (function(){
 			}
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
-
-
 			obj.urlParams.set(obj.partsID, obj.aspectID);
 			method.getSetting();
 		})
@@ -518,31 +540,23 @@ var D4SkillDB = (function(){
 	};
 
 	method.getSetting = function(){
-		var option = obj.urlParams.get('opt');
-		var gem = obj.urlParams.get('gem');
 		var job = obj.urlParams.get('job');
 		var $aspect = $('#container .inven .equ .option');
 		var $gem = $('#container .inven .equ .gems .each-gem');
 		var $option = $('#container .inven .equ .option-list .grid-option');
-	
+		
+		//직업 로드
 		if (job == null) {
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
 		} else {
-			obj.urlParams.set('job', job)
+			obj.urlParams.set('job', job);
 			$('#container').attr('data-job-select', job);
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
 		}
-		
-		if (option == 1) {
-			$('.button-option-view').attr('aria-checked', true);
-			obj.body.addClass('option-view')
-		}
-		if (gem == 0) {
-			$('.button-gem').attr('aria-checked', false);
-			obj.body.removeClass('gems')
-		}
+
+		//위상 로드
 		$aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
 			var $box =  $(this).siblings('.text').find('.box-aspect');
@@ -552,6 +566,15 @@ var D4SkillDB = (function(){
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
 			}
 		})
+
+		//보석 로드
+		$gem.each(function(){
+			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
+			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
+		})
+
+		//보조무기 선택여부
+		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 		obj.settingTitle.val(obj.urlParams.get('title'));
 		obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
