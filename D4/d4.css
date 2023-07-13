@@ -281,7 +281,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven-aspect-select .button-aspect[data-parts=com]{display: flex;}
 #container .inven-aspect-select .button-aspect[aria-selected=true]{opacity: .5;}
 #container .aspect-icon{display: block;min-width:90px;width: 45px;height: 45px;background: url(images/offhand.png) 50% 50% no-repeat;background-size:45px auto;}
-#container .aspect-detail{position: relative;display: flex;flex-direction: column;justify-content: center;width: 100%;min-height:72px;padding: 5px 0 7px 0;}
+#container .aspect-detail{position: relative;display: flex;flex-direction: column;justify-content: center;width: 100%;min-height:72px;padding: 5px 0 2px 0;}
 #container .aspect-layer .aspect-detail{padding-right: 10px;}
 #container .aspect-detail .aspect-name{display: block;font-weight: bold;font-size: 14px;}
 #container .aspect-detail .aspect-name::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
@@ -828,6 +828,9 @@ body.option-view #container .inven .equ[data-ver] .type-uni .button-option-selec
 	#container .inven .layer-gems.layer-dimmed .layer-body{top: calc(50% + 40px);width: calc(100% - 20px);padding: 15px 10px 10px;}
 	#container .inven .layer-gems.layer-dimmed .layer-body::before{}
 	
+
+	body.gems #container .inven .equ .text{margin: 0 5px !important;}
+	body.option-view #container .inven .equ[data-ver] .option-list{margin-left: 10px !important;}
 	body.gems #container[data-job-select=rog] .inven .equ[data-has=gem] .option,
 	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option{border-bottom: 0;border-radius: 10px 10px 0 0;}
@@ -864,6 +867,7 @@ body.option-view #container .inven .equ[data-ver] .type-uni .button-option-selec
 	body.option-view #container .inven .inven-acc .equ .button-option-select{left: 0;right: inherit;}
 
 
+	#container .inven .equ .selected ~ .text .box-aspect{width: 100%;}
 	#container .inven .inven-wep + .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
 	#container .inven .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
 	#container .inven .inven-acc .equ .selected ~ .text .box-aspect::after{right: 12px;left: inherit;}

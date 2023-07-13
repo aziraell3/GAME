@@ -28,6 +28,7 @@ var D4SkillDB = (function(){
 	var method = {};
 	var obj = {};
 	var option = {};
+	var optionArr = [];
 	var parts = [];
 	var gems = [
 		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
@@ -155,6 +156,22 @@ var D4SkillDB = (function(){
 			var $inven = $('.trigger-active').siblings('.option-list');
 			$inven.empty().append($('.selected-option .grid-option').clone());
 			method.layerFunc('optionSelect', false);
+			//옵션 저장
+			
+			$('.selected-option .grid-option').each(function(i){
+				optionArr.push($(this).attr('aria-controls'));
+				//console.log('$target : '+$inven.attr('id'))
+				//console.log('$id : '+optionArr)
+				//obj.urlParams.set($inven.attr('id')[i], optionArr)
+console.log(optionArr)
+				//obj.urlParams.set($inven.attr('id'), optionArr)
+				
+			})
+			
+			//console.log('$id : '+$('.selected-option .grid-option').attr('aria-controls'))
+			//obj.urlParams.set();
+//method.getSetting();
+			
 		})
 	};
 
@@ -194,8 +211,11 @@ var D4SkillDB = (function(){
 					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
 				}
 				obj.urlParams.set('job', $job);
+
 				method.delEqu();
 				method.delGems();
+				method.delOpt();
+
 				method.getSetting();
 				method.aspectReset();
 				//history.replaceState({}, null, location.pathname)
@@ -242,6 +262,20 @@ var D4SkillDB = (function(){
 		obj.urlParams.delete('Gwep22');
 		obj.urlParams.delete('Gwep3');
 		obj.urlParams.delete('Gwep4');
+	},
+	method.delOpt = function(){
+		obj.urlParams.delete('Ohel');
+		obj.urlParams.delete('Oche');
+		obj.urlParams.delete('Oglo');
+		obj.urlParams.delete('Opan');
+		obj.urlParams.delete('Oboo');
+		obj.urlParams.delete('Oamu');
+		obj.urlParams.delete('Orin1');
+		obj.urlParams.delete('Orin2');
+		obj.urlParams.delete('Owep1');
+		obj.urlParams.delete('Owep2');
+		obj.urlParams.delete('Owep3');
+		obj.urlParams.delete('Owep4');
 	},
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
@@ -375,8 +409,11 @@ var D4SkillDB = (function(){
 		$('.box-aspect').empty();
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
+
 		method.delEqu();
 		method.delGems();
+		method.delOpt();
+
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -449,7 +486,7 @@ var D4SkillDB = (function(){
 			$detailButton.find('.box-aspect').empty().append($(this).children().clone());
 			//$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			
-			$(this).attr({'data-select-parts':obj.partsID});
+$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
@@ -543,7 +580,7 @@ var D4SkillDB = (function(){
 		var job = obj.urlParams.get('job');
 		var $aspect = $('#container .inven .equ .option');
 		var $gem = $('#container .inven .equ .gems .each-gem');
-		var $option = $('#container .inven .equ .option-list .grid-option');
+		var $option = $('#container .inven .equ .option-list');
 		
 		//직업 로드
 		if (job == null) {
@@ -555,23 +592,37 @@ var D4SkillDB = (function(){
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
 		}
-
 		//위상 로드
 		$aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
+			var $parts = $(this).parent().attr('class').split('equ ')[1]
 			var $box =  $(this).siblings('.text').find('.box-aspect');
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			if ($(this).is('[data-target]')) {
 				$thisWrap.attr({'data-parts': $('#'+$(this).attr('data-target')).parent().attr('data-parts'), 'data-ver':$('#'+$(this).attr('data-target')).parent().attr('data-ver')}).find('.option').addClass('selected');
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
+				$('#'+$(this).attr('data-target')).attr({'aria-selected': true,'data-select-parts': $parts}); //선택된 위상 표시
 			}
 		})
-
 		//보석 로드
 		$gem.each(function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 		})
+
+		$option.each(function(){
+			var $opt = [];
+			//$opt.push(obj.urlParams.get($(this).attr('id')))
+			console.log(
+				//obj.urlParams.get( $(this).attr('id') )
+				//gems
+			);
+			
+
+			//$option.append($('#'+$opt).clone());
+			//console.log(obj.urlParams.get($(this).attr('id')))
+		})
+		
 
 		//보조무기 선택여부
 		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
