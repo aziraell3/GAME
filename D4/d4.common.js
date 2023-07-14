@@ -70,7 +70,7 @@ var D4SkillDB = (function(){
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
 		obj.optionList = $('#optionList');
-		obj.settingTitle = $('#settingTitle');
+		obj.settingInput = $('input[type=text]');
 	
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
@@ -89,17 +89,22 @@ var D4SkillDB = (function(){
 			obj.body.toggleClass($tag);
 		})
 		$('.setting-copy, .setting-url').on('click', function(){
-			var el = $('#settingUrl');
-			el.select();
+			$(this).select();
 			document.execCommand('copy');
+		})
+		$('.link-button').on('click', function(){
+			var $url = $(this).siblings('.setting-url').val();
+			if ($url.length > 0) {
+				window.open($url, '_blank');
+			}
 		})
 		$('#container .inven .equ .box-aspect').each(function(){
 			$(this).on('click', function(){
 				$(this).toggleClass('active');
 			})
 		})
-		obj.settingTitle.on('focusout', function(){
-			obj.urlParams.set('title', $(this).val());
+		obj.settingInput.on('focusout', function(){
+			obj.urlParams.set($(this).attr('id'), $(this).val());
 			method.getSetting();
 		})
 	};
@@ -111,11 +116,9 @@ var D4SkillDB = (function(){
 		var $optionCopy = $optionLayer.find('.button-copy');
 		var $selected = $optionLayer.find('.selected-option');
 		var $alert = $('.box-alert');
-
 		$optionButton.on('click', function(){
 			var $parts = $(this).attr('data-option-parts');
 			var $invenOption = $(this).siblings('.option-list');
-			//D4Option.init();
 			if (!$(this).val() == '') {
 				$optionInput.val($(this).val());
 				$(this).removeClass('modify');
@@ -124,7 +127,6 @@ var D4SkillDB = (function(){
 				$(this).addClass('modify');
 			}
 			$optionLayer.attr('data-select-option-parts', $parts);
-
 			$('.select-option .grid-option').attr('aria-selected', false);
 			$selected.empty().append($invenOption.find('.grid-option').clone());
 			$selected.find('.grid-option').each(function(){
@@ -156,22 +158,6 @@ var D4SkillDB = (function(){
 			var $inven = $('.trigger-active').siblings('.option-list');
 			$inven.empty().append($('.selected-option .grid-option').clone());
 			method.layerFunc('optionSelect', false);
-			//옵션 저장
-			
-			$('.selected-option .grid-option').each(function(i){
-				optionArr.push($(this).attr('aria-controls'));
-				//console.log('$target : '+$inven.attr('id'))
-				//console.log('$id : '+optionArr)
-				//obj.urlParams.set($inven.attr('id')[i], optionArr)
-console.log(optionArr)
-				//obj.urlParams.set($inven.attr('id'), optionArr)
-				
-			})
-			
-			//console.log('$id : '+$('.selected-option .grid-option').attr('aria-controls'))
-			//obj.urlParams.set();
-//method.getSetting();
-			
 		})
 	};
 
@@ -212,16 +198,11 @@ console.log(optionArr)
 					}
 					obj.urlParams.set('job', $job);
 				}
-				//$('.description').slideDown(300);
-
 				method.delEqu();
 				method.delGems();
-				method.delOpt();
+				method.delUrl();
 				method.getSetting();
 				method.aspectReset();
-				//history.replaceState({}, null, location.pathname)
-				
-				//console.log(obj.url);
 			}
 		})
 		//레이어 필터링 버튼
@@ -293,7 +274,6 @@ console.log(optionArr)
 	method.aspectLayer = function(){
 		//위상 레이어 오픈
 		obj.aspectOpen.on('click', function(){
-			//D4Aspect.init();
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
 			obj.aspectOpen.removeClass('active latest');
@@ -315,7 +295,6 @@ console.log(optionArr)
 			}
 
 			var $multi = ($(this).parents('.equ').attr('data-multiply') == undefined) ? 10 : $(this).parents('.equ').attr('data-multiply');
-			//console.log($multi)
 			method.aspectMultiply($multi);
 			method.fixedViewPort(true);
 		})
@@ -365,11 +344,6 @@ console.log(optionArr)
 		$('.box-aspect').empty();
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
-
-		//method.delEqu();
-		//method.delGems();
-		//method.delOpt();
-
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -378,7 +352,6 @@ console.log(optionArr)
 		$job = obj.container.attr('data-job-select');
 		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
 		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+$job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
-		
 	};
 	method.invCheck = function($id){
 		//동일 위상 선택시 다른영역 리셋
@@ -387,10 +360,8 @@ console.log(optionArr)
 			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
 			$invSkill.push($target)
 			if ($id == $(this).attr('data-target')) {
-				//$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
-
 				//동일 위상 양손무기 / 한손+보조  세팅값
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
@@ -440,12 +411,12 @@ console.log(optionArr)
 			obj.container.find('.inven').removeClass('active');
 			
 			$detailButton.find('.box-aspect').empty().append($(this).children().clone());
-			//$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			
-$(this).attr({'data-select-parts':obj.partsID});
+			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
+			/*
 			if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 				if ($('#wep1').is('.selected')) {
 					//method.wepChange(true);
@@ -453,6 +424,7 @@ $(this).attr({'data-select-parts':obj.partsID});
 					//method.wepChange(false);
 				}
 			}
+			*/
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
 			obj.urlParams.set(obj.partsID, obj.aspectID);
@@ -565,58 +537,38 @@ $(this).attr({'data-select-parts':obj.partsID});
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 		})
-
-		$option.each(function(){
-			var $opt = [];
-			//$opt.push(obj.urlParams.get($(this).attr('id')))
-			console.log(
-				//obj.urlParams.get( $(this).attr('id') )
-				//gems
-			);
-			
-
-			//$option.append($('#'+$opt).clone());
-			//console.log(obj.urlParams.get($(this).attr('id')))
-		})
-		
-
 		//보조무기 선택여부
 		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
-		obj.settingTitle.val(obj.urlParams.get('title'));
+
+		obj.settingInput.each(function(){
+			var $id = $(this).attr('id')
+			$('#'+$id).val(obj.urlParams.get($id));
+		})
+		//$('#settingTitle').val(obj.urlParams.get('settingTitle'));
+		//$('#skillUrl').val(obj.urlParams.get('skillUrl'));
+		//$('#boardUrl').val(obj.urlParams.get('boardUrl'));
+		//$('#etcUrl').val(obj.urlParams.get('etcUrl'));
 		obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
 	};
 
 	method.delEqu = function(){
-		obj.urlParams.delete('title');
-		obj.urlParams.delete('hel');
-		obj.urlParams.delete('che');
-		obj.urlParams.delete('glo');
-		obj.urlParams.delete('pan');
-		obj.urlParams.delete('boo');
-		obj.urlParams.delete('amu');
-		obj.urlParams.delete('rin1');
-		obj.urlParams.delete('rin2');
-		obj.urlParams.delete('wep1');
-		obj.urlParams.delete('wep2');
-		obj.urlParams.delete('wep3');
-		obj.urlParams.delete('wep4');
+		$('#container .inven .equ .option').each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id);
+		})
 	},
 	method.delGems = function(){
-		obj.urlParams.delete('Ghel');
-		obj.urlParams.delete('Gche1');
-		obj.urlParams.delete('Gche2');
-		obj.urlParams.delete('Gpan1');
-		obj.urlParams.delete('Gpan2');
-		obj.urlParams.delete('Gamu');
-		obj.urlParams.delete('Grin1');
-		obj.urlParams.delete('Grin2');
-		obj.urlParams.delete('Gwep11');
-		obj.urlParams.delete('Gwep12');
-		obj.urlParams.delete('Gwep21');
-		obj.urlParams.delete('Gwep22');
-		obj.urlParams.delete('Gwep3');
-		obj.urlParams.delete('Gwep4');
+		$('#container .inven .equ .gems .each-gem').each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id);
+		})
+	},
+	method.delUrl = function(){
+		obj.settingInput.each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id );
+		})
 	},
 	method.delOpt = function(){
 		obj.urlParams.delete('Ohel');
