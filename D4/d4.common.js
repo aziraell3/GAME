@@ -89,8 +89,8 @@ var D4SkillDB = (function(){
 			obj.body.toggleClass($tag);
 		})
 		$('.setting-copy, .setting-url').on('click', function(){
-			$(this).select();
-			document.execCommand('copy');
+			//$(this).select();
+			//document.execCommand('copy');
 		})
 		$('.link-button').on('click', function(){
 			var $url = $(this).siblings('.setting-url').val();
@@ -464,10 +464,10 @@ var D4SkillDB = (function(){
 				$(this).addClass('expend').attr('aria-expanded', true);
 				$target.attr('aria-hidden', true).slideDown(200);
 			}
-			$('.button-expand-close').on('click', function(){
-				$(this).parents('[aria-hidden]').slideUp(200);
-				$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
-			})
+		})
+		$('.button-expand-close').on('click', function(){
+			$(this).parents('[aria-hidden]').slideUp(200);
+			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
 		})
 	}
 	method.spiritBoons = function(){
@@ -547,9 +547,6 @@ var D4SkillDB = (function(){
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id');
 			$('#'+$id).val(obj.urlParams.get($id));
-			if ($('.box-line input').val().length > 0) {
-				//$('.button-url-link').trigger('click');
-			}
 		})
 		//$('#settingTitle').val(obj.urlParams.get('settingTitle'));
 		//$('#skillUrl').val(obj.urlParams.get('skillUrl'));
