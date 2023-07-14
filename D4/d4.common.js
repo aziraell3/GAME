@@ -60,12 +60,14 @@ var D4SkillDB = (function(){
 		obj.container = $('#container');
 		obj.job = obj.container.attr('data-job-select');
 		obj.headerH = $('#header').outerHeight();
+		obj.aspect = $('#container .inven .equ .option');
 		obj.aspectList = obj.container.find('#aspectList');
 		obj.boardWrap = obj.container.find('#board');
 		obj.spiritBoons = obj.container.find('#spirit');
 		obj.aspectOpen = obj.container.find('[aria-controls=aspectSelect]');
 		obj.aspectTarget = $('#'+obj.aspectOpen.attr('data-target'));
 		obj.aspectLayer = $('#'+obj.aspectOpen.attr('aria-controls'));
+		obj.gems = $('#container .inven .equ .gems .each-gem');
 		obj.gemOpen = obj.container.find('[aria-controls=gemSelect]');
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
@@ -338,7 +340,7 @@ var D4SkillDB = (function(){
 		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
 		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
 		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
-		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
+		obj.aspect.removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
 		method.wepChange(true); //주무기 보석 칸 리셋
 		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
@@ -510,8 +512,6 @@ var D4SkillDB = (function(){
 
 	method.getSetting = function(){
 		var job = obj.urlParams.get('job');
-		var $aspect = $('#container .inven .equ .option');
-		var $gem = $('#container .inven .equ .gems .each-gem');
 		var $option = $('#container .inven .equ .option-list');
 		
 		//직업 로드
@@ -525,7 +525,7 @@ var D4SkillDB = (function(){
 			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
 		}
 		//위상 로드
-		$aspect.each(function(){
+		obj.aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
 			var $parts = $(this).parent().attr('class').split('equ ')[1]
 			var $box =  $(this).siblings('.text').find('.box-aspect');
@@ -537,33 +537,28 @@ var D4SkillDB = (function(){
 			}
 		})
 		//보석 로드
-		$gem.each(function(){
+		obj.gems.each(function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 		})
 		//보조무기 선택여부
 		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
-
+		//URL입력값
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id');
 			$('#'+$id).val(obj.urlParams.get($id));
 		})
-		//$('#settingTitle').val(obj.urlParams.get('settingTitle'));
-		//$('#skillUrl').val(obj.urlParams.get('skillUrl'));
-		//$('#boardUrl').val(obj.urlParams.get('boardUrl'));
-		//$('#etcUrl').val(obj.urlParams.get('etcUrl'));
-		//obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
 	};
 
 	method.delEqu = function(){
-		$('#container .inven .equ .option').each(function(){
+		obj.aspect.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
 	},
 	method.delGems = function(){
-		$('#container .inven .equ .gems .each-gem').each(function(){
+		obj.gems.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
@@ -575,18 +570,10 @@ var D4SkillDB = (function(){
 		})
 	},
 	method.delOpt = function(){
-		obj.urlParams.delete('Ohel');
-		obj.urlParams.delete('Oche');
-		obj.urlParams.delete('Oglo');
-		obj.urlParams.delete('Opan');
-		obj.urlParams.delete('Oboo');
-		obj.urlParams.delete('Oamu');
-		obj.urlParams.delete('Orin1');
-		obj.urlParams.delete('Orin2');
-		obj.urlParams.delete('Owep1');
-		obj.urlParams.delete('Owep2');
-		obj.urlParams.delete('Owep3');
-		obj.urlParams.delete('Owep4');
+		$('#container .inven .equ .option-list').each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id );
+		})
 	},
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
