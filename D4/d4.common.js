@@ -177,12 +177,12 @@ console.log(optionArr)
 
 	method.jobSelect = function(){ 
 		//직업 선택
-		$('#header .button-job').on('click', function(){
+		$('#header .button-job, .button-reset').on('click', function(){
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 선택된 위상이나 보석</strong>이 있습니다.<br>직업을 변경하면 선택했던 <strong>위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상이나 보석</strong>이 있습니다.<br>확인을 누르면 셋팅된  <strong>위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -195,27 +195,28 @@ console.log(optionArr)
 				if (!obj.body.is('.scroll-lock')) {
 					$('html, body').animate({scrollTop: '0'}, 300);
 				}
-				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
-				obj.container.attr('data-job-select', $job);
-				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
-				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
-				$('#container .spirit-description').empty();
-				$('.description').slideDown(300);
-				if ($job == 'dru') {
-					$('#wep2-opt').attr('data-option-parts', 'sub');
-				} else if ($job == 'nec') {
-					console.log('nec')
-					$('#wep2-opt').attr('data-option-parts', 'shl');
-					$('#wep4-opt').attr('data-option-parts', 'sub');
-				} else {
-					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
+				if ($jobBtn.is('.button-job')) {
+					$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
+					obj.container.attr('data-job-select', $job);	
+					($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
+					$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
+					$('#container .spirit-description').empty();
+					if ($job == 'dru') {
+						$('#wep2-opt').attr('data-option-parts', 'sub');
+					} else if ($job == 'nec') {
+						console.log('nec')
+						$('#wep2-opt').attr('data-option-parts', 'shl');
+						$('#wep4-opt').attr('data-option-parts', 'sub');
+					} else {
+						$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
+					}
+					obj.urlParams.set('job', $job);
 				}
-				obj.urlParams.set('job', $job);
+				//$('.description').slideDown(300);
 
 				method.delEqu();
 				method.delGems();
 				method.delOpt();
-
 				method.getSetting();
 				method.aspectReset();
 				//history.replaceState({}, null, location.pathname)
@@ -232,51 +233,6 @@ console.log(optionArr)
 			obj.aspectList.attr('data-filter', $this);
 		})
 	};
-	method.delEqu = function(){
-		obj.urlParams.delete('title');
-		obj.urlParams.delete('hel');
-		obj.urlParams.delete('che');
-		obj.urlParams.delete('glo');
-		obj.urlParams.delete('pan');
-		obj.urlParams.delete('boo');
-		obj.urlParams.delete('amu');
-		obj.urlParams.delete('rin1');
-		obj.urlParams.delete('rin2');
-		obj.urlParams.delete('wep1');
-		obj.urlParams.delete('wep2');
-		obj.urlParams.delete('wep3');
-		obj.urlParams.delete('wep4');
-	},
-	method.delGems = function(){
-		obj.urlParams.delete('Ghel');
-		obj.urlParams.delete('Gche1');
-		obj.urlParams.delete('Gche2');
-		obj.urlParams.delete('Gpan1');
-		obj.urlParams.delete('Gpan2');
-		obj.urlParams.delete('Gamu');
-		obj.urlParams.delete('Grin1');
-		obj.urlParams.delete('Grin2');
-		obj.urlParams.delete('Gwep11');
-		obj.urlParams.delete('Gwep12');
-		obj.urlParams.delete('Gwep21');
-		obj.urlParams.delete('Gwep22');
-		obj.urlParams.delete('Gwep3');
-		obj.urlParams.delete('Gwep4');
-	},
-	method.delOpt = function(){
-		obj.urlParams.delete('Ohel');
-		obj.urlParams.delete('Oche');
-		obj.urlParams.delete('Oglo');
-		obj.urlParams.delete('Opan');
-		obj.urlParams.delete('Oboo');
-		obj.urlParams.delete('Oamu');
-		obj.urlParams.delete('Orin1');
-		obj.urlParams.delete('Orin2');
-		obj.urlParams.delete('Owep1');
-		obj.urlParams.delete('Owep2');
-		obj.urlParams.delete('Owep3');
-		obj.urlParams.delete('Owep4');
-	},
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
 		$('.inven .equ').each( function(){
@@ -410,9 +366,9 @@ console.log(optionArr)
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 
-		method.delEqu();
-		method.delGems();
-		method.delOpt();
+		//method.delEqu();
+		//method.delGems();
+		//method.delOpt();
 
 		method.fixedViewPort(false);
 	};
@@ -630,6 +586,52 @@ $(this).attr({'data-select-parts':obj.partsID});
 		obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
 	};
+
+	method.delEqu = function(){
+		obj.urlParams.delete('title');
+		obj.urlParams.delete('hel');
+		obj.urlParams.delete('che');
+		obj.urlParams.delete('glo');
+		obj.urlParams.delete('pan');
+		obj.urlParams.delete('boo');
+		obj.urlParams.delete('amu');
+		obj.urlParams.delete('rin1');
+		obj.urlParams.delete('rin2');
+		obj.urlParams.delete('wep1');
+		obj.urlParams.delete('wep2');
+		obj.urlParams.delete('wep3');
+		obj.urlParams.delete('wep4');
+	},
+	method.delGems = function(){
+		obj.urlParams.delete('Ghel');
+		obj.urlParams.delete('Gche1');
+		obj.urlParams.delete('Gche2');
+		obj.urlParams.delete('Gpan1');
+		obj.urlParams.delete('Gpan2');
+		obj.urlParams.delete('Gamu');
+		obj.urlParams.delete('Grin1');
+		obj.urlParams.delete('Grin2');
+		obj.urlParams.delete('Gwep11');
+		obj.urlParams.delete('Gwep12');
+		obj.urlParams.delete('Gwep21');
+		obj.urlParams.delete('Gwep22');
+		obj.urlParams.delete('Gwep3');
+		obj.urlParams.delete('Gwep4');
+	},
+	method.delOpt = function(){
+		obj.urlParams.delete('Ohel');
+		obj.urlParams.delete('Oche');
+		obj.urlParams.delete('Oglo');
+		obj.urlParams.delete('Opan');
+		obj.urlParams.delete('Oboo');
+		obj.urlParams.delete('Oamu');
+		obj.urlParams.delete('Orin1');
+		obj.urlParams.delete('Orin2');
+		obj.urlParams.delete('Owep1');
+		obj.urlParams.delete('Owep2');
+		obj.urlParams.delete('Owep3');
+		obj.urlParams.delete('Owep4');
+	},
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
 			e.preventDefault();
