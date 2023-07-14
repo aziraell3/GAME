@@ -182,7 +182,7 @@ console.log(optionArr)
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상이나 보석</strong>이 있습니다.<br>확인을 누르면 셋팅된  <strong>위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상이나 보석</strong>이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
