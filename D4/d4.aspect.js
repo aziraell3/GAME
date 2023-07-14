@@ -306,7 +306,7 @@ var D4Aspect = (function(){
 		
 		
 		
-		{ver:'ori', job:'bab', icon:'def', grade:'leg', parts:'sub hel che pan amu', 		name:'요지부동하는 광전사',  acquest:'위상 추출', detail:'<p class="aspect_effect">행운의 적중: <span class="c_important"><span class="text-line">광폭화</span></span> 상태에서 직접 피해를 줄 때마다 최대 <span class="c_ramdom">35%</span> 확률로 <span class="c_important"><span class="c_number">70 - 141</span></span>의 <span class="text-line">보강</span> 효과를 얻습니다.</p>'},
+		{ver:'ori', job:'bab', icon:'def', grade:'leg', parts:'sub hel che pan amu', 		name:'요지부동하는 광전사',  acquest:'위상 추출', detail:'<p class="aspect_effect">행운의 적중: <span class="c_important"><span class="text-line">광폭화</span></span> 상태에서 직접 피해를 줄 때마다 최대 <span class="c_random">35%</span> 확률로 <span class="c_number">70 - 141</span>의 <span class="c_important"><span class="text-line">보강</span></span> 효과를 얻습니다.</p>'},
 		
 		//{ver:'dlc', job:'com', icon:'off', grade:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 	];
