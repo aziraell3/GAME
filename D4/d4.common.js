@@ -173,8 +173,8 @@ var D4SkillDB = (function(){
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
-				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상이나 보석</strong>이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon], input[type=text]').length > 0) {
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -334,7 +334,7 @@ var D4SkillDB = (function(){
 		});
 	}
 	method.aspectReset = function(){
-		//세팅된 위상 리셋
+		//세팅된 모든값 리셋
 		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
 		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
 		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
@@ -347,8 +347,9 @@ var D4SkillDB = (function(){
 		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		$('#container .inven .equ .button-option-select').removeClass('modify');
 		
-		$('.box-aspect').empty();
-		$('.option-list').empty(); //선호 옵션 리셋
+		$('.box-aspect').empty(); //위상 리셋
+		//$('.option-list').empty(); //선호 옵션 리셋
+		$('#previewImg').empty();
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 		method.fixedViewPort(false);
 	};
