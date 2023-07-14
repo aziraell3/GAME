@@ -77,15 +77,12 @@ body.scroll-lock #container .download{z-index: 1;}
 #container .box-title .button-option-view{position: relative;}
 #container .box-title .button-option-view::before{content:'';display:block;width:34px;height:34px;margin:0 auto 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g><path id="Vector" d="M3 17H10M15 16H21M3 12H14M3 7H14" stroke="rgba(255, 255, 255, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
 #container .box-title .button-reset{position: relative;}
-/* #container .box-title .button-reset::before{content:'';display:block;width:38px;height:38px;margin:0 auto 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.56189 13.5L4.14285 13.9294L4.5724 14.3486L4.99144 13.9189L4.56189 13.5ZM9.92427 15.9243L15.9243 9.92427L15.0757 9.07574L9.07574 15.0757L9.92427 15.9243ZM9.07574 9.92426L15.0757 15.9243L15.9243 15.0757L9.92426 9.07574L9.07574 9.92426ZM19.9 12.5C19.9 16.5869 16.5869 19.9 12.5 19.9V21.1C17.2496 21.1 21.1 17.2496 21.1 12.5H19.9ZM5.1 12.5C5.1 8.41309 8.41309 5.1 12.5 5.1V3.9C7.75035 3.9 3.9 7.75035 3.9 12.5H5.1ZM12.5 5.1C16.5869 5.1 19.9 8.41309 19.9 12.5H21.1C21.1 7.75035 17.2496 3.9 12.5 3.9V5.1ZM5.15728 13.4258C5.1195 13.1227 5.1 12.8138 5.1 12.5H3.9C3.9 12.8635 3.92259 13.2221 3.9665 13.5742L5.15728 13.4258ZM12.5 19.9C9.9571 19.9 7.71347 18.6179 6.38048 16.6621L5.38888 17.3379C6.93584 19.6076 9.54355 21.1 12.5 21.1V19.9ZM4.99144 13.9189L7.42955 11.4189L6.57045 10.5811L4.13235 13.0811L4.99144 13.9189ZM4.98094 13.0706L2.41905 10.5706L1.58095 11.4294L4.14285 13.9294L4.98094 13.0706Z" fill="rgba(235, 80, 10, 1)"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.6;transition: all .3s;} */
 #container .box-title .button-reset::before{content:'';display:block;width:34px;height:34px;margin:0 auto 0;background: url('data:image/svg+xml;utf8,<svg width="800px" height="800px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="rgba(235, 80, 10, 1)" d="M288,193s12.18-6-32-6a80,80,0,1,0,80,80" style="stroke-linecap:round;stroke-miterlimit:10;stroke-width:28px"/><polyline fill="none" stroke="rgba(235, 80, 10, 1)" points="256 149 296 189 256 229" style="stroke-linecap:round;stroke-linejoin:round;stroke-width:28px"/><path fill="none" stroke="rgba(235, 80, 10, 1)" d="M256,64C150,64,64,150,64,256s86,192,192,192,192-86,192-192S362,64,256,64Z" style="stroke-miterlimit:10;stroke-width:32px"/></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.6;transition: all .5s;}
 #container .box-title .button-reset:hover::before,
 #container .box-title .button-reset:focus::before{transform:rotate(270deg);opacity:1}
 #container .box-title .setting-copy{position: relative;min-width:28px;height:28px;cursor:pointer;}
 #container .box-title .setting-copy::before{content:'';display:block;width:22px;height:22px;margin:3px auto 0;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill="evenodd"><g id="ic_fluent_save_copy_24_regular" fill="rgba(255,255,255,1)" fill-rule="nonzero"><path d="M20.4961766,5.62668182 C21.3720675,5.93447702 22,6.76890777 22,7.75 L22,17.75 C22,20.0972102 20.0972102,22 17.75,22 L7.75,22 C6.76890777,22 5.93447702,21.3720675 5.62668182,20.4961766 L7.72396188,20.4995565 L17.75,20.5 C19.2687831,20.5 20.5,19.2687831 20.5,17.75 L20.5,7.75 L20.4960194,7.69901943 L20.4961766,5.62668182 Z M17.246813,2 C18.4894537,2 19.496813,3.00735931 19.496813,4.25 L19.496813,17.246813 C19.496813,18.4894537 18.4894537,19.496813 17.246813,19.496813 L4.25,19.496813 C3.00735931,19.496813 2,18.4894537 2,17.246813 L2,4.25 C2,3.00735931 3.00735931,2 4.25,2 L17.246813,2 Z M17.246813,3.5 L4.25,3.5 C3.83578644,3.5 3.5,3.83578644 3.5,4.25 L3.5,17.246813 C3.5,17.6610266 3.83578644,17.996813 4.25,17.996813 L17.246813,17.996813 C17.6610266,17.996813 17.996813,17.6610266 17.996813,17.246813 L17.996813,4.25 C17.996813,3.83578644 17.6610266,3.5 17.246813,3.5 Z M10.75,6.75 C11.1642136,6.75 11.5,7.08578644 11.5,7.5 L11.5,10 L14,10 C14.4142136,10 14.75,10.3357864 14.75,10.75 C14.75,11.1642136 14.4142136,11.5 14,11.5 L11.5,11.5 L11.5,14 C11.5,14.4142136 11.1642136,14.75 10.75,14.75 C10.3357864,14.75 10,14.4142136 10,14 L10,11.5 L7.5,11.5 C7.08578644,11.5 6.75,11.1642136 6.75,10.75 C6.75,10.3357864 7.08578644,10 7.5,10 L10,10 L10,7.5 C10,7.08578644 10.3357864,6.75 10.75,6.75 Z"></path></g></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:.5}
 #container .box-title + .box-title{display: none;position: relative;margin-top: -1px;padding-bottom: 5px;background-color: #1A1B1F;}
-
-
 
 #container .box-title .button-option-view[aria-checked=true]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40px" height="40px" viewBox="0 0 24 24" fill="none"><g><path id="Vector" d="M3 17H10M15 16H18M18 16H21M18 16V19M18 16V13M3 12H14M3 7H14" stroke="rgba(255, 215, 0, 1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity:1}
 #container .box-title .button-option-view[aria-checked=false]::after{display: none;content:'부위별 옵션 셋팅';position: absolute;top: 0;left: 6px;max-width: 300px;font-size: 11px;color: orange;white-space: nowrap;}
@@ -146,31 +143,31 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
 #container .inven .equ .text .box-aspect::before,
-#container .inven .equ .aspect-detail .aspect-name::before{content:'';position: static;width: auto;height: auto;font-size: 14px;color: #fff;font-weight: 300;letter-spacing: -0.5px;opacity: .9;}
+#container .inven .equ .aspect-detail .aspect-name::before{content:'';position: static;width: auto;height: auto;font-size: 16px;color: gold;font-weight: 300;letter-spacing: -0.7px;opacity: .9;}
 #container .inven .equ .option[data-target] ~ .text .box-aspect .aspect-name::after,
 #container .inven .equ .option[data-target] ~ .text .box-aspect::before{display: none;}
 #container .inven .equ.hel .text .box-aspect::before,
-#container .inven .equ.hel .text .aspect-detail .aspect-name::before{content:'투구';}
+#container .inven .equ.hel .text .aspect-detail .aspect-name::before{content:'투구 :';}
 #container .inven .equ.che .text .box-aspect::before,
-#container .inven .equ.che .text .aspect-detail .aspect-name::before{content:'갑옷';}
+#container .inven .equ.che .text .aspect-detail .aspect-name::before{content:'갑옷 :';}
 #container .inven .equ.glo .text .box-aspect::before,
-#container .inven .equ.glo .text .aspect-detail .aspect-name::before{content:'장갑';}
+#container .inven .equ.glo .text .aspect-detail .aspect-name::before{content:'장갑 :';}
 #container .inven .equ.pan .text .box-aspect::before,
-#container .inven .equ.pan .text .aspect-detail .aspect-name::before{content:'바지';}
+#container .inven .equ.pan .text .aspect-detail .aspect-name::before{content:'바지 :';}
 #container .inven .equ.boo .text .box-aspect::before,
-#container .inven .equ.boo .text .aspect-detail .aspect-name::before{content:'신발';}
+#container .inven .equ.boo .text .aspect-detail .aspect-name::before{content:'신발 :';}
 #container .inven .equ.amu .text .box-aspect::before,
-#container .inven .equ.amu .text .aspect-detail .aspect-name::before{content:'목걸이 (1.5배)';}
+#container .inven .equ.amu .text .aspect-detail .aspect-name::before{content:'목걸이 (1.5배) :';}
 #container .inven .equ.rin .text .box-aspect::before,
-#container .inven .equ.rin .text .aspect-detail .aspect-name::before{content:'반지 1';}
+#container .inven .equ.rin .text .aspect-detail .aspect-name::before{content:'반지 1 :';}
 #container .inven .equ.rin + .rin .text .box-aspect::before,
-#container .inven .equ.rin + .rin .text .aspect-detail .aspect-name::before{content:'반지 2';}
+#container .inven .equ.rin + .rin .text .aspect-detail .aspect-name::before{content:'반지 2 :';}
 #container .inven .equ.wep .text .box-aspect::before,
-#container .inven .equ.wep .text .aspect-detail .aspect-name::before{content:'주무기 (양손 2배)';}
+#container .inven .equ.wep .text .aspect-detail .aspect-name::before{content:'주무기 (양손 2배) :';}
 #container .inven .equ.wep[data-multiply="20"] .text .box-aspect::before,
-#container .inven .equ.wep[data-multiply="20"] .text .aspect-detail .aspect-name::before{content:'주무기 (양손 2배)';}
+#container .inven .equ.wep[data-multiply="20"] .text .aspect-detail .aspect-name::before{content:'주무기 (양손 2배) :';}
 #container .inven .equ.wep[data-multiply="10"] .text .box-aspect::before
-#container .inven .equ.wep[data-multiply="10"] .text .aspect-detail .aspect-name::before{content:'한손 무기 (1배)';}
+#container .inven .equ.wep[data-multiply="10"] .text .aspect-detail .aspect-name::before{content:'한손 무기 (1배) :';}
 #container .inven .equ.wep + .equ.wep .text .box-aspect::before,
 #container .inven .equ.sub .text .box-aspect::before,
 #container .inven .equ.wep + .equ.wep .text .aspect-detail .aspect-name::before,
@@ -178,7 +175,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .selected ~ .text .box-aspect::before,
 #container .inven .equ .active ~ .text .box-aspect::before,
 #container .inven .equ .selected ~ .text .aspect-detail .aspect-name::before,
-#container .inven .equ .active ~ .text .aspect-detail .aspect-name::before{margin-right: 10px;}
+#container .inven .equ .active ~ .text .aspect-detail .aspect-name::before{margin-right: 6px;}
 
 
 
@@ -295,8 +292,8 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .aspect-detail .aspect-parts{/* position: relative;padding-left: 10px; */display: block;padding-top: 4px;}/* #container .inven-aspect-select .aspect-detail .aspect-parts::before{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: burlywood;transform: rotate(-45deg);} */
 #container .aspect-detail .acquest{/* position: relative;padding-left: 10px; */display: block;margin-top: 4px;font-size: 12px;color:#999;}/* #container .aspect-detail .acquest::after{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: #ccc;transform: rotate(-45deg);} */
 #container .aspect-detail .acquest::before{font-size: 12px;color:  #ccc;}
-#container .aspect-detail .acquest::before{content:'위상 획득처 : ';font-size: 12px;font-weight: bold;}
-#container .aspect-detail .acquest.type-uni::before{content:'획득처 : ';}
+#container .aspect-detail .acquest::before{content:'위상 획득처 :';font-size: 12px;font-weight: bold;}
+#container .aspect-detail .acquest.type-uni::before{content:'획득처 :';}
 /* #container .aspect-detail .acquest.type-uni{display: none;} */
 #container .inven-aspect-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
@@ -361,7 +358,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven-spirit .spirit-description .spirit-selected + .spirit-selected{margin-top: 5px;padding-top: 5px;border-top: 1px solid #444;}
 #container .inven-spirit .spirit-description .spirit-selected *{font-size: 12px;line-height: 12px;letter-spacing: -0.5px;}
 #container .inven-spirit .spirit-description .spirit-selected .text-name{font-weight: bold;color: #38aced;}
-#container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' : ';color: #38aced;}
+#container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' :';color: #38aced;}
 #container .inven-spirit .spirit-description .spirit-selected .text-detail{font-weight: normal;}
 
 #container [class*=icon-]::before{content:'';display: inline-block;min-width: 70px;height: 70px;}
@@ -386,7 +383,9 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .icon-bow::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-dua::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size:64px auto;}
 
-#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: -1px;width: 70px;height: 70px;margin-top: -35px;z-index: 10;}
+#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: -1px;width: 70px;height: 70px;margin-top: -35px;z-index: 10;opacity: 0;transition: all .5s;}
+#container .inven .equ[data-parts] .option:hover::after,
+#container .inven .equ[data-parts] .option:focus::after{opacity: 1;}
 #container .inven .equ[data-parts=off] .option::after{background: url(images/offensive.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .inven .equ[data-parts=def] .option::after{background: url(images/defensive.png) 50% 50% no-repeat;background-size:45px auto;}
 #container .inven .equ[data-parts=uti] .option::after{background: url(images/utility.png) 50% 50% no-repeat;background-size:45px auto;}
@@ -396,7 +395,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 
 #container [data-parts] .aspect-parts::before,
 #container [data-parts] .aspect-parts::after{content:'';margin-top: 2px;font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
-#container [data-parts] .aspect-parts::before{content:'착용 가능 : ';color: burlywood;font-weight: bold;}
+#container [data-parts] .aspect-parts::before{content:'착용 가능 :';color: burlywood;font-weight: bold;}
 #container [data-parts=wep] .aspect-parts::after{content:'무기';}
 #container [data-parts=hel] .aspect-parts::after{content:'투구';}
 #container [data-parts=che] .aspect-parts::after{content:'갑옷';}
@@ -477,9 +476,9 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span{font-size: 12px;text-align: left;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect > span{opacity: .4;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span::before{font-weight: bold;}
-#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .wep::before{content:'무기 : ';color: #D87B1B;}
-#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .def::before{content:'방어구 : ';color: #38aced;}
-#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .acc::before{content:'장신구 : ';color: #a4a0f0;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .wep::before{content:'무기 :';color: #D87B1B;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .def::before{content:'방어구 :';color: #38aced;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .acc::before{content:'장신구 :';color: #a4a0f0;}
 #container .inven .layer-gems .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 #container .inven .layer-gems[data-gem-type=wep] .gems-grid .button-gem .detail .gem_effect .wep,
 #container .inven .layer-gems[data-gem-type=def] .gems-grid .button-gem .detail .gem_effect .def,
