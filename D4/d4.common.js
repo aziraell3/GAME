@@ -75,7 +75,7 @@ var D4SkillDB = (function(){
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
 		obj.urlParams = obj.url.searchParams;
-		obj.copyUrl = $('#settingUrl');
+		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
 		$('[role=switch][aria-checked]').on('click', function(){
@@ -104,7 +104,11 @@ var D4SkillDB = (function(){
 			})
 		})
 		obj.settingInput.on('focusout', function(){
-			obj.urlParams.set($(this).attr('id'), $(this).val());
+			if ($(this).val().length < 1) {
+				obj.urlParams.delete($(this).attr('id'));
+			} else {
+				obj.urlParams.set($(this).attr('id'), $(this).val());
+			}
 			method.getSetting();
 		})
 	};
@@ -541,14 +545,17 @@ var D4SkillDB = (function(){
 		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 
 		obj.settingInput.each(function(){
-			var $id = $(this).attr('id')
+			var $id = $(this).attr('id');
 			$('#'+$id).val(obj.urlParams.get($id));
+			if ($('.box-line input').val().length > 0) {
+				//$('.button-url-link').trigger('click');
+			}
 		})
 		//$('#settingTitle').val(obj.urlParams.get('settingTitle'));
 		//$('#skillUrl').val(obj.urlParams.get('skillUrl'));
 		//$('#boardUrl').val(obj.urlParams.get('boardUrl'));
 		//$('#etcUrl').val(obj.urlParams.get('etcUrl'));
-		obj.copyUrl.val(obj.url);
+		//obj.copyUrl.val(obj.url);
 		history.replaceState({}, null, obj.url);
 	};
 
