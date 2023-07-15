@@ -309,12 +309,19 @@ var D4Aspect = (function(){
 		//{ver:'dlc', job:'com', icon:'off', grade:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 	];
 	method.init = function(){
+		var $aspect = $('#aspectList');
 		$.each(aspects, function(index, aspect){
 			if (aspect.acquest == undefined) {
 				aspect.acquest = '';
 			}
-			$('#aspectList').append('<div class="box__aspect-grid '+aspect.parts+'" data-job="'+aspect.job+'" data-parts="'+aspect.icon+'" data-ver="'+aspect.ver+'"><button type="button" class="button-aspect icon-'+aspect.icon+'" aria-selected="false" id="K'+index+'"><span class="aspect-detail"><span class="aspect-name job-'+aspect.job+' type-'+aspect.grade+'">'+aspect.name+'</span><span class="aspect-more">'+aspect.detail+'</span><span class="aspect-parts"></span><span class="acquest type-'+aspect.grade+'">'+aspect.acquest+'</span></span></button></div>');
+			$aspect.append('<div class="box__aspect-grid '+aspect.parts+'" data-job="'+aspect.job+'" data-parts="'+aspect.icon+'" data-ver="'+aspect.ver+'"><button type="button" class="button-aspect icon-'+aspect.icon+'" aria-selected="false" id="K'+index+'"><span class="aspect-detail"><span class="aspect-name job-'+aspect.job+' type-'+aspect.grade+'">'+aspect.name+'</span><span class="aspect-more">'+aspect.detail+'</span><span class="aspect-parts"></span><span class="acquest type-'+aspect.grade+'">'+aspect.acquest+'</span></span></button></div>');
 		});
+		$aspect.find('[data-job=com]').wrapAll('<div class="aspect-group" data-group="com"></div>');
+		$aspect.find('[data-job=dru]').wrapAll('<div class="aspect-group" data-group="dru"></div>');
+		$aspect.find('[data-job=bab]').wrapAll('<div class="aspect-group" data-group="bab"></div>');
+		$aspect.find('[data-job=soc]').wrapAll('<div class="aspect-group" data-group="soc"></div>');
+		$aspect.find('[data-job=rog]').wrapAll('<div class="aspect-group" data-group="rog"></div>');
+		$aspect.find('[data-job=nec]').wrapAll('<div class="aspect-group" data-group="nec"></div>');
 	};
 	return{
 		init : method.init
