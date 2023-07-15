@@ -302,11 +302,9 @@ var D4Aspect = (function(){
 		{ver:'ori', job:'com', icon:'res', grade:'leg', parts:'rin', 						name:'동화 자원',  acquest:'위상 추출', detail:'<p class="aspect_effect">지속 피해의 영향을 받는 적을 상대로 회피 확률이 <span class="c_number">8%</span> 증가합니다. 회피할 때 주 자원을 <span class="c_random">5 – 10</span> 얻습니다.</p>'},
 		{ver:'ori', job:'com', icon:'mob', grade:'leg', parts:'amu boo', 					name:'바람 격퇴자',  acquest:'케지스탄 [쉬브타 폐허]', detail:'<p class="aspect_effect">극대화 적중 시 이동 속도가 <span class="c_number">1</span>초 동안 <span class="c_random">8.0%</span>만큼, 최대 <span class="c_number">6</span>초까지 증가합니다.</p>'},
 		{ver:'ori', job:'com', icon:'mob', grade:'leg', parts:'amu boo', 					name:'유령방랑자',  acquest:'스코스글렌 [부서진 방책]', detail:'<p class="aspect_effect"><span class="c_important"><span class="text-line">저지 불가</span></span> 상태인 동안과 그 후 <span class="c_number">4</span>초 동안, 이동 속도가 <span class="c_random">10%</span> 증가하고 적 사이를 제약 없이 이동할 수 있습니다.</p>'},
-		
-		
-		
-		
-		{ver:'ori', job:'bab', icon:'def', grade:'leg', parts:'sub hel che pan amu', 		name:'요지부동하는 광전사',  acquest:'위상 추출', detail:'<p class="aspect_effect">행운의 적중: <span class="c_important"><span class="text-line">광폭화</span></span> 상태에서 직접 피해를 줄 때마다 최대 <span class="c_random">35%</span> 확률로 <span class="c_number">70 - 141</span>의 <span class="c_important"><span class="text-line">보강</span></span> 효과를 얻습니다.</p>'},
+				
+		//누락위상&추가된 위상 추가 
+		{ver:'ori', job:'bab', icon:'def', grade:'leg', parts:'sub hel che pan amu', 		name:'요지부동하는 광전사',  acquest:'위상 추출', detail:'<p class="aspect_effect"><span class="c_label">행운의 적중:</span> <span class="c_important"><span class="text-line">광폭화</span></span> 상태에서 직접 피해를 줄 때마다 최대 <span class="c_random">35%</span> 확률로 <span class="c_number">70 - 141</span>의 <span class="c_important"><span class="text-line">보강</span></span> 효과를 얻습니다.</p>'},
 		
 		//{ver:'dlc', job:'com', icon:'off', grade:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 	];
