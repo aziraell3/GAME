@@ -315,7 +315,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .aspect-detail .aspect-name::after{font-size: 14px;line-height: 1.3;}
 #container .aspect-detail .aspect-more{display: block;padding-top: 6px;font-size: 14px;color: var(--color--white);word-wrap: break-word;opacity: .8}
 #container .aspect-detail .aspect-parts{/* position: relative;padding-left: 10px; */display: block;padding-top: 4px;}/* #container .inven-aspect-select .aspect-detail .aspect-parts::before{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: burlywood;transform: rotate(-45deg);} */
-#container .aspect-detail .acquest{/* position: relative;padding-left: 10px; */display: block;margin-top: 4px;font-size: 12px;color:#999;}/* #container .aspect-detail .acquest::after{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: #ccc;transform: rotate(-45deg);} */
+#container .aspect-detail .acquest{/* position: relative;padding-left: 10px; */display: block;margin-top: 4px;padding-bottom: 5px;font-size: 12px;color:#999;}/* #container .aspect-detail .acquest::after{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: #ccc;transform: rotate(-45deg);} */
 #container .aspect-detail .acquest::before{font-size: 12px;color:  #ccc;}
 #container .aspect-detail .acquest::before{content:'위상 획득처 :';font-size: 12px;font-weight: bold;}
 #container .aspect-detail .acquest.type-uni::before{content:'획득처 :';}
