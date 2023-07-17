@@ -23,6 +23,12 @@ $(document).ready(function(){
 	//$('.button-set-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
+	$('#container .box-url .setting-url').each(function(){
+		if ($(this).val() !== '') {
+			$('#container .box-title .button-url-link').addClass('expend').attr('aria-expanded', true);
+			$('#'+$('#container .box-title .button-url-link').attr('aria-controls')).attr('aria-hidden', false).slideDown(200);
+		}
+	})
 })
 var D4SkillDB = (function(){
 	var method = {};
