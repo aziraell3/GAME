@@ -94,10 +94,16 @@ var D4SkillDB = (function(){
 			$(this).select();
 			//document.execCommand('copy');
 		})
-		$('.link-button').on('click', function(){
-			var $url = $(this).siblings('.setting-url').val();
-			if ($url.length > 0) {
-				window.open($url, '_blank');
+
+		
+		$('.button-url').on('click', function(){
+			if ($(this).is('.link-button')) {
+				var $url = $(this).siblings('.setting-url').val();
+				if ($url.length > 0) {
+					window.open($url, '_blank');
+				}
+			} else if ($(this).is('.del-button')) { // .del-button
+				$(this).hide().siblings('.setting-url').val('').focus();
 			}
 		})
 		$('#container .inven .equ .box-aspect').each(function(){
@@ -105,13 +111,27 @@ var D4SkillDB = (function(){
 				$(this).toggleClass('active');
 			})
 		})
-		obj.settingInput.on('focusout', function(){
-			if ($(this).val().length < 1) {
-				obj.urlParams.delete($(this).attr('id'));
-			} else {
-				obj.urlParams.set($(this).attr('id'), $(this).val());
+
+		obj.settingInput.each(function(){
+			if (obj.urlParams.get($(this).attr('id')) == undefined) {
+				$('#'+$(this).attr('id')).siblings('.del-button').hide();
 			}
-			method.getSetting();
+			$(this).on('focus keyup', function(){
+				if ($(this).val().length < 1) {
+					$(this).siblings('.del-button').hide();
+				} else {
+					$(this).siblings('.del-button').show();
+				}
+			}).on('focusout blur', function(){
+				if ($(this).val().length < 1) {
+					obj.urlParams.delete($(this).attr('id'));
+					$(this).siblings('.del-button').hide();
+				} else {
+					obj.urlParams.set($(this).attr('id'), $(this).val());
+					$(this).siblings('.del-button').show();
+				}
+				method.getSetting();
+			})
 		})
 	};
 	method.itemOption = function(){
@@ -561,6 +581,7 @@ var D4SkillDB = (function(){
 			var $id = $(this).attr('id');
 			$('#'+$id).val(obj.urlParams.get($id));
 		})
+
 		history.replaceState({}, null, obj.url);
 	};
 
