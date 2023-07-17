@@ -370,10 +370,14 @@ var D4SkillDB = (function(){
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				//동일 위상 양손무기 / 한손+보조  세팅값
+				console.log(obj.job)
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
+						
+						console.log('무기 ON')
 						method.wepChange(true);
 					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
+						console.log('무기 OFF')
 						method.wepChange(false);
 					}
 				}
@@ -525,10 +529,11 @@ var D4SkillDB = (function(){
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
 		}
-		//위상 로드
+		//장비 위상 로드
 		obj.aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
-			var $parts = $(this).parent().attr('class').split('equ ')[1]
+			//var $parts = $(this).parent().attr('class').split('equ ')[1];
+			var $parts = $(this).attr('id');
 			var $box =  $(this).siblings('.text').find('.box-aspect');
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			if ($(this).is('[data-target]')) {
@@ -536,14 +541,18 @@ var D4SkillDB = (function(){
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
 				$('#'+$(this).attr('data-target')).attr({'aria-selected': true,'data-select-parts': $parts}); //선택된 위상 표시
 			}
+			//유니크 장비 체크
+			if ($(this).siblings('.text').find('.aspect-name').is('.type-uni')) {
+				$(this).siblings('.text').addClass('type-uni');
+			}
+			//보조무기 선택여부
+			if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 		})
 		//보석 로드
 		obj.gems.each(function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 		})
-		//보조무기 선택여부
-		if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 		//URL입력값
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id');
@@ -629,7 +638,7 @@ var D4SkillDB = (function(){
 				$targetPopup.unbind('keydown', trapTabKey, false);
 				$targetPopup.removeClass('active').attr({'aria-hidden':'true'});
 				if ($('[aria-haspopup=dialog][aria-controls='+$target+']').length > 0) {
-					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active').focus();
+					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active');
 				} else if($('.active').get(0) !== undefined) {
 					$('.active').find('[data-dismiss=modal]').focus();
 				} else {

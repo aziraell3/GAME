@@ -212,7 +212,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .selected ~ .text .box-aspect .aspect-parts,
 #container .inven .equ .selected ~ .text .box-aspect .acquest{max-height: 0;padding: 0;overflow: hidden;transition: all 0.3s;}
 #container .inven .equ .selected ~ .text .box-aspect.active .aspect-parts,
-#container .inven .equ .selected ~ .text .box-aspect.active .acquest{max-height: 40px;padding-top: 5px;}
+#container .inven .equ .selected ~ .text .box-aspect.active .acquest{max-height: 40px;padding-top: 2px;}
 /*
 #container .inven .equ .selected ~ .text .box-aspect::after{content:'';position: absolute;bottom: 10px;right: 12px;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;transition: all .3s;opacity:.7;transform:rotate(180deg);}
 #container .inven .inven-wep + .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
@@ -306,19 +306,19 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven-aspect-select .button-aspect[data-parts=com]{display: flex;}
 #container .inven-aspect-select .button-aspect[aria-selected=true]{opacity: .5;}
 #container .aspect-icon{display: block;min-width:90px;width: 45px;height: 45px;background: url(images/offhand.png) 50% 50% no-repeat;background-size:45px auto;}
-#container .aspect-detail{position: relative;display: flex;flex-direction: column;justify-content: center;width: 100%;min-height:72px;padding: 5px 0 2px 0;}
+#container .aspect-detail{position: relative;display: flex;flex-direction: column;justify-content: center;width: 100%;min-height:72px;padding: 5px 0 7px 0;}
 #container .aspect-layer .aspect-detail{padding-right: 10px;}
 #container .aspect-detail .aspect-name{display: block;font-weight: bold;font-size: 14px;}
 #container .aspect-detail .aspect-name::before{content:'';position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 #container .aspect-detail .aspect-name::after{color: var(--color--orange200);}
 #container .aspect-detail .aspect-name::before,
 #container .aspect-detail .aspect-name::after{font-size: 14px;line-height: 1.3;}
-#container .aspect-detail .aspect-more{display: block;padding-top: 6px;font-size: 14px;color: var(--color--white);word-wrap: break-word;opacity: .8}
+#container .aspect-detail .aspect-more{display: block;padding: 6px 0 4px;font-size: 14px;color: var(--color--white);word-wrap: break-word;opacity: .8}
 #container .aspect-detail .aspect-parts{/* position: relative;padding-left: 10px; */display: block;padding-top: 4px;}/* #container .inven-aspect-select .aspect-detail .aspect-parts::before{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: burlywood;transform: rotate(-45deg);} */
 #container .aspect-detail .acquest{/* position: relative;padding-left: 10px; margin-top: 4px; */display: block;padding-bottom: 5px;font-size: 12px;color:#999;}/* #container .aspect-detail .acquest::after{content: '';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: #ccc;transform: rotate(-45deg);} */
 #container .aspect-detail .acquest::before{font-size: 12px;color:  #ccc;}
-#container .aspect-detail .acquest::before{content:'위상 획득처 :';font-size: 12px;font-weight: bold;}
-#container .aspect-detail .acquest.type-uni::before{content:'획득처 :';}
+#container .aspect-detail .acquest::before{content:'위상 획득처 : ';font-size: 12px;font-weight: bold;}
+#container .aspect-detail .acquest.type-uni::before{content:'획득처 : ';}
 /* #container .aspect-detail .acquest.type-uni{display: none;} */
 #container .inven-aspect-select .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;box-sizing: content-box;overflow:hidden;z-index:800}
 
@@ -420,7 +420,7 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 
 #container [data-parts] .aspect-parts::before,
 #container [data-parts] .aspect-parts::after{content:'';margin-top: 2px;font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
-#container [data-parts] .aspect-parts::before{content:'착용 가능 :';color: burlywood;font-weight: bold;}
+#container [data-parts] .aspect-parts::before{content:'착용 가능 : ';color: burlywood;font-weight: bold;}
 #container [data-parts=wep] .aspect-parts::after{content:'무기';}
 #container [data-parts=hel] .aspect-parts::after{content:'투구';}
 #container [data-parts=che] .aspect-parts::after{content:'갑옷';}
@@ -597,11 +597,13 @@ body.option-view #container .inven .equ .option-list .grid-option .option-del{di
 body.option-view #container .inven .equ .option-list .grid-option .option-name{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 12px;font-size: 13px;color: var(--color--gold);line-height: 1.2;text-align: left;cursor: default;}
 body.option-view #container .inven .equ .option-list .grid-option .option-name::before{content:'';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: var(--color--gold);transform:rotate(-45deg)}
 
-body.option-view #container .inven .equ[data-ver]{min-height:105px;}
+body.option-view #container .inven .equ[data-ver]{/* min-height:105px; */}
 body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
 body.option-view #container .inven .equ[data-ver] .type-uni .option-list,
 body.option-view #container .inven .equ[data-ver] .type-uni .button-option-select{display: none;}
-body.option-view #container .inven .equ .box-aspect .aspect-detail{min-height: 105px;justify-content: flex-start;}
+body.option-view #container .inven .equ .text .box-aspect .aspect-detail{justify-content: flex-start;}
+body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect-detail{min-height: 105px;}
+
 
 
 /* box-layer */
@@ -762,7 +764,7 @@ body.option-view #container .inven .equ .box-aspect .aspect-detail{min-height: 1
 	body.option-view #container .inven .inven-acc, 
 	body.option-view #container .inven .inven-equ{width: 100%;float: none;}
 	body.option-view #container .inven .equ .text{justify-content: flex-start;flex-direction:row;align-items: center;}
-	body.option-view #container .inven .equ .text .option-list{margin-left: 20px;}
+	body.option-view #container .inven .equ .text .option-list{margin-left: 20px;min-height: 105px;justify-content: center;}
 	body.option-view #container .inven .equ .text .box-aspect{min-width: 370px;}
 	body.option-view.gems #container .inven .equ .text{margin-left: var(--gam--space);}
 	body.option-view #container .inven .equ .gems + .text{margin-left: 0;}
