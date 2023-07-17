@@ -12,7 +12,7 @@ $(document).ready(function(){
 					}).then(function (canvas) {
 						$('#previewImg').removeClass('loading').addClass('complate').html('<img src="'+canvas.toDataURL()+'">');
 						$('html, body').animate({scrollTop: parseInt($('#download').offset().top - 120)}, 500);
-						$('.down-notice').addClass('loading').removeClass('complate').html('이미지가 생성되었습니다!');
+						$('.down-notice').removeClass('loading').addClass('complate').html('이미지가 생성되었습니다!');
 					});
 			
 			}, 500)
