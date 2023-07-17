@@ -546,8 +546,13 @@ var D4SkillDB = (function(){
 					
 					console.log($this, $thisSelect)
 					
-					obj.urlParams.delete($(this).siblings().attr('id'));
-					obj.urlParams.set($this, $thisSelect);
+					//obj.urlParams.delete($(this).siblings().attr('id'));
+					
+					if ($(this).is('.button-blessing')) {
+						obj.urlParams.set('blessing', $this);
+					} else {
+						obj.urlParams.set($this, $thisSelect);
+					}
 					method.getSetting();
 				})
 			})
@@ -557,7 +562,6 @@ var D4SkillDB = (function(){
 	};
 
 	method.getSetting = function(){
-		console.log('1');
 		var job = obj.urlParams.get('job');
 		var $option = $('#container .inven .equ .option-list');
 		
@@ -595,6 +599,12 @@ var D4SkillDB = (function(){
 		obj.gems.each(function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
+		})
+		//은총 로드
+		//$('#'+obj.urlParams.get('blessing')).click();
+		obj.spiritBoons.find('button').each(function(){
+			//$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
+			//$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 		})
 		//URL입력값
 		obj.settingInput.each(function(){
