@@ -275,6 +275,9 @@ var D4SkillDB = (function(){
 			(scrollTop > $header) 
 				? obj.body.addClass('header-flip')
 				: obj.body.removeClass('header-flip');
+			var windHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			var scrolled = (scrollTop / windHeight) * 100;
+			$('.bar').css('width', scrolled+'%');
 		});
 	};
 	method.aspectLayer = function(){
