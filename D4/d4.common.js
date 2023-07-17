@@ -502,10 +502,13 @@ var D4SkillDB = (function(){
 	}
 	method.spiritBoons = function(){
 		//영혼 은총
+		var $spirit = obj.spiritBoons.find('button');
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
 			$(this).find('.button-blessing').on('click', function(){
+				$grid.find('.button-blessing').attr('aria-selected', false);
+				$(this).attr('aria-selected', true);
 				$grid.find('[aria-selected]').attr('disabled', false);
 				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
 				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
@@ -535,15 +538,32 @@ var D4SkillDB = (function(){
 					$description.html('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
 				}
 			})
+			/*
+			$spirit.each(function(){
+				$(this).on('click', function(){
+					var $this = $(this).attr('id');
+					var $thisSelect = ($(this).attr('aria-selected') == 'true') ? 1 : null;
+					
+					console.log($this, $thisSelect)
+					
+					obj.urlParams.delete($(this).siblings().attr('id'));
+					obj.urlParams.set($this, $thisSelect);
+					method.getSetting();
+				})
+			})
+			*/
+			
 		})
 	};
 
 	method.getSetting = function(){
+		console.log('1');
 		var job = obj.urlParams.get('job');
 		var $option = $('#container .inven .equ .option-list');
 		
 		//직업 로드
 		if (job == null) {
+			obj.urlParams.set('job', 'dru');
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
 		} else {
