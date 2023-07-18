@@ -418,7 +418,6 @@ var D4SkillDB = (function(){
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				//동일 위상 양손무기 / 한손+보조  세팅값
-				console.log(obj.job)
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
 						
