@@ -524,7 +524,7 @@ var D4SkillDB = (function(){
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
-			$(this).find('.button-blessing').on('click', function(){
+			$(this).on('click', '.button-blessing[aria-selected=false]', function(){
 				$grid.find('.button-blessing').attr('aria-selected', false);
 				$(this).attr('aria-selected', true);
 				$grid.find('[aria-selected]').attr('disabled', false);
@@ -533,7 +533,7 @@ var D4SkillDB = (function(){
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
 				$('.description').slideUp(300);
 			})
-			$(this).find('.button-spirit[aria-selected]').on('click', function(){
+			$(this).on('click', '.button-spirit[aria-selected]', function(){
 				var $name = $(this).text();
 				var $id = $(this).attr('id');
 				var $detail = $(this).attr('title');
