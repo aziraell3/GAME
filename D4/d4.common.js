@@ -218,8 +218,8 @@ var D4SkillDB = (function(){
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
-				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon], input[type=text]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값 들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -241,7 +241,6 @@ var D4SkillDB = (function(){
 					if ($job == 'dru') {
 						$('#wep2-opt').attr('data-option-parts', 'sub');
 					} else if ($job == 'nec') {
-						console.log('nec')
 						$('#wep2-opt').attr('data-option-parts', 'shl');
 						$('#wep4-opt').attr('data-option-parts', 'sub');
 					} else {
