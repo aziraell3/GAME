@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="d4.css">
 </head>
-<body>
+<body class="gems">
+	<div id="test"></div>
 <div id="wrap">
 	<div id="header">
 		<!-- <p class="notice"></p> -->
@@ -23,19 +24,14 @@
 					<strong>
 						1. 각 직업별 URL이 생성되었습니다. <br>
 						<em>상단 직업 버튼을 누르면 해당하는 직업 URL로 변경됩니다.<br>직업 URL로 저장해두면 페이지 접근시 초기 원하는 직업으로 볼 수 있습니다.</em>
-						2. 장비 셋팅 URL 기능이 추가 되었습니다.<br>
-						<em>최종 셋팅 후 주소창의 URL을 copy하고 paste하면 세팅된 장비목록을 로드합니다. <u>(현재 위상 셋팅만 가능)</u></em>
+						2. 장비 위상/보석 셋팅 URL 기능이 추가 되었습니다.<br>
+						<em>위상/보석을 셋팅할때마다 주소창의 URL이 선택한 값들을 저장합니다.<br>주소창의 URL copy하고 paste하면 세팅된 장비목록을 로드합니다. <u>(현재 위상/보석 셋팅만 가능)</u></em>
+						3. 위상 획득처가 표기됩니다.<br>
+						<em>위상 선택하면 <u>해당 위상의 획득처가 표기</u>됩니다.<br> 전설 아이템에서만 얻을 수 있는 위상은 <u>위상 추출</u>로 표기됩니다.<br>고유 아이템의 경우 <u>월드 드랍</u>으로 표기됩니다.</em>
+						4. 참조 URL 저장 기능 추가되었습니다.<br>
+						<em>일반적으로 위상 세팅과 동반되는 스킬/정복자/기타 3 타입의 URL입력 창이 추가되었습니다.</em>
 					</strong>
 				</div>
-				업데이트 내역(23.07.12) v1.6<br>
-				<ul>
-					<li>장비 셋팅 URL 기능 추가</li>
-					<li><del>장비 옵션 작성 가능</del> -> 장비 옵션 선택형으로 변경</li>
-					<li>개별 보석세팅 보조무기 선택시 주무기 보석 1칸 / 보조무기 해제시 주무기 보석 2칸으로 변경됩니다.</li>
-					<li>장비별 개별 보석세팅 추가(세팅 이름 우측 보석 아이콘 ON/OFF)</li>
-					<li>통합 보석세팅 추가</li>
-					<li>UI 간단하기 보기 삭제</li>
-				</ul>
 				<p class="cmt">
 					<a href="https://www.inven.co.kr/board/diablo4/6023/1444" target="_blank">인벤 글</a> 이외에는 홍보성 글은 게시하지 않았습니다.<br>
 					좋은 의도로 공유주시는건 감사하나, 출처는 남겨주시길 당부드립니다.<br>
@@ -49,6 +45,7 @@
 			<button type="button" class="button-job" data-tab-select="soc" aria-selected="false">원소술사</button>
 			<button type="button" class="button-job" data-tab-select="rog" aria-selected="false">도적</button>
 			<button type="button" class="button-job sub-equ-char" data-tab-select="nec" aria-selected="false">강령술사</button>
+			<span class="box-scrollbar"><em class="bar"></em></span>
 		</div>
 	</div>
 
@@ -57,12 +54,28 @@
 			<div class="box-title">
 				<button type="button" class="button-option-view" role="switch" data-tag="option-view" aria-checked="false" title="상세옵션 선택하기"><span class="a11y">상세옵션 선택하기</span></button>
 				<input type="text" id="settingTitle" class="setting-title" title="세팅이름을 지정해주세요" placeholder="세팅이름을 작성 해주세요">
-				<button type="button" class="button-gem" role="switch" data-tag="gems" aria-checked="false" title="개별 보석 셋팅"><span class="a11y">장비별 보석 셋팅</span></button>
+				<button type="button" class="button-url-link" aria-expanded="false" aria-controls="urlLink" title="URL 옵션"><span class="a11y">URL 옵션</span></button>
+				<button type="button" class="button-reset" title="셋팅 리셋"><span class="a11y">모든 셋팅 리셋</span></button>
 			</div>
-			<div class="box-title">
-				<label class="setting-copy" for="settingUrl"></label>
-				<!-- <button type="button" class="setting-copy" title="셋팅 URL 저장"><span class="a11y">셋팅 URL 저장</span></button> -->
-				<input type="text" id="settingUrl" class="setting-url">
+			<div id="urlLink" class="box-url" aria-hidden="true">
+				<p class="box-line">
+					<button type="button" class="button-url link-button" title="링크 이동하기">LINK</button>
+					<label class="label" for="skillUrl">스킬</label>
+					<input type="text" id="skillUrl" class="setting-url" placeholder="http://참고 URL 입력">
+					<button type="button" class="button-url del-button" title="링크 삭제하기">DEL</button>
+				</p>
+				<p class="box-line">
+					<button type="button" class="button-url link-button" title="링크 이동하기">LINK</button>
+					<label class="label" for="boardUrl">정복자</label>
+					<input type="text" id="boardUrl" class="setting-url" placeholder="http://참고 URL 입력 ">
+					<button type="button" class="button-url del-button" title="링크 삭제하기">DEL</button>
+				</p>
+				<p class="box-line">
+					<button type="button" class="button-url link-button" title="링크 이동하기">LINK</button>
+					<label class="label" for="etcUrl">기타</label>
+					<input type="text" id="etcUrl" class="setting-url" placeholder="http://참고 URL 입력 ">
+					<button type="button" class="button-url del-button" title="링크 삭제하기">DEL</button>
+				</p>
 			</div>
 
 			<!-- inventory -->
@@ -70,24 +83,24 @@
 				<div class="equ hel">
 					<button id="hel" type="button" class="option icon-hel" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Ghel" type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="hel">옵션</button>
-						<div class="option-list"></div>
+						<div id="Ohel" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ che">
 					<button id="che" type="button" class="option icon-che" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect" title="보석 선택"><span class="a11y"></span></button>
-						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gche1" type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect" title="보석 선택"><span class="a11y"></span></button>
+						<button id="Gche2" type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="che">옵션</button>
-						<div class="option-list"></div>
+						<div id="Oche" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ glo" data-multiply="10">
@@ -96,19 +109,19 @@
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="glo">옵션</button>
-						<div class="option-list"></div>
+						<div id="Oglo" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ pan">
 					<button id="pan" type="button" class="option icon-pan" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
-						<button type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gpan1" type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gpan2" type="button" class="each-gem" data-gem-type="def" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="pan">옵션</button>
-						<div class="option-list"></div>
+						<div id="Opan" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ boo">
@@ -117,7 +130,7 @@
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="boo">옵션</button>
-						<div class="option-list"></div>
+						<div id="Oboo" class="option-list"></div>
 					</span>
 				</div>
 			</div>
@@ -129,34 +142,34 @@
 				<div class="equ amu" data-multiply="15">
 					<button id="amu" type="button" class="option icon-amu" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gamu" type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="amu">옵션</button>
-						<div class="option-list"></div>
+						<div id="Oamu" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ rin">
 					<button id="rin1" type="button" class="option icon-rin" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Grin1" type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="rin">옵션</button>
-						<div class="option-list"></div>
+						<div id="Orin1" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ rin">
 					<button id="rin2" type="button" class="option icon-rin" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Grin2" type="button" class="each-gem" data-gem-type="acc" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="rin">옵션</button>
-						<div class="option-list"></div>
+						<div id="Orin2" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ emp">
@@ -168,25 +181,25 @@
 				<div class="equ wep" data-multiply="20">
 					<button id="wep1" type="button" class="option icon-wep" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep11" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep12" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
-						<div class="option-list"></div>
+						<div id="Owep1" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ wep" data-wep-type="sub">
 					<button id="wep2" type="button" class="option icon-emp" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems">
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep21" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep22" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button id="wep2-opt"class="button-option-select weapon-sub" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="sub">옵션</button>
-						<div class="option-list"></div>
+						<div id="Owep2" class="option-list"></div>
 					</span>
 				</div>
 			</div>
@@ -194,23 +207,23 @@
 				<div class="equ wep">
 					<button id="wep3" type="button" class="option icon-wep" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems hide">
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep3" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
-						<div class="option-list"></div>
+						<div id="Owep3" class="option-list"></div>
 					</span>
 				</div>
 				<div class="equ wep" data-wep-type="sub">
 					<button id="wep4" type="button" class="option icon-wep" title="위상을 선택해주세요." data-open-type="dimmed" aria-controls="aspectSelect"></button>
 					<div class="gems hide">
-						<button type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
+						<button id="Gwep4" type="button" class="each-gem" data-gem-type="wep" data-open-type="dimmed" aria-controls="gemSelect"><span class="a11y">보석 선택</span></button>
 					</div>
 					<span class="text">
 						<span class="box-aspect"></span>
 						<button id="wep4-opt" class="button-option-select" aria-haspopup="dialog" aria-controls="optionSelect" data-option-parts="wep">옵션</button>
-						<div class="option-list"></div>
+						<div id="Owep4" class="option-list"></div>
 					</span>
 				</div>
 			</div>
@@ -238,51 +251,51 @@
 			<div class="box-spirit">
 				<button type="button" class="spirit-open" aria-expanded="false" aria-controls="spirit">영혼 은총</button>
 				<div id="spirit" class="inven-spirit" aria-hidden="true">
-					<p class="description">결속할 영혼형상을 선택해주세요. 결속된 영혼은 스킬을 2개 선택가능합니다</p>
+					<p class="description">결속할 영혼을 선택하면 영혼 2개를 선택가능합니다</p>
 					<div class="spirit-grid">
 						<dl class="list-type deer">
-							<dt class="spirit-title"><button type="button" class="button-blessing sprite-spirit">사슴</button></dt>
+							<dt class="spirit-title"><button id="SPD0" type="button" class="button-blessing sprite-spirit" aria-selected="false" name="SPD" value="0">사슴</button></dt>
 							<dd class="spirit-frame">
-								<button id="d1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="가시를 72 얻습니다.">따끔거리는 거죽</button>
-								<button id="d2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="최대 영력이 10 증가합니다.">수사슴의 선물</button>
-								<button id="d3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="정예 괴물에게 받는 피해가 10% 감소합니다.">경계심</button>
-								<button id="d4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="제어 방해 효과의 지속시간이 15% 감소합니다.">이로운 야수</button>
+								<button id="SPD1" type="button" name="SPD" value="1" class="button-spirit sprite-spirit" aria-selected="false" title="가시를 72 얻습니다.">따끔거리는 거죽</button>
+								<button id="SPD2" type="button" name="SPD" value="2"class="button-spirit sprite-spirit" aria-selected="false" title="최대 영력이 10 증가합니다.">수사슴의 선물</button>
+								<button id="SPD3" type="button" name="SPD" value="3"class="button-spirit sprite-spirit" aria-selected="false" title="정예 괴물에게 받는 피해가 10% 감소합니다.">경계심</button>
+								<button id="SPD4" type="button" name="SPD" value="4"class="button-spirit sprite-spirit" aria-selected="false" title="제어 방해 효과의 지속시간이 15% 감소합니다.">이로운 야수</button>
 							</dd>
 						</dl>
 						<div class="spirit-description"></div>
 					</div>
 					<div class="spirit-grid">
 						<dl class="list-type eagle">
-							<dt class="spirit-title"><button type="button" class="button-blessing sprite-spirit">독수리</button></dt>
+							<dt class="spirit-title"><button id="SPE0" type="button" class="button-blessing sprite-spirit" aria-selected="false">독수리</button></dt>
 							<dd class="spirit-frame">
-								<button id="e1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="극대화 확률이 5% 증가합니다.">낫 발톱</button>
-								<button id="e2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="최대 생명력이 10% 증가합니다.">무쇠 깃털</button>
-								<button id="e3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="공격 속도가 10% 증가합니다.">급강하 공격</button>
-								<button id="e4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="극대화 피해가 30% 증가합니다.">새의 격노</button>
+								<button id="SPE1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="극대화 확률이 5% 증가합니다.">낫 발톱</button>
+								<button id="SPE2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="최대 생명력이 10% 증가합니다.">무쇠 깃털</button>
+								<button id="SPE3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="공격 속도가 10% 증가합니다.">급강하 공격</button>
+								<button id="SPE4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="극대화 피해가 30% 증가합니다.">새의 격노</button>
 							</dd>
 						</dl>
 						<div class="spirit-description"></div>
 					</div>
 					<div class="spirit-grid">
 						<dl class="list-type wolf">
-							<dt class="spirit-title"><button type="button" class="button-blessing sprite-spirit">늑대</button></dt>
+							<dt class="spirit-title"><button id="SPW0" type="button" class="button-blessing sprite-spirit" aria-selected="false">늑대</button></dt>
 							<dd class="spirit-frame">
-								<button id="w1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 공격이 극대화로 적중하면 최대 20% 확률로 동료 기술의 재사용 대기시간이 초기화됩니다.">무리의 지도자</button>
-								<button id="w2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 피해를 주면 최대 15% 확률로 영력이 10 회복됩니다.">기력 충전</button>
-								<button id="w3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="방어 기술을 사용할 때 최대 생명력의 10% 만큼 보강을 얻습니다.">강화</button>
-								<button id="w4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="궁극기의 지속 시간이 25% 증가합니다.">재앙 </button>
+								<button id="SPW1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 공격이 극대화로 적중하면 최대 20% 확률로 동료 기술의 재사용 대기시간이 초기화됩니다.">무리의 지도자</button>
+								<button id="SPW2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 피해를 주면 최대 15% 확률로 영력이 10 회복됩니다.">기력 충전</button>
+								<button id="SPW3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="방어 기술을 사용할 때 최대 생명력의 10% 만큼 보강을 얻습니다.">강화</button>
+								<button id="SPW4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="궁극기의 지속 시간이 25% 증가합니다.">재앙 </button>
 							</dd>
 						</dl>
 						<div class="spirit-description"></div>
 					</div>
 					<div class="spirit-grid">
 						<dl class="list-type snake">
-							<dt class="spirit-title"><button type="button" class="button-blessing sprite-spirit">뱀</button></dt>
+							<dt class="spirit-title"><button id="SPS0" type="button" class="button-blessing sprite-spirit" aria-selected="false">뱀</button></dt>
 							<dd class="spirit-frame">
-								<button id="s1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="적을 20마리 처치하면 다음 대지 기술이 제압합니다.">흑요석 내리치기</button>
-								<button id="s2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="번개 피해를 주면 최대 20% 확률로 대상이 정전기를 방출하여 주위 적들에게 번개 피해를 줍니다.">과부화</button>
-								<button id="s3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="변신으로 극대화 공격을 적중하면 최대 생명력의 3% 만큼 생명력이 회복됩니다.">피학성</button>
-								<button id="s4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 자연 마법 기술이 최대 10% 확률로 궁극기의 재사용 대기시간을 2초 감소시킵니다.">폭풍 전야</button>
+								<button id="SPS1" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="적을 20마리 처치하면 다음 대지 기술이 제압합니다.">흑요석 내리치기</button>
+								<button id="SPS2" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="번개 피해를 주면 최대 20% 확률로 대상이 정전기를 방출하여 주위 적들에게 번개 피해를 줍니다.">과부화</button>
+								<button id="SPS3" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="변신으로 극대화 공격을 적중하면 최대 생명력의 3% 만큼 생명력이 회복됩니다.">피학성</button>
+								<button id="SPS4" type="button" class="button-spirit sprite-spirit" aria-selected="false" title="행운의 적중: 자연 마법 기술이 최대 10% 확률로 궁극기의 재사용 대기시간을 2초 감소시킵니다.">폭풍 전야</button>
 							</dd>
 						</dl>
 						<div class="spirit-description"></div>
@@ -365,5 +378,5 @@
 <script src="../plugin/html2canvas-1.4.1.min.js"></script>
 <script src="d4.aspect.js"></script>
 <script src="d4.option.js"></script>
-<script src="d4.common.js"></script>
+<script src="d42.common.js"></script>
 </html>

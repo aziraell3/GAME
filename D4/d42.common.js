@@ -12,7 +12,7 @@ $(document).ready(function(){
 					}).then(function (canvas) {
 						$('#previewImg').removeClass('loading').addClass('complate').html('<img src="'+canvas.toDataURL()+'">');
 						$('html, body').animate({scrollTop: parseInt($('#download').offset().top - 120)}, 500);
-						$('.down-notice').addClass('loading').removeClass('complate').html('이미지가 생성되었습니다!');
+						$('.down-notice').removeClass('loading').addClass('complate').html('이미지가 생성되었습니다!');
 					});
 			
 			}, 500)
@@ -20,15 +20,21 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
-	$('.button-notice').trigger('click');
-	$('.button-gem').trigger('click');
+	//$('.button-set-gem').trigger('click');
 	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
+	$('#container .box-url .setting-url').each(function(){
+		if ($(this).val() !== '') {
+			$('#container .box-title .button-url-link').addClass('expend').attr('aria-expanded', true);
+			$('#'+$('#container .box-title .button-url-link').attr('aria-controls')).attr('aria-hidden', false).slideDown(200);
+		}
+	})
 })
 var D4SkillDB = (function(){
 	var method = {};
 	var obj = {};
 	var option = {};
+	var optionArr = [];
 	var parts = [];
 	var gems = [
 		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
@@ -47,7 +53,6 @@ var D4SkillDB = (function(){
 		method.aspectDB();
 		method.spiritBoons();
 		method.jobSelect();
-		//method.scrollFunc();
 		$(window).on('scroll resize',function(){
 			method.scrollFunc();
 		});
@@ -55,28 +60,30 @@ var D4SkillDB = (function(){
 		method.layerFuncInit();
 		method.itemOption();
 		method.getSetting();
-		//method.getUrl();
 	};
 	method.setElement = function(){
 		obj.body = $('body');
 		obj.container = $('#container');
 		obj.job = obj.container.attr('data-job-select');
 		obj.headerH = $('#header').outerHeight();
+		obj.aspect = $('#container .inven .equ .option');
 		obj.aspectList = obj.container.find('#aspectList');
 		obj.boardWrap = obj.container.find('#board');
 		obj.spiritBoons = obj.container.find('#spirit');
 		obj.aspectOpen = obj.container.find('[aria-controls=aspectSelect]');
 		obj.aspectTarget = $('#'+obj.aspectOpen.attr('data-target'));
 		obj.aspectLayer = $('#'+obj.aspectOpen.attr('aria-controls'));
+		obj.gems = $('#container .inven .equ .gems .each-gem');
 		obj.gemOpen = obj.container.find('[aria-controls=gemSelect]');
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
 		obj.optionList = $('#optionList');
+		obj.settingInput = $('input[type=text]');
 	
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
 		obj.urlParams = obj.url.searchParams;
-		obj.copyUrl = $('#settingUrl');
+		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
 		$('[role=switch][aria-checked]').on('click', function(){
@@ -89,30 +96,44 @@ var D4SkillDB = (function(){
 			}
 			obj.body.toggleClass($tag);
 		})
-		$('.setting-copy, .setting-url').on('click', function(){
-			var el = $('#settingUrl');
-			//$('#settingUrl').select();
-			//document.execCommand("copy");
-			/*
-			var oldContentEditable = el.contentEditable,
-				oldReadOnly = el.readOnly,
-				range = document.createRange();
+		$('.button-url').on('click', function(){
+			if ($(this).is('.link-button')) {
+				var $url = $(this).siblings('.setting-url').val();
+				if ($url.length > 0) {
+					window.open($url, '_blank');
+				}
+			} else if ($(this).is('.del-button')) { // .del-button
+				$(this).hide().siblings('.setting-url').val('').focus();
+			}
+		})
+		$('#container .inven .equ .box-aspect').each(function(){
+			$(this).on('click', function(){
+				$(this).toggleClass('active');
+			})
+		})
 
-			el.contentEditable = true;
-			el.readOnly = false;
-			range.selectNodeContents(el);
-
-			var s = window.getSelection();
-			s.removeAllRanges();
-			s.addRange(range);
-
-			el.setSelectionRange(0, 999999); // A big number, to cover anything that could be inside the element.
-
-			el.contentEditable = oldContentEditable;
-			el.readOnly = oldReadOnly;
-			*/
-			el.select();
-			document.execCommand('copy');
+		obj.settingInput.each(function(){
+			if (obj.urlParams.get($(this).attr('id')) == undefined) {
+				$('#'+$(this).attr('id')).siblings('.del-button').hide();
+			}
+			$(this).on('focus keyup', function(){
+				if ($(this).val().length < 1) {
+					$(this).siblings('.del-button').hide();
+				} else {
+					$(this).siblings('.del-button').show();
+				}
+			}).on('focusout blur', function(){
+				if ($(this).val().length < 1) {
+					obj.urlParams.delete($(this).attr('id'));
+					$(this).siblings('.del-button').hide();
+				} else {
+					obj.urlParams.set($(this).attr('id'), $(this).val());
+					$(this).siblings('.del-button').show();
+				}
+				method.getSetting();
+			}).on('click', function(){
+				$(this).select();
+			})
 		})
 	};
 	method.itemOption = function(){
@@ -123,11 +144,9 @@ var D4SkillDB = (function(){
 		var $optionCopy = $optionLayer.find('.button-copy');
 		var $selected = $optionLayer.find('.selected-option');
 		var $alert = $('.box-alert');
-
 		$optionButton.on('click', function(){
 			var $parts = $(this).attr('data-option-parts');
 			var $invenOption = $(this).siblings('.option-list');
-			//D4Option.init();
 			if (!$(this).val() == '') {
 				$optionInput.val($(this).val());
 				$(this).removeClass('modify');
@@ -136,7 +155,6 @@ var D4SkillDB = (function(){
 				$(this).addClass('modify');
 			}
 			$optionLayer.attr('data-select-option-parts', $parts);
-
 			$('.select-option .grid-option').attr('aria-selected', false);
 			$selected.empty().append($invenOption.find('.grid-option').clone());
 			$selected.find('.grid-option').each(function(){
@@ -173,12 +191,12 @@ var D4SkillDB = (function(){
 
 	method.jobSelect = function(){ 
 		//직업 선택
-		$('#header .button-job').on('click', function(){
+		$('#header .button-job, .button-reset').on('click', function(){
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
-				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 선택된 위상이나 보석</strong>이 있습니다.<br>직업을 변경하면 선택했던 <strong>위상과 보석들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon], input[type=text]').length > 0) {
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -191,28 +209,28 @@ var D4SkillDB = (function(){
 				if (!obj.body.is('.scroll-lock')) {
 					$('html, body').animate({scrollTop: '0'}, 300);
 				}
-				$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
-				obj.container.attr('data-job-select', $job);
-				($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
-				$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
-				$('#container .spirit-description').empty();
-				$('.description').slideDown(300);
-				if ($job == 'dru') {
-					$('#wep2-opt').attr('data-option-parts', 'sub');
-				} else if ($job == 'nec') {
-					console.log('nec')
-					$('#wep2-opt').attr('data-option-parts', 'shl');
-					$('#wep4-opt').attr('data-option-parts', 'sub');
-				} else {
-					$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
+				if ($jobBtn.is('.button-job')) {
+					$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
+					obj.container.attr('data-job-select', $job);	
+					($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
+					$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
+					$('#container .spirit-description').empty();
+					if ($job == 'dru') {
+						$('#wep2-opt').attr('data-option-parts', 'sub');
+					} else if ($job == 'nec') {
+						console.log('nec')
+						$('#wep2-opt').attr('data-option-parts', 'shl');
+						$('#wep4-opt').attr('data-option-parts', 'sub');
+					} else {
+						$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
+					}
+					obj.urlParams.set('job', $job);
 				}
-				obj.urlParams.set('job', $job);
-				method.delParam();
+				method.delEqu();
+				method.delGems();
+				method.delUrl();
 				method.getSetting();
 				method.aspectReset();
-				//history.replaceState({}, null, location.pathname)
-				
-				//console.log(obj.url);
 			}
 		})
 		//레이어 필터링 버튼
@@ -224,21 +242,6 @@ var D4SkillDB = (function(){
 			obj.aspectList.attr('data-filter', $this);
 		})
 	};
-	method.delParam = function(){
-		console.log('delParam');
-		obj.urlParams.delete('hel');
-		obj.urlParams.delete('che');
-		obj.urlParams.delete('glo');
-		obj.urlParams.delete('pan');
-		obj.urlParams.delete('boo');
-		obj.urlParams.delete('amu');
-		obj.urlParams.delete('rin1');
-		obj.urlParams.delete('rin2');
-		obj.urlParams.delete('wep1');
-		obj.urlParams.delete('wep2');
-		obj.urlParams.delete('wep3');
-		obj.urlParams.delete('wep4');
-	},
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
 		$('.inven .equ').each( function(){
@@ -247,6 +250,9 @@ var D4SkillDB = (function(){
 			}
 		})
 		var $layerGems = $('#gemSelect');
+		$.each(gems, function(index, gem){
+			$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
+		});
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -263,14 +269,19 @@ var D4SkillDB = (function(){
 			}
 			if ($layerGems.find('.gems-grid').length < 1) {
 				$.each(gems, function(index, gem){
-					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem" data-gem-icon="'+gem.icon+'"><span class="detail">'+gem.detail+'</span></button></div>');
+					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
 				});
 			}
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
 			if ($(this).is('.button-gem')) {
 				var $gem = $(this).attr('data-gem-icon');
-				$('[aria-controls=gemSelect].active').attr('data-gem-icon', $gem);
+				var $id = $(this).attr('id');
+				var $target = $('[aria-controls=gemSelect].active').attr('id');
+				$('[aria-controls=gemSelect].active').attr({'data-gem-icon':$gem, 'data-target':$id});
+				obj.urlParams.set($target, $id);
+				console.log($target, $id)
+				method.getSetting();
 			}
 			$('[aria-controls=gemSelect]').removeClass('active');
 			$('.inven-gems .option').removeClass('active');
@@ -286,12 +297,14 @@ var D4SkillDB = (function(){
 			(scrollTop > $header) 
 				? obj.body.addClass('header-flip')
 				: obj.body.removeClass('header-flip');
+			var windHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			var scrolled = (scrollTop / windHeight) * 100;
+			$('.bar').css('width', scrolled+'%');
 		});
 	};
 	method.aspectLayer = function(){
 		//위상 레이어 오픈
 		obj.aspectOpen.on('click', function(){
-			//D4Aspect.init();
 			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
 			var $layer = $('#'+$(this).attr('aria-controls'));
 			obj.aspectOpen.removeClass('active latest');
@@ -313,7 +326,6 @@ var D4SkillDB = (function(){
 			}
 
 			var $multi = ($(this).parents('.equ').attr('data-multiply') == undefined) ? 10 : $(this).parents('.equ').attr('data-multiply');
-			//console.log($multi)
 			method.aspectMultiply($multi);
 			method.fixedViewPort(true);
 		})
@@ -347,23 +359,23 @@ var D4SkillDB = (function(){
 		});
 	}
 	method.aspectReset = function(){
-		//세팅된 위상 리셋
+		//세팅된 모든값 리셋
 		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
 		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
 		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
 		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
 		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
-		$('#container .inven .equ .option').removeClass('active').removeAttr('data-gem-icon');
+		obj.aspect.removeClass('active').removeAttr('data-gem-icon');
 		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
 		method.wepChange(true); //주무기 보석 칸 리셋
 		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
 		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		$('#container .inven .equ .button-option-select').removeClass('modify');
 		
-		$('.box-aspect').empty();
+		$('.box-aspect').empty(); //위상 리셋
+		$('#previewImg').empty(); //생성된 이미지 리셋
 		$('.option-list').empty(); //선호 옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
-		method.delParam();
 		method.fixedViewPort(false);
 	};
 	method.layerSort = function($target){
@@ -372,7 +384,6 @@ var D4SkillDB = (function(){
 		$job = obj.container.attr('data-job-select');
 		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
 		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+$job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
-		
 	};
 	method.invCheck = function($id){
 		//동일 위상 선택시 다른영역 리셋
@@ -381,15 +392,17 @@ var D4SkillDB = (function(){
 			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
 			$invSkill.push($target)
 			if ($id == $(this).attr('data-target')) {
-				//$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.detail, .more').empty();
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
-
 				//동일 위상 양손무기 / 한손+보조  세팅값
+				console.log(obj.job)
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
+						
+						console.log('무기 ON')
 						method.wepChange(true);
 					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
+						console.log('무기 OFF')
 						method.wepChange(false);
 					}
 				}
@@ -434,12 +447,12 @@ var D4SkillDB = (function(){
 			obj.container.find('.inven').removeClass('active');
 			
 			$detailButton.find('.box-aspect').empty().append($(this).children().clone());
-			//$detailButton.text($detail.text()).next().html($tooltip).next().html($parts);
 			
 			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
+			/*
 			if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 				if ($('#wep1').is('.selected')) {
 					//method.wepChange(true);
@@ -447,10 +460,9 @@ var D4SkillDB = (function(){
 					//method.wepChange(false);
 				}
 			}
+			*/
 			method.invCheck(obj.aspectID);
 			method.fixedViewPort(false);
-
-
 			obj.urlParams.set(obj.partsID, obj.aspectID);
 			method.getSetting();
 		})
@@ -484,18 +496,21 @@ var D4SkillDB = (function(){
 				$(this).addClass('expend').attr('aria-expanded', true);
 				$target.attr('aria-hidden', true).slideDown(200);
 			}
-			$('.button-expand-close').on('click', function(){
-				$(this).parents('[aria-hidden]').slideUp(200);
-				$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
-			})
+		})
+		$('.button-expand-close').on('click', function(){
+			$(this).parents('[aria-hidden]').slideUp(200);
+			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
 		})
 	}
 	method.spiritBoons = function(){
 		//영혼 은총
+		var $spirit = obj.spiritBoons.find('button');
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
 			$(this).find('.button-blessing').on('click', function(){
+				$grid.find('.button-blessing').attr('aria-selected', false);
+				$(this).attr('aria-selected', true);
 				$grid.find('[aria-selected]').attr('disabled', false);
 				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
 				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
@@ -525,47 +540,107 @@ var D4SkillDB = (function(){
 					$description.html('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
 				}
 			})
+			/*
+			$spirit.each(function(){
+				$(this).on('click', function(){
+					var $this = $(this).attr('id');
+					var $thisSelect = ($(this).attr('aria-selected') == 'true') ? 1 : null;
+					
+					console.log($this, $thisSelect)
+					
+					//obj.urlParams.delete($(this).siblings().attr('id'));
+					
+					if ($(this).is('.button-blessing')) {
+						obj.urlParams.set('blessing', $this);
+					} else {
+						obj.urlParams.set($this, $thisSelect);
+					}
+					method.getSetting();
+				})
+			})
+			*/
+			
 		})
 	};
 
 	method.getSetting = function(){
-		var option = obj.urlParams.get('opt');
-		var gem = obj.urlParams.get('gem');
 		var job = obj.urlParams.get('job');
-		var $aspect = $('#container .inven .equ .option');
-		var $gem = $('#container .inven .equ .gems .each-gem');
-		var $option = $('#container .inven .equ .option-list .grid-option');
-	
+		var $option = $('#container .inven .equ .option-list');
+		
+		//직업 로드
 		if (job == null) {
+			obj.urlParams.set('job', 'dru');
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
 		} else {
-			obj.urlParams.set('job', job)
+			obj.urlParams.set('job', job);
 			$('#container').attr('data-job-select', job);
 			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select='+job+']').attr('aria-selected', true);
 		}
-		
-		if (option == 1) {
-			$('.button-option-view').attr('aria-checked', true);
-			obj.body.addClass('option-view')
-		}
-		if (gem == 0) {
-			$('.button-gem').attr('aria-checked', false);
-			obj.body.removeClass('gems')
-		}
-		$aspect.each(function(){
+		//장비 위상 로드
+		obj.aspect.each(function(){
 			var $thisWrap = $(this).parents('.equ');
+			//var $parts = $(this).parent().attr('class').split('equ ')[1];
+			var $parts = $(this).attr('id');
 			var $box =  $(this).siblings('.text').find('.box-aspect');
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			if ($(this).is('[data-target]')) {
 				$thisWrap.attr({'data-parts': $('#'+$(this).attr('data-target')).parent().attr('data-parts'), 'data-ver':$('#'+$(this).attr('data-target')).parent().attr('data-ver')}).find('.option').addClass('selected');
 				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
+				$('#'+$(this).attr('data-target')).attr({'aria-selected': true,'data-select-parts': $parts}); //선택된 위상 표시
 			}
+			//유니크 장비 체크
+			if ($(this).siblings('.text').find('.aspect-name').is('.type-uni')) {
+				$(this).siblings('.text').addClass('type-uni');
+			}
+			//보조무기 선택여부
+			if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 		})
-		obj.copyUrl.val(obj.url);
+		//보석 로드
+		obj.gems.each(function(){
+			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
+			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
+		})
+		//은총 로드
+		//$('#'+obj.urlParams.get('blessing')).click();
+		obj.spiritBoons.find('button').each(function(){
+			//$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
+			//$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
+		})
+		//URL입력값
+		obj.settingInput.each(function(){
+			var $id = $(this).attr('id');
+			$('#'+$id).val(obj.urlParams.get($id));
+		})
+
 		history.replaceState({}, null, obj.url);
 	};
+
+	method.delEqu = function(){
+		obj.aspect.each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id);
+		})
+	},
+	method.delGems = function(){
+		obj.gems.each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id);
+		})
+	},
+	method.delUrl = function(){
+		obj.settingInput.each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id );
+		})
+	},
+	method.delOpt = function(){
+		$('#container .inven .equ .option-list').each(function(){
+			var $id = $(this).attr('id')
+			obj.urlParams.delete($id );
+		})
+	},
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
 			e.preventDefault();
@@ -619,7 +694,7 @@ var D4SkillDB = (function(){
 				$targetPopup.unbind('keydown', trapTabKey, false);
 				$targetPopup.removeClass('active').attr({'aria-hidden':'true'});
 				if ($('[aria-haspopup=dialog][aria-controls='+$target+']').length > 0) {
-					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active').focus();
+					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active');
 				} else if($('.active').get(0) !== undefined) {
 					$('.active').find('[data-dismiss=modal]').focus();
 				} else {
