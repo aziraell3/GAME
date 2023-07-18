@@ -34,6 +34,10 @@ var D4SkillDB = (function(){
 	var optionArr = [];
 	var parts = [];
 	var gems = [
+		// ver		ori|dlc
+		// grade	nor|leg|uni
+		// parts	com|wep|def|acc
+		// icon		rub|sap|toz|eme|ame|dia|skl
 		{ver:'ori', grade:'nor', parts:'com', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
 		{ver:'ori', grade:'nor', parts:'com', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
 		{ver:'ori', grade:'nor', parts:'com', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
