@@ -96,12 +96,6 @@ var D4SkillDB = (function(){
 			}
 			obj.body.toggleClass($tag);
 		})
-		$('.setting-copy, .setting-url').on('click', function(){
-			$(this).select();
-			//document.execCommand('copy');
-		})
-
-		
 		$('.button-url').on('click', function(){
 			if ($(this).is('.link-button')) {
 				var $url = $(this).siblings('.setting-url').val();
@@ -137,6 +131,8 @@ var D4SkillDB = (function(){
 					$(this).siblings('.del-button').show();
 				}
 				method.getSetting();
+			}).on('click', function(){
+				$(this).select();
 			})
 		})
 	};
