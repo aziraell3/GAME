@@ -49,7 +49,7 @@ input[type=text]::placeholder{color: var(--color--gray300);}
 #container .box-url .del-button::before{content:'';background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='53.7' height='53.7' viewBox='0 0 53.7 53.7'><path fill='rgba(255, 255, 255, 1)' d='M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z'/></svg>") 50% 50% no-repeat;background-size:100% auto;}
 
 
-#wrap{position: relative;height: 100%;}
+#wrap{position: relative;}
 #header{position: fixed;top: 0;left: 0;right: 0;background-color: var(--color--gray500);z-index: 130;transition: all 0.5s;transform: translate(0, 0)}
 #header .page-title{position: relative;height: 40px;margin: 5px 0;padding: 0;text-align: center;overflow: hidden;}
 body.scroll-lock #header,
@@ -559,7 +559,7 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .download .down-notice.loading::after{content:' 🙏 ';}
 #container .download .down-notice.complate{color: var(--color--gold);}
 #container .download .down-notice.complate::after{content:' 👍 ';}
-#container .image-preview{display: block;width: 100%;position: relative;}
+#container .image-preview{display: block;width: 100%;min-height: 10px;position: relative;}
 #container .image-preview img,
 #container .image-preview canvas{width: 100%;margin:30px auto 20px;}
 #container .image-preview.loading{display: block;min-height: 200px;}
@@ -575,9 +575,9 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
       transform: rotate(1turn);
    }
 }
-#container .user-count{display: block;width: 100%;margin: -20px 0 40px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
-#container .copyright{display: block;width: 100%;margin: 0;padding: 30px 0;font-size: 14px;color: #646467;text-align: center;}
+#container .copyright{display: block;width: 100%;margin: 0;padding: 30px 0 10px;font-size: 14px;color: #646467;text-align: center;}
 #container .copyright a.link-mail{text-decoration: underline;color: #8a8a8a;}
+#container .user-count{display: block;width: 100%;margin: 20px auto 40px;font-size: 12px;color: skyblue;text-align: center;opacity: .3;}
 
 /* layer filtering */
 #container #aspectList .box__aspect-grid,
