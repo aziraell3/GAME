@@ -217,6 +217,8 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .active ~ .text .box-aspect::before,
 #container .inven .equ .selected ~ .text .aspect-detail .aspect-name::before,
 #container .inven .equ .active ~ .text .aspect-detail .aspect-name::before{margin-right: 6px;}
+body.option-view #container .inven .equ .text .box-aspect::after{content:'전설 위상을 선택해주세요.';font-size: 15px;color: var(--color--gray100);font-weight: 300;letter-spacing: -0.7px;}
+body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{content:none;}
 
 
 
@@ -246,36 +248,36 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ{width: 100% !important;margin: 15px 5px 0;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .option::before{background: url(images/bludgeoning_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep .equ.wep .text .box-aspect::before,
-#container[data-job-select=bab] .inven .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'양손 둔기 (2배)';}
+#container[data-job-select=bab] .inven .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'양손 둔기 (2배) : ';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .box-aspect::before,
-#container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'양손 도검/도끼 (2배)';}
+#container[data-job-select=bab] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'양손 도검/도끼 (2배) : ';}
 #container[data-job-select=bab] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/slashing_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .box-aspect::before,
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'쌍수 2';}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'쌍수 2 : ';}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ + .equ.wep .text .box-aspect::before,
-#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ + .equ.wep .text .aspect-detail .aspect-name::before{content:'쌍수 1';}
+#container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ + .equ.wep .text .aspect-detail .aspect-name::before{content:'쌍수 1 : ';}
 #container[data-job-select=bab] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep{display: flex;}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .option::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .option::before{background: url(images/dual-wield_weapon_1.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=rog] .inven .inven-wep .equ.wep .text .box-aspect::before,
-#container[data-job-select=rog] .inven .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'활/쇠뇌 (2배)';}
+#container[data-job-select=rog] .inven .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'활/쇠뇌 (2배) : ';}
 #container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .box-aspect::before,
-#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .aspect-detail .aspect-name::before{content:'단검 1';}
+#container[data-job-select=rog] .inven .inven-wep .equ + .equ.wep .text .aspect-detail .aspect-name::before{content:'단검 1 : ';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .box-aspect::before,
-#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'단검 2';}
+#container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'단검 2 : ';}
 #container[data-job-select=rog] .inven .inven-wep + .inven-wep .equ.wep .option::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size: 54px auto;}
 #container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .box-aspect::before,
-#container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'토템';}
+#container[data-job-select=dru] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'토템 : ';}
 
 #container[data-job-select=nec] .inven .inven-wep + .inven-wep{display: flex;}
 #container[data-job-select=nec] .inven .inven-wep .equ.wep .option::before{}
 #container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ:first-child{visibility: hidden;min-height: 0px;height: 0px;overflow: hidden;margin-top: 0;}
 #container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .box-aspect::before,
-#container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'방패';}
+#container[data-job-select=nec] .inven .inven-wep .equ + .equ .text .aspect-detail .aspect-name::before{content:'방패 : ';}
 #container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .box-aspect::before,
-#container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'보조무기';}
+#container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'보조무기 : ';}
 
 #container .inven .equ.emp{opacity: .3;}
 #container .inven .equ.emp .text{display: none;}
