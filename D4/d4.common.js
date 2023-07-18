@@ -86,13 +86,22 @@ var D4SkillDB = (function(){
 		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
+		$('[role=button]').each(function(){
+			$(this).attr('tabindex', '0');
+			$(this).on('keydown', function(e){
+				if (e.keyCode === 32 || e.keyCode === 13) {// enter & space 
+					e.preventDefault();
+					$(this).trigger('click');
+				}
+			});
+		})
 		$('[role=switch][aria-checked]').on('click', function(){
 			var $tag = $(this).attr('data-tag');
 			$(this).attr('aria-checked', function (i, attr) {
 				return attr == 'true' ? 'false' : 'true'
 			});
 			if ($(this).is('.button-gem[aria-checked=false]')) {
-				$('html, body').animate({scrollTop: $('.inven-gems').offset().top + obj.headerH}, 300);
+				//$('html, body').animate({scrollTop: $('.inven-gems').offset().top + obj.headerH}, 300);
 			}
 			obj.body.toggleClass($tag);
 		})
@@ -108,8 +117,22 @@ var D4SkillDB = (function(){
 		})
 		$('#container .inven .equ .box-aspect').each(function(){
 			$(this).on('click', function(){
-				$(this).toggleClass('active');
+				if ($(this).find('.aspect-parts, .acquest').length > 0) {
+					$(this).toggleClass('active');
+				}
 			})
+		})
+		$('[aria-expanded][aria-controls]').on('click', function(){
+			if ($(this).is('[aria-expanded=true]')) {
+				method.expandFunc($(this), true)
+			} else {
+				method.expandFunc($(this), false)
+			}
+		})
+		$('.button-expand-close').on('click', function(){
+			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').trigger('click');
+			//$(this).parents('[aria-hidden]').slideUp(200);
+			//$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
 		})
 
 		obj.settingInput.each(function(){
@@ -486,21 +509,15 @@ var D4SkillDB = (function(){
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock header-flip') : obj.body.removeClass('scroll-lock header-flip');
 	};
-	method.expandFunc = function(){
-		$('[aria-expanded][aria-controls]').on('click', function(){
-			var $target = $('#'+$(this).attr('aria-controls'));
-			if ($(this).is('[aria-expanded=true]')) {
-				$(this).removeClass('expend').attr('aria-expanded', false);
-				$target.attr('aria-hidden', false).slideUp(200);
-			} else {
-				$(this).addClass('expend').attr('aria-expanded', true);
-				$target.attr('aria-hidden', true).slideDown(200);
-			}
-		})
-		$('.button-expand-close').on('click', function(){
-			$(this).parents('[aria-hidden]').slideUp(200);
-			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
-		})
+	method.expandFunc = function($this, $boolean){
+		var $target = $('#'+$($this).attr('aria-controls'));;
+		if ($boolean) {
+			$($this).removeClass('expend').attr('aria-expanded', false);
+			$target.attr('aria-hidden', false).slideUp(200);
+		} else {
+			$($this).addClass('expend').attr('aria-expanded', true);
+			$target.attr('aria-hidden', true).slideDown(200);
+		}
 	}
 	method.spiritBoons = function(){
 		//영혼 은총
