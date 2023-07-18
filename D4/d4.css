@@ -905,7 +905,7 @@ body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect
 	body.gems #container .inven .equ .gems .each-gem[data-gem-icon]{border: 1px solid transparent;background-color: transparent;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem[data-gem-icon]::before{transform: scale(0.5);margin: -18px 0 0 -15px;}
 	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]{margin: 0;}
-	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]::before{margin: -18px 0 0 -17px;}
+	body.gems #container .inven *:not(.inven-gems) .gems .each-gem + .each-gem[data-gem-icon]::before{margin: -17px 0 0 -17px;}
 	body.gems #container[data-job-select=rog] .inven .equ[data-has=gem] .option,
 	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
 	body.gems #container .inven .equ[data-has=gem]:not([data-wep-type=sub]) .option,
