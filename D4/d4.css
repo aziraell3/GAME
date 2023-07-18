@@ -512,10 +512,11 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 
 #container .inven .layer-gems{display: none;position: absolute;top: 110px;min-width:460px;margin: 0;border: 1px solid #333;padding: 10px 15px 10px 10px;background-color: #111;border-radius: 10px;z-index: 200;box-shadow: -1px -1px 29px 0px rgba(255, 255, 255,0.3);}
 #container .inven .layer-gems.active{display: block;}
-#container .inven .layer-gems .gems-list{margin-top: 10px;}
+#container .inven .layer-gems .gems-group + .gems-group .gems-grid:last-child{margin-bottom: 5px;padding-bottom: 5px;border-bottom: 1px solid #2a2a2a;}
+#container .inven .layer-gems .gems-list{display: flex;flex-direction: column-reverse;padding: 15px;}
 #container .inven .layer-gems .gems-grid + .gems-grid{margin-top: 5px;padding-top: 5px;border-top: 1px solid #2a2a2a;}
-#container .inven .layer-gems .gems-grid .button-gem{display: flex;flex-direction: row;align-items: center;}
-#container .inven .layer-gems .gems-grid .button-gem .name{display: block;width: 120px;font-size: 16px;text-align: left;color: var(--color--white);}
+#container .inven .layer-gems .gems-grid .button-gem{position: relative;display: flex;flex-direction: row;align-items: center;}
+#container .inven .layer-gems .gems-grid .button-gem .name{display: block;min-width: 120px;font-size: 16px;text-align: left;color: var(--color--white);}
 #container .inven .layer-gems .gems-grid .button-gem[data-gem-grade=leg] .name{color: var(--color--orange);}
 #container .inven .layer-gems .gems-grid .button-gem .detail{display: block;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect{display: flex;flex-direction: column;align-items: flex-start;}
@@ -532,10 +533,12 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems.layer-bottom{top: inherit;bottom: 155px;}
 #container .inven .layer-gems.layer-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -22px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
 
-#container .inven .layer-gems.layer-dimmed{position: fixed;top: 0;bottom: 0;left: 0;right: 0;max-width: 100%;background-color: transparent;}
+#container .inven .layer-gems.layer-dimmed{position: fixed;top: 80px;bottom: 0;left: 0;right: 0;max-width: 100%;background-color: transparent;}
 #container .inven .layer-gems.layer-dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: var(--color--black);opacity: .5;z-index: 10;}
-#container .inven .layer-gems.layer-dimmed .layer-body{position: absolute;top: calc(50% + 40px);left: 50%;right: initial;bottom: initial;min-width: 300px;width: 90%;max-width: 640px;max-height: calc(100% - 148px);overflow-y: auto;min-height: min-content;height: auto;padding: 15px;border: 1px solid #F3F3F3;background-color: #111;transform: translate(-50%, -50%);border-radius: 10px;z-index: 200;}
-#container .inven .layer-gems.layer-dimmed .layer-body::before{content:'💎 장착할 보석을 선택해주세요.';display: block;padding: 0 40px 15px 0;border-bottom: 1px solid #444757;font-size: 16px;color: var(--color--white);font-weight: bold;text-align: center;}
+/* #container .inven .layer-gems.layer-dimmed .layer-body{position: absolute;top: calc(50% + 40px);left: 50%;right: initial;bottom: initial;min-width: 300px;width: 90%;max-width: 640px;max-height: calc(100% - 190px);overflow-y: auto;min-height: min-content;height: auto;padding: 15px;border: 1px solid #F3F3F3;background-color: #111;transform: translate(-50%, -50%);border-radius: 10px;z-index: 200;} */
+#container .inven .layer-gems.layer-dimmed .layer-container{position: absolute;top: 50%;left: 50%;max-width: 95%;width: 640px;height: calc(100% - 20px);max-height: 540px;border-radius: 6px;border: 1px solid #F3F3F3;background-color: var(--color--gray500);overflow: hidden;transform: translate(-50%, -50%);z-index: 200;}
+#container .inven .layer-gems.layer-dimmed .layer-body{position: relative;height: 100%;overflow-y: auto;}
+#container .inven .layer-gems.layer-dimmed .layer-body::before{position: sticky;top: 0;background-color: #111;content:'💎 장착할 보석을 선택해주세요.';display: block;padding: 15px 40px 15px 0;border-bottom: 1px solid #444757;font-size: 16px;color: var(--color--white);font-weight: bold;text-align: center;z-index: 10;}
 #container .inven .layer-gems.layer-dimmed [data-parts=wep],
 #container .inven .layer-gems.layer-dimmed [data-parts=def],
 #container .inven .layer-gems.layer-dimmed [data-parts=acc]{display: none;}
@@ -641,18 +644,18 @@ body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect
 .box-layer.active{display:block}
 .box-layer .button__layer-close{position:absolute;right:8px;top:8px;width:32px;height:32px;z-index: 10;overflow: hidden;}
 .box-layer .button__layer-close:after{display: block;width: 32px;height: 32px;margin: 0 auto;background-position: 0 0;}
-.layer-container{overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;z-index:351;min-width:280px;background-color:#1a1a1a;outline-offset: 1px;}
-.layer-container .layer-body{overflow:hidden;margin-top:48px;padding: 16px;height:calc(100% - 148px);box-sizing:border-box}
-.layer-container .layer-body .box-layer-scroll{overflow-x:hidden;overflow-y:auto;position:relative;height:100%;padding-bottom: 24px;box-sizing:border-box}
-.layer-container .layer-body .button__basic,
-.layer-container .layer-body .button__submit{height: 44px;padding: 12px 16px 10px;}
-.layer-container .layer-content{padding: 40px 10px;text-align: center;font-size: 16px;line-height: 1.6;color: #aaa;}
-.layer-container .layer-content strong{color: var(--color--white);font-size: 16px;}
-.layer-container .box-button{display:flex;justify-content: space-around;margin-top: 15px;border-top: 1px solid #333;margin-bottom: -15px}
-.layer-container .box-button button{position: relative;font-size: 18px;color: #eee;width: 100%;padding: 15px 0;}
-.layer-container .box-button button + button::before{content:'';position: absolute;left: -2px;width: 1px;height: 23px;background-color: var(--color--white);opacity: 0.2;}
-.layer-container .box-button .button-cancel{}
-.layer-container .box-button .button-submit{color: var(--color--blue);font-weight: bold;}
+.box-layer .layer-container{overflow:hidden;position:fixed;top:0;left:0;right:0;bottom:0;z-index:351;min-width:280px;background-color:#1a1a1a;outline-offset: 1px;}
+.box-layer .layer-container .layer-body{overflow:hidden;margin-top:48px;padding: 16px;height:calc(100% - 148px);box-sizing:border-box}
+.box-layer .layer-container .layer-body .box-layer-scroll{overflow-x:hidden;overflow-y:auto;position:relative;height:100%;padding-bottom: 24px;box-sizing:border-box}
+.box-layer .layer-container .layer-body .button__basic,
+.box-layer .layer-container .layer-body .button__submit{height: 44px;padding: 12px 16px 10px;}
+.box-layer .layer-container .layer-content{padding: 40px 10px;text-align: center;font-size: 16px;line-height: 1.6;color: #aaa;}
+.box-layer .layer-container .layer-content strong{color: var(--color--white);font-size: 16px;}
+.box-layer .layer-container .box-button{display:flex;justify-content: space-around;margin-top: 15px;border-top: 1px solid #333;margin-bottom: -15px}
+.box-layer .layer-container .box-button button{position: relative;font-size: 18px;color: #eee;width: 100%;padding: 15px 0;}
+.box-layer .layer-container .box-button button + button::before{content:'';position: absolute;left: -2px;width: 1px;height: 23px;background-color: var(--color--white);opacity: 0.2;}
+.box-layer .layer-container .box-button .button-cancel{}
+.box-layer .layer-container .box-button .button-submit{color: var(--color--blue);font-weight: bold;}
 .box-layer[role=dialog] .box-button{}
 
 .dimmed-layer .dimmed{content:'';display:none;position:fixed;top:0;left:0;z-index:350;width:100%;height:100%;background-color: var(--color--black);opacity:.7;}
@@ -886,7 +889,7 @@ body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect
 	/* #container .inven .equ .gems .each-gem{width: 24px;height: 24px;}
 	#container .inven *:not(.inven-gems) .gems [data-gem-icon]::before{transform: scale(0.4);margin: -20px 0 0 -19px;} */
 
-	#container .inven .layer-gems.layer-dimmed .layer-body{top: calc(50% + 40px);width: calc(100% - 20px);padding: 15px 10px 10px;}
+	#container .inven .layer-gems.layer-dimmed .layer-body{}
 	#container .inven .layer-gems.layer-dimmed .layer-body::before{}
 	
 
