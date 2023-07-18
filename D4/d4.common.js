@@ -20,13 +20,10 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
-	//$('.button-set-gem').trigger('click');
-	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
 	$('#container .box-url .setting-url').each(function(){
 		if ($(this).val() !== '') {
-			$('#container .box-title .button-url-link').addClass('expend').attr('aria-expanded', true);
-			$('#'+$('#container .box-title .button-url-link').attr('aria-controls')).attr('aria-hidden', false).slideDown(200);
+			D4SkillDB.expandFunc($('#container .box-title .button-url-link'), true);
 		}
 	})
 })
@@ -37,13 +34,13 @@ var D4SkillDB = (function(){
 	var optionArr = [];
 	var parts = [];
 	var gems = [
-		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		{ver:'ori', grade:'nor' icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor' icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -124,9 +121,9 @@ var D4SkillDB = (function(){
 		})
 		$('[aria-expanded][aria-controls]').on('click', function(){
 			if ($(this).is('[aria-expanded=true]')) {
-				method.expandFunc($(this), true)
-			} else {
 				method.expandFunc($(this), false)
+			} else {
+				method.expandFunc($(this), true)
 			}
 		})
 		$('.button-expand-close').on('click', function(){
@@ -511,11 +508,11 @@ var D4SkillDB = (function(){
 	method.expandFunc = function($this, $boolean){
 		var $target = $('#'+$($this).attr('aria-controls'));;
 		if ($boolean) {
-			$($this).removeClass('expend').attr('aria-expanded', false);
-			$target.attr('aria-hidden', false).slideUp(200);
-		} else {
 			$($this).addClass('expend').attr('aria-expanded', true);
 			$target.attr('aria-hidden', true).slideDown(200);
+		} else {
+			$($this).removeClass('expend').attr('aria-expanded', false);
+			$target.attr('aria-hidden', false).slideUp(200);
 		}
 	}
 	method.spiritBoons = function(){
@@ -744,6 +741,7 @@ var D4SkillDB = (function(){
 	};
 	return{
 		init : method.init,
+		expandFunc : method.expandFunc,
 		aspectDB : method.aspectDB,
 		layerSort : method.layerSort,
 		SetAspect : method.setAspect,
