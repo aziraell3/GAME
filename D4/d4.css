@@ -922,5 +922,6 @@ body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect
 	#container .inven .inven-acc .equ .selected ~ .text .box-aspect::after{right: 12px;left: inherit;}
 
 	body.option-view #container .inven .equ .box-aspect .aspect-detail{min-height: 72px;}
+	#container .aspect-detail,
 	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect-detail{min-height: auto;}
 }
