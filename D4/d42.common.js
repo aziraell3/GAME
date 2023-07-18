@@ -20,13 +20,10 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
-	//$('.button-set-gem').trigger('click');
-	//$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
 	$('#container .box-url .setting-url').each(function(){
 		if ($(this).val() !== '') {
-			$('#container .box-title .button-url-link').addClass('expend').attr('aria-expanded', true);
-			$('#'+$('#container .box-title .button-url-link').attr('aria-controls')).attr('aria-hidden', false).slideDown(200);
+			D4SkillDB.expandFunc($('#container .box-title .button-url-link'), true);
 		}
 	})
 })
@@ -37,13 +34,19 @@ var D4SkillDB = (function(){
 	var optionArr = [];
 	var parts = [];
 	var gems = [
-		{ver:'ori', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		// ver		ori|dlc|sea1~9
+		// grade	nor|leg|uni
+		// parts	com|wep|def|acc
+		// icon		rub|sap|toz|eme|ame|dia|skl
+		{ver:'ori', grade:'nor', parts:'com', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', grade:'nor', parts:'com', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		
+		{ver:'sea1', grade:'leg', parts:'acc', icon:'leg', type:'gem', name:'전설보석1',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -86,13 +89,22 @@ var D4SkillDB = (function(){
 		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
+		$('[role=button]').each(function(){
+			$(this).attr('tabindex', '0');
+			$(this).on('keydown', function(e){
+				if (e.keyCode === 32 || e.keyCode === 13) {// enter & space 
+					e.preventDefault();
+					$(this).trigger('click');
+				}
+			});
+		})
 		$('[role=switch][aria-checked]').on('click', function(){
 			var $tag = $(this).attr('data-tag');
 			$(this).attr('aria-checked', function (i, attr) {
 				return attr == 'true' ? 'false' : 'true'
 			});
 			if ($(this).is('.button-gem[aria-checked=false]')) {
-				$('html, body').animate({scrollTop: $('.inven-gems').offset().top + obj.headerH}, 300);
+				//$('html, body').animate({scrollTop: $('.inven-gems').offset().top + obj.headerH}, 300);
 			}
 			obj.body.toggleClass($tag);
 		})
@@ -108,8 +120,22 @@ var D4SkillDB = (function(){
 		})
 		$('#container .inven .equ .box-aspect').each(function(){
 			$(this).on('click', function(){
-				$(this).toggleClass('active');
+				if ($(this).find('.aspect-parts, .acquest').length > 0) {
+					$(this).toggleClass('active');
+				}
 			})
+		})
+		$('[aria-expanded][aria-controls]').on('click', function(){
+			if ($(this).is('[aria-expanded=true]')) {
+				method.expandFunc($(this), false)
+			} else {
+				method.expandFunc($(this), true)
+			}
+		})
+		$('.button-expand-close').on('click', function(){
+			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').trigger('click');
+			//$(this).parents('[aria-hidden]').slideUp(200);
+			//$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
 		})
 
 		obj.settingInput.each(function(){
@@ -195,8 +221,8 @@ var D4SkillDB = (function(){
 			var $this = $(this);
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
-				if ($('[aria-controls=aspectSelect][data-target], [aria-controls=gemSelect][data-gem-icon], input[type=text]').length > 0) {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
+					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값 들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -218,7 +244,6 @@ var D4SkillDB = (function(){
 					if ($job == 'dru') {
 						$('#wep2-opt').attr('data-option-parts', 'sub');
 					} else if ($job == 'nec') {
-						console.log('nec')
 						$('#wep2-opt').attr('data-option-parts', 'shl');
 						$('#wep4-opt').attr('data-option-parts', 'sub');
 					} else {
@@ -250,9 +275,12 @@ var D4SkillDB = (function(){
 			}
 		})
 		var $layerGems = $('#gemSelect');
-		$.each(gems, function(index, gem){
-			$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
-		});
+		function gemLists(){
+			$.each(gems, function(index, gem){
+				$layerGems.find('.gems-list').append('<div class="gems-grid" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></button></div>');
+			});
+		}
+		gemLists();
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -268,9 +296,7 @@ var D4SkillDB = (function(){
 				method.fixedViewPort(true);
 			}
 			if ($layerGems.find('.gems-grid').length < 1) {
-				$.each(gems, function(index, gem){
-					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
-				});
+				gemLists();
 			}
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
@@ -486,21 +512,15 @@ var D4SkillDB = (function(){
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock header-flip') : obj.body.removeClass('scroll-lock header-flip');
 	};
-	method.expandFunc = function(){
-		$('[aria-expanded][aria-controls]').on('click', function(){
-			var $target = $('#'+$(this).attr('aria-controls'));
-			if ($(this).is('[aria-expanded=true]')) {
-				$(this).removeClass('expend').attr('aria-expanded', false);
-				$target.attr('aria-hidden', false).slideUp(200);
-			} else {
-				$(this).addClass('expend').attr('aria-expanded', true);
-				$target.attr('aria-hidden', true).slideDown(200);
-			}
-		})
-		$('.button-expand-close').on('click', function(){
-			$(this).parents('[aria-hidden]').slideUp(200);
-			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
-		})
+	method.expandFunc = function($this, $boolean){
+		var $target = $('#'+$($this).attr('aria-controls'));;
+		if ($boolean) {
+			$($this).addClass('expend').attr('aria-expanded', true);
+			$target.attr('aria-hidden', true).slideDown(200);
+		} else {
+			$($this).removeClass('expend').attr('aria-expanded', false);
+			$target.attr('aria-hidden', false).slideUp(200);
+		}
 	}
 	method.spiritBoons = function(){
 		//영혼 은총
@@ -508,7 +528,7 @@ var D4SkillDB = (function(){
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
-			$(this).find('.button-blessing').on('click', function(){
+			$(this).on('click', '.button-blessing[aria-selected=false]', function(){
 				$grid.find('.button-blessing').attr('aria-selected', false);
 				$(this).attr('aria-selected', true);
 				$grid.find('[aria-selected]').attr('disabled', false);
@@ -517,7 +537,7 @@ var D4SkillDB = (function(){
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
 				$('.description').slideUp(300);
 			})
-			$(this).find('.button-spirit[aria-selected]').on('click', function(){
+			$(this).on('click', '.button-spirit[aria-selected]', function(){
 				var $name = $(this).text();
 				var $id = $(this).attr('id');
 				var $detail = $(this).attr('title');
@@ -728,6 +748,7 @@ var D4SkillDB = (function(){
 	};
 	return{
 		init : method.init,
+		expandFunc : method.expandFunc,
 		aspectDB : method.aspectDB,
 		layerSort : method.layerSort,
 		SetAspect : method.setAspect,

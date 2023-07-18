@@ -45,6 +45,9 @@ var D4SkillDB = (function(){
 		{ver:'ori', grade:'nor', parts:'com', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
 		{ver:'ori', grade:'nor', parts:'com', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
 		{ver:'ori', grade:'nor', parts:'com', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		
+		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 1',  detail:'<p class="gem_effect"><span class="wep"><span class="c_number">장착 불가</span></span><span class="def"><span class="c_number">장착불가</span></span><span class="acc">전용 옵션 블라블라블라</span></p>'},
+		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 2',  detail:'<p class="gem_effect"><span class="wep"><span class="c_number">장착 불가</span></span><span class="def"><span class="c_number">장착불가</span></span><span class="acc">전용 옵션 블라블라블라</span></p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -273,9 +276,12 @@ var D4SkillDB = (function(){
 			}
 		})
 		var $layerGems = $('#gemSelect');
-		$.each(gems, function(index, gem){
-			$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
-		});
+		function gemLists(){
+			$.each(gems, function(index, gem){
+				$layerGems.find('.gems-list').append('<div class="gems-grid" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></button></div>');
+			});
+		}
+		gemLists();
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -291,9 +297,7 @@ var D4SkillDB = (function(){
 				method.fixedViewPort(true);
 			}
 			if ($layerGems.find('.gems-grid').length < 1) {
-				$.each(gems, function(index, gem){
-					$layerGems.find('.gems-list').append('<div class="gems-grid"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" id="G'+index+'"><span class="detail">'+gem.detail+'</span></button></div>');
-				});
+				gemLists();
 			}
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
