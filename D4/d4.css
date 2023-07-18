@@ -533,9 +533,9 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems.layer-dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: var(--color--black);opacity: .5;z-index: 10;}
 #container .inven .layer-gems.layer-dimmed .layer-body{position: absolute;top: calc(50% + 40px);left: 50%;right: initial;bottom: initial;min-width: 300px;width: 90%;max-width: 640px;max-height: calc(100% - 148px);overflow-y: auto;min-height: min-content;height: auto;padding: 15px;border: 1px solid #F3F3F3;background-color: #111;transform: translate(-50%, -50%);border-radius: 10px;z-index: 200;}
 #container .inven .layer-gems.layer-dimmed .layer-body::before{content:'💎 장착할 보석을 선택해주세요.';display: block;padding: 0 40px 15px 0;border-bottom: 1px solid #444757;font-size: 16px;color: var(--color--white);font-weight: bold;text-align: center;}
-#container .inven .layer-gems.layer-dimmed[data-gem-type=wep] .layer-body::before{content:'💎 무기 슬롯에 장착할 보석을 선택해주세요.';color: var(--color--orange);}
-#container .inven .layer-gems.layer-dimmed[data-gem-type=def] .layer-body::before{content:'💎 방어구 슬롯에 장착할 보석을 선택해주세요.';color: var(--color--blue);}
-#container .inven .layer-gems.layer-dimmed[data-gem-type=acc] .layer-body::before{content:'💎 장신구 슬롯에 장착할 보석을 선택해주세요.';color: var(--color--purple);}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=wep] .layer-body::before{content:'💎 무기 보석홈에 장착할 보석을 선택해주세요.';color: var(--color--orange);}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=def] .layer-body::before{content:'💎 방어구 보석홈에 장착할 보석을 선택해주세요.';color: var(--color--blue);}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=acc] .layer-body::before{content:'💎 장신구 보석홈에 장착할 보석을 선택해주세요.';color: var(--color--purple);}
 #container .inven .layer-gems.layer-bottom .gems-list{margin-bottom: 10px;}
 #container .inven .layer-gems.layer-bottom .button-close{z-index: 200;}
 

@@ -34,7 +34,7 @@ var D4SkillDB = (function(){
 	var optionArr = [];
 	var parts = [];
 	var gems = [
-		// ver		ori|dlc
+		// ver		ori|dlc|sea1~9
 		// grade	nor|leg|uni
 		// parts	com|wep|def|acc
 		// icon		rub|sap|toz|eme|ame|dia|skl
