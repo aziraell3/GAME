@@ -49,16 +49,50 @@ var D4SkillDB = (function(){
 		// grade	nor|leg|uni
 		// parts	com|wep|def|acc
 		// icon		rub|sap|toz|eme|ame|dia|skl
-		{ver:'ori', grade:'nor', parts:'com', icon:'rub', type:'gem', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'sap', type:'gem', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'toz', type:'gem', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'eme', type:'gem', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'ame', type:'gem', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
-		{ver:'ori', grade:'nor', parts:'com', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		// type
+			// off : 사악한 심장
+			// def : 냉혹한 심장
+			// uti : 간악한 심장
+			// tra : 진노한 심장
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'rub', type:'com', name:'루비',  detail:'<p class="gem_effect"><span class="wep">제압 피해 <span class="c_number">24%</span> 증가</span><span class="def">최대 생명력 <span class="c_number">4%</span> 증가</span><span class="acc">화염 저항력 <span class="c_number">24.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'sap', type:'com', name:'사파이어',  detail:'<p class="gem_effect"><span class="wep">군중 제어 효과 영향을 받는 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">보강 상태에서 피해 <span class="c_number">3%</span> 감소</span><span class="acc">냉기 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'toz', type:'com', name:'토파즈',  detail:'<p class="gem_effect"><span class="wep">기본 기술 피해 <span class="c_number">20%</span> 증가</span><span class="def">제어 방해 효과를 받을 때 피해 <span class="c_number">10%</span> 감소</span><span class="acc">번개 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'eme', type:'com', name:'에메랄드',  detail:'<p class="gem_effect"><span class="wep">취약한 적에게 주는 극대화 피해 <span class="c_number">12%</span> 증가</span><span class="def">가시 <span class="c_number">+250</span> 증가</span><span class="acc">독 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'ame', type:'com', name:'자수정',  detail:'<p class="gem_effect"><span class="wep">지속 피해 <span class="c_number">8%</span> 증가</span><span class="def">지속 피해 <span class="c_number">8%</span> 감소</span><span class="acc">암흑 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'dia', type:'com', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
+		{ver:'ori', job:'com', grade:'nor', parts:'com', icon:'skl', type:'com', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
 		
-		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 1',  detail:'<p class="gem_effect"><span class="acc">전용 옵션 블라블라블라</span></p>'},
-		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 2',  detail:'<p class="gem_effect"><span class="acc">전용 옵션 블라블라블라</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'off', type:'off', name:'피카나의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">극대화 적중 시 적이 0.75~2.50초 동안 전기를 띱니다. 전기를 띤 대상들 간에 번개가 튀며 68~136의 번개 피해를 줍니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'off', type:'off', name:'어두운 춤의(사악함, 공격력 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">생명력이 60% 이상인 경우, 핵심 기술이 5초마다 주 자원 대신 68~51의 생명력을 사용합니다. 생명력을 소모한 기술은 10~20% 증가한 피해를 줍니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'off', type:'off', name:'유혹적인 운명의(사악함, 공격력 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">극대화 적중 시 40~60%의 추가 피해를 주지만, 비 극대화 적중 시 주는 피해가 20~15% 감소합니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'사자심장의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">보호막 생성량이 10% 증가합니다. 보호막이 활성화된 동안 매초 3~7의 생명력을 회복합니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'보복의(흉포함, 방어력 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">받는 피해의 10~20%가 억제됩니다. 방어, 기만, 또는 섬뜩함 기술을 사용하면 억제되었던 모든 피해가 250% 증폭되어 폭발하며 주위의 적들에게 최대 1360~2040의 화염 피해를 줍니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'신중한 마음의(흉포함, 방어력 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">일격에 20% 이상의 생명력을 잃을 경우, 2.0~4.0초간 면역을 얻습니다. 이 효과는 110초에 한 번씩만 발동합니다. 결의의(간악함, 보조): 자원 고갈 효과가 40~50% 감소합니다. 추가로, 자원 생성량이 3.0~8.0% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'반격의(간악함, 보조 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">자신에게 걸린 군중 제어 효과가 제거될 때마다 주위 적들에게 510~680의 화염 피해를 줍니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'치밀한 자의(간악함, 보조 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">주 자원을 150~200 소모하면 다음 공격에 적중당한 적을 2초 동안 기절시킵니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'악의 맹약의(진노함, 초월적)',  detail:'<p class="gem_effect"><span class="acc">적을 20마리 처치할 때마다 악의 보너스를 돌아가며 적용받습니다. <span class="text-block">사악함 : 공격 속도를 20% 획득합니다.</span><span class="text-block">간악함: 핵심 및 기본 기술이 15% 확률로 자원을 완전히 회복시킵니다.</span><span class="text-block">흉포함: 21초마다 85~102 피해를 흡수하는 보호막을 획득합니다.</span></span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'죄어오는 죽음의(진노함, 초월적)',  detail:'<p class="gem_effect"><span class="acc">대상에게 걸린 서로 다른 군중 제어 효과 하나당 지속 피해 효과가 30~40% 증가합니다. 저지 불가 상태의 괴물과 비틀거리는 우두머리는 그 대신 지속 피해 효과로부터 110~130%의 추가 피해를 받습니다.</span></p>'},
+		{ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'이발사의(진노함, 초월적 - 세계 단계 III)',  detail:'<p class="gem_effect"><span class="acc">2.0~4.0초 동안 대상이 받은 극대화 피해와 그 이후의 모든 피해를 흡수합니다. 그 후, 흡수된 피해가 한꺼번에 주위의 적들을 향해 폭발합니다. 축적된 피해는 매초 10% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'bab', grade:'leg', parts:'acc', icon:'off', type:'off', name:'집중된 분노의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">2초 내에 100~60 분노를 사용한 이후, 비 기본 기술의 극대화 확률이 20~30% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'bab', grade:'leg', parts:'acc', icon:'def', type:'def', name:'되살아나는 생명력의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">생명력이 40~60% 이하인 경우, 모든 출처에서 받는 회복량이 50~60% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'bab', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'무시무시한 속도의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">기술의 공격 속도가 20~35%보다 높으면 기술이 20~30% 확률로 모든 적을 1.25초 동안 넘어뜨립니다.</span></p>'},
+		{ver:'sea1', job:'bab', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'고통 감내의(진노함, 초월적 - 세계 단계 IV)',  detail:'<p class="gem_effect"><span class="acc">받는 피해가 5~15% 확률로 무시되고 대신 생명력을 17~68 회복합니다.</span></p>'},
+		{ver:'sea1', job:'dru', grade:'leg', parts:'acc', icon:'off', type:'off', name:'분노하는 달의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">처치 시 5% 확률로 늑대 동료를 20~30초 동안 소환합니다. 추가로 늑대 기술의 등급이 +3 증가합니다.</span></p>'},
+		{ver:'sea1', job:'dru', grade:'leg', parts:'acc', icon:'def', type:'def', name:'동요하는 바람의(흉포함, 방어력) ',  detail:'<p class="gem_effect"><span class="acc">근거리에 적이 8~13마리 있을 때 자동으로 회오리 갑옷을 시전합니다. 이 효과는 10~20초에 한 번씩만 발동합니다.</span></p>'},
+		{ver:'sea1', job:'dru', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'거침없는 힘의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">궁극기가 활성화되어 있는 동안 원거리에 있는 적 최대 30~50마리를 자신에게 끌어옵니다.</span></p>'},
+		{ver:'sea1', job:'dru', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'고삐 풀린 야수의(진노함, 초월적 - 세계 단계 IV)',  detail:'<p class="gem_effect"><span class="acc">기절, 빙결 또는 넘어뜨리기 효과에 적중당하면 40~60% 확률로 회색곰의 격노가 자동으로 3초 동안 활성화됩니다.</span></p>'},
+		{ver:'sea1', job:'nec', grade:'leg', parts:'acc', icon:'off', type:'off', name:'신성모독자의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">시체 주위를 걸어가면 매초 장착 중인 시체 기술이 자동으로 시전 되며 30~40% 감소한 피해를 줍니다.</span></p>'},
+		{ver:'sea1', job:'nec', grade:'leg', parts:'acc', icon:'def', type:'def', name:'노화 오라의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">주위에 적이 5마리 이상 있을 때, 주위 적들에게 자동으로 5~15초 동안 노화의 저주를 거는 오라를 얻습니다.</span></p>'},
+		{ver:'sea1', job:'nec', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'얼어붙은 공포의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">행운의 적중: 최대 10~20% 확률로 2.5초 동안 공포에 질리게 합니다. 공포에 질린 적이 매초 20% 확률로 빙결됩니다.</span></p>'},
+		{ver:'sea1', job:'nec', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'대향연의(진노함, 초월적 - 세계 단계 IV)',  detail:'<p class="gem_effect"><span class="acc">각각의 하수인이 매초 정수를 1.0~2.0 고갈시키지만 50~75%의 추가 피해를 줍니다. 하수인이 없을 경우 이 추가 피해 효과가 자신에게 적용되어 매초 정수를 5씩 고갈시킵니다.</span></p>'},
+		{ver:'sea1', job:'rog', grade:'leg', parts:'acc', icon:'off', type:'off', name:'집속탄의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">행운의 적중: 최대 20% 확률로 섬광 수류탄을 3개 발사해 26~32의 물리 피해를 주고 적을 0.50초 동안 기절시킵니다.</span></p>'},
+		{ver:'sea1', job:'rog', grade:'leg', parts:'acc', icon:'def', type:'def', name:'속임수의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">기만 기술 사용 시, 적을 도발하는 불안정한 그림자 미끼 덫을 그 자리에 놓습니다. 그림자 미끼 덫은 6.0초 후에 폭발하여 680~1020의 암흑 피해를 줍니다. 이 효과는 5초에 한 번씩만 발동합니다.</span></p>'},
+		{ver:'sea1', job:'rog', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'절단 사격의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">행운의 적중: 최대 20~40% 확률로 암살 기술이 적을 3초 동안 40% 감속시키고, 명사수 기술이 적을 밀쳐냅니다.</span></p>'},
+		{ver:'sea1', job:'rog', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'사악한 약제사의(진노함, 초월적 - 세계 단계 IV)',  detail:'<p class="gem_effect"><span class="acc">공격 시 5~15% 확률로 모든 주입 효과를 원래 지속 효력의 40~50%로 적용합니다.</span></p>'},
+		{ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'off', type:'off', name:'탈라샤의(사악함, 공격력)',  detail:'<p class="gem_effect"><span class="acc">각 고유 원소로 피해를 줄 때마다 3~10초 동안 주는 피해가 7~12% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'def', type:'def', name:'주문 파괴의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">원소 피해를 받은 후에 5초 동안 해당 원소에 대한 저항이 20~40% 증가합니다.</span></p>'},
+		{ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'앙심의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">군중 제어 효과에 걸렸을 때, 20~40% 확률로 해당 효과를 건 적과 주위 모든 적이 3초 동안 같은 효과에 걸립니다.</span></p>'},
+		{ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'전능의(진노함, 초월적 -세계 단계 IV)',  detail:'<p class="gem_effect"><span class="acc">투사체를 발사하는 핵심 기술이 마나를 모두 소모합니다. 추가 마나를 35~45 소모할 때마다, 추가 투사체를 하나 발사하고 피해가 3.0~5.0% 증가합니다.</span></p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -130,9 +164,13 @@ var D4SkillDB = (function(){
 				$(this).hide().siblings('.setting-url').val('').focus();
 			}
 		})
-		$('#container .inven .equ .box-aspect').each(function(){
-			$(this).on('click', function(){
+		$('#container .inven .equ').each(function(){
+			$(this).on('click', '.box-aspect .aspect-detail', function(){
 				if ($(this).find('.aspect-parts, .acquest').length > 0) {
+					$(this).toggleClass('active');
+				}
+			}).on('click', '.box-aspect .gem-info', function(){
+				if ($(this).find('.detail').length > 0) {
 					$(this).toggleClass('active');
 				}
 			})
@@ -183,29 +221,34 @@ var D4SkillDB = (function(){
 		var $selected = $optionLayer.find('.selected-option');
 		var $alert = $('.box-alert');
 		$optionButton.on('click', function(){
-			var $parts = $(this).attr('data-option-parts');
-			var $invenOption = $(this).siblings('.option-list');
-			if (!$(this).val() == '') {
-				$optionInput.val($(this).val());
-				$(this).removeClass('modify');
-			} else {
-				$optionInput.val('');
-				$(this).addClass('modify');
-			}
-			$optionLayer.attr('data-select-option-parts', $parts);
-			$('.select-option .grid-option').attr('aria-selected', false);
-			$selected.empty().append($invenOption.find('.grid-option').clone());
-			$selected.find('.grid-option').each(function(){
-				var $id = $('#'+$(this).attr('aria-controls'));
-				$id.attr('aria-selected', true);
-			})
-			$('.option-group').each(function(){
-				$(this).show();
-				if ($(this).find('.grid-option:visible').length < 1) {
-					$(this).hide();
+			if ($(this).parents('.equ').find('.option').is('[data-target]')) {
+				var $parts = $(this).attr('data-option-parts');
+				var $invenOption = $(this).siblings('.option-list');
+				if (!$(this).val() == '') {
+					$optionInput.val($(this).val());
+					$(this).removeClass('modify');
+				} else {
+					$optionInput.val('');
+					$(this).addClass('modify');
 				}
-			})
-			method.fixedViewPort(true);
+				$optionLayer.attr('data-select-option-parts', $parts);
+				$('.select-option .grid-option').attr('aria-selected', false);
+				$selected.empty().append($invenOption.find('.grid-option').clone());
+				$selected.find('.grid-option').each(function(){
+					var $id = $('#'+$(this).attr('aria-controls'));
+					$id.attr('aria-selected', true);
+				})
+				$('.option-group').each(function(){
+					$(this).show();
+					if ($(this).find('.grid-option:visible').length < 1) {
+						$(this).hide();
+					}
+				})
+				method.fixedViewPort(true);
+			} else {
+				method.layerFunc($optionButton.attr('aria-controls'), false);
+				method.layerFunc('layerCommon', true, '위상을 먼저 선택해주세요.', false);
+			}
 		})
 
 		$optionLayer.on('click', '.select-option .grid-option', function(e){
@@ -234,7 +277,7 @@ var D4SkillDB = (function(){
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
-					D4SkillDB.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값 들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+					method.layerFunc('layerCommon', true, '<strong>현재 셋팅된 위상/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/보석/입력값 들이 초기화</strong> 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$('.box-layer').on('click', '.button-submit', function(){
 						jobChange($this);
 					})
@@ -288,7 +331,7 @@ var D4SkillDB = (function(){
 		})
 		var $layerGems = $('#gemSelect');
 		$.each(gems, function(index, gem){
-			$layerGems.find('.gems-list').append('<div class="gems-grid" data-grade="'+gem.grade+'" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></button></div>');
+			$layerGems.find('.gems-list').append('<div class="gems-grid" data-job="'+gem.job+'" data-grade="'+gem.grade+'" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="gem-info"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></span></button></div>');
 		});
 		$layerGems.find('[data-grade=leg]').wrapAll('<div class="gems-group" data-group="leg"></div>');
 		$layerGems.find('[data-grade=nor]').wrapAll('<div class="gems-group" data-group="nor"></div>');
@@ -307,13 +350,22 @@ var D4SkillDB = (function(){
 				setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - obj.headerH +'px'}, 300); }, 100)
 				method.fixedViewPort(true);
 			}
+			if ($(this).is('.selected')) { //선택 강조
+				var $target = $('#'+$(this).attr('data-target'));
+				$layerGems.find('.button-gem').removeClass('selected');
+				$target.addClass('selected').focus();
+			} else {
+				$layerGems.find('.button-gem').removeClass('selected');
+				$layerGems.find('.layer-body').animate({scrollTop: '0'}, 300);
+			}
+
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
 			if ($(this).is('.button-gem')) {
 				var $gem = $(this).attr('data-gem-icon');
 				var $id = $(this).attr('id');
 				var $target = $('[aria-controls=gemSelect].active').attr('id');
-				$('[aria-controls=gemSelect].active').attr({'data-gem-icon':$gem, 'data-target':$id});
+				$('[aria-controls=gemSelect].active').addClass('selected').attr({'data-gem-icon':$gem, 'data-target':$id});
 				obj.urlParams.set($target, $id);
 				method.getSetting();
 			}
@@ -614,7 +666,7 @@ var D4SkillDB = (function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			if ($(this).is('[data-target]')) {
 				$thisWrap.attr({'data-parts': $('#'+$(this).attr('data-target')).parent().attr('data-parts'), 'data-ver':$('#'+$(this).attr('data-target')).parent().attr('data-ver')}).find('.option').addClass('selected');
-				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone());
+				$box.empty().append($('#'+$(this).attr('data-target')).find('.aspect-detail').clone().attr({'role':'button', 'tabindex':'0'}));
 				$('#'+$(this).attr('data-target')).attr({'aria-selected': true,'data-select-parts': $parts}); //선택된 위상 표시
 			}
 			//유니크 장비 체크
@@ -628,6 +680,12 @@ var D4SkillDB = (function(){
 		obj.gems.each(function(){
 			$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
+			if ($(this).is('[data-target]') && $('#'+$(this).attr('data-target')).attr('data-gem-grade') == 'leg' ) {
+				$(this).parents('.equ').find('.text .box-aspect .gem-info').remove();
+				$(this).parents('.equ').find('.text .box-aspect').append($('#'+$(this).attr('data-target')).find('.gem-info').clone().attr({'data-gem-type':$('#'+$(this).attr('data-target')).attr('data-gem-icon'), 'role':'button', 'tabindex':'0'}));
+			} else {
+				$(this).parents('.equ').find('.text .box-aspect .gem-info').remove();
+			}
 		})
 		//은총 로드
 		//$('#'+obj.urlParams.get('blessing')).click();

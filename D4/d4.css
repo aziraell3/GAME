@@ -14,6 +14,10 @@
 	--color--black: #000;
 
 	--gam--space: 36px;
+	--color--gem-off: #da6142;
+	--color--gem-def: #7667dd;
+	--color--gem-uti: #c87da5;
+	--color--gem-tra: #aad79f; /* #a1a99f; */
 }
 
 *{margin: 0;padding: 0;font-family: 'Noto Sans KR', sans-serif;font-weight: 300;font-size: 14px;color: var(--color--white);line-height: 1.2;box-sizing:border-box}
@@ -34,6 +38,7 @@ body.scroll-lock{overflow: hidden;}
 img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface-visibility: hidden;}
 .a11y{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;clip:rect(0 0 0 0)}
 .underline{text-decoration: underline;}
+[role=button]{cursor:pointer;}
 
 *::-webkit-scrollbar{width: 6px;}
 *::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
@@ -182,6 +187,8 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .inven-acc .equ:first-child{}
 #container .inven .inven-acc{float: right;}
 #container .inven .inven-wep{clear: both;display: flex;justify-content: space-between;}
+#container .inven .inven-wep .equ + .equ *,
+#container .inven .inven-acc .equ *{text-align: right;}
 #container .inven .inven-wep .equ + .equ,
 #container .inven .inven-acc .equ{flex-direction: row-reverse;text-align: right;}
 
@@ -220,20 +227,18 @@ body.option-view #container .inven .equ .text .detail{/* top: 9px; */}
 #container .inven .equ .active ~ .text .box-aspect::before,
 #container .inven .equ .selected ~ .text .aspect-detail .aspect-name::before,
 #container .inven .equ .active ~ .text .aspect-detail .aspect-name::before{margin-right: 6px;}
-body.option-view #container .inven .equ .text .box-aspect::after{content:'전설 위상을 선택해주세요.';font-size: 15px;color: var(--color--gray100);font-weight: 300;letter-spacing: -0.7px;}
+/* body.option-view #container .inven .equ .text .box-aspect::after{content:'전설 위상을 선택해주세요.';font-size: 15px;color: var(--color--gray100);font-weight: 300;letter-spacing: -0.7px;} */
 body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{content:none;}
 
 
-
-#container .inven .equ .selected ~ .text .box-aspect{cursor:pointer;}
 #container .inven .equ .selected ~ .text .box-aspect *{font-size: 13px;}
 #container .inven .equ .selected ~ .text .box-aspect .aspect-name{font-size: 16px;text-indent: -0.5px;}
 #container .inven .equ .box-aspect .aspect-detail .aspect-name::after{content:'' !important;display:inline-block !important;vertical-align: middle;margin:-3px 3px 0;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;transition: all .3s;opacity:.7;transform:rotate(180deg);}
-#container .inven .equ .box-aspect.active .aspect-detail .aspect-name::after{transform:rotate(0deg);}
-#container .inven .equ .selected ~ .text .box-aspect .aspect-parts,
-#container .inven .equ .selected ~ .text .box-aspect .acquest{max-height: 0;padding: 0;overflow: hidden;transition: all 0.3s;}
-#container .inven .equ .selected ~ .text .box-aspect.active .aspect-parts,
-#container .inven .equ .selected ~ .text .box-aspect.active .acquest{max-height: 40px;padding-top: 2px;}
+#container .inven .equ .box-aspect .aspect-detail.active .aspect-name::after{transform:rotate(0deg);}
+#container .inven .equ .selected ~ .text .box-aspect .aspect-detail .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect .aspect-detail .acquest{max-height: 0;padding: 0;overflow: hidden;transition: all 0.3s;}
+#container .inven .equ .selected ~ .text .box-aspect .aspect-detail.active .aspect-parts,
+#container .inven .equ .selected ~ .text .box-aspect .aspect-detail.active .acquest{max-height: 40px;padding-top: 2px;}
 /*
 #container .inven .equ .selected ~ .text .box-aspect::after{content:'';position: absolute;bottom: 10px;right: 12px;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(235, 215, 1, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size:100% auto;transition: all .3s;opacity:.7;transform:rotate(180deg);}
 #container .inven .inven-wep + .inven-wep .equ + .equ .selected ~ .text .box-aspect::after,
@@ -485,6 +490,19 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 #container .inven [data-gem-icon=skl]::before{background-position: 0 -358px !important;}
 #container .inven [data-gem-icon=leg]::before,
 #container .inven [data-gem-icon=emp]::before{background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="rgba(235, 80, 10, 1)" height="40px" width="40px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve"><g><g><path d="M509.202,179.961l-89.051-133.57c-3.146-4.718-8.433-7.434-13.891-7.434H105.738c-5.561,0-10.802,2.801-13.891,7.434    L2.795,179.961c-4.204,6.3-3.624,14.732,1.456,20.403l239.312,267.139c6.605,7.374,18.242,7.401,24.872,0l239.312-267.139    C512.74,194.789,513.481,186.373,509.202,179.961z M382.168,72.348l-30.925,82.469l-61.852-82.469H382.168z M322.784,172.525    h-133.57l66.785-89.046L322.784,172.525z M222.605,72.348l-61.851,82.469l-30.926-82.469H222.605z M101.548,92.034l30.183,80.492    H47.884L101.548,92.034z M54.059,205.918h90.194l64.937,173.17L54.059,205.918z M255.998,408.809l-76.081-202.891H332.08    L255.998,408.809z M302.806,379.087l64.937-173.17h90.194L302.806,379.087z M380.264,172.526l30.185-80.492l53.664,80.492H380.264    z"/></g></g></svg>') 50% 50% no-repeat !important;background-size: 80% auto !important;}
+
+#container .inven [data-gem-icon=off]::before,
+#container .inven [data-gem-icon=def]::before,
+#container .inven [data-gem-icon=uti]::before,
+#container .inven [data-gem-icon=tra]::before{border-radius:50%;}
+#container .inven [data-gem-icon=off]::before{background-position: 0 -480px !important;}
+#container .inven [data-gem-icon=def]::before{background-position: 0 -540px !important;}
+#container .inven [data-gem-icon=uti]::before{background-position: 0 -600px !important;}
+#container .inven [data-gem-icon=tra]::before{background-position: 0 -660px !important;}
+#container .inven .gems [data-gem-icon=off]::before,
+#container .inven .gems [data-gem-icon=def]::before,
+#container .inven .gems [data-gem-icon=uti]::before,
+#container .inven .gems [data-gem-icon=tra]::before{background-color: rgba(255,255,255,0.1);}
 #container .inven-gems{position: relative;margin-top: 30px;padding: 30px 0;display: flex;justify-content: center;align-items: flex-start;}
 #container .inven-gems::before{content:'통합 보석 셋팅';position: absolute;top: 0;left: 0;display: block;width: 100%;font-size: 16px;text-align: center;}
 #container .inven-gems .gems{margin: 0 5px;}
@@ -506,6 +524,7 @@ body.gems #container .inven .equ .text{margin-left: var(--gam--space);}
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{visibility: hidden;}
 body.gems #container .inven .equ .gems + .text{margin: 0;}
+body.gems #container .inven .equ .box-aspect{padding: 0 6px;}
 body.gems #container .inven .inven-wep .equ .gems.single-gem .each-gem + .each-gem,
 body.gems #container .inven .inven-wep .equ + .equ .gems .each-gem + .each-gem{display: none;}
 body.gems #container[data-job-select=bab] .inven .inven-wep .equ + .equ .gems .each-gem{display: block;}
@@ -515,20 +534,34 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 
 #container .inven .layer-gems{display: none;position: absolute;top: 110px;min-width:460px;margin: 0;border: 1px solid #333;padding: 10px 15px 10px 10px;background-color: #111;border-radius: 10px;z-index: 200;box-shadow: -1px -1px 29px 0px rgba(255, 255, 255,0.3);}
 #container .inven .layer-gems.active{display: block;}
-#container .inven .layer-gems .gems-group + .gems-group .gems-grid:last-child{margin-bottom: 5px;padding-bottom: 5px;border-bottom: 1px solid #2a2a2a;}
+#container .inven .layer-gems .gems-group + .gems-group{margin-bottom: 5px;padding-bottom: 5px;border-bottom: 1px solid #2a2a2a;}
 #container .inven .layer-gems .gems-list{display: flex;flex-direction: column-reverse;padding: 15px;}
 #container .inven .layer-gems .gems-grid + .gems-grid{margin-top: 5px;padding-top: 5px;border-top: 1px solid #2a2a2a;}
 #container .inven .layer-gems .gems-grid .button-gem{position: relative;display: flex;flex-direction: row;align-items: center;}
-#container .inven .layer-gems .gems-grid .button-gem .name{display: block;min-width: 120px;font-size: 16px;text-align: left;color: var(--color--white);}
-#container .inven .layer-gems .gems-grid .button-gem[data-gem-grade=leg] .name{color: var(--color--orange);}
+/* #container .inven .layer-gems .gems-grid .button-gem.selected{box-shadow: inset 0 0 5px gold;opacity: 0.8 !important;} */
+#container .inven .layer-gems .gems-grid .button-gem .gem-info{padding: 5px 0 5px 15px;}
+#container .inven .layer-gems .gems-grid .button-gem .name{display: block;padding: 0 0 5px;font-size: 14px;text-align: left;color: var(--color--white);font-weight: bold;}
+#container .inven .layer-gems .gems-grid .button-gem[data-gem-icon=off] .name{color: var(--color--gem-off);}
+#container .inven .layer-gems .gems-grid .button-gem[data-gem-icon=def] .name{color: var(--color--gem-def);}
+#container .inven .layer-gems .gems-grid .button-gem[data-gem-icon=uti] .name{color: var(--color--gem-uti);}
+#container .inven .layer-gems .gems-grid .button-gem[data-gem-icon=tra] .name{color: var(--color--gem-tra);}
+#container .inven .layer-gems .gems-grid[data-job] .button-gem .name::after{color: var(--color--gold);font-weight: normal;}
+#container .inven .layer-gems .gems-grid[data-job=com] .button-gem .name::after{content:' [공통] ';}
+#container .inven .layer-gems .gems-grid[data-job=dru] .button-gem .name::after{content:' [드루이드] ';}
+#container .inven .layer-gems .gems-grid[data-job=bab] .button-gem .name::after{content:' [야만용사] ';}
+#container .inven .layer-gems .gems-grid[data-job=soc] .button-gem .name::after{content:' [원소술사] ';}
+#container .inven .layer-gems .gems-grid[data-job=rog] .button-gem .name::after{content:' [도적] ';}
+#container .inven .layer-gems .gems-grid[data-job=nec] .button-gem .name::after{content:' [강령술사] ';}
 #container .inven .layer-gems .gems-grid .button-gem .detail{display: block;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect{display: flex;flex-direction: column;align-items: flex-start;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span{font-size: 12px;line-height: 1.5;text-align: left;}
-#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect > span{opacity: .4;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect > span{position: relative;display: inline-block;padding-left: 14px;opacity: .4;}
+#container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect > span::after{content:'';position: absolute;top: 7px;left: 4px;width: 4px;height: 4px;background-color: var(--color--white);transform: rotate(-45deg);opacity: .8;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect span::before{font-weight: bold;}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .wep::before{content:'무기 : ';color: var(--color--orange);}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .def::before{content:'방어구 : ';color: var(--color--blue);}
 #container .inven .layer-gems .gems-grid .button-gem .detail .gem_effect .acc::before{content:'장신구 : ';color: var(--color--purple);}
+#container .inven .layer-gems .gems-grid[data-grade=leg] .button-gem .detail .gem_effect span::before{content:none;}
 #container .inven .layer-gems .button-close{font-size:0;line-height:0;position: absolute;top: 0;right: 0;width: 50px;height: 50px;box-sizing: content-box;overflow:hidden;z-index:800}
 #container .inven .layer-gems[data-gem-type=wep] .gems-grid .button-gem .detail .gem_effect .wep,
 #container .inven .layer-gems[data-gem-type=def] .gems-grid .button-gem .detail .gem_effect .def,
@@ -536,9 +569,32 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems.layer-bottom{top: inherit;bottom: 155px;}
 #container .inven .layer-gems.layer-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -22px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
 
+/* 인벤 젬 표시 */
+#container .inven .equ .gem-info{display: block;opacity: .9;}
+#container .inven .equ .gem-info .name{display: block;padding: 5px 0 3px;font-size: 13px;color: var(--color--white);font-weight: bold;letter-spacing: -0.6px;}
+/* #container .inven .equ .gem-info .name::before{content:' [보석] ';} */
+#container .inven .equ .gem-info .name::after{content: '' !important;display: inline-block !important;vertical-align: middle;margin: -3px 3px 0;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(0, 160, 255, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(0, 160, 255, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size: 100% auto;transition: all .3s;opacity: .9;transform: rotate(180deg);}
+#container .inven .equ .gem-info.active .name::after{transform: rotate(0deg);}
+#container .inven .equ .gem-info[data-gem-type=off] .name{color: var(--color--gem-off);}
+#container .inven .equ .gem-info[data-gem-type=def] .name{color: var(--color--gem-def);}
+#container .inven .equ .gem-info[data-gem-type=uti] .name{color: var(--color--gem-uti);}
+#container .inven .equ .gem-info[data-gem-type=tra] .name{color: var(--color--gem-tra);}
+#container .inven .equ .gem-info .detail{max-height: 0;overflow: hidden;transition:max-height .3s;}
+#container .inven .equ .gem-info.active .detail{max-height: 100px;}
+#container .inven .equ .gem-info .detail *{font-size: 12px;}
+#container .inven .equ .gem-info .detail .gem_effect .acc{font-size: 12px;}
+#container .inven .equ .gem-info .detail .gem_effect .wep,
+#container .inven .equ .gem-info .detail .gem_effect .def,
+#container .inven .equ .gem-info .detail .gem_effect .acc{display: none;}
+#container .inven .equ.hel .gem-info .detail .gem_effect .def,
+#container .inven .equ.che .gem-info .detail .gem_effect .def,
+#container .inven .equ.pan .gem-info .detail .gem_effect .def,
+#container .inven .equ.wep .gem-info .detail .gem_effect .wep,
+#container .inven .equ.amu .gem-info .detail .gem_effect .acc,
+#container .inven .equ.rin .gem-info .detail .gem_effect .acc{display: block;}
+
 #container .inven .layer-gems.layer-dimmed{position: fixed;top: 80px;bottom: 0;left: 0;right: 0;max-width: 100%;background-color: transparent;}
 #container .inven .layer-gems.layer-dimmed.active::before{content: '';position: fixed;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;background-color: var(--color--black);opacity: .5;z-index: 10;}
-/* #container .inven .layer-gems.layer-dimmed .layer-body{position: absolute;top: calc(50% + 40px);left: 50%;right: initial;bottom: initial;min-width: 300px;width: 90%;max-width: 640px;max-height: calc(100% - 190px);overflow-y: auto;min-height: min-content;height: auto;padding: 15px;border: 1px solid #F3F3F3;background-color: #111;transform: translate(-50%, -50%);border-radius: 10px;z-index: 200;} */
 #container .inven .layer-gems.layer-dimmed .layer-container{position: absolute;top: 50%;left: 50%;max-width: 95%;width: 640px;height: calc(100% - 20px);max-height: 540px;border-radius: 6px;border: 1px solid #F3F3F3;background-color: var(--color--gray500);overflow: hidden;transform: translate(-50%, -50%);z-index: 200;}
 #container .inven .layer-gems.layer-dimmed .layer-body{position: relative;height: 100%;overflow-y: auto;}
 #container .inven .layer-gems.layer-dimmed .layer-body::before{position: sticky;top: 0;background-color: #111;content:'💎 장착할 보석을 선택해주세요.';display: block;padding: 15px 40px 15px 0;border-bottom: 1px solid #444757;font-size: 16px;color: var(--color--white);font-weight: bold;text-align: center;z-index: 10;}
@@ -551,6 +607,16 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems.layer-dimmed[data-gem-type=wep] [data-parts=wep],
 #container .inven .layer-gems.layer-dimmed[data-gem-type=def] [data-parts=def],
 #container .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts=acc]{display: block;}
+
+#container .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job]{display: none;}
+#container .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=com]{display: block;}
+
+#container[data-job-select=dru] .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=dru],
+#container[data-job-select=bab] .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=bab],
+#container[data-job-select=soc] .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=soc],
+#container[data-job-select=rog] .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=rog],
+#container[data-job-select=nec] .inven .layer-gems.layer-dimmed[data-gem-type=acc] [data-parts][data-job=nec]{display: block;}
+
 
 #container .inven .layer-gems.layer-bottom .gems-list{margin-bottom: 10px;}
 #container .inven .layer-gems.layer-bottom .button-close{z-index: 200;}
@@ -570,6 +636,8 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .c_important{font-weight: bold !important;color: var(--color--blue);}
 #container .c_label{font-weight: bold !important;color: #cbae76;}
 #container .text-line{font-weight: bold !important;text-decoration: underline;}
+#container .text-block{display: block;position: relative;padding-left: 8px;opacity: .7;}
+#container .text-block::before{content:'' !important;position: absolute;top: 8px;left: 0;display: block;width: 3px;height: 1px;background-color: #fff;}
 
 /* image down */
 #container .download{position: relative;width: 100%;margin-top: 30px;text-align: center;z-index: 109;}
@@ -622,6 +690,7 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .equ .selected ~ .text .item-opt{display: inline-block;}
 
 #container .inven .equ .button-option-select{display: none;position: absolute;top: 75px;left: 0;width: 70px;padding: 7px 0;text-align: center;overflow: hidden;font-size: 14px;color: orange;line-height: 1;opacity: .9;border: 1px solid #444757;border-radius: 8px;background-color: #111;}
+body.option-view #container .inven .equ .button-option-select{display: block;left: 0 !important;right:inherit !important;text-align: center !important;}
 #container .inven .equ .button-option-select::before{content:'';display: inline-block;vertical-align: middle;width: 13px;height: 13px;margin: -2px 3px 0 0;background: url('data:image/svg+xml;utf8,<svg fill="rgba(255, 255, 255, 1)" height="40px" width="40px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60.123 60.123" xml:space="preserve"><g><path d="M57.124,51.893H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,51.893,57.124,51.893z"/><path d="M57.124,33.062H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3 C60.124,31.719,58.781,33.062,57.124,33.062z"/><path d="M57.124,14.231H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,14.231,57.124,14.231z"/><circle cx="4.029" cy="11.463" r="4.029"/><circle cx="4.029" cy="30.062" r="4.029"/><circle cx="4.029" cy="48.661" r="4.029"/></g></svg>') 50% 50% no-repeat;background-size:100% auto;opacity: .7;}
 #container .inven .equ .button-option-select.modify{color: var(--color--blue);}
 #container .inven .inven-wep .equ + .equ .button-option-select,
@@ -634,11 +703,13 @@ body.option-view #container .inven .equ .option-list .grid-option .option-name{p
 body.option-view #container .inven .equ .option-list .grid-option .option-name::before{content:'';position: absolute;top: 6px;left: 0;width: 4px;height: 4px;background-color: var(--color--gold);transform:rotate(-45deg)}
 
 body.option-view #container .inven .equ[data-ver]{/* min-height:105px; */}
-body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;}
+body.option-view #container .inven .equ[data-ver] .button-option-select{display: block;text-align: center;}
 body.option-view #container .inven .equ[data-ver] .type-uni .option-list,
 body.option-view #container .inven .equ[data-ver] .type-uni .button-option-select{display: none;}
 body.option-view #container .inven .equ .text .box-aspect .aspect-detail{justify-content: flex-start;}
-body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect-detail{min-height: 105px;}
+body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect{min-height: 105px;line-height: 68px;}
+body.option-view #container .inven .inven-wep .equ + .equ *, 
+body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 
 
 
@@ -846,6 +917,8 @@ body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect
 	body:not(.zoom) #container .inven .inven-equ,
 	body:not(.zoom) #container .inven .inven-acc{float: none;width: 100%;}
 	body:not(.zoom) #container .inven .inven-acc{margin-top: 4px;}
+	body:not(.zoom) #container .inven .inven-wep .equ + .equ *, 
+	body:not(.zoom) #container .inven .inven-acc .equ *{text-align: left;}
 	body:not(.zoom) #container .inven .inven-wep .equ + .equ, 
 	body:not(.zoom) #container .inven .inven-acc .equ{flex-direction: initial;text-align: left;}
 	body.zoom #container .inven .equ.emp{display: flex;}
