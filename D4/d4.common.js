@@ -26,6 +26,17 @@ $(document).ready(function(){
 			D4SkillDB.expandFunc($('#container .box-title .button-url-link'), true);
 		}
 	})
+
+
+	$('.box-notice-alert').delay(1000).animate({'max-height': '100px'}, 'slow').delay(1000 * 4).animate({'max-height': '0px'}, 'slow')
+/*
+	setTimeout(function(){
+		$('.box-notice-alert').slideDown(200);
+	}, 1000)
+	setTimeout(function(){
+		$('.box-notice-alert').slideUp(200);
+	}, 8000)
+	*/
 })
 var D4SkillDB = (function(){
 	var method = {};
