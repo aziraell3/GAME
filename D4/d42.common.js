@@ -20,12 +20,14 @@ $(document).ready(function(){
 			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
+	$('.button-option-view').trigger('click');
 	D4SkillDB.scrollFunc();
 	$('#container .box-url .setting-url').each(function(){
 		if ($(this).val() !== '') {
 			D4SkillDB.expandFunc($('#container .box-title .button-url-link'), true);
 		}
 	})
+	
 })
 var D4SkillDB = (function(){
 	var method = {};
@@ -46,7 +48,8 @@ var D4SkillDB = (function(){
 		{ver:'ori', grade:'nor', parts:'com', icon:'dia', type:'gem', name:'다이아몬드',  detail:'<p class="gem_effect"><span class="wep">궁극기 공격력 <span class="c_number">15%</span> 상승</span><span class="def">보호막 생성량 <span class="c_number">5%</span> 증가</span><span class="acc">모든 원소 저항 <span class="c_number">22.1%</span> 증가</span></p>'},
 		{ver:'ori', grade:'nor', parts:'com', icon:'skl', type:'gem', name:'해골',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
 		
-		{ver:'sea1', grade:'leg', parts:'acc', icon:'leg', type:'gem', name:'전설보석1',  detail:'<p class="gem_effect"><span class="wep">처치 시 생명력 <span class="c_number">+24</span> 회복</span><span class="def">받는 치유량 <span class="c_number">5%</span> 증가</span><span class="acc">방어도 <span class="c_number">+250</span> 상승</span></p>'},
+		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 1',  detail:'<p class="gem_effect"><span class="acc">전용 옵션 블라블라블라</span></p>'},
+		{ver:'sea1', grade:'leg', parts:'acc', icon:'emp', type:'gem', name:'[테스트]<br> 전설보석 2',  detail:'<p class="gem_effect"><span class="acc">전용 옵션 블라블라블라</span></p>'},
 	];
 	method.init = function(){
 		method.setElement();
@@ -211,6 +214,17 @@ var D4SkillDB = (function(){
 		}).on('click', '.option-submit', function(){
 			var $inven = $('.trigger-active').siblings('.option-list');
 			$inven.empty().append($('.selected-option .grid-option').clone());
+
+			$('.selected-option .grid-option').each(function(){
+				var $opt = [];
+				var $this = $(this).attr('aria-controls');
+				$opt.push($this);
+				console.log($this)
+				console.log($opt)
+				obj.urlParams.set($inven.attr('id'), $opt);
+			})
+			method.getSetting();
+			
 			method.layerFunc('optionSelect', false);
 		})
 	};
@@ -275,12 +289,12 @@ var D4SkillDB = (function(){
 			}
 		})
 		var $layerGems = $('#gemSelect');
-		function gemLists(){
-			$.each(gems, function(index, gem){
-				$layerGems.find('.gems-list').append('<div class="gems-grid" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></button></div>');
-			});
-		}
-		gemLists();
+		$.each(gems, function(index, gem){
+			$layerGems.find('.gems-list').append('<div class="gems-grid" data-grade="'+gem.grade+'" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></button></div>');
+		});
+		$layerGems.find('[data-grade=leg]').wrapAll('<div class="gems-group" data-group="leg"></div>');
+		$layerGems.find('[data-grade=nor]').wrapAll('<div class="gems-group" data-group="nor"></div>');
+		//gemLists();
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -295,9 +309,6 @@ var D4SkillDB = (function(){
 				setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - obj.headerH +'px'}, 300); }, 100)
 				method.fixedViewPort(true);
 			}
-			if ($layerGems.find('.gems-grid').length < 1) {
-				gemLists();
-			}
 		})
 		$layerGems.on('click', '.button-gem, .button-close', function(){
 			if ($(this).is('.button-gem')) {
@@ -306,13 +317,12 @@ var D4SkillDB = (function(){
 				var $target = $('[aria-controls=gemSelect].active').attr('id');
 				$('[aria-controls=gemSelect].active').attr({'data-gem-icon':$gem, 'data-target':$id});
 				obj.urlParams.set($target, $id);
-				console.log($target, $id)
 				method.getSetting();
 			}
 			$('[aria-controls=gemSelect]').removeClass('active');
 			$('.inven-gems .option').removeClass('active');
 			$layerGems.removeClass('active');
-			$layerGems.removeAttr('data-gem-type').find('.gems-list').empty();
+			$layerGems.removeAttr('data-gem-type').find('.gems-list');
 			method.fixedViewPort(false);
 		})
 	};
@@ -421,7 +431,6 @@ var D4SkillDB = (function(){
 				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
 				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				//동일 위상 양손무기 / 한손+보조  세팅값
-				console.log(obj.job)
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
 						
