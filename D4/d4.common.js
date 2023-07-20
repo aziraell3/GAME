@@ -27,16 +27,8 @@ $(document).ready(function(){
 		}
 	})
 
-
-	$('.box-notice-alert').delay(1000).animate({'max-height': '100px'}, 'slow').delay(1000 * 4).animate({'max-height': '0px'}, 'slow')
-/*
-	setTimeout(function(){
-		$('.box-notice-alert').slideDown(200);
-	}, 1000)
-	setTimeout(function(){
-		$('.box-notice-alert').slideUp(200);
-	}, 8000)
-	*/
+	//한줄 noti
+	//$('.box-notice-alert').delay(1000).animate({'max-height': '100px'}, 'slow').delay(1000 * 4).animate({'max-height': '0px'}, 'slow');
 })
 var D4SkillDB = (function(){
 	var method = {};
@@ -224,11 +216,9 @@ var D4SkillDB = (function(){
 			if ($(this).parents('.equ').find('.option').is('[data-target]')) {
 				var $parts = $(this).attr('data-option-parts');
 				var $invenOption = $(this).siblings('.option-list');
-				if (!$(this).val() == '') {
-					$optionInput.val($(this).val());
+				if (!$invenOption.find('.grid-option').length < 1) {
 					$(this).removeClass('modify');
 				} else {
-					$optionInput.val('');
 					$(this).addClass('modify');
 				}
 				$optionLayer.attr('data-select-option-parts', $parts);
@@ -531,7 +521,7 @@ var D4SkillDB = (function(){
 			obj.aspectLayer.removeClass('active');
 			obj.container.find('.inven').removeClass('active');
 			
-			$detailButton.find('.box-aspect').empty().append($(this).children().clone());
+			//$detailButton.find('.box-aspect').empty().append($(this).children().clone());
 			
 			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 

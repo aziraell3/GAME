@@ -382,7 +382,7 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 
 #container .inven-spirit .spirit-grid .list-type .spirit-frame{display: flex;margin-left: 60px;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame::before{content:'';position: absolute;width: 1px;height: 50px;background-color: var(--color--white);margin: 0 0 0 -6px;opacity: 0.1;}
-#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{position: relative;width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;}
+#container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit{position: relative;width: 51px;height: 51px;border-radius: 50%;margin: 0 7px;box-sizing: content-box;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]{opacity: 1;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame .button-spirit[aria-selected=true]::after{content:'';position: absolute;top: -4px;left: -4px;width: 54px;height: 54px;border: 2px solid rgba(254, 214, 0, 0.6);border-radius: 50%;}
 #container .inven-spirit .spirit-grid .list-type .spirit-frame #SPD1.button-spirit{background-position: -6px -135px;}
@@ -523,6 +523,8 @@ body.gems #container .inven .equ .text{margin-left: var(--gam--space);}
 /* body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, */
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{visibility: hidden;}
+body.gems.option-view #container .inven .equ[data-wep-type=sub] .button-option-select{top: 75px;}
+body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{}
 body.gems #container .inven .equ .gems + .text{margin: 0;}
 body.gems #container .inven .equ .box-aspect{padding: 0 6px;}
 body.gems #container .inven .inven-wep .equ .gems.single-gem .each-gem + .each-gem,
@@ -570,7 +572,7 @@ body.gems #container[data-job-select=rog] .inven .inven-wep .equ + .equ .gems .e
 #container .inven .layer-gems.layer-bottom .button-close{width: 40px;height: 40px;top: inherit;right: inherit;left: 50%;bottom: -22px;margin-left: -20px;border-radius: 50%;background-color: #111;border: 2px solid #666;}
 
 /* 인벤 젬 표시 */
-#container .inven .equ .gem-info{display: block;opacity: .9;}
+#container .inven .equ .gem-info{display: block;padding-bottom: 5px;opacity: .9;}
 #container .inven .equ .gem-info .name{display: block;padding: 5px 0 3px;font-size: 13px;color: var(--color--white);font-weight: bold;letter-spacing: -0.6px;}
 /* #container .inven .equ .gem-info .name::before{content:' [보석] ';} */
 #container .inven .equ .gem-info .name::after{content: '' !important;display: inline-block !important;vertical-align: middle;margin: -3px 3px 0;width: 20px;height: 20px;background: url('data:image/svg+xml;utf8,<svg width="40px" height="40px" viewBox="-0.5 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 13.8599L10.87 10.8C11.0125 10.6416 11.1868 10.5149 11.3815 10.4282C11.5761 10.3415 11.7869 10.2966 12 10.2966C12.2131 10.2966 12.4239 10.3415 12.6185 10.4282C12.8132 10.5149 12.9875 10.6416 13.13 10.8L16 13.8599" stroke="rgba(0, 160, 255, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 7.41992L3 17.4199C3 19.6291 4.79086 21.4199 7 21.4199H17C19.2091 21.4199 21 19.6291 21 17.4199V7.41992C21 5.21078 19.2091 3.41992 17 3.41992H7C4.79086 3.41992 3 5.21078 3 7.41992Z" stroke="rgba(0, 160, 255, 1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>') 50% 50% no-repeat;background-size: 100% auto;transition: all .3s;opacity: .9;transform: rotate(180deg);}
@@ -873,7 +875,8 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	body.option-view #container .inven .inven-equ{width: 100%;float: none;}
 	body.option-view #container .inven .equ .text{justify-content: flex-start;flex-direction:row;align-items: center;}
 	body.option-view #container .inven .equ .text .option-list{margin-left: 20px;min-height: 105px;justify-content: center;}
-	body.option-view #container .inven .equ .text .box-aspect{min-width: 370px;width: 100%;}
+	body.option-view #container .inven .equ .text .box-aspect{min-width: 370px;width: 100%;margin-top: -35px;}
+	body.option-view #container .inven .equ .selected ~ .text .box-aspect{margin-top: 0;}
 	body.option-view.gems #container .inven .equ .text{margin-left: var(--gam--space);}
 	body.option-view #container .inven .equ .gems + .text{margin-left: 0;}
 	/* body.option-view #container .inven .equ[data-ver] .option-list{position: absolute;top: 50%;margin-top: 0;right: 0;width: 40%;transform: translate(0, -50%);} */
@@ -970,6 +973,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	
 
 	body.gems #container .inven .equ .text{margin: 0 5px !important;}
+	body.option-view #container .inven .equ .text{justify-content: flex-start;}
 	body.option-view #container .inven .equ[data-ver] .option-list{margin: 5px 0 10px 10px !important;}
 	body.gems #container[data-job-select=rog] .inven .equ[data-has=gem] .option,
 	body.gems #container[data-job-select=bab] .inven .equ[data-has=gem] .option,
