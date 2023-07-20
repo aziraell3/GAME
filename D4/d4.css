@@ -707,7 +707,7 @@ body.option-view #container .inven .equ[data-ver] .button-option-select{display:
 body.option-view #container .inven .equ[data-ver] .type-uni .option-list,
 body.option-view #container .inven .equ[data-ver] .type-uni .button-option-select{display: none;}
 body.option-view #container .inven .equ .text .box-aspect .aspect-detail{justify-content: flex-start;}
-body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect{min-height: 105px;line-height: 68px;}
+body.option-view #container .inven .equ .text:not(.type-uni){min-height: 105px;}
 body.option-view #container .inven .inven-wep .equ + .equ *, 
 body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 
@@ -1015,6 +1015,10 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	#container .inven .inven-acc .equ .selected ~ .text .box-aspect::after{right: 12px;left: inherit;}
 
 	body.option-view #container .inven .equ .box-aspect .aspect-detail{min-height: 72px;}
-	#container .aspect-detail,
+	/* #container .aspect-detail, */
+	body.option-view #container .inven .equ .text:not(.type-uni){min-height: 107px;}
+	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect{line-height: 68px;}
+	body.option-view #container .inven .equ[data-has=gem] .text:not(.type-uni){min-height: 135px;}
+	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect,
 	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect-detail{min-height: auto;}
 }
