@@ -287,7 +287,7 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 #container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .box-aspect::before,
 #container[data-job-select=nec] .inven .inven-wep + .inven-wep .equ.wep .text .aspect-detail .aspect-name::before{content:'보조무기 : ';}
 
-#container .inven .equ.emp{opacity: .3;}
+#container .inven .equ.emp{opacity: .3;display: none;}
 #container .inven .equ.emp .text{display: none;}
 
 #container .inven-aspect-select{display: none;position: fixed;top: 70px;left: 0;bottom: 0;right: 0;width: 100%;z-index: 999;}

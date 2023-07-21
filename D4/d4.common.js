@@ -311,6 +311,7 @@ var D4SkillDB = (function(){
 				method.delEqu();
 				method.delGems();
 				method.delUrl();
+				method.delOpt();
 				method.getSetting();
 				method.aspectReset();
 			}
@@ -462,7 +463,7 @@ var D4SkillDB = (function(){
 		
 		$('.box-aspect').empty(); //위상 리셋
 		$('#previewImg').empty(); //생성된 이미지 리셋
-		$('.option-list').empty(); //선호 옵션 리셋
+		$('.option-list').empty(); //옵션 리셋
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 		method.fixedViewPort(false);
 	};
