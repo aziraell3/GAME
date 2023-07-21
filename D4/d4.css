@@ -699,6 +699,7 @@ body.option-view #container .inven .equ .button-option-select{display: block;lef
 #container .inven .inven-acc .equ .button-option-select{left: inherit;right: 0;}
 #container .inven .equ .option-list{display: none;}
 body.option-view #container .inven .equ[data-ver] .option-list{display: flex;flex-wrap: wrap;justify-content: flex-start;flex-direction: column;width: 100%;}
+body.option-view #container .inven .equ[data-ver] .option-list .grid-option:first-child{margin-top:5px}
 body.option-view #container .inven .equ .option-list .grid-option .option-fav{display: none;}
 body.option-view #container .inven .equ .option-list .grid-option .option-del{display: none;}
 body.option-view #container .inven .equ .option-list .grid-option .option-name{position: relative;display: block;margin: 2px 0;padding: 0 10px 0 12px;font-size: 13px;color: var(--color--gold);line-height: 1.2;text-align: left;cursor: default;}
@@ -799,7 +800,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 .by-list .grid-option .option-del::after{display: block;width: 30px;height: 30px;}
 
 .by-list .selected-option{position: sticky;top: -2px;margin-top: -2px;width: 100%;min-height:76px;padding: 15px;background-color: #111;display: flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;align-items: flex-start;z-index: 100;box-shadow: 0px 1px 15px 0px rgba(255,255,255,0.1);}
-.by-list .selected-option .grid-option{position: relative;padding-right: 30px;border-color: var(--color--gold);}
+.by-list .selected-option .grid-option{position: relative;padding-right: 30px;border-color: var(--color--gold);opacity: 1;}
 .by-list .selected-option .grid-option .option-del{position: absolute;top: 0;right: 0;display: flex;width: 100%;height: 100%;flex-direction: row-reverse;align-items: center;}
 
 .by-list .box-alert{position: relative;height: 20px;padding: 0 15px;}
@@ -874,7 +875,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	body.option-view #container .inven .inven-acc, 
 	body.option-view #container .inven .inven-equ{width: 100%;float: none;}
 	body.option-view #container .inven .equ .text{justify-content: flex-start;flex-direction:row;align-items: center;}
-	body.option-view #container .inven .equ .text .option-list{margin-left: 20px;min-height: 105px;justify-content: center;}
+	body.option-view #container .inven .equ .text .option-list{margin-left: 20px;min-height: 105px;/* justify-content: center; */}
 	body.option-view #container .inven .equ .text .box-aspect{min-width: 370px;width: 100%;margin-top: -35px;}
 	body.option-view #container .inven .equ .selected ~ .text .box-aspect{margin-top: 0;}
 	body.option-view.gems #container .inven .equ .text{margin-left: var(--gam--space);}
