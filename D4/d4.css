@@ -794,7 +794,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 .by-list .grid-option[aria-selected=true]{opacity: .3;}
 .by-list .grid-option .option-fav{display: none;width: 18px;height: 18px;margin-right: 4px;border: 1px solid #BDBDBD;background-color: var(--color--white);-webkit-appearance: none;border-radius: 4px;}
 .by-list .grid-option .option-fav:checked{border-color: #966E46;background-color: #966E46;background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='m3.211 8.028 3.474 3.94 6.104-7.935' stroke='rgba(255, 255, 255, 1)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");background-position: 50% 50%;background-size: auto auto;}
-.by-list .grid-option .option-name{height: 100%;font-size: 14px;text-align: left;}
+.by-list .grid-option .option-name{min-width: 25px;height: 100%;font-size: 14px;text-align: center;}
 .grid-option[data-option-type=skl] .option-name::after{content:' 스킬 + ';}
 .by-list .grid-option .option-del{display: none;font-size:0;line-height:0;min-width:30px;width: 30px;height: 30px;box-sizing: content-box;overflow:hidden;z-index:800}
 .by-list .grid-option .option-del::after{display: block;width: 30px;height: 30px;}
