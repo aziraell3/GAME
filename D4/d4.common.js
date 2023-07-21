@@ -258,7 +258,7 @@ var D4SkillDB = (function(){
 			var $inven = $('.trigger-active').siblings('.option-list');
 			$inven.empty().append($('.selected-option .grid-option').clone());
 			method.layerFunc('optionSelect', false);
-
+/*
 			var $opt = [];
 			$('.selected-option .grid-option').each(function(idx, item){
 				var $this = $(item).attr('aria-controls');
@@ -268,7 +268,7 @@ var D4SkillDB = (function(){
 			obj.urlParams.delete($inven.attr('id'));
 			obj.urlParams.set($inven.attr('id'), $opt);
 			console.log('선택 get: '+ obj.urlParams.get($inven.attr('id')))
-
+*/
 			method.getSetting();
 		})
 	};
@@ -711,8 +711,11 @@ var D4SkillDB = (function(){
 			} else {
 				if ($this.find('.grid-option').length == 0) {
 					var $opt = $(this).attr('data-target').split(',');
+					$('#container .box-title .button-option-view').attr('aria-checked', true);
+					obj.body.addClass('option-view');
 					$.each($opt, function(index, item){
-							$this.append($('#'+item).clone())
+						$this.append($('#'+item).clone().removeAttr('id').attr('data-target', item))
+						$('#'+item).attr('aria-selected', true);
 					});
 				}
 			}
