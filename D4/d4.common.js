@@ -645,7 +645,6 @@ var D4SkillDB = (function(){
 
 	method.getSetting = function(){
 		var job = obj.urlParams.get('job');
-		var $option = $('#container .inven .equ .option-list');
 		
 		//직업 로드
 		if (job == null) {
@@ -700,7 +699,7 @@ var D4SkillDB = (function(){
 			$('#'+$id).val(obj.urlParams.get($id));
 		})
 		//옵션 로드
-		$option.each(function(index){
+		obj.invenOptionList.each(function(index){
 			var $this = $(this);
 			var $id = $(this).attr('id');
 			$(this).attr('data-target', obj.urlParams.get($id));
@@ -736,13 +735,13 @@ var D4SkillDB = (function(){
 	method.delUrl = function(){
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id')
-			obj.urlParams.delete($id );
+			obj.urlParams.delete($id);
 		})
 	},
 	method.delOpt = function(){
 		obj.invenOptionList.each(function(){
 			var $id = $(this).attr('id')
-			obj.urlParams.delete($id );
+			obj.urlParams.delete($id);
 		})
 	},
 	method.layerFuncInit = function(){
