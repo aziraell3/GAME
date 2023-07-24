@@ -120,6 +120,7 @@ var D4SkillDB = (function(){
 		obj.lastButton = obj.aspectOpen.is('.latest');
 		obj.optionList = $('#optionList');
 		obj.settingInput = $('input[type=text]');
+		obj.invenOptionList = $('#container .inven .equ .option-list');
 	
 		//encodeURI()
 		obj.urlStr = window.location.href;
@@ -128,15 +129,12 @@ var D4SkillDB = (function(){
 		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
-		$('[role=button]').each(function(){
-			$(this).attr('tabindex', '0');
-			$(this).on('keydown', function(e){
-				if (e.keyCode === 32 || e.keyCode === 13) {// enter & space 
-					e.preventDefault();
-					$(this).trigger('click');
-				}
-			});
-		})
+		$(document).on('keydown', '[role=button]', function(e){
+			if (e.keyCode === 32 || e.keyCode === 13) {// enter & space 
+				e.preventDefault();
+				$(this).trigger('click');
+			}
+		});
 		$('[role=switch][aria-checked]').on('click', function(){
 			var $tag = $(this).attr('data-tag');
 			$(this).attr('aria-checked', function (i, attr) {
@@ -711,8 +709,8 @@ var D4SkillDB = (function(){
 			} else {
 				if ($this.find('.grid-option').length == 0) {
 					var $opt = $(this).attr('data-target').split(',');
-					$('#container .box-title .button-option-view').attr('aria-checked', true);
-					obj.body.addClass('option-view');
+					obj.body.addClass('option-view').find('#container .box-title .button-option-view').attr('aria-checked', true);
+					$this.siblings('.button-option-select').addClass('modify');
 					$.each($opt, function(index, item){
 						$this.append($('#'+item).clone().removeAttr('id').attr('aria-controls', item))
 					});
@@ -742,7 +740,7 @@ var D4SkillDB = (function(){
 		})
 	},
 	method.delOpt = function(){
-		$('#container .inven .equ .option-list').each(function(){
+		obj.invenOptionList.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id );
 		})
@@ -756,7 +754,9 @@ var D4SkillDB = (function(){
 				method.layerFuncClose();
 			}
 			if ($('#'+$target).get(0) !== undefined) {
-				$(this).addClass('trigger-active');
+				if ($(this).is('.button-option-select')) {
+					$(this).addClass('trigger-active');
+				}
 				method.layerFunc($target, true);
 			}
 		})
@@ -765,6 +765,7 @@ var D4SkillDB = (function(){
 		$('.box-layer').on('click', '[data-dismiss=modal], .dimmed', function(e){
 			e.preventDefault();
 			var $target = $(this).parents('[role=dialog], [role=alertdialog]').attr('id');
+			$('[aria-controls='+$target+']').removeClass('trigger-active');
 			method.layerFunc($target, false);
 		})
 	};
