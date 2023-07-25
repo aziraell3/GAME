@@ -523,7 +523,7 @@ body.gems #container .inven .equ .text{margin-left: var(--gam--space);}
 /* body.gems #container .inven .inven-wep .equ + .equ:not(.gems) .option, */
 body.gems #container .inven .equ .gems{display: flex;flex-direction: column;justify-content: center;min-width:30px;padding: 0 3px;box-sizing: content-box;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{visibility: hidden;}
-body.gems.option-view #container .inven .equ[data-wep-type=sub] .button-option-select{top: 75px;}
+body.gems.option-view #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .button-option-select{top: 75px;}
 body.gems #container:not([data-job-select=bab], [data-job-select=rog]) .inven .equ[data-wep-type=sub] .gems{}
 body.gems #container .inven .equ .gems + .text{margin: 0;}
 body.gems #container .inven .equ .box-aspect{padding: 0 6px;}
