@@ -716,7 +716,6 @@ var D4SkillDB = (function(){
 					$('#container .inven .equ .button-option-select').removeClass('modify');
 					obj.delOpt.hide();
 					method.delOpt();
-					method.getSetting();
 				})
 			})
 		}
