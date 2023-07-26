@@ -107,20 +107,20 @@ var D4SkillDB = (function(){
 		obj.container = $('#container');
 		obj.job = obj.container.attr('data-job-select');
 		obj.headerH = $('#header').outerHeight();
-		obj.aspect = obj.container.find('.inven .equ .option');
+		obj.aspect = $('#container .inven .equ .option');
 		obj.aspectList = obj.container.find('#aspectList');
 		obj.boardWrap = obj.container.find('#board');
 		obj.spiritBoons = obj.container.find('#spirit');
 		obj.aspectOpen = obj.container.find('[aria-controls=aspectSelect]');
 		obj.aspectTarget = $('#'+obj.aspectOpen.attr('data-target'));
 		obj.aspectLayer = $('#'+obj.aspectOpen.attr('aria-controls'));
-		obj.gems = obj.container.find('.inven .equ .gems .each-gem');
+		obj.gems = $('#container .inven .equ .gems .each-gem');
 		obj.gemOpen = obj.container.find('[aria-controls=gemSelect]');
 		obj.gemLayer = $('#'+obj.gemOpen.attr('aria-controls'));
 		obj.lastButton = obj.aspectOpen.is('.latest');
 		obj.optionList = $('#optionList');
 		obj.settingInput = $('input[type=text]');
-		obj.invenOptionList = obj.container.find('.inven .equ .option-list');
+		obj.invenOptionList = $('#container .inven .equ .option-list');
 	
 		//encodeURI()
 		obj.urlStr = window.location.href;
@@ -135,7 +135,7 @@ var D4SkillDB = (function(){
 				$(this).trigger('click');
 			}
 		});
-		$(document).on('click', '[role=switch][aria-checked]', function(){
+		$('[role=switch][aria-checked]').on('click', function(){
 			var $tag = $(this).attr('data-tag');
 			$(this).attr('aria-checked', function (i, attr) {
 				return attr == 'true' ? 'false' : 'true'
@@ -166,15 +166,14 @@ var D4SkillDB = (function(){
 				}
 			})
 		})
-			
-		$(document).on('click', '[aria-expanded][aria-controls]', function(){
+		$('[aria-expanded][aria-controls]').on('click', function(){
 			if ($(this).is('[aria-expanded=true]')) {
 				method.expandFunc($(this), false)
 			} else {
 				method.expandFunc($(this), true)
 			}
 		})
-		$(document).on('click', '.button-expand-close', function(){
+		$('.button-expand-close').on('click', function(){
 			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').trigger('click');
 		})
 
@@ -614,10 +613,6 @@ var D4SkillDB = (function(){
 			})
 		})
 	};
-
-	method.loadSetting = function(){
-		console.log('setting load')
-	};
 	method.getSetting = function(){
 		var job = obj.urlParams.get('job');
 		//직업 로드
@@ -735,7 +730,7 @@ var D4SkillDB = (function(){
 		obj.urlParams.delete('SPD');
 	};
 	method.layerFuncInit = function(){
-		$(document).on('click', '[aria-haspopup=dialog][aria-controls]', function(e){
+		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
 			e.preventDefault();
 			var $target = $(this).attr('aria-controls');
 			if ($('#'+$target).find('.dimmed').get(0) == undefined) {

@@ -332,7 +332,7 @@ var D4Aspect = (function(){
 		{display:'show', ver:'ori', job:'nec', icon:'off', grade:'leg', parts:'amu wep glo rin', 			name:'피투성이 깃털',  acquest:'위상 추출', detail:'<p class="aspect_effect"><span class="c_important">피의 창</span>이 <span class="c_important"><span class="text-line">피의 구슬</span></span>을 소모하여 창을 만들어 냅니다. 추가된 <span class="c_important">피의 창</span>은 원래 공격력의 <span class="c_random">20 ~ 50%</span>만큼 피해를 주며 창에 맞지 않은 적을 우선적으로 공격합니다.</p>'},
 		{display:'show', ver:'ori', job:'bab', icon:'off', grade:'leg', parts:'amu wep glo rin', 			name:'전투의 광기',  acquest:'위상 추출', detail:'<p class="aspect_effect">무기를 10번 교체한 후 <span class="c_random">2.0 - 3.5</span>초 동안 광폭화를 얻습니다.</p>'},
 		
-		{display:'hide', ver:'dlc', job:'com', icon:'off', grade:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
+		//{display:'hide', ver:'dlc', job:'com', icon:'off', grade:'leg', parts:'wep sub hel che glo pan boo amu rin', 	name:'[DLC] TEST 위상',  detail:'<p class="aspect_effect"><span class="c_important">TYPE TEST</span> : XXX자원을 <span class="c_random"><span class="txt_calc" data-origin="10"></span> - <span class="txt_calc" data-origin="20"></span>%</span> 얻습니다.</p>'},
 	];
 	method.init = function(){
 		var $aspect = $('#aspectList');
