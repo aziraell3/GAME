@@ -59,7 +59,8 @@ var D4SkillDB = (function(){
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'off', type:'off', name:'유혹적인 운명의(사악함, 공격력 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">극대화 적중 시 40~60%의 추가 피해를 주지만, 비 극대화 적중 시 주는 피해가 20~15% 감소합니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'사자심장의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">보호막 생성량이 10% 증가합니다. 보호막이 활성화된 동안 매초 3~7의 생명력을 회복합니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'보복의(흉포함, 방어력 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">받는 피해의 10~20%가 억제됩니다. 방어, 기만, 또는 섬뜩함 기술을 사용하면 억제되었던 모든 피해가 250% 증폭되어 폭발하며 주위의 적들에게 최대 1360~2040의 화염 피해를 줍니다.</span></p>'},
-		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'신중한 마음의(흉포함, 방어력 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">일격에 20% 이상의 생명력을 잃을 경우, 2.0~4.0초간 면역을 얻습니다. 이 효과는 110초에 한 번씩만 발동합니다. 결의의(간악함, 보조): 자원 고갈 효과가 40~50% 감소합니다. 추가로, 자원 생성량이 3.0~8.0% 증가합니다.</span></p>'},
+		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'def', type:'def', name:'신중한 마음의(흉포함, 방어력 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">일격에 20% 이상의 생명력을 잃을 경우, 2.0~4.0초간 면역을 얻습니다. 이 효과는 110초에 한 번씩만 발동합니다.</span></p>'},
+		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'결의의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">자원 고갈 효과가 40~50% 감소합니다. 추가로, 자원 생성량이 3.0~8.0% 증가합니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'반격의(간악함, 보조 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">자신에게 걸린 군중 제어 효과가 제거될 때마다 주위 적들에게 510~680의 화염 피해를 줍니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'치밀한 자의(간악함, 보조 - 단계 III)',  detail:'<p class="gem_effect"><span class="acc">주 자원을 150~200 소모하면 다음 공격에 적중당한 적을 2초 동안 기절시킵니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'com', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'악의 맹약의(진노함, 초월적)',  detail:'<p class="gem_effect"><span class="acc">적을 20마리 처치할 때마다 악의 보너스를 돌아가며 적용받습니다. <span class="text-block">사악함 : 공격 속도를 20% 획득합니다.</span><span class="text-block">간악함: 핵심 및 기본 기술이 15% 확률로 자원을 완전히 회복시킵니다.</span><span class="text-block">흉포함: 21초마다 85~102 피해를 흡수하는 보호막을 획득합니다.</span></span></p>'},
@@ -85,6 +86,7 @@ var D4SkillDB = (function(){
 		{display:'show', ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'def', type:'def', name:'주문 파괴의(흉포함, 방어력)',  detail:'<p class="gem_effect"><span class="acc">원소 피해를 받은 후에 5초 동안 해당 원소에 대한 저항이 20~40% 증가합니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'uti', type:'uti', name:'앙심의(간악함, 보조)',  detail:'<p class="gem_effect"><span class="acc">군중 제어 효과에 걸렸을 때, 20~40% 확률로 해당 효과를 건 적과 주위 모든 적이 3초 동안 같은 효과에 걸립니다.</span></p>'},
 		{display:'show', ver:'sea1', job:'soc', grade:'leg', parts:'acc', icon:'tra', type:'tra', name:'전능의(진노함, 초월적 -단계 IV)',  detail:'<p class="gem_effect"><span class="acc">투사체를 발사하는 핵심 기술이 마나를 모두 소모합니다. 추가 마나를 35~45 소모할 때마다, 추가 투사체를 하나 발사하고 피해가 3.0~5.0% 증가합니다.</span></p>'},
+			
 	];
 	method.init = function(){
 		method.setElement();
