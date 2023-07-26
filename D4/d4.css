@@ -44,6 +44,8 @@ img{image-rendering: -webkit-optimize-contrast;transform: translateZ(0);backface
 *::-webkit-scrollbar-thumb{background-color: #666;border-radius: 6px;background-clip: padding-box;border: 1px solid transparent;}
 *::-webkit-scrollbar-track{background-color: grey;border-radius: 6px;box-shadow: inset 0px 0px 5px white;}
 input[type=text]::placeholder{color: var(--color--gray300);}
+#wrap [data-display=hide]{display: none !important;}
+
 
 /* delete button */
 .by-list .grid-option .option-del::after,
