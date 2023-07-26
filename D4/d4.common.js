@@ -281,7 +281,7 @@ var D4SkillDB = (function(){
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
 					method.layerFunc('settingReset', true, '현재 셋팅된 <strong>위상(옵션)/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상(옵션)/보석/입력값</strong> 들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
-					$('.box-layer').on('click', '#settingReset .button-submit', function(){
+					$(document).on('click', '#settingReset .button-submit', function(){
 						jobChange($this);
 					})
 				} else {
