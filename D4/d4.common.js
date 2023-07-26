@@ -592,7 +592,9 @@ var D4SkillDB = (function(){
 				if ($thisGrid.is('.active')) {
 					if ($(this).is('[aria-selected=true]')) {
 						$(this).attr('aria-selected', false)
-						$('[data-target='+$id+']').remove();
+						if ($('.spirit-description').find('[data-target]').length > 1) {
+							$('.spirit-description [data-target='+$id+']').remove();
+						}
 					} else {
 						$(this).attr('aria-selected', true)
 						$description.append('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$text+'</span><span class="text-detail">'+$detail+'</span></p>');
