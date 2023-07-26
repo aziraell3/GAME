@@ -590,7 +590,7 @@ var D4Option = (function(){
 	method.init = function(){
 		obj.wrap = $('#optionList')
 		$.each(options, function(index, option){
-			obj.wrap.append('<span data-display="'+option.display+'" id="O'+index+'" class="grid-option '+option.parts+'" data-option-job="'+option.job+'" data-option-type="'+option.type+'"><input type="checkbox" class="option-fav"><button type="button" class="option-name">'+option.name+'</button><button type="button" class="option-del">삭제</button></span>');
+			obj.wrap.append('<span data-display="'+option.display+'" id="O'+index+'" class="grid-option '+option.parts+'" data-option-job="'+option.job+'" data-option-type="'+option.type+'"><button type="button" class="option-name">'+option.name+'</button><button type="button" class="option-del">삭제</button></span>');
 		});
 		
 		obj.wrap.find('.fav[data-option-type]').wrapAll('<span class="option-group" data-group="fav"></span>');

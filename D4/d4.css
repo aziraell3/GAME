@@ -799,11 +799,11 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 .by-list .grid-option .option-name{min-width: 25px;height: 100%;font-size: 14px;text-align: center;}
 .grid-option[data-option-type=skl] .option-name::after{content:' 스킬 + ';}
 .by-list .grid-option .option-del{display: none;font-size:0;line-height:0;min-width:30px;width: 30px;height: 30px;box-sizing: content-box;overflow:hidden;z-index:800}
-.by-list .grid-option .option-del::after{display: block;width: 30px;height: 30px;}
+.by-list .grid-option .option-del::after{display: inline-block;width: 30px;height: 30px;}
 
 .by-list .selected-option{position: sticky;top: -2px;margin-top: -2px;width: 100%;min-height:76px;padding: 15px;background-color: #111;display: flex;flex-wrap: wrap;flex-direction: row;justify-content: flex-start;align-items: flex-start;z-index: 100;box-shadow: 0px 1px 15px 0px rgba(255,255,255,0.1);}
 .by-list .selected-option .grid-option{position: relative;padding-right: 30px;border-color: var(--color--gold);opacity: 1;}
-.by-list .selected-option .grid-option .option-del{position: absolute;top: 0;right: 0;display: flex;width: 100%;height: 100%;flex-direction: row-reverse;align-items: center;}
+.by-list .selected-option .grid-option .option-del{position: absolute;top: 0;right: 0;display: block;width: 100%;height: 100%;text-align: right;}
 
 .by-list .box-alert{position: relative;height: 20px;padding: 0 15px;}
 .by-list .box-alert .option-alert{max-height: 0;overflow: hidden;font-size: 12px;color: var(--color--gold);}
