@@ -17,7 +17,7 @@ $(document).ready(function(){
 			
 			}, 500)
 		} else {
-			D4SkillDB.layerFunc('layerCommon', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
+			D4SkillDB.layerFunc('selectAspect', true, '선택된 위상이 없습니다<br>1개 이상의 위상 선택후 이미지를 생성해주세요.', false);
 		}
 	});
 	D4SkillDB.scrollFunc();
@@ -123,6 +123,7 @@ var D4SkillDB = (function(){
 		obj.optionList = $('#optionList');
 		obj.settingInput = $('input[type=text]');
 		obj.invenOptionList = $('#container .inven .equ .option-list');
+		obj.delOpt = $('.button-option-del');
 	
 		//encodeURI()
 		obj.urlStr = window.location.href;
@@ -131,6 +132,7 @@ var D4SkillDB = (function(){
 	};
 	method.uiFunc = function(){
 		$('#wrap [data-display=hide]').remove(); //data-display="hide" 삭제
+
 		$(document).on('keydown', '[role=button]', function(e){
 			if (e.keyCode === 32 || e.keyCode === 13) {// enter & space 
 				e.preventDefault();
@@ -239,7 +241,7 @@ var D4SkillDB = (function(){
 				method.fixedViewPort(true);
 			} else {
 				method.layerFunc($optionButton.attr('aria-controls'), false);
-				method.layerFunc('layerCommon', true, '위상을 먼저 선택해주세요.', false);
+				method.layerFunc('selectAspect', true, '위상을 먼저 선택해주세요.', false);
 			}
 		})
 
@@ -461,6 +463,7 @@ var D4SkillDB = (function(){
 		$('.box-aspect').empty(); //위상 리셋
 		$('#previewImg').empty(); //생성된 이미지 리셋
 		$('.option-list').empty(); //옵션 리셋
+		obj.delOpt.removeAttr('style') //옵션 삭제 버튼 숨김
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 		method.fixedViewPort(false);
 	};
@@ -703,6 +706,20 @@ var D4SkillDB = (function(){
 				}
 			}
 		})
+		//옵션 삭제
+		if ($('.option-list .grid-option').length > 0) {
+			obj.delOpt.show();
+			obj.delOpt.on('click', function(){
+				method.layerFunc('optionDelete', true, '선택된 <strong>모든 부위 옵션이 초기화</strong> 됩니다.<br>진행 하시겠습니까?', true);
+				$(document).on('click', '#optionDelete .button-submit', function(){
+					$('.option-list').empty().removeAttr('data-target');
+					$('#container .inven .equ .button-option-select').removeClass('modify');
+					obj.delOpt.hide();
+					method.delOpt();
+					method.getSetting();
+				})
+			})
+		}
 		history.replaceState({}, null, obj.url);
 	};
 	method.delEqu = function(){
@@ -758,6 +775,7 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.layerFunc = function($target, $boolean, $content, $confirm){
+		$('.common-layer').attr('id', $target);
 		if ($('#'+$target).get(0) !== undefined) {
 			var $targetPopup = $('#'+$target);
 			var $cont = $('#layerContent');
@@ -765,7 +783,9 @@ var D4SkillDB = (function(){
 			var lastTabStop = 0;
 			if ($confirm) {
 				$targetPopup.attr('role', 'dialog');
-				$targetPopup.find('.box-button').append('<button class="button-cancel" data-dismiss="modal">취소</button>');
+				if ($targetPopup.find('.button-cancel').length < 1) {
+					$targetPopup.find('.box-button').append('<button class="button-cancel" data-dismiss="modal">취소</button>');
+				}
 			} else {
 				$targetPopup.attr('role', 'alertdialog');
 				$targetPopup.find('.box-button .button-cancel').remove();
