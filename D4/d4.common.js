@@ -88,7 +88,6 @@ var D4SkillDB = (function(){
 	];
 	method.init = function(){
 		method.setElement();
-		method.uiFunc();
 		method.expandFunc();
 		method.aspectLayer();
 		method.aspectDB();
@@ -101,6 +100,7 @@ var D4SkillDB = (function(){
 		method.layerFuncInit();
 		method.itemOption();
 		method.getSetting();
+		method.uiFunc();
 	};
 	method.setElement = function(){
 		obj.body = $('body');
@@ -126,7 +126,6 @@ var D4SkillDB = (function(){
 		obj.urlStr = window.location.href;
 		obj.url = new URL(obj.urlStr);
 		obj.urlParams = obj.url.searchParams;
-		//obj.copyUrl = $('#settingUrl');
 	};
 	method.uiFunc = function(){
 		$(document).on('keydown', '[role=button]', function(e){
@@ -175,8 +174,6 @@ var D4SkillDB = (function(){
 		})
 		$('.button-expand-close').on('click', function(){
 			$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').trigger('click');
-			//$(this).parents('[aria-hidden]').slideUp(200);
-			//$('[aria-controls='+$(this).parents('[aria-hidden]').attr('id')+']').removeClass('expend').attr('aria-expanded', false);
 		})
 
 		obj.settingInput.each(function(){
@@ -202,6 +199,11 @@ var D4SkillDB = (function(){
 				$(this).select();
 			})
 		})
+		//은총 셋팅
+		obj.spiritBoons.find('.button-spirit[aria-selected=true]').each(function(){
+			var $desc = $(this).parents('.spirit-grid').find('.spirit-description');
+			$desc.append('<p class="spirit-selected" data-target="'+$(this).attr('id')+'"><span class="text-name">'+$(this).text()+'</span><span class="text-detail">'+$(this).attr('title')+'</span></p>');
+		})
 	};
 	method.itemOption = function(){
 		//아이템 옵션 선택
@@ -215,11 +217,9 @@ var D4SkillDB = (function(){
 			if ($(this).parents('.equ').find('.option').is('[data-target]')) {
 				var $parts = $(this).attr('data-option-parts');
 				var $invenOption = $(this).siblings('.option-list');
-				if (!$invenOption.find('.grid-option').length < 1) {
-					$(this).removeClass('modify');
-				} else {
-					$(this).addClass('modify');
-				}
+				(!$invenOption.find('.grid-option').length < 1) 
+					? $(this).removeClass('modify')
+					: $(this).addClass('modify');
 				$optionLayer.attr('data-select-option-parts', $parts);
 				$('.select-option .grid-option').attr('aria-selected', false);
 				$selected.empty().append($invenOption.find('.grid-option').clone());
@@ -253,11 +253,10 @@ var D4SkillDB = (function(){
 			$(this).parent().remove();
 			$target.attr('aria-selected', false);
 		}).on('click', '.option-submit', function(){
+			var $opt = [];
 			var $inven = $('.trigger-active').siblings('.option-list');
 			$inven.empty().append($('.selected-option .grid-option').clone());
 			method.layerFunc('optionSelect', false);
-
-			var $opt = [];
 			$('.selected-option .grid-option').each(function(idx, item){
 				var $this = $(item).attr('aria-controls');
 				$opt.push($this);
@@ -265,7 +264,6 @@ var D4SkillDB = (function(){
 			})
 			obj.urlParams.delete($inven.attr('id'));
 			obj.urlParams.set($inven.attr('id'), $opt);
-
 			method.getSetting();
 		})
 	};
@@ -310,6 +308,7 @@ var D4SkillDB = (function(){
 				method.delGems();
 				method.delUrl();
 				method.delOpt();
+				method.delSpirit();
 				method.getSetting();
 				method.aspectReset();
 			}
@@ -336,7 +335,6 @@ var D4SkillDB = (function(){
 		});
 		$layerGems.find('[data-grade=leg]').wrapAll('<div class="gems-group" data-group="leg"></div>');
 		$layerGems.find('[data-grade=nor]').wrapAll('<div class="gems-group" data-group="nor"></div>');
-		//gemLists();
 		obj.gemOpen.on('click', function(){
 			var $type = $(this).attr('data-gem-type')
 			var $wrap = $(this).parents('.inven-gems');
@@ -422,7 +420,6 @@ var D4SkillDB = (function(){
 			if ($(this).is('.sort-by-dis')) {
 				obj.urlParams.delete($('.inven .equ .option.latest').attr('id'), $('.inven .equ .option.latest').attr('data-target'));
 				method.getSetting();
-
 				obj.aspectList.find('#'+$target).attr('aria-selected', false);
 				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
 				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
@@ -458,7 +455,6 @@ var D4SkillDB = (function(){
 		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
 		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
 		$('#container .inven .equ .button-option-select').removeClass('modify');
-		
 		$('.box-aspect').empty(); //위상 리셋
 		$('#previewImg').empty(); //생성된 이미지 리셋
 		$('.option-list').empty(); //옵션 리셋
@@ -484,7 +480,6 @@ var D4SkillDB = (function(){
 				//동일 위상 양손무기 / 한손+보조  세팅값
 				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
 					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
-						
 						console.log('무기 ON')
 						method.wepChange(true);
 					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
@@ -527,30 +522,18 @@ var D4SkillDB = (function(){
 			$('.sort-by-all').trigger('click');
 			$('#'+$target).attr('aria-selected', false);
 			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')}).parent().attr({'data-parts':$(this).parent().attr('data-parts'), 'data-ver':$(this).parent().attr('data-ver')})//[data-*]
-				 
 			obj.aspectOpen.removeClass('active');
 			obj.aspectLayer.removeClass('active');
 			obj.container.find('.inven').removeClass('active');
-			
 			//$detailButton.find('.box-aspect').empty().append($(this).children().clone());
-			
 			$(this).attr({'data-select-parts':obj.partsID});
 			($(this).find('.aspect-name').hasClass('type-uni')) 
 				? $detailButton.addClass('type-uni')
 				: $detailButton.removeClass('type-uni');
-			/*
-			if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
-				if ($('#wep1').is('.selected')) {
-					//method.wepChange(true);
-				} else if ($('#wep2, #wep4').is('.selected')) {
-					//method.wepChange(false);
-				}
-			}
-			*/
 			method.invCheck(obj.aspectID);
-			method.fixedViewPort(false);
 			obj.urlParams.set(obj.partsID, obj.aspectID);
 			method.getSetting();
+			method.fixedViewPort(false);
 		})
 	};
 	method.setAspect = function($part, $target){
@@ -569,9 +552,6 @@ var D4SkillDB = (function(){
 				: $inven.siblings().find('.detail').removeClass('type-uni')
 		}
 	};
-	method.fixedViewPort = function(fixedView){
-		(fixedView) ? obj.body.addClass('scroll-lock header-flip') : obj.body.removeClass('scroll-lock header-flip');
-	};
 	method.expandFunc = function($this, $boolean){
 		var $target = $('#'+$($this).attr('aria-controls'));;
 		if ($boolean) {
@@ -588,6 +568,7 @@ var D4SkillDB = (function(){
 		var $grid = obj.spiritBoons.find('.spirit-grid');
 		$grid.each(function(index){
 			var $button = $(this).find('.button-spirit');
+			function blessingActive(){}
 			$(this).on('click', '.button-blessing[aria-selected=false]', function(){
 				$grid.find('.button-blessing').attr('aria-selected', false);
 				$(this).attr('aria-selected', true);
@@ -596,9 +577,12 @@ var D4SkillDB = (function(){
 				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
 				$('.description').slideUp(300);
-			})
-			$(this).on('click', '.button-spirit[aria-selected]', function(){
-				var $name = $(this).text();
+				obj.urlParams.set('SPB', obj.spiritBoons.find('.button-blessing[aria-selected=true]').attr('id'));
+				method.getSetting();
+			}).on('click', '.button-spirit[aria-selected]', function(){
+				var $spi = [];
+				var $name = $(this).attr('name');
+				var $text = $(this).text();
 				var $id = $(this).attr('id');
 				var $detail = $(this).attr('title');
 				var $description = $(this).parents('.spirit-grid').find('.spirit-description');
@@ -610,42 +594,27 @@ var D4SkillDB = (function(){
 						$('[data-target='+$id+']').remove();
 					} else {
 						$(this).attr('aria-selected', true)
-						$description.append('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
+						$description.append('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$text+'</span><span class="text-detail">'+$detail+'</span></p>');
 					}
 					($line.find('[aria-selected=true]').length == 2 ) 
 						? obj.spiritBoons.find('.spirit-grid.active').find('[aria-selected=false]').prop('disabled', true)
 						: obj.spiritBoons.find('.spirit-grid.active').find('[aria-selected]').prop('disabled', false)
 				} else {
 					$(this).attr('aria-selected', true).siblings().attr('aria-selected', false);
-					$description.html('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$name+'</span><span class="text-detail">'+$detail+'</span></p>');
+					$description.html('<p class="spirit-selected" data-target="'+$id+'"><span class="text-name">'+$text+'</span><span class="text-detail">'+$detail+'</span></p>');
 				}
-			})
-			/*
-			$spirit.each(function(){
-				$(this).on('click', function(){
-					var $this = $(this).attr('id');
-					var $thisSelect = ($(this).attr('aria-selected') == 'true') ? 1 : null;
-					
-					console.log($this, $thisSelect)
-					
-					//obj.urlParams.delete($(this).siblings().attr('id'));
-					
-					if ($(this).is('.button-blessing')) {
-						obj.urlParams.set('blessing', $this);
-					} else {
-						obj.urlParams.set($this, $thisSelect);
-					}
-					method.getSetting();
+				$('.button-spirit[aria-selected=true]').each(function(){
+					$spi.push($(this).attr('id'))
+					$('#spirit').attr('data-target', $spi)
 				})
+				obj.urlParams.set('SPD', $('#spirit').attr('data-target'));
+				method.getSetting();
 			})
-			*/
-			
 		})
 	};
 
 	method.getSetting = function(){
 		var job = obj.urlParams.get('job');
-		
 		//직업 로드
 		if (job == null) {
 			obj.urlParams.set('job', 'dru');
@@ -687,16 +656,30 @@ var D4SkillDB = (function(){
 				$(this).parents('.equ').find('.text .box-aspect .gem-info').remove();
 			}
 		})
-		//은총 로드
-		//$('#'+obj.urlParams.get('blessing')).click();
-		obj.spiritBoons.find('button').each(function(){
-			//$(this).attr('data-target', obj.urlParams.get($(this).attr('id')));
-			//$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
-		})
 		//URL입력값
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id');
 			$('#'+$id).val(obj.urlParams.get($id));
+		})
+		//은총 로드
+		obj.spiritBoons.find('.button-spirit').each(function(){
+			var $this = $('#spirit');
+			var $desc = $(this).parents('.list-type').siblings('.spirit-description')
+			if ($('#'+obj.urlParams.get('SPB')).length > 0) {
+				method.expandFunc('.spirit-open', true);
+				$('#'+obj.urlParams.get('SPB')).attr('aria-selected', true).parents('.spirit-grid').addClass('active');
+				$('#container .inven-spirit .description').hide();
+			}
+			$this.attr('data-target', obj.urlParams.get('SPD'));
+			if ($this.is('[data-target]')) {
+				var $sp = $this.attr('data-target').split(',')
+				$.each($sp, function(index, item){
+					$('#'+item).attr('aria-selected', true);
+				});
+				($('.spirit-grid.active').find('.button-spirit[aria-selected=true]').length >= 2 )
+					? $('.spirit-grid.active').find('.button-spirit[aria-selected=false]').attr('disabled', true)
+					: $('.spirit-grid.active').find('.button-spirit[aria-selected]').attr('disabled', false)
+			}
 		})
 		//옵션 로드
 		obj.invenOptionList.each(function(index){
@@ -716,34 +699,36 @@ var D4SkillDB = (function(){
 				}
 			}
 		})
-
 		history.replaceState({}, null, obj.url);
 	};
-
 	method.delEqu = function(){
 		obj.aspect.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
-	},
+	};
 	method.delGems = function(){
 		obj.gems.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
-	},
+	};
 	method.delUrl = function(){
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
-	},
+	};
 	method.delOpt = function(){
 		obj.invenOptionList.each(function(){
 			var $id = $(this).attr('id')
 			obj.urlParams.delete($id);
 		})
-	},
+	};
+	method.delSpirit = function(){
+		obj.urlParams.delete('SPB');
+		obj.urlParams.delete('SPD');
+	};
 	method.layerFuncInit = function(){
 		$('[aria-haspopup=dialog][aria-controls]').on('click', function(e){
 			e.preventDefault();
@@ -831,6 +816,9 @@ var D4SkillDB = (function(){
 				}
 			}
 		}
+	};
+	method.fixedViewPort = function(fixedView){
+		(fixedView) ? obj.body.addClass('scroll-lock header-flip') : obj.body.removeClass('scroll-lock header-flip');
 	};
 	return{
 		init : method.init,

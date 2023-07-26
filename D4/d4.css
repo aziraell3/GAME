@@ -409,7 +409,7 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 #container .inven-spirit .spirit-description .spirit-selected + .spirit-selected{margin-top: 5px;padding-top: 5px;border-top: 1px solid #444;}
 #container .inven-spirit .spirit-description .spirit-selected *{font-size: 12px;line-height: 12px;letter-spacing: -0.5px;}
 #container .inven-spirit .spirit-description .spirit-selected .text-name{font-weight: bold;color: var(--color--blue);}
-#container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' :';color: var(--color--blue);}
+#container .inven-spirit .spirit-description .spirit-selected .text-name::after{content:' : ';color: var(--color--blue);}
 #container .inven-spirit .spirit-description .spirit-selected .text-detail{font-weight: normal;}
 
 #container [class*=icon-]::before{content:'';display: inline-block;min-width: 70px;height: 70px;}
