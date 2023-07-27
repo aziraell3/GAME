@@ -462,7 +462,7 @@ var D4SkillDB = (function(){
 		$('#container .inven .equ .button-option-select').removeClass('modify');
 		$('.box-aspect').empty(); //위상 리셋
 		$('#previewImg').empty(); //생성된 이미지 리셋
-		$('.option-list').empty(); //옵션 리셋
+		$('.option-list').removeAttr('data-target').empty(); //옵션 리셋
 		obj.delOpt.removeAttr('style') //옵션 삭제 버튼 숨김
 		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
 		method.fixedViewPort(false);
@@ -576,11 +576,23 @@ var D4SkillDB = (function(){
 			var $button = $(this).find('.button-spirit');
 			function blessingActive(){}
 			$(this).on('click', '.button-blessing[aria-selected=false]', function(){
+				var $spi = [];
 				$grid.find('.button-blessing').attr('aria-selected', false);
 				$(this).attr('aria-selected', true);
 				$grid.find('[aria-selected]').attr('disabled', false);
 				$grid.find('[aria-selected=true] ~ [aria-selected=true]').attr('aria-selected', false);
-				$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
+				if ($('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().attr('data-target') !== undefined) {
+					$('#'+$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().attr('data-target')).prop('aria-selected', false);
+					$('[data-target='+$('.spirit-grid.active').find('[aria-selected=true]').attr('id')+']').siblings().remove();
+					$('.button-spirit[aria-selected=true]').each(function(){
+						$spi.push($(this).attr('id'))
+						$('#spirit').attr('data-target', $spi)
+					})
+					obj.urlParams.set('SPD', $('#spirit').attr('data-target'));
+					method.getSetting();
+				}
+				$grid.find('.button-blessing').attr('aria-selected', false);
+				$(this).attr('aria-selected', true);
 				$(this).parents('.spirit-grid').addClass('active').siblings().removeClass('active');
 				$('.description').slideUp(300);
 				obj.urlParams.set('SPB', obj.spiritBoons.find('.button-blessing[aria-selected=true]').attr('id'));
