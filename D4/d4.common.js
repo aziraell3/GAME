@@ -210,6 +210,229 @@ var D4SkillDB = (function(){
 			$desc.append('<p class="spirit-selected" data-target="'+$(this).attr('id')+'"><span class="text-name">'+$(this).text()+'</span><span class="text-detail">'+$(this).attr('title')+'</span></p>');
 		})
 	};
+
+	method.jobSelect = function(){ 
+		//직업 선택
+		$('#header .button-job, .button-reset').on('click', function(){
+			var $this = $(this);
+			var $job = $(this).attr('data-tab-select');
+			if (!$(this).is('[aria-selected=true]')) {
+				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
+					method.layerFunc('settingReset', true, '현재 셋팅된 <strong>위상(옵션)/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상(옵션)/보석/입력값</strong> 들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+					$(document).on('click', '#settingReset .button-submit', function(){
+						jobChange($this);
+					})
+				} else {
+					jobChange($this);
+				}
+			}
+			function jobChange($jobBtn){
+				var $this = $jobBtn;
+				if (!obj.body.is('.scroll-lock')) {
+					$('html, body').animate({scrollTop: '0'}, 300);
+				}
+				if ($jobBtn.is('.button-job')) {
+					$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
+					obj.container.attr('data-job-select', $job);	
+					($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
+					$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
+					$('#container .spirit-description').empty();
+					if ($job == 'dru') {
+						$('#wep2-opt').attr('data-option-parts', 'sub');
+					} else if ($job == 'nec') {
+						$('#wep2-opt').attr('data-option-parts', 'shl');
+						$('#wep4-opt').attr('data-option-parts', 'sub');
+					} else {
+						$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
+					}
+					obj.urlParams.set('job', $job);
+				}
+				method.delEqu();
+				method.delGems();
+				method.delUrl();
+				method.delOpt();
+				method.delSpirit();
+				method.getSetting();
+				method.aspectReset();
+			}
+		})
+		//레이어 필터링 버튼
+		$('.aspect-head button').on('click', function(){
+			var $this = $(this).attr('class');
+			if ($(this).is('[aria-selected]')) {
+				$(this).attr('aria-selected', true).siblings('[aria-selected]').attr('aria-selected', false);
+			}
+			obj.aspectList.attr('data-filter', $this);
+		})
+	};
+	method.expandFunc = function($this, $boolean){
+		var $target = $('#'+$($this).attr('aria-controls'));;
+		if ($boolean) {
+			$($this).addClass('expend').attr('aria-expanded', true);
+			$target.attr('aria-hidden', true).slideDown(200);
+		} else {
+			$($this).removeClass('expend').attr('aria-expanded', false);
+			$target.attr('aria-hidden', false).slideUp(200);
+		}
+	}
+	method.scrollFunc = function(){
+		$(window).scroll(function () {
+			var scrollTop = $(this).scrollTop();
+			var $header = 40;
+			(scrollTop > $header) 
+				? obj.body.addClass('header-flip')
+				: obj.body.removeClass('header-flip');
+			var windHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			var scrolled = (scrollTop / windHeight) * 100;
+			$('.bar').css('width', scrolled+'%');
+		});
+	};
+	method.aspectLayer = function(){
+		//위상 레이어 오픈
+		obj.aspectOpen.on('click', function(){
+			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
+			var $layer = $('#'+$(this).attr('aria-controls'));
+			obj.aspectOpen.removeClass('active latest');
+			$('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
+			$layer.addClass('active').attr('data-sorting', $parts);
+			obj.container.find('.inven').addClass('active');
+			$(this).addClass('active latest');
+			(!$(this).is('.selected'))
+				? $('.sort-by-dis').attr('disabled', true) 
+				: $('.sort-by-dis').attr('disabled', false)
+			method.layerSort($parts);
+			if ($(this).is('.selected')) { //선택 강조
+				var $target = $('#'+$(this).attr('data-target'));
+				obj.aspectLayer.find('.button-aspect').removeClass('selected');
+				$target.addClass('selected').focus();
+			} else {
+				obj.aspectLayer.find('.button-aspect').removeClass('selected');
+				$layer.find('.box-aspect-select').animate({scrollTop: '0'}, 300);
+			}
+
+			var $multi = ($(this).parents('.equ').attr('data-multiply') == undefined) ? 10 : $(this).parents('.equ').attr('data-multiply');
+			method.aspectMultiply($multi);
+			method.fixedViewPort(true);
+		})
+		//닫기 & 해제
+		$('.js-disabled').on('click', function(){
+			var $target = $('.inven .equ .option.latest').attr('data-target');
+			if ($(this).is('.sort-by-dis')) {
+				obj.urlParams.delete($('.inven .equ .option.latest').attr('id'), $('.inven .equ .option.latest').attr('data-target'));
+				method.getSetting();
+				obj.aspectList.find('#'+$target).attr('aria-selected', false);
+				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
+				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
+				if ($('.inven .equ .option.latest').is('#wep2, #wep4')) {
+					method.wepChange(true);
+					if (obj.job == 'bab'){
+						method.wepChange(false);
+					}
+				}
+			}
+			obj.aspectOpen.removeClass('active');
+			$(this).parents('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
+			obj.container.find('.inven').removeClass('active');
+			method.fixedViewPort(false);
+		})
+	};
+	method.layerSort = function($target){
+		//타입별 위상 정렬
+		var $target = obj.aspectLayer.attr('data-sorting');
+		$job = obj.container.attr('data-job-select');
+		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
+		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+$job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
+	};
+	method.invCheck = function($id){
+		//동일 위상 선택시 다른영역 리셋
+		var $invSkill = [];
+		obj.aspectOpen.each(function(index){
+			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
+			$invSkill.push($target)
+			if ($id == $(this).attr('data-target')) {
+				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
+				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
+				//동일 위상 양손무기 / 한손+보조  세팅값
+				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
+					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
+						console.log('무기 ON')
+						method.wepChange(true);
+					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
+						console.log('무기 OFF')
+						method.wepChange(false);
+					}
+				}
+				obj.urlParams.delete($(this).attr('id'), $id);
+				method.getSetting();
+			}
+		});
+		$.each($invSkill, function(index){
+			$('#'+$invSkill[index]).attr({'aria-selected':true});
+		})
+	};
+	method.wepChange = function(weapon){
+		var $job = $('#container').attr('data-job-select')
+		if (weapon) {
+			$('#wep1').siblings().removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
+			$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+		} else {
+			$('#wep1').siblings('.gems').addClass('single-gem').parents('.equ').attr('data-multiply', '10');	
+			$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
+			if ($job == 'rog' || $job == 'bab') {
+				$('#wep1').siblings('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
+			}
+		}
+	};
+	method.aspectDB = function(){
+		//위상 선택
+		obj.aspectButton = obj.container.find('.button-aspect');
+		obj.container.on('click', '.button-aspect', function(){
+			var $detail = $(this).find('.aspect-name');
+			var $tooltip = $(this).find('.aspect-more').html();
+			var $parts = $(this).find('.aspect-parts').html();
+			var $detailButton = $('.inven .equ .option.active').siblings('.text');
+			var $target = $('.inven .equ .option.active').attr('data-target');
+			var $optBtn = $detailButton.find('.button-option-select');
+			var $optListLen = $detailButton.find('.option-list .grid-option').length;
+			obj.aspectID = $(this).attr('id');
+			obj.partsID = $('.inven .equ .option.active').attr('id');
+			$('.sort-by-all').trigger('click');
+			$('#'+$target).attr('aria-selected', false);
+			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')}).parent().attr({'data-parts':$(this).parent().attr('data-parts'), 'data-ver':$(this).parent().attr('data-ver')})//[data-*]
+			obj.aspectOpen.removeClass('active');
+			obj.aspectLayer.removeClass('active');
+			obj.container.find('.inven').removeClass('active');
+			//$detailButton.find('.box-aspect').empty().append($(this).children().clone());
+			$(this).attr({'data-select-parts':obj.partsID});
+			($(this).find('.aspect-name').hasClass('type-uni')) 
+				? $detailButton.addClass('type-uni')
+				: $detailButton.removeClass('type-uni');
+			method.invCheck(obj.aspectID);
+			obj.urlParams.set(obj.partsID, obj.aspectID);
+			method.getSetting();
+			method.fixedViewPort(false);
+			if (obj.body.is('.option-view') && $optListLen < 1) {
+				$optBtn.trigger('click');
+			}
+		})
+	};
+	method.setAspect = function($part, $target){
+		var $job = $('#container').attr('data-job-select');
+		var $inven = $('#'+$part);
+		var $aspect = $('#'+$target);
+		var $aspectName = $aspect.find('.aspect-name').html();
+		var $aspectMore = $aspect.find('.aspect-more').html();
+		if (!$target == undefined || !$target == '') {
+			$inven.addClass('selected').attr('data-target', $target);
+			$inven.siblings().find('.detail').text($aspectName);
+			$inven.siblings().find('.more').html($aspectMore);
+			$aspect.attr({'aria-selected':true, 'data-select':$target});
+			($aspect.find('.aspect-name').hasClass('type-uni')) 
+				? $inven.siblings().find('.detail').addClass('type-uni')
+				: $inven.siblings().find('.detail').removeClass('type-uni')
+		}
+	};
+
 	method.itemOption = function(){
 		//아이템 옵션 선택
 		var $optionButton = $('.button-option-select');
@@ -273,60 +496,6 @@ var D4SkillDB = (function(){
 		})
 	};
 
-	method.jobSelect = function(){ 
-		//직업 선택
-		$('#header .button-job, .button-reset').on('click', function(){
-			var $this = $(this);
-			var $job = $(this).attr('data-tab-select');
-			if (!$(this).is('[aria-selected=true]')) {
-				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
-					method.layerFunc('settingReset', true, '현재 셋팅된 <strong>위상(옵션)/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상(옵션)/보석/입력값</strong> 들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
-					$(document).on('click', '#settingReset .button-submit', function(){
-						jobChange($this);
-					})
-				} else {
-					jobChange($this);
-				}
-			}
-			function jobChange($jobBtn){
-				var $this = $jobBtn;
-				if (!obj.body.is('.scroll-lock')) {
-					$('html, body').animate({scrollTop: '0'}, 300);
-				}
-				if ($jobBtn.is('.button-job')) {
-					$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
-					obj.container.attr('data-job-select', $job);	
-					($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
-					$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
-					$('#container .spirit-description').empty();
-					if ($job == 'dru') {
-						$('#wep2-opt').attr('data-option-parts', 'sub');
-					} else if ($job == 'nec') {
-						$('#wep2-opt').attr('data-option-parts', 'shl');
-						$('#wep4-opt').attr('data-option-parts', 'sub');
-					} else {
-						$('#wep2-opt, #wep4-opt').attr('data-option-parts', 'wep');
-					}
-					obj.urlParams.set('job', $job);
-				}
-				method.delEqu();
-				method.delGems();
-				method.delUrl();
-				method.delOpt();
-				method.delSpirit();
-				method.getSetting();
-				method.aspectReset();
-			}
-		})
-		//레이어 필터링 버튼
-		$('.aspect-head button').on('click', function(){
-			var $this = $(this).attr('class');
-			if ($(this).is('[aria-selected]')) {
-				$(this).attr('aria-selected', true).siblings('[aria-selected]').attr('aria-selected', false);
-			}
-			obj.aspectList.attr('data-filter', $this);
-		})
-	};
 	method.setGems = function(){ 
 		//각 장비별 보석 셋팅
 		$('.inven .equ').each( function(){
@@ -380,194 +549,6 @@ var D4SkillDB = (function(){
 			method.fixedViewPort(false);
 		})
 	};
-	method.scrollFunc = function(){
-		$(window).scroll(function () {
-			var scrollTop = $(this).scrollTop();
-			var $header = 40;
-			(scrollTop > $header) 
-				? obj.body.addClass('header-flip')
-				: obj.body.removeClass('header-flip');
-			var windHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-			var scrolled = (scrollTop / windHeight) * 100;
-			$('.bar').css('width', scrolled+'%');
-		});
-	};
-	method.aspectLayer = function(){
-		//위상 레이어 오픈
-		obj.aspectOpen.on('click', function(){
-			var $parts = $(this).parents('.equ').attr('class').split(' ')[1];
-			var $layer = $('#'+$(this).attr('aria-controls'));
-			obj.aspectOpen.removeClass('active latest');
-			$('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
-			$layer.addClass('active').attr('data-sorting', $parts);
-			obj.container.find('.inven').addClass('active');
-			$(this).addClass('active latest');
-			(!$(this).is('.selected'))
-				? $('.sort-by-dis').attr('disabled', true) 
-				: $('.sort-by-dis').attr('disabled', false)
-			method.layerSort($parts);
-			if ($(this).is('.selected')) { //선택 강조
-				var $target = $('#'+$(this).attr('data-target'));
-				obj.aspectLayer.find('.button-aspect').removeClass('selected');
-				$target.addClass('selected').focus();
-			} else {
-				obj.aspectLayer.find('.button-aspect').removeClass('selected');
-				$layer.find('.box-aspect-select').animate({scrollTop: '0'}, 300);
-			}
-
-			var $multi = ($(this).parents('.equ').attr('data-multiply') == undefined) ? 10 : $(this).parents('.equ').attr('data-multiply');
-			method.aspectMultiply($multi);
-			method.fixedViewPort(true);
-		})
-		//닫기 & 해제
-		$('.js-disabled').on('click', function(){
-			var $target = $('.inven .equ .option.latest').attr('data-target');
-			if ($(this).is('.sort-by-dis')) {
-				obj.urlParams.delete($('.inven .equ .option.latest').attr('id'), $('.inven .equ .option.latest').attr('data-target'));
-				method.getSetting();
-				obj.aspectList.find('#'+$target).attr('aria-selected', false);
-				$('.inven .equ .option.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
-				$('.inven .equ .option.latest').removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
-				if ($('.inven .equ .option.latest').is('#wep2, #wep4')) {
-					method.wepChange(true);
-					if (obj.job == 'bab'){
-						method.wepChange(false);
-					}
-				}
-			}
-			obj.aspectOpen.removeClass('active');
-			$(this).parents('.inven-aspect-select').removeClass('active').removeAttr('data-sorting');
-			obj.container.find('.inven').removeClass('active');
-			method.fixedViewPort(false);
-		})
-	};
-	method.aspectMultiply = function($number){
-		obj.aspectList.find('.txt_calc').each(function(){
-			var $basicNum = $(this).attr('data-origin');
-			$(this).text(parseInt($basicNum * $number / 10));
-		});
-	}
-	method.aspectReset = function(){
-		//세팅된 모든값 리셋
-		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
-		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
-		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
-		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
-		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
-		obj.aspect.removeClass('active').removeAttr('data-gem-icon');
-		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
-		method.wepChange(true); //주무기 보석 칸 리셋
-		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
-		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
-		$('#container .inven .equ .button-option-select').removeClass('modify');
-		$('.box-aspect').empty(); //위상 리셋
-		$('#previewImg').empty(); //생성된 이미지 리셋
-		$('.option-list').removeAttr('data-target').empty(); //옵션 리셋
-		obj.delOpt.removeAttr('style') //옵션 삭제 버튼 숨김
-		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
-		method.fixedViewPort(false);
-	};
-	method.layerSort = function($target){
-		//타입별 위상 정렬
-		var $target = obj.aspectLayer.attr('data-sorting');
-		$job = obj.container.attr('data-job-select');
-		obj.aspectLayer.find('.box__aspect-grid').addClass('hide').removeClass('show');
-		obj.aspectLayer.find('.box__aspect-grid.'+$target+'[data-job='+$job+'], .box__aspect-grid.'+$target+'[data-job=com]').removeClass('hide').addClass('show');
-	};
-	method.invCheck = function($id){
-		//동일 위상 선택시 다른영역 리셋
-		var $invSkill = [];
-		obj.aspectOpen.each(function(index){
-			var $target = ($(this).attr('data-target') !== undefined) ? $(this).attr('data-target') : '';
-			$invSkill.push($target)
-			if ($id == $(this).attr('data-target')) {
-				$(this).not('.latest').attr('data-target', $id).removeAttr('data-target').removeClass('selected').siblings('.text').find('.box-aspect').empty();
-				$(this).not('.latest').parent().removeAttr('data-parts data-ver'); //[data-*]
-				//동일 위상 양손무기 / 한손+보조  세팅값
-				if (obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') {
-					if ($id == $('#wep1').attr('data-target') && !$('#wep2, #wep4').is('.selected')) {
-						console.log('무기 ON')
-						method.wepChange(true);
-					} else if ($id == $('#wep2').attr('data-target') || $('#wep4').attr('data-target') && !$('#wep1').is('.selected')) {
-						console.log('무기 OFF')
-						method.wepChange(false);
-					}
-				}
-				obj.urlParams.delete($(this).attr('id'), $id);
-				method.getSetting();
-			}
-		});
-		$.each($invSkill, function(index){
-			$('#'+$invSkill[index]).attr({'aria-selected':true});
-		})
-	};
-	method.wepChange = function(weapon){
-		var $job = $('#container').attr('data-job-select')
-		if (weapon) {
-			$('#wep1').siblings().removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
-			$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
-		} else {
-			$('#wep1').siblings('.gems').addClass('single-gem').parents('.equ').attr('data-multiply', '10');	
-			$('#wep2, #wep4').parents('.equ').removeAttr('data-wep-type');
-			if ($job == 'rog' || $job == 'bab') {
-				$('#wep1').siblings('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');
-			}
-		}
-	};
-	method.aspectDB = function(){
-		//위상 선택
-		obj.aspectButton = obj.container.find('.button-aspect');
-		obj.container.on('click', '.button-aspect', function(){
-			var $detail = $(this).find('.aspect-name');
-			var $tooltip = $(this).find('.aspect-more').html();
-			var $parts = $(this).find('.aspect-parts').html();
-			var $detailButton = $('.inven .equ .option.active').siblings('.text');
-			var $target = $('.inven .equ .option.active').attr('data-target');
-			obj.aspectID = $(this).attr('id');
-			obj.partsID = $('.inven .equ .option.active').attr('id');
-			$('.sort-by-all').trigger('click');
-			$('#'+$target).attr('aria-selected', false);
-			$('.inven .equ .option.active').addClass('selected').attr({'data-target':$(this).attr('id')}).parent().attr({'data-parts':$(this).parent().attr('data-parts'), 'data-ver':$(this).parent().attr('data-ver')})//[data-*]
-			obj.aspectOpen.removeClass('active');
-			obj.aspectLayer.removeClass('active');
-			obj.container.find('.inven').removeClass('active');
-			//$detailButton.find('.box-aspect').empty().append($(this).children().clone());
-			$(this).attr({'data-select-parts':obj.partsID});
-			($(this).find('.aspect-name').hasClass('type-uni')) 
-				? $detailButton.addClass('type-uni')
-				: $detailButton.removeClass('type-uni');
-			method.invCheck(obj.aspectID);
-			obj.urlParams.set(obj.partsID, obj.aspectID);
-			method.getSetting();
-			method.fixedViewPort(false);
-		})
-	};
-	method.setAspect = function($part, $target){
-		var $job = $('#container').attr('data-job-select');
-		var $inven = $('#'+$part);
-		var $aspect = $('#'+$target);
-		var $aspectName = $aspect.find('.aspect-name').html();
-		var $aspectMore = $aspect.find('.aspect-more').html();
-		if (!$target == undefined || !$target == '') {
-			$inven.addClass('selected').attr('data-target', $target);
-			$inven.siblings().find('.detail').text($aspectName);
-			$inven.siblings().find('.more').html($aspectMore);
-			$aspect.attr({'aria-selected':true, 'data-select':$target});
-			($aspect.find('.aspect-name').hasClass('type-uni')) 
-				? $inven.siblings().find('.detail').addClass('type-uni')
-				: $inven.siblings().find('.detail').removeClass('type-uni')
-		}
-	};
-	method.expandFunc = function($this, $boolean){
-		var $target = $('#'+$($this).attr('aria-controls'));;
-		if ($boolean) {
-			$($this).addClass('expend').attr('aria-expanded', true);
-			$target.attr('aria-hidden', true).slideDown(200);
-		} else {
-			$($this).removeClass('expend').attr('aria-expanded', false);
-			$target.attr('aria-hidden', false).slideUp(200);
-		}
-	}
 	method.spiritBoons = function(){
 		//영혼 은총
 		var $spirit = obj.spiritBoons.find('button');
@@ -853,6 +834,32 @@ var D4SkillDB = (function(){
 				}
 			}
 		}
+	};
+	method.aspectMultiply = function($number){
+		obj.aspectList.find('.txt_calc').each(function(){
+			var $basicNum = $(this).attr('data-origin');
+			$(this).text(parseInt($basicNum * $number / 10));
+		});
+	};
+	method.aspectReset = function(){
+		//세팅된 모든값 리셋
+		obj.aspectOpen.removeClass('active selected latest').removeAttr('data-target');
+		obj.aspectLayer.removeClass('active').removeAttr('data-sorting');
+		obj.container.find('.inven').removeClass('active').find('.equ .text .detail, .equ .text .more').empty().removeClass('type-uni type-leg');
+		obj.aspectButton.attr('aria-selected', false).removeAttr('data-select-parts');
+		obj.aspectOpen.parent().removeAttr('data-parts data-ver'); //[data-*]
+		obj.aspect.removeClass('active').removeAttr('data-gem-icon');
+		obj.gemOpen.removeAttr('data-gem-icon'); //세팅된 보석 리셋
+		method.wepChange(true); //주무기 보석 칸 리셋
+		//$('.gems').removeClass('single-gem').parents('.equ').attr('data-multiply', '20');; //주무기 보석 칸 리셋
+		//$('#wep2, #wep4').parents('.equ').attr('data-wep-type', 'sub');
+		$('#container .inven .equ .button-option-select').removeClass('modify');
+		$('.box-aspect').empty(); //위상 리셋
+		$('#previewImg').empty(); //생성된 이미지 리셋
+		$('.option-list').removeAttr('data-target').empty(); //옵션 리셋
+		obj.delOpt.removeAttr('style') //옵션 삭제 버튼 숨김
+		method.layerFunc('optionSelect', false); //옵션 레이어 닫기
+		method.fixedViewPort(false);
 	};
 	method.fixedViewPort = function(fixedView){
 		(fixedView) ? obj.body.addClass('scroll-lock header-flip') : obj.body.removeClass('scroll-lock header-flip');
