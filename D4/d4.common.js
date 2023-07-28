@@ -131,6 +131,7 @@ var D4SkillDB = (function(){
 		obj.urlParams = obj.url.searchParams;
 	};
 	method.uiFunc = function(){
+		obj.container.on('focusout', function(){ $(this).removeAttr('tabindex') });
 		$('#wrap [data-display=hide]').remove(); //data-display="hide" 삭제
 
 		$(document).on('keydown', '[role=button]', function(e){
@@ -416,6 +417,7 @@ var D4SkillDB = (function(){
 			}
 		})
 	};
+	/*
 	method.setAspect = function($part, $target){
 		var $job = $('#container').attr('data-job-select');
 		var $inven = $('#'+$part);
@@ -432,6 +434,7 @@ var D4SkillDB = (function(){
 				: $inven.siblings().find('.detail').removeClass('type-uni')
 		}
 	};
+	*/
 
 	method.itemOption = function(){
 		//아이템 옵션 선택
@@ -803,7 +806,7 @@ var D4SkillDB = (function(){
 				$targetPopup.unbind('keydown', trapTabKey, false);
 				$targetPopup.removeClass('active').attr({'aria-hidden':'true'});
 				if ($('[aria-haspopup=dialog][aria-controls='+$target+']').length > 0) {
-					$('[aria-haspopup=dialog][aria-controls='+$target+']').removeClass('trigger-active');
+					$('[aria-haspopup=dialog][aria-controls='+$target+']').focus().removeClass('trigger-active');
 				} else if($('.active').get(0) !== undefined) {
 					$('.active').find('[data-dismiss=modal]').focus();
 				} else {
@@ -866,13 +869,9 @@ var D4SkillDB = (function(){
 	};
 	return{
 		init : method.init,
-		expandFunc : method.expandFunc,
-		aspectDB : method.aspectDB,
-		layerSort : method.layerSort,
-		SetAspect : method.setAspect,
-		layerFunc : method.layerFunc,
 		scrollFunc : method.scrollFunc,
-		getSetting : method.getSetting,
+		//setAspect : method.setAspect,
+		layerFunc : method.layerFunc,
 	}
 })();
 D4SkillDB.init();
