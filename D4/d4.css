@@ -439,7 +439,7 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 #container .icon-bow::before{background: url(images/ranged_weapon.png) 50% 50% no-repeat;background-size:64px auto;}
 #container .icon-dua::before{background: url(images/dual-wield_weapon_2.png) 50% 50% no-repeat;background-size:64px auto;}
 
-#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: -1px;width: 70px;height: 70px;margin-top: -35px;z-index: 10;opacity: 1;transition: all .3s;}
+#container .inven .equ[data-parts] .option::after{content:'';position: absolute;top: 50%;left: -1px;width: 70px;height: 70px;margin-top: -35px;z-index: 10;opacity: 1;transition: opacity .3s;}
 #container .inven .equ[data-parts] .option:hover::after,
 #container .inven .equ[data-parts] .option:focus::after{opacity: 0;}
 #container .inven .equ[data-parts=off] .option::after{background: url(images/offensive.png) 50% 50% no-repeat;background-size:45px auto;}

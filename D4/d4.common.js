@@ -645,6 +645,8 @@ var D4SkillDB = (function(){
 			//유니크 장비 체크
 			if ($(this).siblings('.text').find('.aspect-name').is('.type-uni')) {
 				$(this).siblings('.text').addClass('type-uni');
+			} else {
+				$(this).siblings('.text').removeClass('type-uni');
 			}
 			//보조무기 선택여부
 			if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
