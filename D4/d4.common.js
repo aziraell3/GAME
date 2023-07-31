@@ -508,7 +508,7 @@ var D4SkillDB = (function(){
 		})
 		var $layerGems = $('#gemSelect');
 		$.each(gems, function(index, gem){
-			$layerGems.find('.gems-list').append('<div data-display="'+gem.display+'" class="gems-grid" data-job="'+gem.job+'" data-grade="'+gem.grade+'" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" id="G'+index+'"><span class="gem-info"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></span></button></div>');
+			$layerGems.find('.gems-list').append('<div data-display="'+gem.display+'" class="gems-grid" data-job="'+gem.job+'" data-grade="'+gem.grade+'" data-parts="'+gem.parts+'"><button class="button-gem each-gem" data-gem-icon="'+gem.icon+'" data-gem-grade="'+gem.grade+'" "aria-selected="false" id="G'+index+'"><span class="gem-info"><span class="name">'+gem.name+'</span><span class="detail">'+gem.detail+'</span></span></button></div>');
 		});
 		$layerGems.find('[data-grade=leg]').wrapAll('<div class="gems-group" data-group="leg"></div>');
 		$layerGems.find('[data-grade=nor]').wrapAll('<div class="gems-group" data-group="nor"></div>');
@@ -526,7 +526,7 @@ var D4SkillDB = (function(){
 				setTimeout(function(){ $('html, body').animate({scrollTop: $layerGems.offset().top - obj.headerH +'px'}, 300); }, 100)
 				method.fixedViewPort(true);
 			}
-			if ($(this).is('.selected')) { //선택 강조
+			if ($(this).is('.active')) { //선택 강조
 				var $target = $('#'+$(this).attr('data-target'));
 				$layerGems.find('.button-gem').removeClass('selected');
 				$target.addClass('selected').focus();
@@ -541,6 +541,8 @@ var D4SkillDB = (function(){
 				var $gem = $(this).attr('data-gem-icon');
 				var $id = $(this).attr('id');
 				var $target = $('[aria-controls=gemSelect].active').attr('id');
+				$layerGems.find('.button-gem').attr('aria-selected', false);
+				$(this).attr('aria-selected', true);
 				$('[aria-controls=gemSelect].active').addClass('selected').attr({'data-gem-icon':$gem, 'data-target':$id});
 				obj.urlParams.set($target, $id);
 				method.getSetting();
@@ -643,11 +645,9 @@ var D4SkillDB = (function(){
 				$('#'+$(this).attr('data-target')).attr({'aria-selected': true,'data-select-parts': $parts}); //선택된 위상 표시
 			}
 			//유니크 장비 체크
-			if ($(this).siblings('.text').find('.aspect-name').is('.type-uni')) {
-				$(this).siblings('.text').addClass('type-uni');
-			} else {
-				$(this).siblings('.text').removeClass('type-uni');
-			}
+			($(this).siblings('.text').find('.aspect-name').is('.type-uni')) 
+				? $(this).siblings('.text').addClass('type-uni')
+				: $(this).siblings('.text').removeClass('type-uni');
 			//보조무기 선택여부
 			if ($('#wep2, #wep4').is('.selected') && obj.job == 'dru' || obj.job == 'soc' || obj.job == 'nec') { method.wepChange(false) };
 		})
@@ -657,7 +657,7 @@ var D4SkillDB = (function(){
 			$(this).attr('data-gem-icon', $('#'+$(this).attr('data-target')).attr('data-gem-icon'));
 			if ($(this).is('[data-target]') && $('#'+$(this).attr('data-target')).attr('data-gem-grade') == 'leg' ) {
 				$(this).parents('.equ').find('.text .box-aspect .gem-info').remove();
-				$(this).parents('.equ').find('.text .box-aspect').append($('#'+$(this).attr('data-target')).find('.gem-info').clone().attr({'data-gem-type':$('#'+$(this).attr('data-target')).attr('data-gem-icon'), 'role':'button', 'tabindex':'0'}));
+				$(this).parents('.equ').find('.text .box-aspect').append($('#'+$(this).attr('data-target')).attr('aria-selected', true).find('.gem-info').clone().attr({'data-gem-type':$('#'+$(this).attr('data-target')).attr('data-gem-icon'), 'role':'button', 'tabindex':'0'}));
 			} else {
 				$(this).parents('.equ').find('.text .box-aspect .gem-info').remove();
 			}
@@ -796,7 +796,7 @@ var D4SkillDB = (function(){
 				var focusableElementsString = $targetPopup.find('a[href], area[href], input:not([disabled], [aria-hidden=true]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]');
 				var firstTabStop = focusableElementsString[0];
 				var lastTabStop = focusableElementsString[focusableElementsString.length - 1];
-				firstTabStop.focus();
+				//firstTabStop.focus();
 				if ($('#'+$target).find('.dimmed').get(0) == undefined) {
 					$('#'+$target).append('<div class="dimmed" role="none"></div>');
 					method.layerFuncClose();
