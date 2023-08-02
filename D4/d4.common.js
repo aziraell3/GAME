@@ -529,7 +529,9 @@ var D4SkillDB = (function(){
 			if ($(this).is('.active')) { //선택 강조
 				var $target = $('#'+$(this).attr('data-target'));
 				$layerGems.find('.button-gem').removeClass('selected');
-				$target.addClass('selected').focus();
+				if ($target.is('[data-gem-grade=leg]')) {
+					$target.addClass('selected').focus();
+				}
 			} else {
 				$layerGems.find('.button-gem').removeClass('selected');
 				$layerGems.find('.layer-body').animate({scrollTop: '0'}, 300);
@@ -541,8 +543,10 @@ var D4SkillDB = (function(){
 				var $gem = $(this).attr('data-gem-icon');
 				var $id = $(this).attr('id');
 				var $target = $('[aria-controls=gemSelect].active').attr('id');
-				$layerGems.find('.button-gem').attr('aria-selected', false);
-				$(this).attr('aria-selected', true);
+				if ($(this).is('[data-gem-grade=leg]')) {
+					$layerGems.find('.button-gem').attr('aria-selected', false);
+					$(this).attr('aria-selected', true);
+				}
 				$('[aria-controls=gemSelect].active').addClass('selected').attr({'data-gem-icon':$gem, 'data-target':$id});
 				obj.urlParams.set($target, $id);
 				method.getSetting();
