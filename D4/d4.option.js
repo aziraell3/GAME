@@ -541,7 +541,7 @@ var D4Option = (function(){
 		{display:'show', ver:'ori', grade:'nor', job:'dru', type:'job', parts:'sub',						name:'보강 생성량'},
 		{display:'show', ver:'ori', grade:'nor', job:'dru', type:'def', parts:'sub',						name:'보강 상태에서 피해 감소'},
 		{display:'show', ver:'ori', grade:'nor', job:'dru', type:'def', parts:'sub',						name:'중독된 적에게 받는 피해 감소'},
-		{display:'show', ver:'ori', grade:'nor', job:'soc', type:'job', parts:'sub',						name:'마나 소모량 감소'},
+		{display:'show', ver:'ori', grade:'nor', job:'soc', type:'job', parts:'sub fav',						name:'마나 소모량 감소'},
 		{display:'show', ver:'ori', grade:'nor', job:'com', type:'com', parts:'sub',						name:'보호막이 있을 때 행운의 적중 확률'},
 		{display:'show', ver:'ori', grade:'nor', job:'soc', type:'def', parts:'sub',						name:'불타오름 적에게 받는 피해 감소'},
 		{display:'show', ver:'ori', grade:'nor', job:'soc', type:'def', parts:'sub',						name:'짜릿한 에너지 피해'},
