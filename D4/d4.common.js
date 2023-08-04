@@ -235,10 +235,12 @@ var D4SkillDB = (function(){
 				if ($jobBtn.is('.button-job')) {
 					$this.attr('aria-selected', true).siblings().attr('aria-selected', false);
 					obj.container.attr('data-job-select', $job);	
-					($this.hasClass('sub-equ-char')) ? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') : $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
+					($this.hasClass('sub-equ-char')) 
+						? $('.inven-wep .equ').eq(1).removeClass('wep').addClass('sub') 
+						: $('.inven-wep .equ').eq(1).addClass('wep').removeClass('sub')
 					$('#container .inven-spirit .spirit-grid').removeClass('active').find('.button-spirit').attr('aria-selected', false).prop('disabled', false);
 					$('#container .spirit-description').empty();
-					if ($job == 'dru') {
+					if ($job == 'dru' || $job == 'soc') {
 						$('#wep2-opt').attr('data-option-parts', 'sub');
 					} else if ($job == 'nec') {
 						$('#wep2-opt').attr('data-option-parts', 'shl');
