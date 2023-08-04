@@ -589,6 +589,7 @@ var D4Option = (function(){
 
 		//추가 목록
 		{display:'show', ver:'ori', grade:'nor', job:'com', type:'com', parts:'pan fav',						name:'부상 상태일 때 피해 감소'},
+		{display:'show', ver:'ori', grade:'nor', job:'com', type:'com', parts:'che fav',						name:'부상 상태일 때 피해 감소'},
 	];
 	method.init = function(){
 		obj.wrap = $('#optionList')
