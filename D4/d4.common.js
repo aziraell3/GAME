@@ -412,7 +412,8 @@ var D4SkillDB = (function(){
 			obj.urlParams.set(obj.partsID, obj.aspectID);
 			method.getSetting();
 			method.fixedViewPort(false);
-			if (obj.body.is('.option-view') && $optListLen < 1) {
+			//옵션+ 일때 위상 선택 후 옵션창 열기
+			if (obj.body.is('.option-view') && $optListLen < 1 && $(this).parent().attr('data-grade') !== 'uni') {
 				$optBtn.trigger('click');
 			}
 		})
