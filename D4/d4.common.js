@@ -219,7 +219,7 @@ var D4SkillDB = (function(){
 			var $job = $(this).attr('data-tab-select');
 			if (!$(this).is('[aria-selected=true]')) {
 				if ($('[aria-controls=aspectSelect][data-target]').length > 0 || $('[aria-controls=gemSelect][data-gem-icon]').length > 0  || $('input[type=text]').val() !== '') {
-					method.layerFunc('settingReset', true, '현재 셋팅된 <strong>위상(옵션)/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상(옵션)/보석/입력값</strong> 들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
+					method.layerFunc('settingReset', true, '현재 셋팅된 <strong>위상/옵션/보석/입력값</strong>등이 있습니다.<br>확인을 누르면 셋팅된  <strong class="underline">위상/옵션/보석/입력값</strong> 들이 초기화 됩니다. <br>그래도 초기화 하시겠습니까?', true);
 					$(document).on('click', '#settingReset .button-submit', function(){
 						jobChange($this);
 					})
@@ -629,9 +629,9 @@ var D4SkillDB = (function(){
 	method.getSetting = function(){
 		var job = obj.urlParams.get('job');
 		//직업 로드
-		if (job == null) {
+		if (job == undefined) {
 			obj.urlParams.set('job', 'dru');
-			$('#header .button-job[data-tab-select]').attr('aria-selected', false);
+			//$('#header .button-job[data-tab-select]').attr('aria-selected', false);
 			$('#header .button-job[data-tab-select=dru]').attr('aria-selected', true);
 		} else {
 			obj.urlParams.set('job', job);
