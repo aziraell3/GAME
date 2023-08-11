@@ -683,11 +683,11 @@ var D4SkillDB = (function(){
 					$more.show();
 				} else {
 					$more.attr('aria-expanded', false).hide();
-					$iframe.parent().attr('aria-hidden', true).hide();
+					$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
 				}
 			} else {
 				$more.attr('aria-expanded', false).hide();
-				$iframe.parent().attr('aria-hidden', true).hide();
+				$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
 			}
 		})
 		//은총 로드
