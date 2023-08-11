@@ -21,11 +21,13 @@ $(document).ready(function(){
 		}
 	});
 	D4SkillDB.scrollFunc();
+	/*
 	$('#container .box-url .setting-url').each(function(){
 		if ($(this).val() !== '') {
 			D4SkillDB.expandFunc($('#container .box-title .button-url-link'), true);
 		}
 	})
+	*/
 
 	//한줄 noti
 	//$('.box-notice-alert').delay(1000).animate({'max-height': '100px'}, 'slow').delay(1000 * 4).animate({'max-height': '0px'}, 'slow');
@@ -672,7 +674,21 @@ var D4SkillDB = (function(){
 		//URL입력값
 		obj.settingInput.each(function(){
 			var $id = $(this).attr('id');
+			var $more = $('#'+$id).siblings('.link-frame');
+			var $iframe = $('#'+$id).parents('.box-line').find('iframe');
 			$('#'+$id).val(obj.urlParams.get($id));
+			$iframe.attr('src', obj.urlParams.get($id));
+			if ($('#'+$id).val().indexOf('http') !== -1 ) {
+				if ($('#'+$id).val().length > 0) {
+					$more.show();
+				} else {
+					$more.attr('aria-expanded', false).hide();
+					$iframe.parent().attr('aria-hidden', true).hide();
+				}
+			} else {
+				$more.attr('aria-expanded', false).hide();
+				$iframe.parent().attr('aria-hidden', true).hide();
+			}
 		})
 		//은총 로드
 		obj.spiritBoons.find('.button-spirit').each(function(){
