@@ -677,7 +677,7 @@ var D4SkillDB = (function(){
 			var $more = $('#'+$id).siblings('.link-frame');
 			var $iframe = $('#'+$id).parents('.box-line').find('iframe');
 			$('#'+$id).val(obj.urlParams.get($id));
-			if ($('#'+$id).val().indexOf('http') !== -1 ) {
+			if ($('#'+$id).val().indexOf('http') !== -1) {
 				if ($('#'+$id).val().length > 0) {
 					$more.show();
 					$iframe.attr('src', obj.urlParams.get($id));
