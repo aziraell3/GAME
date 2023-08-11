@@ -450,7 +450,7 @@ body.option-view #container .inven .equ .selected ~ .text .box-aspect::after{con
 #container .inven .equ[data-parts] .option.selected{}
 
 #container [data-parts] .aspect-parts::before,
-#container [data-parts] .aspect-parts::after{content:'';margin-top: 2px;font-size: 12px;color: cadetblue;letter-spacing: -0.5px;}
+#container [data-parts] .aspect-parts::after{content:'';margin-top: 2px;font-size: 13px;color: cadetblue;letter-spacing: -0.5px;}
 #container [data-parts] .aspect-parts::before{content:'착용 가능 : ';color: burlywood;font-weight: bold;}
 #container [data-parts=wep] .aspect-parts::after{content:'무기';}
 #container [data-parts=hel] .aspect-parts::after{content:'투구';}
