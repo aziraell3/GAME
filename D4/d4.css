@@ -1042,4 +1042,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	body.option-view #container .inven .equ[data-has=gem] .text:not(.type-uni){min-height: 135px;}
 	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect,
 	body.option-view #container .inven .equ .text:not(.type-uni) .box-aspect .aspect-detail{min-height: auto;}
+
+	#container .box-url .box-line .box-frame{height: 50vh;}
+	#container .box-url .link-frame{}
 }
