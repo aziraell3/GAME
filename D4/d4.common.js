@@ -274,10 +274,10 @@ var D4SkillDB = (function(){
 		var $target = $('#'+$($this).attr('aria-controls'));;
 		if ($boolean) {
 			$($this).addClass('expend').attr('aria-expanded', true);
-			$target.attr('aria-hidden', true).slideDown(200);
+			$target.attr('aria-hidden', false).slideDown(200);
 		} else {
 			$($this).removeClass('expend').attr('aria-expanded', false);
-			$target.attr('aria-hidden', false).slideUp(200);
+			$target.attr('aria-hidden', true).slideUp(200);
 		}
 	}
 	method.scrollFunc = function(){
