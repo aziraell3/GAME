@@ -271,7 +271,7 @@ var D4SkillDB = (function(){
 		})
 	};
 	method.expandFunc = function($this, $boolean){
-		var $target = $('#'+$($this).attr('aria-controls'));;
+		var $target = $('#'+$($this).attr('aria-controls'));
 		if ($boolean) {
 			$($this).addClass('expend').attr('aria-expanded', true);
 			$target.attr('aria-hidden', false).slideDown(200);
@@ -680,14 +680,21 @@ var D4SkillDB = (function(){
 			if ($('#'+$id).val().indexOf('http') !== -1) {
 				if ($('#'+$id).val().length > 0) {
 					$more.show();
+					//method.expandFunc($more, true);
 					$iframe.attr('src', obj.urlParams.get($id));
 				} else {
-					$more.attr('aria-expanded', false).hide();
-					$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
+					$more.hide();
+					$iframe.attr('src', 'about:blank');
+					method.expandFunc($more, false);
+					//$more.attr('aria-expanded', false).hide();
+					//$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
 				}
 			} else {
-				$more.attr('aria-expanded', false).hide();
-				$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
+				$more.hide();
+				$iframe.attr('src', 'about:blank');
+				method.expandFunc($more, false);
+				//$more.attr('aria-expanded', false).hide();
+				//$iframe.attr('src', 'about:blank').parent().attr('aria-hidden', true).hide();
 			}
 		})
 		//은총 로드
