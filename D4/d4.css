@@ -66,7 +66,8 @@ body.scroll-lock #container .download{z-index: 1;}
 
 #header .page-title .title{display: inline-block;padding:3px 5px;border-bottom: 1px solid cadetblue;font-size: 22px;color: cadetblue;font-weight: bold;text-decoration: none;}
 #header .page-title .button-notice{overflow: hidden;}
-#header .page-title .sup{position: absolute;top: 9px;margin-left: 4px;font-family: Tahoma;font-size: 12px;opacity: .5;}
+#header .page-title .sup{position: absolute;top: 9px;margin-left: 4px;opacity: .5;}
+#header .page-title .sup a{font-family: Tahoma;font-size: 12px;}
 #header .box-header{position: relative;display: flex;justify-content: space-evenly;align-items: center;max-width: 800px;min-height: 50px;margin: 0 auto;padding: 8px 0;border-bottom: 1px solid #333;}
 #header .box-header .box-scrollbar{position: absolute;bottom: 0;left: 0;height: 2px;width: 100%;}
 #header .box-header .box-scrollbar .bar{display: block;width: 0;height: 100%;background-color: cadetblue;opacity: .87;}
