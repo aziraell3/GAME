@@ -843,7 +843,7 @@ body.option-view #container .inven .inven-acc .equ *{text-align: left;}
 	#header .button-notice::before{width: 20px;height: 20px;}
 	#header .box-header{padding: 8px 0 10px;}
 	#header .page-title{padding-top: 0;height: 35px;}
-	#header .page-title .sup{font-size: 11px;}
+	#header .page-title .sup a{font-size: 11px;}
 	#header .page-title .title{font-size: 16px;letter-spacing: -1px;}
 	#header .page-title .button-notice{margin:3px -2px 0 0;}
 	#container .box-notice{top: 65px;left: 10px;right: 10px;}
